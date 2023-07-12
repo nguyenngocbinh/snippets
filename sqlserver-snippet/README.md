@@ -1,5 +1,6 @@
-# SQLSERVER-SNIPPET
-
+---
+title: SQLSERVER-SNIPPET
+---
 
 ### PARALEL
 ```sql
