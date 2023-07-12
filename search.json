@@ -133,6 +133,27 @@
     "text": "Install Quarto\nhttps://quarto.org/docs/get-started/ describes how to install Quarto, which will depend on your operating system. We’ll walk through installation for each tool in the next chapters."
   },
   {
+    "objectID": "sqlserver-snippet/Index.html#schemas",
+    "href": "sqlserver-snippet/Index.html#schemas",
+    "title": "SQL-Server Snippet",
+    "section": "Schemas",
+    "text": "Schemas"
+  },
+  {
+    "objectID": "sqlserver-snippet/Index.html#optimize",
+    "href": "sqlserver-snippet/Index.html#optimize",
+    "title": "SQL-Server Snippet",
+    "section": "Optimize",
+    "text": "Optimize"
+  },
+  {
+    "objectID": "sqlserver-snippet/Index.html#references",
+    "href": "sqlserver-snippet/Index.html#references",
+    "title": "SQL-Server Snippet",
+    "section": "References",
+    "text": "References\n\n[SHORTCUT] (https://manhng.com/blog/sql-query/)\n[SYNONYM] (https://www.sqlservertutorial.net/sql-server-basics/sql-server-synonym/)\n[STORE PROCEDURE] (https://comdy.vn/sql-server/stored-procedure-trong-sql-server/)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Making shareable documents with Quarto",

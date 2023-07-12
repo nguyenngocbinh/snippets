@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/learning-more.html</loc>
-    <lastmod>2023-07-12T02:46:56.483Z</lastmod>
+    <lastmod>2023-07-12T09:04:11.522Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/explore.html</loc>
-    <lastmod>2023-07-12T02:46:54.915Z</lastmod>
+    <lastmod>2023-07-12T09:04:09.978Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/browser.html</loc>
-    <lastmod>2023-07-12T02:46:53.358Z</lastmod>
+    <lastmod>2023-07-12T09:04:08.474Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/index.html</loc>
-    <lastmod>2023-07-12T02:46:52.166Z</lastmod>
+    <lastmod>2023-07-12T09:04:07.310Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/Index.html</loc>
+    <lastmod>2023-07-12T09:04:06.014Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/index.html</loc>
-    <lastmod>2023-07-12T02:46:47.798Z</lastmod>
+    <lastmod>2023-07-12T09:04:03.790Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/transition-from-rmarkdown.html</loc>
-    <lastmod>2023-07-12T02:46:51.574Z</lastmod>
+    <lastmod>2023-07-12T09:04:06.726Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/rstudio.html</loc>
-    <lastmod>2023-07-12T02:46:52.834Z</lastmod>
+    <lastmod>2023-07-12T09:04:07.994Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/jupyter.html</loc>
-    <lastmod>2023-07-12T02:46:54.122Z</lastmod>
+    <lastmod>2023-07-12T09:04:09.230Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/machine-learning/transformer.html</loc>
-    <lastmod>2023-07-12T02:46:56.055Z</lastmod>
+    <lastmod>2023-07-12T09:04:11.102Z</lastmod>
   </url>
 </urlset>
