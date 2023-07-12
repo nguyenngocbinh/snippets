@@ -4,8 +4,8 @@ project:
 website: 
   page-navigation: true
   title: "Making sharable documents with Quarto" 
-  site-url: "https://nguyenngocbinh.github.io/documents" 
-  repo-url: https://github.com/nguyenngocbinh/documents 
+  site-url: "https://nguyenngocbinh.github.io/snippets" 
+  repo-url: https://github.com/nguyenngocbinh/snippets
   repo-actions: [edit, issue]
   
   page-footer:
@@ -18,11 +18,11 @@ website:
     align: center
     tools: 
       - icon: globe
-        href: https://openscapes.org
-        text: "Openscapes.org"
+        href: https://nguyenngocbinh.github.io/snippets
+        text: "Nguyễn Ngọc Bình"
       - icon: github
-        href: https://github.com/nguyenngocbinh/documents
-        text: "Quarto website tutorial"
+        href: https://github.com/nguyenngocbinh/snippets
+        text: "Snippet R, python, SQL, Stata"
       - icon: twitter
         href: https://twitter.com/nanabi88
         text: "nanabi88 Twitter"         
@@ -33,12 +33,19 @@ website:
     contents:
       - href: index.qmd
         text: Welcome
-      - explore.qmd
+      - section: python-snippet/Index.md
+        contents: 
+          - python-snippet/Environment.md
+          - python-snippet/Graphs.md
+          - python-snippet/Statistics.md    
+          - python-snippet/Code - optimize.md
+          - python-snippet/Ultilities.md
       - section: sqlserver-snippet/Index.qmd
         contents: 
           - sqlserver-snippet/README.md
           - sqlserver-snippet/permissions.md
           - sqlserver-snippet/synonym.md
+      - explore.qmd
       - learning-more.qmd
       - href: transition-from-rmarkdown.qmd
         text: Transition from Rmd
