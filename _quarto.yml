@@ -34,11 +34,11 @@ website:
       - href: index.qmd
         text: Welcome
       - explore.qmd
-      - section: quarto-workflows/index.qmd
+      - section: sqlserver-snippet/Index.qmd
         contents: 
-          - quarto-workflows/browser.md
-          - quarto-workflows/rstudio.qmd
-          - quarto-workflows/jupyter.md 
+          - sqlserver-snippet/README.md
+          - sqlserver-snippet/permissions.md
+          - sqlserver-snippet/synonym.md
       - learning-more.qmd
       - href: transition-from-rmarkdown.qmd
         text: Transition from Rmd
