@@ -2,54 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/learning-more.html</loc>
-    <lastmod>2023-07-12T10:33:48.765Z</lastmod>
+    <lastmod>2023-07-12T10:34:53.301Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/explore.html</loc>
-    <lastmod>2023-07-12T10:33:47.425Z</lastmod>
+    <lastmod>2023-07-12T10:34:52.013Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/browser.html</loc>
-    <lastmod>2023-07-12T10:33:45.997Z</lastmod>
+    <lastmod>2023-07-12T10:34:50.757Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/index.html</loc>
-    <lastmod>2023-07-12T10:33:44.929Z</lastmod>
+    <lastmod>2023-07-12T10:34:49.793Z</lastmod>
   </url>
   <url>
-    <loc>https://nguyenngocbinh.github.io/documents/transition-from-rmarkdown.html</loc>
-    <lastmod>2023-07-12T10:33:44.017Z</lastmod>
+    <loc>https://nguyenngocbinh.github.io/documents/python-snippet/Code - optimize.html</loc>
+    <lastmod>2023-07-12T10:34:48.985Z</lastmod>
   </url>
   <url>
-    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/synonym.html</loc>
-    <lastmod>2023-07-12T10:33:42.921Z</lastmod>
+    <loc>https://nguyenngocbinh.github.io/documents/python-snippet/Ultilities.html</loc>
+    <lastmod>2023-07-12T10:34:48.281Z</lastmod>
   </url>
   <url>
-    <loc>https://nguyenngocbinh.github.io/documents/index.html</loc>
-    <lastmod>2023-07-12T10:33:40.208Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/Index.html</loc>
-    <lastmod>2023-07-12T10:33:42.489Z</lastmod>
+    <loc>https://nguyenngocbinh.github.io/documents/python-snippet/Environment.html</loc>
+    <lastmod>2023-07-12T10:34:47.617Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/permissions.html</loc>
-    <lastmod>2023-07-12T10:33:43.349Z</lastmod>
+    <lastmod>2023-07-12T10:34:46.337Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/Index.html</loc>
+    <lastmod>2023-07-12T10:34:45.577Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/index.html</loc>
+    <lastmod>2023-07-12T10:34:43.537Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/synonym.html</loc>
+    <lastmod>2023-07-12T10:34:45.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/transition-from-rmarkdown.html</loc>
+    <lastmod>2023-07-12T10:34:46.953Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/python-snippet/Index.html</loc>
-    <lastmod>2023-07-12T10:33:44.397Z</lastmod>
+    <lastmod>2023-07-12T10:34:47.945Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/python-snippet/Graphs.html</loc>
+    <lastmod>2023-07-12T10:34:48.617Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/python-snippet/Statistics.html</loc>
+    <lastmod>2023-07-12T10:34:49.325Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/rstudio.html</loc>
-    <lastmod>2023-07-12T10:33:45.517Z</lastmod>
+    <lastmod>2023-07-12T10:34:50.349Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/jupyter.html</loc>
-    <lastmod>2023-07-12T10:33:46.733Z</lastmod>
+    <lastmod>2023-07-12T10:34:51.389Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/machine-learning/transformer.html</loc>
-    <lastmod>2023-07-12T10:33:48.377Z</lastmod>
+    <lastmod>2023-07-12T10:34:52.921Z</lastmod>
   </url>
 </urlset>
