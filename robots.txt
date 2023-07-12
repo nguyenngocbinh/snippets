@@ -1,1 +1,1 @@
-Sitemap: https://nguyenngocbinh.github.io/documents/sitemap.xml
+Sitemap: https://nguyenngocbinh.github.io/snippets/sitemap.xml
