@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/learning-more.html</loc>
-    <lastmod>2023-07-12T09:31:14.397Z</lastmod>
+    <lastmod>2023-07-12T10:33:48.765Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/explore.html</loc>
-    <lastmod>2023-07-12T09:31:12.961Z</lastmod>
+    <lastmod>2023-07-12T10:33:47.425Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/browser.html</loc>
-    <lastmod>2023-07-12T09:31:11.545Z</lastmod>
+    <lastmod>2023-07-12T10:33:45.997Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/index.html</loc>
-    <lastmod>2023-07-12T09:31:10.481Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/permissions.html</loc>
-    <lastmod>2023-07-12T09:31:09.281Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/Index.html</loc>
-    <lastmod>2023-07-12T09:31:08.449Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/documents/index.html</loc>
-    <lastmod>2023-07-12T09:31:07.365Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/synonym.html</loc>
-    <lastmod>2023-07-12T09:31:08.845Z</lastmod>
+    <lastmod>2023-07-12T10:33:44.929Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/transition-from-rmarkdown.html</loc>
-    <lastmod>2023-07-12T09:31:09.961Z</lastmod>
+    <lastmod>2023-07-12T10:33:44.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/synonym.html</loc>
+    <lastmod>2023-07-12T10:33:42.921Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/index.html</loc>
+    <lastmod>2023-07-12T10:33:40.208Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/Index.html</loc>
+    <lastmod>2023-07-12T10:33:42.489Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/sqlserver-snippet/permissions.html</loc>
+    <lastmod>2023-07-12T10:33:43.349Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/documents/python-snippet/Index.html</loc>
+    <lastmod>2023-07-12T10:33:44.397Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/rstudio.html</loc>
-    <lastmod>2023-07-12T09:31:11.093Z</lastmod>
+    <lastmod>2023-07-12T10:33:45.517Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/quarto-workflows/jupyter.html</loc>
-    <lastmod>2023-07-12T09:31:12.257Z</lastmod>
+    <lastmod>2023-07-12T10:33:46.733Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/documents/machine-learning/transformer.html</loc>
-    <lastmod>2023-07-12T09:31:14.013Z</lastmod>
+    <lastmod>2023-07-12T10:33:48.377Z</lastmod>
   </url>
 </urlset>
