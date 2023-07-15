@@ -40,6 +40,7 @@ website:
           - python-snippet/Statistics.md    
           - python-snippet/Code - optimize.md
           - python-snippet/Ultilities.md
+          - python-snippet/REST_API.md
       - section: sqlserver-snippet/Index.qmd
         contents: 
           - sqlserver-snippet/README.md
