@@ -115,3 +115,13 @@ CASE WHEN DATEPART(DAY, @Start_date) > DATEPART(DAY, @End_date)
 	ELSE DATEDIFF(MONTH, @Start_date, @End_date)
 	END
 ```
+
+### Grant create/execute procedure
+
+```sql
+use BSCORE_CREDITCARD
+go
+grant create procedure to [NOR\HUYENDT14]
+grant alter on schema::[dbo] to [NOR\HUYENDT14]
+grant execute to [NOR\HUYENDT14]
+```
