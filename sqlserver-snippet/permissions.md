@@ -2,6 +2,16 @@
 title: Permissions
 ---
 
+### Grant create/ excecute
+
+```sql
+use BSCORE_CREDITCARD
+go
+grant create procedure to [NOR\HUYENDT14]
+grant alter on schema::[dbo] to [NOR\HUYENDT14]
+grant execute to [NOR\HUYENDT14]
+```
+
 ### Find all permissions/access for all users in a database
 
 ```sql
