@@ -37,6 +37,7 @@ website:
         contents: 
           - python-snippet/Environment.md
           - python-snippet/Graphs.md
+          - python-snippet/Modelling.md 
           - python-snippet/Statistics.md    
           - python-snippet/Code - optimize.md
           - python-snippet/Ultilities.md
