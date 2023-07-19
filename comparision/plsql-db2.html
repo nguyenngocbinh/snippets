@@ -232,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax" id="toc-heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax" class="nav-link active" data-scroll-target="#heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax">Here’s a table comparing DB2 and PL/SQL based on the provided features and their syntax:</a></li>
-  <li><a href="#db-information" id="toc-db-information" class="nav-link" data-scroll-target="#db-information">DB Information</a></li>
+  <li><a href="#utilities" id="toc-utilities" class="nav-link" data-scroll-target="#utilities">Utilities</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/plsql-db2.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -268,6 +268,8 @@ ul.task-list li input[type="checkbox"] {
 <li>TCL – Transaction Control Language</li>
 </ol>
 <p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20210920153429/new.png" class="img-fluid"></p>
+<ol type="1">
+<li><p>DDL – Data Definition Language</p>
 <table class="table">
 <colgroup>
 <col style="width: 26%">
@@ -283,15 +285,47 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Select</td>
-<td><code>SELECT column1, column2 FROM table_name;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Create</td>
+<td>Create Table</td>
 <td><code>CREATE TABLE new_table AS SELECT * FROM existing_table;</code></td>
 <td><code>similar</code></td>
 </tr>
+<tr class="even">
+<td>Drop Table</td>
+<td><code>DROP TABLE table_name [PURGE];</code></td>
+<td><code>DROP TABLE IF EXISTS table_name;</code></td>
+</tr>
+<tr class="odd">
+<td>Rename Columns</td>
+<td><code>ALTER TABLE table_name RENAME COLUMN old_column TO new_column;</code></td>
+<td><code>similar</code></td>
+</tr>
+<tr class="even">
+<td>Modify Columns</td>
+<td><code>ALTER TABLE table_name MODIFY COLUMN column_name datatype;</code></td>
+<td><code>similar</code></td>
+</tr>
+<tr class="odd">
+<td>Add Columns</td>
+<td><code>ALTER TABLE table_name ADD COLUMN new_column datatype;</code></td>
+<td><code>similar</code></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>DQL – Data Query Language</p>
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>PL/SQL Syntax</th>
+<th>DB2 Syntax</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td>Left Join</td>
 <td><code>SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;</code></td>
@@ -313,38 +347,18 @@ ul.task-list li input[type="checkbox"] {
 <td><code>similar</code></td>
 </tr>
 <tr class="odd">
-<td>Rename Columns</td>
-<td><code>ALTER TABLE table_name RENAME COLUMN old_column TO new_column;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Modify Columns</td>
-<td><code>ALTER TABLE table_name MODIFY COLUMN column_name datatype;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Add Columns</td>
-<td><code>ALTER TABLE table_name ADD COLUMN new_column datatype;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
 <td>Merge</td>
 <td><code>MERGE INTO table_name USING source_table ON (table_name.column = source_table.column) WHEN MATCHED THEN UPDATE SET column1 = value1 WHEN NOT MATCHED THEN INSERT (column1) VALUES (value1);</code></td>
 <td><code>similar</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Insert Into</td>
 <td><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></td>
 <td><code>similar</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Update</td>
 <td><code>UPDATE staff a SET salary =&nbsp;(SELECT AVG(salary) + 2000 FROM staff b&nbsp;WHERE a.dept = b.dept) WHERE id &lt; 60;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Drop Table</td>
-<td><code>DROP TABLE table_name;</code></td>
 <td><code>similar</code></td>
 </tr>
 <tr class="even">
@@ -356,26 +370,6 @@ ul.task-list li input[type="checkbox"] {
 <td>Temporary Table</td>
 <td><code>DECLARE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
 <td><code>CREATE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
-</tr>
-<tr class="even">
-<td>Diff Month</td>
-<td><code>SELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;</code></td>
-<td><code>SELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;</code></td>
-</tr>
-<tr class="odd">
-<td>Add Months</td>
-<td><code>SELECT ADD_MONTHS(date1, number_of_months) FROM dual;</code></td>
-<td><code>SELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;</code></td>
-</tr>
-<tr class="even">
-<td>Diff Date</td>
-<td><code>SELECT date2 - date1 FROM dual;</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Compare 2 Tables</td>
-<td><code>(SELECT * FROM B_TMP MINUS SELECT * FROM B_TMP1) UNION ALL(SELECT * FROM B_TMP1 MINUS SELECT * FROM B_TMP)</code></td>
-<td><code>SELECT * FROM table1 EXCEPT SELECT * FROM table2;</code></td>
 </tr>
 <tr class="even">
 <td>Group By</td>
@@ -413,10 +407,33 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></li>
+<li><p>DCL – Data Control Language</p>
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>PL/SQL Syntax</th>
+<th>DB2 Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Select</td>
+<td><code>SELECT column1, column2 FROM table_name;</code></td>
+<td><code>similar</code></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
 </section>
-<section id="db-information" class="level2">
-<h2 class="anchored" data-anchor-id="db-information">DB Information</h2>
+<section id="utilities" class="level2">
+<h2 class="anchored" data-anchor-id="utilities">Utilities</h2>
 <table class="table">
 <colgroup>
 <col style="width: 26%">
@@ -435,6 +452,36 @@ ul.task-list li input[type="checkbox"] {
 <td>SYS_INFO</td>
 <td></td>
 <td><code>SELECT * FROM SYSIBMADM.ENV_SYS_INFO</code></td>
+</tr>
+<tr class="even">
+<td>NVL</td>
+<td><code>NVL(column, 0)</code></td>
+<td><code>COALESCE(column, 0)</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>COALESCE(column, 0)</code></td>
+<td><code>COALESCE(column, 0)</code></td>
+</tr>
+<tr class="even">
+<td>Diff Month</td>
+<td><code>SELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;</code></td>
+<td><code>SELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;</code></td>
+</tr>
+<tr class="odd">
+<td>Add Months</td>
+<td><code>SELECT ADD_MONTHS(date1, number_of_months) FROM dual;</code></td>
+<td><code>SELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;</code></td>
+</tr>
+<tr class="even">
+<td>Diff Date</td>
+<td><code>SELECT date2 - date1 FROM dual;</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Compare 2 Tables</td>
+<td><code>(SELECT * FROM B_TMP MINUS SELECT * FROM B_TMP1) UNION ALL(SELECT * FROM B_TMP1 MINUS SELECT * FROM B_TMP)</code></td>
+<td><code>SELECT * FROM table1 EXCEPT SELECT * FROM table2;</code></td>
 </tr>
 </tbody>
 </table>
