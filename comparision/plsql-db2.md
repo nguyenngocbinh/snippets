@@ -2,7 +2,18 @@
 title: "plsql-db2"
 ---
 
-Here's a table comparing DB2 and PL/SQL based on the provided features and their syntax:
+## Here's a table comparing DB2 and PL/SQL based on the provided features and their syntax:
+
+These SQL commands are mainly categorized into five categories: 
+
+1. DDL – Data Definition Language
+1. DQL – Data Query Language
+1. DML – Data Manipulation Language
+1. DCL – Data Control Language
+1. TCL – Transaction Control Language
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/20210920153429/new.png)
+
 
 | Feature                | PL/SQL Syntax                   | DB2 Syntax                      |
 |------------------------|---------------------------------|---------------------------------|
@@ -17,8 +28,9 @@ Here's a table comparing DB2 and PL/SQL based on the provided features and their
 | Add Columns            | `ALTER TABLE table_name ADD COLUMN new_column datatype;` | `similar` |
 | Merge                  | `MERGE INTO table_name USING source_table ON (table_name.column = source_table.column) WHEN MATCHED THEN UPDATE SET column1 = value1 WHEN NOT MATCHED THEN INSERT (column1) VALUES (value1);` | `similar` |
 | Insert Into            | `INSERT INTO table_name (column1, column2) VALUES (value1, value2);` | `similar` |
+| Update                 | `UPDATE staff a SET salary = (SELECT AVG(salary) + 2000 FROM staff b WHERE a.dept = b.dept) WHERE id < 60;` | `similar`|
 | Drop Table             | `DROP TABLE table_name;`       | `similar`       |
-| Truncate Table         | `TRUNCATE TABLE table_name;`   | `similar`   |
+| Truncate Table         | `TRUNCATE TABLE table_name;`   | `TRUNCATE TABLE table_name IMMEDIATE;`   |
 | Temporary Table        | `DECLARE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);` | `CREATE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);` |
 | Diff Month             | `SELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;`         | `SELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;` |
 | Add Months             | `SELECT ADD_MONTHS(date1, number_of_months) FROM dual;`        | `SELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;` |
@@ -32,3 +44,13 @@ Here's a table comparing DB2 and PL/SQL based on the provided features and their
 |                        | `MERGE /*+ parallel(8) */ INTO `  |  | 
 |                        | `SELECT /*+ PARALLEL(8) */ * FROM ` |  | 
 
+## DB Information
+
+| Feature                | PL/SQL Syntax                   | DB2 Syntax                      |
+|------------------------|---------------------------------|---------------------------------|
+| SYS_INFO                 |  | `SELECT * FROM SYSIBMADM.ENV_SYS_INFO` |
+
+## References
+
+- [db2-sql-cookbook](http://db2-sql-cookbook.org/pdf/Db2_SQL_Cookbook.pdf)
+  
