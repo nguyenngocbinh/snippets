@@ -47,6 +47,17 @@ website:
           - python-snippet/Code - optimize.md
           - python-snippet/Ultilities.md
           - python-snippet/REST_API.md
+      - section: r-snippet/Index.md
+        contents: 
+          - r-snippet/dplyr.md      
+          - r-snippet/ggplot2.md
+          - r-snippet/gganimate.md
+          - r-snippet/treemap.md    
+          - r-snippet/database.md
+          - r-snippet/reticulate.md
+          - r-snippet/file_folders.md   
+          - r-snippet/DT.md    
+          - r-snippet/create_package.md   
       - section: sqlserver-snippet/Index.qmd
         contents: 
           - sqlserver-snippet/README.md
