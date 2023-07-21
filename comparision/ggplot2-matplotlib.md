@@ -1,5 +1,5 @@
 ---
-title: `ggplot2` vs. `matplotlib`
+title: "`ggplot2` vs. `matplotlib`"
 ---
 
 Below is a markdown table comparing the features of `ggplot2` (R) and `matplotlib` (Python) for creating visualizations:
