@@ -1,3 +1,7 @@
+---
+title: "dplyr vs pandas"
+---
+
 Here's a markdown table comparing `dplyr` (R) and `pandas` (Python) for various data manipulation tasks:
 
 ### Data frame verbs
