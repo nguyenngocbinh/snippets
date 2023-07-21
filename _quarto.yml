@@ -3,7 +3,7 @@ project:
   
 website: 
   page-navigation: true
-  title: "Making sharable documents with Quarto" 
+  title: "Snippets " 
   site-url: "https://nguyenngocbinh.github.io/snippets" 
   repo-url: https://github.com/nguyenngocbinh/snippets
   repo-actions: [edit, issue]
@@ -13,7 +13,7 @@ website:
     left: "&copy; CC-By NguyenNgocBinh, 2023"
     
   sidebar:
-    logo: "images/openscapes_hex.png"
+    logo: "images/nnb_hex.png"
     pinned: true
     align: center
     tools: 
@@ -33,6 +33,10 @@ website:
     contents:
       - href: index.qmd
         text: Welcome
+      - section: comparision/Index.md
+        contents: 
+          - comparision/plsql-db2.md
+          - comparision/dplyr-pandas.md
       - section: python-snippet/Index.md
         contents: 
           - python-snippet/Environment.md
@@ -47,10 +51,19 @@ website:
           - sqlserver-snippet/README.md
           - sqlserver-snippet/permissions.md
           - sqlserver-snippet/synonym.md
-      - explore.qmd
-      - learning-more.qmd
-      - href: transition-from-rmarkdown.qmd
-        text: Transition from Rmd
+      - section: quarto/index.qmd
+        contents:
+          - href: quarto/index.qmd
+            text: Welcome
+          - quarto/explore.qmd
+          - section: quarto/quarto-workflows/index.qmd
+            contents: 
+              - quarto/quarto-workflows/browser.md
+              - quarto/quarto-workflows/rstudio.qmd
+              - quarto/quarto-workflows/jupyter.md 
+          - quarto/learning-more.qmd
+          - href: quarto/transition-from-rmarkdown.qmd
+            text: quarto/Transition from Rmd
       - section: machine-learning/transformer.md
         contents:
           - machine-learning/transformer.md
