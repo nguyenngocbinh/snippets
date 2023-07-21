@@ -37,6 +37,7 @@ website:
         contents: 
           - comparision/plsql-db2.md
           - comparision/dplyr-pandas.md
+          - comparision/ggplot2-matplotlib.md
       - section: python-snippet/Index.md
         contents: 
           - python-snippet/Environment.md
