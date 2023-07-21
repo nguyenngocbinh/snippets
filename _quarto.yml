@@ -51,19 +51,6 @@ website:
           - sqlserver-snippet/README.md
           - sqlserver-snippet/permissions.md
           - sqlserver-snippet/synonym.md
-      - section: quarto/index.qmd
-        contents:
-          - href: quarto/index.qmd
-            text: Welcome
-          - quarto/explore.qmd
-          - section: quarto/quarto-workflows/index.qmd
-            contents: 
-              - quarto/quarto-workflows/browser.md
-              - quarto/quarto-workflows/rstudio.qmd
-              - quarto/quarto-workflows/jupyter.md 
-          - quarto/learning-more.qmd
-          - href: quarto/transition-from-rmarkdown.qmd
-            text: quarto/Transition from Rmd
       - section: machine-learning/transformer.md
         contents:
           - machine-learning/transformer.md
