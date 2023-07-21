@@ -1,0 +1,2466 @@
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#about">About</a></li>
+<li><a href="#update">Update</a></li>
+<li><a href="#data.table-and-dplyr">data.table and dplyr</a></li>
+<li><a href="#create-example-data">Create example data</a></li>
+</ul></li>
+<li><a href="#basic-operations">Basic operations</a><ul>
+<li><a href="#filter-rows">Filter rows</a></li>
+<li><a href="#sort-rows">Sort rows</a></li>
+<li><a href="#select-columns">Select columns</a></li>
+<li><a href="#summarise-data">Summarise data</a></li>
+<li><a href="#addupdatedelete-columns">Add/update/delete columns</a></li>
+<li><a href="#by">by</a></li>
+</ul></li>
+<li><a href="#going-further">Going further</a><ul>
+<li><a href="#advanced-columns-manipulation">Advanced columns manipulation</a></li>
+<li><a href="#chain-expressions">Chain expressions</a></li>
+<li><a href="#indexing-and-keys">Indexing and Keys</a></li>
+<li><a href="#set-modifications"><code>set*()</code> modifications</a></li>
+<li><a href="#advanced-use-of-by">Advanced use of by</a></li>
+</ul></li>
+<li><a href="#miscellaneous">Miscellaneous</a><ul>
+<li><a href="#read-write-data">Read / Write data</a></li>
+<li><a href="#reshape-data">Reshape data</a></li>
+<li><a href="#other">Other</a></li>
+</ul></li>
+<li><a href="#joinbind-data-sets">Join/Bind data sets</a><ul>
+<li><a href="#join">Join</a></li>
+<li><a href="#more-joins">More joins</a></li>
+<li><a href="#bind">Bind</a></li>
+<li><a href="#set-operations">Set operations</a></li>
+</ul></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</div>
+
+<!----------------------------------------------------------------------------
+                INTRODUCTION
+------------------------------------------------------------------------------->
+<br>
+<table class="table table-condensed">
+<tbody>
+<tr>
+
+</tr>
+</tbody>
+</table>
+<br>
+<hr class = "hr2">
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<div id="about" class="section level3">
+<h3>About</h3>
+<ul>
+<li>This document has been been inspired by <a href="http://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly/27840349#27840349">this stackoverflow question</a> and by the data.table cheat sheet published by Karlijn Willems. It has been written for my own self-teaching and may contain errors or imprecisions. Corrections and suggestions are welcome.<br />
+</li>
+<li>Resources for data.table can be found on the data.table
+<a href="https://github.com/Rdatatable/data.table/wiki">wiki</a>, in the data.table
+<a href="https://cran.r-project.org/web/packages/data.table/index.html">vignettes</a>,
+and in the package documentation.<br />
+</li>
+<li>Reference documents for dplyr include the dplyr
+<a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">cheat sheet</a>,
+the dplyr <a href="https://cran.r-project.org/web/packages/dplyr/index.html">vignettes</a>,
+and the package documentation.<br />
+</li>
+<li>For the sake of readability, the console outputs are hidden by default.
+Click on the button below to show or hide the outputs. Also, the R code used in
+this document is independently <a href="https://github.com/Atrebas/atrebas.github.io/blob/master/post/2019-03-03-datatable-dplyr.R">available</a> and can be easily reproduced.</li>
+</ul>
+<div style="text-align: center;">
+<input type='button' id='hideshow' value='Show the outputs'>
+</div>
+</div>
+<div id="update" class="section level3">
+<h3>Update</h3>
+<ul>
+<li><em>2019-06-22</em>: Coding style improved (thanks to <span class="citation">@tylerburleigh</span> for pointing that out). Some data.table expressions with <code>by</code> reordered and indented to better highlight the similarity with dplyr. Minor comments and improvements.</li>
+</ul>
+<br>
+<hr>
+</div>
+<div id="data.table-and-dplyr" class="section level3">
+<h3>data.table and dplyr</h3>
+<p>data.table and dplyr are two R packages that both aim at an easier and more efficient manipulation of data frames. But while they share a lot of functionalities, their philosophies are quite different. Below is a quick overview of the main differences (from my basic user’s perspective).</p>
+<p><strong>Syntax:</strong><br />
+- The general data.table syntax is as follows: <code>DT[i, j, by, ...]</code> which means: “Take DT, subset rows using <code>i</code>, then calculate <code>j</code>, grouped by <code>by</code>” with possible extra options <code>...</code>. It allows to combine several operations in a very concise and consistent expression.<br />
+- The syntax of dplyr is based on five main functions (<code>filter()</code>, <code>arrange()</code>, <code>select()</code>, <code>mutate()</code>, <code>summarise()</code>) and <code>group_by()</code> + their scoped variants (suffixed with <code>_all</code>, <code>_at</code>, or <code>_if</code>) + a bunch of helper functions. It is a ‘do one thing at a time’ approach, chaining together functions dedicated to a specific task.</p>
+<p><strong>Ecosystem:</strong><br />
+The data.table package has no dependency whereas dplyr is part of the tidyverse. So, for example, while data.table includes functions to read, write, or reshape data, dplyr delegates these tasks to companion packages like readr or tidyr.<br />
+On the other hand, data.table is focused on the processing of local in-memory data, but dplyr offers a database backend.</p>
+<p><strong>Memory management and performance:</strong><br />
+In data.table, objects can be manipulated ‘by reference’ (using the <code>set*()</code> functions or with the <code>:=</code> symbol). It means that the data will be modified but not copied, minimizing the RAM requirements. The behaviour of dplyr is similar to the one of base R.<br />
+Memory management, parallelism, and shrewd optimization give data.table the advantage in terms of performance.</p>
+<br>
+<hr>
+</div>
+<div id="create-example-data" class="section level3">
+<h3>Create example data</h3>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>library(data.table)
+set.seed(1L)
+
+## Create a data table
+DT &lt;- data.table(V1 = rep(c(1L, 2L), 5)[-10],
+                 V2 = 1:9,
+                 V3 = c(0.5, 1.0, 1.5),
+                 V4 = rep(LETTERS[1:3], 3))
+
+class(DT)
+DT</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>library(dplyr)
+set.seed(1L)
+
+## Create a data frame (tibble)
+DF &lt;- tibble(V1 = rep(c(1L, 2L), 5)[-10],
+             V2 = 1:9,
+             V3 = rep(c(0.5, 1.0, 1.5), 3),
+             V4 = rep(LETTERS[1:3], 3))
+
+class(DF)
+DF</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Below, the data.table code uses <code>DT</code> and the dplyr code uses <code>DF</code>. Also, the dplyr code uses the <code>%&gt;%</code> operator: a basic knowledge of the <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr</a> syntax is assumed.</p>
+<!----------------------------------------------------------------------------
+                             BASIC OPERATIONS
+------------------------------------------------------------------------------->
+<br><br>
+<hr class = "hr2">
+</div>
+</div>
+<div id="basic-operations" class="section level1">
+<h1>Basic operations</h1>
+<div id="filter-rows" class="section level3">
+<h3>Filter rows</h3>
+<div id="filter-rows-using-indices" class="section level4">
+<h4>Filter rows using indices</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[3:4,]
+DT[3:4] # same</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF[3:4,]
+slice(DF, 3:4) # same</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="discard-rows-using-negative-indices" class="section level4">
+<h4>Discard rows using negative indices</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[!3:7,]
+DT[-(3:7)] # same</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF[-(3:7),]
+slice(DF, -(3:7)) # same</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="filter-rows-using-a-logical-expression" class="section level4">
+<h4>Filter rows using a logical expression</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[V2 &gt; 5]
+DT[V4 %chin% c(&quot;A&quot;, &quot;C&quot;)] # fast %in% for character</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>filter(DF, V2 &gt; 5)
+filter(DF, V4 %in% c(&quot;A&quot;, &quot;C&quot;))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="filter-rows-using-multiple-conditions" class="section level4">
+<h4>Filter rows using multiple conditions</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[V1 == 1 &amp; V4 == &quot;A&quot;]
+# any logical criteria can be used</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>filter(DF, V1 == 1, V4 == &quot;A&quot;)
+# any logical criteria can be used</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="filter-unique-rows" class="section level4">
+<h4>Filter unique rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>unique(DT)
+unique(DT, by = c(&quot;V1&quot;, &quot;V4&quot;)) # returns all cols</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>distinct(DF) # distinct_all(DF)
+distinct_at(DF, vars(V1, V4)) # returns selected cols
+# see also ?distinct_if</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="discard-rows-with-missing-values" class="section level4">
+<h4>Discard rows with missing values</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>na.omit(DT, cols = 1:4)  # fast S3 method with cols argument</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>tidyr::drop_na(DF, names(DF))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="other-filters" class="section level4">
+<h4>Other filters</h4>
+In addition to the main <code>filter()</code> function, dplyr also offers the <code>filter_all/at/if</code> variants as well as three helper functions to filter rows. With data.table, we can simply use a custom expression in <code>DT[i]</code>.<br />
+
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[sample(.N, 3)] # .N = nb of rows in DT
+DT[sample(.N, .N / 2)]
+DT[frankv(-V1, ties.method = &quot;dense&quot;) &lt; 2]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>sample_n(DF, 3)      # n random rows
+sample_frac(DF, 0.5) # fraction of random rows
+top_n(DF, 1, V1)     # top n entries (includes equals)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+On the other hand, data.table also provides convenience functions to filter rows based on a regular expression or to find values lying in one (or several) interval(s).<br />
+
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[V4 %like% &quot;^B&quot;]
+DT[V2 %between% c(3, 5)]
+DT[data.table::between(V2, 3, 5, incbounds = FALSE)]
+DT[V2 %inrange% list(-1:1, 1:3)] # see also ?inrange</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>filter(DF, grepl(&quot;^B&quot;, V4))
+filter(DF, dplyr::between(V2, 3, 5))
+filter(DF, V2 &gt; 3 &amp; V2 &lt; 5)
+filter(DF, V2 &gt;= -1:1 &amp; V2 &lt;= 1:3)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Below, we will see that data.table has two optimized mechanisms to filter rows efficiently (keys and indices).</p>
+<br>
+<hr>
+</div>
+</div>
+<div id="sort-rows" class="section level3">
+<h3>Sort rows</h3>
+<div id="sort-rows-by-column" class="section level4">
+<h4>Sort rows by column</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[order(V3)]  # see also setorder</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>arrange(DF, V3)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sort-rows-in-decreasing-order" class="section level4">
+<h4>Sort rows in decreasing order</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[order(-V3)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>arrange(DF, desc(V3))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sort-rows-based-on-several-columns" class="section level4">
+<h4>Sort rows based on several columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[order(V1, -V2)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>arrange(DF, V1, desc(V2))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="select-columns" class="section level3">
+<h3>Select columns</h3>
+<div id="select-one-column-using-an-index-not-recommended" class="section level4">
+<h4>Select one column using an index (not recommended)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[[3]] # returns a vector
+DT[, 3]  # returns a data.table</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF[[3]] # returns a vector
+DF[3]   # returns a tibble</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="select-one-column-using-column-name" class="section level4">
+<h4>Select one column using column name</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, list(V2)] # returns a data.table
+DT[, .(V2)]    # returns a data.table
+# . is an alias for list
+DT[, &quot;V2&quot;]     # returns a data.table
+DT[, V2]       # returns a vector
+DT[[&quot;V2&quot;]]     # returns a vector</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>select(DF, V2) # returns a tibble
+pull(DF, V2)   # returns a vector
+DF[, &quot;V2&quot;]        # returns a tibble
+DF[[&quot;V2&quot;]]        # returns a vector</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="select-several-columns" class="section level4">
+<h4>Select several columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .(V2, V3, V4)]
+DT[, list(V2, V3, V4)]
+DT[, V2:V4] # select columns between V2 and V4</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>select(DF, V2, V3, V4)
+select(DF, V2:V4) # select columns between V2 and V4</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exclude-columns" class="section level4">
+<h4>Exclude columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, !c(&quot;V2&quot;, &quot;V3&quot;)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>select(DF, -V2, -V3)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="selectexclude-columns-using-a-character-vector" class="section level4">
+<h4>Select/Exclude columns using a character vector</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>cols &lt;- c(&quot;V2&quot;, &quot;V3&quot;)
+DT[, ..cols] # .. prefix means &#39;one-level up&#39;
+DT[, !..cols] # or DT[, -..cols]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>cols &lt;- c(&quot;V2&quot;, &quot;V3&quot;)
+select(DF, !!cols) # unquoting
+select(DF, -!!cols)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="other-selections" class="section level4">
+<h4>Other selections</h4>
+As for row filtering, dplyr includes helper functions to select column. With data.table, a possible solution is to first retrieve the column names (<em>e.g.</em> using a regular expression), then select these columns. Another way (using <code>patterns()</code>) is presented in a next section.
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>cols &lt;- paste0(&quot;V&quot;, 1:2)
+cols &lt;- union(&quot;V4&quot;, names(DT))
+cols &lt;- grep(&quot;V&quot;,   names(DT))
+cols &lt;- grep(&quot;3$&quot;,  names(DT))
+cols &lt;- grep(&quot;.2&quot;,  names(DT))
+cols &lt;- grep(&quot;^V1|X$&quot;,  names(DT))
+cols &lt;- grep(&quot;^(?!V2)&quot;, names(DT), perl = TRUE)
+DT[, ..cols]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>select(DF, num_range(&quot;V&quot;, 1:2))
+select(DF, V4, everything()) # reorder columns
+select(DF, contains(&quot;V&quot;))
+select(DF, ends_with(&quot;3&quot;))
+select(DF, matches(&quot;.2&quot;))
+select(DF, one_of(c(&quot;V1&quot;, &quot;X&quot;)))</code></pre>
+<pre><code>## Warning: Unknown columns: `X`</code></pre>
+<pre class="r"><code>select(DF, -starts_with(&quot;V2&quot;))
+# remove variables using &quot;-&quot; prior to function</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="summarise-data" class="section level3">
+<h3>Summarise data</h3>
+<p>Summary functions take vectors as input and return a single value (<em>e.g.</em> <code>min()</code>, <code>mean()</code>, <code>var()</code>, …).</p>
+<div id="summarise-one-column" class="section level4">
+<h4>Summarise one column</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, sum(V1)]    # returns a vector
+DT[, .(sum(V1))] # returns a data.table
+DT[, .(sumV1 = sum(V1))] # returns a data.table</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>summarise(DF, sum(V1)) # returns a tibble
+summarise(DF, sumV1 = sum(V1)) # returns a tibble</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summarise-several-columns" class="section level4">
+<h4>Summarise several columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .(sum(V1), sd(V3))]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>summarise(DF, sum(V1), sd(V3))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summarise-several-columns-and-assign-column-names" class="section level4">
+<h4>Summarise several columns and assign column names</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .(sumv1 = sum(V1),
+       sdv3  = sd(V3))]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  summarise(sumv1 = sum(V1),
+            sdv3  = sd(V3))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summarise-a-subset-of-rows" class="section level4">
+<h4>Summarise a subset of rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[1:4, sum(V1)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  slice(1:4) %&gt;%
+  summarise(sum(V1))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+dplyr helper functions for <code>summarise()</code> (or <code>summarize()</code>) include <code>first()</code>, <code>last()</code>, <code>n()</code>, <code>nth()</code>, and <code>n_distinct()</code>. The data.table package also include <code>first()</code>, <code>last()</code>, and <code>uniqueN()</code>.
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, data.table::first(V3)]
+DT[, data.table::last(V3)]
+DT[5, V3]
+DT[, uniqueN(V4)]
+uniqueN(DT)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>summarise(DF, dplyr::first(V3))
+summarise(DF, dplyr::last(V3))
+summarise(DF, nth(V3, 5))
+summarise(DF, n_distinct(V4))
+n_distinct(DF)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="addupdatedelete-columns" class="section level3">
+<h3>Add/update/delete columns</h3>
+<p>In the following commands, with data.table, columns are modified by reference using the column assignment symbol <code>:=</code> (no copy performed) and the results are returned invisibly. With dplyr, we have to assign the results.</p>
+<div id="modify-a-column" class="section level4">
+<h4>Modify a column</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, V1 := V1^2]
+DT</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- DF %&gt;% mutate(V1 = V1^2)
+DF</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="add-one-column" class="section level4">
+<h4>Add one column</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, v5 := log(V1)][] # adding [] prints the result</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- mutate(DF, v5 = log(V1))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="add-several-columns" class="section level4">
+<h4>Add several columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, c(&quot;v6&quot;, &quot;v7&quot;) := .(sqrt(V1), &quot;X&quot;)]
+
+DT[, &#39;:=&#39;(v6 = sqrt(V1),
+          v7 = &quot;X&quot;)]     # same, functional form</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- mutate(DF, v6 = sqrt(V1), v7 = &quot;X&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="create-one-column-and-remove-the-others" class="section level4">
+<h4>Create one column and remove the others</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .(v8 = V3 + 1)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>transmute(DF, v8 = V3 + 1)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="remove-one-column" class="section level4">
+<h4>Remove one column</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, v5 := NULL]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- select(DF, -v5)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="remove-several-columns" class="section level4">
+<h4>Remove several columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, c(&quot;v6&quot;, &quot;v7&quot;) := NULL]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- select(DF, -v6, -v7)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="remove-columns-using-a-vector-of-colnames" class="section level4">
+<h4>Remove columns using a vector of colnames</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>cols &lt;- c(&quot;V3&quot;)
+DT[, (cols) := NULL] # ! not DT[, cols := NULL]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>cols &lt;- c(&quot;V3&quot;)
+DF &lt;- select(DF, -one_of(cols))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="replace-values-for-rows-matching-a-condition" class="section level4">
+<h4>Replace values for rows matching a condition</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[V2 &lt; 4, V2 := 0L]
+DT</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- mutate(DF, V2 = base::replace(V2, V2 &lt; 4, 0L))
+DF</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="by" class="section level3">
+<h3>by</h3>
+<p>The <code>dplyr::group_by()</code> function and the corresponding <code>by</code> and <code>keyby</code> statements in data.table allow to run manipulate each group of observations and combine the results. The sole difference between <code>by</code> and <code>keyby</code> is that <code>keyby</code> orders the results and creates a <code>key</code> that will allow faster subsetting (cf. the <a href="#indexing-and-keys">indexing and keys</a> section). Below, we arbitrary use one or the other.<br />
+Again, the <code>all-at-if</code> variants of <code>group_by()</code> are available in dplyr but not presented here.<br />
+Note that it is possible to reorder the arguments in data.table: <code>DT[i, j, by]</code> &lt;=&gt; <code>DT[i, by, j]</code>. This is done below to better highlight the similarity with dplyr.</p>
+<div id="by-group" class="section level4">
+<h4>By group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code># one-liner:
+DT[, .(sumV2 = sum(V2)), by = &quot;V4&quot;]
+# reordered and indented:
+DT[, by = V4,
+   .(sumV2 = sum(V2))]
+# </code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(sumV2 = sum(V2))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="by-several-groups" class="section level4">
+<h4>By several groups</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, keyby = .(V4, V1),
+   .(sumV2 = sum(V2))]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4, V1) %&gt;%
+  summarise(sumV2 = sum(V2))</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;V4&#39; (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="calling-function-in-by" class="section level4">
+<h4>Calling function in by</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, by = tolower(V4),
+   .(sumV1 = sum(V1))]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(tolower(V4)) %&gt;%
+  summarise(sumV1 = sum(V1))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="assigning-column-name-in-by" class="section level4">
+<h4>Assigning column name in by</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, keyby = .(abc = tolower(V4)),
+   .(sumV1 = sum(V1))]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(abc = tolower(V4)) %&gt;%
+  summarise(sumV1 = sum(V1))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="using-a-condition-in-by" class="section level4">
+<h4>Using a condition in by</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, keyby = V4 == &quot;A&quot;,
+   sum(V1)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4 == &quot;A&quot;) %&gt;%
+  summarise(sum(V1))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="by-on-a-subset-of-rows" class="section level4">
+<h4>By on a subset of rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[1:5,                # i
+   .(sumV1 = sum(V1)), # j
+   by = V4]            # by
+## complete DT[i, j, by] expression!</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  slice(1:5) %&gt;%
+  group_by(V4) %&gt;%
+  summarise(sumV1 = sum(V1))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="count-number-of-observations-for-each-group" class="section level4">
+<h4>Count number of observations for each group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .N, by = V4]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>count(DF, V4)
+DF %&gt;%
+  group_by(V4) %&gt;%
+  tally()
+DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(n())</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  group_size() # returns a vector</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="add-a-column-with-number-of-observations-for-each-group" class="section level4">
+<h4>Add a column with number of observations for each group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, n := .N, by = V1][]
+DT[, n := NULL] # rm column for consistency</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>add_count(DF, V1)
+DF %&gt;%
+  group_by(V1) %&gt;%
+  add_tally()</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="retrieve-the-firstlastnth-observation-for-each-group" class="section level4">
+<h4>Retrieve the first/last/nth observation for each group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, data.table::first(V2), by = V4]
+DT[, data.table::last(V2), by = V4]
+DT[, V2[2], by = V4]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(dplyr::first(V2))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(dplyr::last(V2))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(dplyr::nth(V2, 2))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<!----------------------------------------------------------------------------
+                           GOING FURTHER
+------------------------------------------------------------------------------->
+<br><br>
+<hr class = "hr2">
+</div>
+</div>
+</div>
+<div id="going-further" class="section level1">
+<h1>Going further</h1>
+<div id="advanced-columns-manipulation" class="section level3">
+<h3>Advanced columns manipulation</h3>
+<p>To further manipulate columns, dplyr includes nine functions: the <code>_all</code>, <code>_at</code>, and <code>_if</code> versions of <code>summarise()</code>, <code>mutate()</code>, and <code>transmute()</code>.<br />
+With data.table, we use <code>.SD</code>, which is a <code>data.table</code> containing the Subset of Data for each group, excluding the column(s) used in <code>by</code>. So, <code>DT[, .SD]</code> is <code>DT</code> itself and in the expression <code>DT[, .SD, by = V4]</code>, <code>.SD</code> contains all the DT columns (except V4) for each values in V4 (see <code>DT[, print(.SD), by = V4]</code>). <code>.SDcols</code> allows to select the columns included in <code>.SD</code>.</p>
+<div id="summarise-all-the-columns" class="section level4">
+<h4>Summarise all the columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, lapply(.SD, max)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>summarise_all(DF, max)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summarise-several-columns-1" class="section level4">
+<h4>Summarise several columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, lapply(.SD, mean),
+   .SDcols = c(&quot;V1&quot;, &quot;V2&quot;)]
+# .SDcols is like &quot;_at&quot;</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>summarise_at(DF, c(&quot;V1&quot;, &quot;V2&quot;), mean)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summarise-several-columns-by-group" class="section level4">
+<h4>Summarise several columns by group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, by = V4,
+   lapply(.SD, mean),
+   .SDcols = c(&quot;V1&quot;, &quot;V2&quot;)]
+## using patterns (regex)
+DT[, by = V4,
+   lapply(.SD, mean),
+   .SDcols = patterns(&quot;V1|V2&quot;)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise_at(c(&quot;V1&quot;, &quot;V2&quot;), mean)
+## using select helpers
+DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise_at(vars(one_of(&quot;V1&quot;, &quot;V2&quot;)), mean)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summarise-with-more-than-one-function-by-group" class="section level4">
+<h4>Summarise with more than one function by group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, by = V4, 
+   c(lapply(.SD, sum),
+     lapply(.SD, mean))]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise_all(list(sum, mean))
+# columns named automatically</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summarise-using-a-condition" class="section level4">
+<h4>Summarise using a condition</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>cols &lt;- names(DT)[sapply(DT, is.numeric)]
+DT[, lapply(.SD, mean),
+   .SDcols = cols]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>summarise_if(DF, is.numeric, mean)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modify-all-the-columns" class="section level4">
+<h4>Modify all the columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, lapply(.SD, rev)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>mutate_all(DF, rev)
+# transmute_all(DF, rev)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modify-several-columns-dropping-the-others" class="section level4">
+<h4>Modify several columns (dropping the others)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, lapply(.SD, sqrt),
+   .SDcols = V1:V2]
+DT[, lapply(.SD, exp),
+   .SDcols = !&quot;V4&quot;]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>transmute_at(DF, c(&quot;V1&quot;, &quot;V2&quot;), sqrt)
+transmute_at(DF, vars(-V4), exp)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modify-several-columns-keeping-the-others" class="section level4">
+<h4>Modify several columns (keeping the others)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, c(&quot;V1&quot;, &quot;V2&quot;) := lapply(.SD, sqrt),
+   .SDcols = c(&quot;V1&quot;, &quot;V2&quot;)]
+
+cols &lt;- setdiff(names(DT), &quot;V4&quot;)
+DT[, (cols) := lapply(.SD, &quot;^&quot;, 2L),
+   .SDcols = cols]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- mutate_at(DF, c(&quot;V1&quot;, &quot;V2&quot;), sqrt)
+DF &lt;- mutate_at(DF, vars(-V4), &quot;^&quot;, 2L)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modify-columns-using-a-condition-dropping-the-others" class="section level4">
+<h4>Modify columns using a condition (dropping the others)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>cols &lt;- names(DT)[sapply(DT, is.numeric)]
+DT[, .SD - 1,
+   .SDcols = cols]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>transmute_if(DF, is.numeric, list(~ &#39;-&#39;(., 1L)))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modify-columns-using-a-condition-keeping-the-others" class="section level4">
+<h4>Modify columns using a condition (keeping the others)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, (cols) := lapply(.SD, as.integer),
+   .SDcols = cols]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- mutate_if(DF, is.numeric, as.integer)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The use of <code>DT[,j]</code> is very flexible, allowing to pass complex expressions in a straightforward way, or combine expressions with multiple outputs.</p>
+</div>
+<div id="use-a-complex-expression" class="section level4">
+<h4>Use a complex expression</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, by = V4,
+   .(V1[1:2], &quot;X&quot;)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  slice(1:2) %&gt;%
+  transmute(V1 = V1,
+            V2 = &quot;X&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="use-multiple-expressions-with-dtj" class="section level4">
+<h4>Use multiple expressions (with <code>DT[,{j}]</code>)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, {print(V1) #  comments here!
+  print(summary(V1))
+  x &lt;- V1 + sum(V2)
+  .(A = 1:.N, B = x) # last list returned as a data.table
+}]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="chain-expressions" class="section level3">
+<h3>Chain expressions</h3>
+<p>The dplyr workflow relies on the magrittr pipe operator (<code>%&gt;%</code>). The magrittr package can also be used with <code>data.table</code> objects, but data.table comes with its own chaining system: <code>DT[ ... ][ ... ][ ... ]</code>.</p>
+<div id="expression-chaining-using-dt-recommended" class="section level4">
+<h4>Expression chaining using <code>DT[][]</code> (recommended)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, by = V4, 
+   .(V1sum = sum(V1)) ][
+     V1sum &gt; 5]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(V1sum = sum(V1)) %&gt;%
+  filter(V1sum &gt; 5)</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="expression-chaining-using" class="section level4">
+<h4>Expression chaining using <code>%&gt;%</code></h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, by = V4, 
+   .(V1sum = sum(V1))] %&gt;%
+  .[order(-V1sum)]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(V1sum = sum(V1)) %&gt;%
+  arrange(desc(V1sum))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="indexing-and-keys" class="section level3">
+<h3>Indexing and Keys</h3>
+<p>Row subsetting in dplyr relies on the <code>filter()</code> and <code>slice()</code> functions, as shown in the first section. With data.table, in addition to the above-mentioned approach, two systems are available to make row filtering and join operations more convenient and blazingly fast (~170x speed-up): <em>keys</em> (primary ordered index) and <em>indices</em> (automatic secondary indexing).</p>
+<p>The main differences between keys and indices are:<br />
+- When using keys, data are physically reordered in memory. When using indices, the order is stored as an attribute.<br />
+- Only one key is possible but several indices can coexist.<br />
+- Keys are defined explicitly. Indices can be created manually but are also created on-the-fly (and stored when using <code>==</code> or <code>%in%</code>).<br />
+- Indices are used with the <code>on</code> argument. It is optional when using keys, but recommended (and used below) for better readability.<br />
+Note: in the following code, we set both a key and an index to demonstrate their usage, but internally, indices are not used when a key already exists for the same columns(s).</p>
+<div id="set-the-keyindex" class="section level4">
+<h4>Set the key/index</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>setkey(DT, V4)
+setindex(DT, V4)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- arrange(DF, V4) # ordered just for consistency</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="select-the-matching-rows" class="section level4">
+<h4>Select the matching rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[&quot;A&quot;, on = &quot;V4&quot;]
+DT[c(&quot;A&quot;, &quot;C&quot;), on = .(V4)] # same as on = &quot;V4&quot;</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>filter(DF, V4 == &quot;A&quot;)
+filter(DF, V4 %in% c(&quot;A&quot;, &quot;C&quot;))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="select-the-first-matching-row" class="section level4">
+<h4>Select the first matching row</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[&quot;B&quot;, on = &quot;V4&quot;, mult = &quot;first&quot;]
+DT[c(&quot;B&quot;, &quot;C&quot;), on = &quot;V4&quot;, mult = &quot;first&quot;]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  filter(V4 == &quot;B&quot;) %&gt;%
+  slice(1)
+# ?</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="select-the-last-matching-row" class="section level4">
+<h4>Select the last matching row</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[&quot;A&quot;, on = &quot;V4&quot;, mult = &quot;last&quot;]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  filter(V4 == &quot;A&quot;) %&gt;%
+  slice(n())</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="nomatch-argument" class="section level4">
+<h4>Nomatch argument</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code># (default) returns a row with &quot;D&quot; even if not found
+DT[c(&quot;A&quot;, &quot;D&quot;), on = &quot;V4&quot;, nomatch = NA]
+# no rows for unmatched values
+DT[c(&quot;A&quot;, &quot;D&quot;), on = &quot;V4&quot;, nomatch = 0]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#
+filter(DF, V4 %in% c(&quot;A&quot;, &quot;D&quot;))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="apply-a-function-on-the-matching-rows" class="section level4">
+<h4>Apply a function on the matching rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[c(&quot;A&quot;, &quot;C&quot;), sum(V1), on = &quot;V4&quot;]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  filter(V4 %in% c(&quot;A&quot;, &quot;C&quot;)) %&gt;%
+  summarise(sum(V1))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modify-values-for-matching-rows" class="section level4">
+<h4>Modify values for matching rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[&quot;A&quot;, V1 := 0, on = &quot;V4&quot;]
+DT</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- DF %&gt;%
+  mutate(V1 = base::replace(V1, V4 == &quot;A&quot;, 0L)) %&gt;%
+  arrange(V4)
+DF</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="use-keys-in-by" class="section level4">
+<h4>Use keys in by</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[!&quot;B&quot;, sum(V1), on = &quot;V4&quot;, by = .EACHI]
+DT[V4 != &quot;B&quot;,
+   by = V4,
+   sum(V1)]   # same</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  filter(V4 != &quot;B&quot;) %&gt;%
+  group_by(V4) %&gt;%
+  summarise(sum(V1))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="set-keysindices-for-multiple-columns" class="section level4">
+<h4>Set keys/indices for multiple columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>setkey(DT, V4, V1) # or setkeyv(DT, c(&quot;V4&quot;, &quot;V1&quot;))
+setindex(DT, V4, V1) # setindexv(DT, c(&quot;V4&quot;, &quot;V1&quot;))</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- arrange(DF, V4, V1) # ordered just for consistency</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="subset-using-multiple-keysindices" class="section level4">
+<h4>Subset using multiple keys/indices</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[.(&quot;C&quot;, 1), on = .(V4, V1)]
+DT[.(c(&quot;B&quot;, &quot;C&quot;), 1), on = .(V4, V1)]
+# using which = TRUE only returns the matching rows indices
+DT[.(c(&quot;B&quot;, &quot;C&quot;), 1), on = .(V4, V1), which = TRUE]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>filter(DF, V1 == 1, V4 == &quot;C&quot;)
+filter(DF, V1 == 1, V4 %in% c(&quot;B&quot;, &quot;C&quot;))
+# ?</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="remove-keysindices" class="section level4">
+<h4>Remove keys/indices</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>setkey(DT, NULL)
+setindex(DT, NULL)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code># </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="set-modifications" class="section level3">
+<h3><code>set*()</code> modifications</h3>
+<p>In data.table, <code>set*()</code> functions modify objects by reference, making these operations fast and memory-efficient. In case this is not a desired behaviour, users can use <code>copy()</code>. The corresponding expressions in dplyr will be less memory-efficient.</p>
+<div id="replace-values" class="section level4">
+<h4>Replace values</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>set(DT, i = 1L, j = 2L, value = 3L)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF[1, 2] &lt;- 3L</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="reorder-rows" class="section level4">
+<h4>Reorder rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>setorder(DT, V4, -V1)
+setorderv(DT, c(&quot;V4&quot;, &quot;V1&quot;), c(1, -1))</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- arrange(DF, V4, desc(V1))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modify-colnames" class="section level4">
+<h4>Modify colnames</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>setnames(DT, old = &quot;V2&quot;, new = &quot;v2&quot;)
+setnames(DT, old = -(c(1, 3)), new = &quot;V2&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- rename(DF, v2 = V2)
+DF &lt;- rename(DF, V2 = v2) # reset upper</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="reorder-columns" class="section level4">
+<h4>Reorder columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>setcolorder(DT, c(&quot;V4&quot;, &quot;V1&quot;, &quot;V2&quot;))</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF &lt;- select(DF, V4, V1, V2)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="convert-data" class="section level4">
+<h4>Convert data</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>?setDT # data.frame or list to data.table</code></pre>
+<pre><code>## starting httpd help server ... done</code></pre>
+<pre class="r"><code>?setDF # data.table to data.frame
+?setattr # modify attributes</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code># </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="advanced-use-of-by" class="section level3">
+<h3>Advanced use of by</h3>
+<div id="select-firstlast-row-by-group" class="section level4">
+<h4>Select first/last/… row by group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .SD[1], by = V4]
+DT[, .SD[c(1, .N)], by = V4]
+DT[, tail(.SD, 2), by = V4]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  slice(1)
+DF %&gt;%
+  group_by(V4) %&gt;%
+  slice(1, n())
+DF %&gt;%
+  group_by(V4) %&gt;%
+  group_map(~ tail(.x, 2))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="select-rows-using-a-nested-query" class="section level4">
+<h4>Select rows using a nested query</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .SD[which.min(V2)], by = V4]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  arrange(V2) %&gt;%
+  slice(1)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="add-a-group-counter-column" class="section level4">
+<h4>Add a group counter column</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, Grp := .GRP, by = .(V4, V1)][]
+DT[, Grp := NULL] # delete for consistency</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;% mutate(Grp = group_indices(., V4, V1))</code></pre>
+<pre><code>## Warning: Problem with `mutate()` input `Grp`.
+## i The `...` argument of `group_keys()` is deprecated as of dplyr 1.0.0.
+## Please `group_by()` first
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.
+## i Input `Grp` is `group_indices(., V4, V1)`.</code></pre>
+<pre><code>## Warning: The `...` argument of `group_keys()` is deprecated as of dplyr 1.0.0.
+## Please `group_by()` first
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get-row-number-of-first-and-last-observation-by-group" class="section level4">
+<h4>Get row number of first (and last) observation by group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .I, by = V4] # returns a data.table
+DT[, .I[1], by = V4]
+DT[, .I[c(1, .N)], by = V4]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  group_data() %&gt;%
+  tidyr::unnest(.rows)
+# DF %&gt;% group_by(V4) %&gt;% group_rows() # returns a list
+#
+#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="handle-list-columns-by-group" class="section level4">
+<h4>Handle list-columns by group</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>DT[, .(.(V1)),  by = V4]  # return V1 as a list
+DT[, .(.(.SD)), by = V4] # subsets of the data</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  summarise(list(V1))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code>DF %&gt;%
+  group_by(V4) %&gt;%
+  group_nest()</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="grouping-sets-multiple-by-at-once" class="section level4">
+<h4>Grouping sets (multiple by at once)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>rollup(DT,
+       .(SumV2 = sum(V2)),
+       by = c(&quot;V1&quot;, &quot;V4&quot;))
+
+rollup(DT,
+       .(SumV2 = sum(V2), .N),
+       by = c(&quot;V1&quot;, &quot;V4&quot;),
+       id = TRUE)
+
+cube(DT,
+     .(SumV2 = sum(V2), .N),
+     by = c(&quot;V1&quot;, &quot;V4&quot;),
+     id = TRUE)
+
+groupingsets(DT,
+             .(SumV2 = sum(V2), .N),
+             by   = c(&quot;V1&quot;, &quot;V4&quot;),
+             sets = list(&quot;V1&quot;, c(&quot;V1&quot;, &quot;V4&quot;)),
+             id   = TRUE)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<!----------------------------------------------------------------------------
+                               MISCELLANEOUS
+------------------------------------------------------------------------------->
+<br><br>
+<hr class = "hr2">
+</div>
+</div>
+</div>
+<div id="miscellaneous" class="section level1">
+<h1>Miscellaneous</h1>
+<div id="read-write-data" class="section level3">
+<h3>Read / Write data</h3>
+<p><code>fread()</code> and <code>fwrite()</code> are among the most powerful functions of data.table. They are not only incredibly fast (see <a href="https://www.h2o.ai/blog/fast-csv-writing-for-r/">benchmarks</a>), they are also extremely robust.
+The few commands below only scratch the surface and there are a lot of awesome features.
+For example, <code>fread()</code> accepts <code>http</code> and <code>https</code> URLs directly as well as operating system commands such as <code>sed</code> and <code>awk</code> output. Make sure to check the <a href="https://rdrr.io/cran/data.table/man/fread.html">docs</a>.<br />
+Here again, <code>fread()</code> and <code>fwrite()</code> are very versatile and allow to handle different file formats while dplyr delegates file reading and writing to the readr package with several specific functions (csv, tsv, delim, …).</p>
+<div id="write-data-to-a-csv-file" class="section level4">
+<h4>Write data to a csv file</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fwrite(DT, &quot;DT.csv&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>readr::write_csv(DF, &quot;DF.csv&quot;)
+# see also vroom</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="write-data-to-a-tab-delimited-file" class="section level4">
+<h4>Write data to a tab-delimited file</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fwrite(DT, &quot;DT.txt&quot;, sep = &quot;\t&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>readr::write_delim(DF, &quot;DF.txt&quot;, delim = &quot;\t&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="write-list-column-data-to-a-csv-file" class="section level4">
+<h4>Write list-column data to a csv file</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fwrite(setDT(list(0, list(1:5))), &quot;DT2.csv&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="read-a-csv-tab-delimited-file" class="section level4">
+<h4>Read a csv / tab-delimited file</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fread(&quot;DT.csv&quot;)
+# fread(&quot;DT.csv&quot;, verbose = TRUE) # full details
+fread(&quot;DT.txt&quot;, sep = &quot;\t&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>readr::read_csv(&quot;DF.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   V4 = col_character(),
+##   V1 = col_double(),
+##   V2 = col_double()
+## )</code></pre>
+<pre class="r"><code>readr::read_delim(&quot;DF.txt&quot;, delim = &quot;\t&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   V4 = col_character(),
+##   V1 = col_double(),
+##   V2 = col_double()
+## )</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="read-a-csv-file-selecting-droping-columns" class="section level4">
+<h4>Read a csv file selecting / droping columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fread(&quot;DT.csv&quot;, select = c(&quot;V1&quot;, &quot;V4&quot;))
+fread(&quot;DT.csv&quot;, drop = &quot;V4&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code># NA</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="read-and-rbind-several-files" class="section level4">
+<h4>Read and rbind several files</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>rbindlist(lapply(c(&quot;DT.csv&quot;, &quot;DT.csv&quot;), fread))
+# c(&quot;DT.csv&quot;, &quot;DT.csv&quot;) %&gt;% lapply(fread) %&gt;% rbindlist</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>c(&quot;DF.csv&quot;, &quot;DF.csv&quot;) %&gt;%
+  purrr::map_dfr(readr::read_csv)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   V4 = col_character(),
+##   V1 = col_double(),
+##   V2 = col_double()
+## )
+## Parsed with column specification:
+## cols(
+##   V4 = col_character(),
+##   V1 = col_double(),
+##   V2 = col_double()
+## )</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="reshape-data" class="section level3">
+<h3>Reshape data</h3>
+<p>This part is still a bit clunky. I need to find better examples. See <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-reshape.html">here</a> and <a href="https://tidyr.tidyverse.org/">here</a> for more details.</p>
+<div id="melt-data-from-wide-to-long" class="section level4">
+<h4>Melt data (from wide to long)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>melt(DT, id.vars = &quot;V4&quot;)
+mDT &lt;- melt(DT,
+            id.vars       = &quot;V4&quot;,
+            measure.vars  = c(&quot;V1&quot;, &quot;V2&quot;),
+            variable.name = &quot;Variable&quot;,
+            value.name    = &quot;Value&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>tidyr::gather(DF, variable, value, -V4)
+mDF &lt;- tidyr::gather(DF,
+                     key = Variable,
+                     value = Value,
+                     -V4)
+# pivot_longer todo</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cast-data-from-long-to-wide" class="section level4">
+<h4>Cast data (from long to wide)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>dcast(mDT, V4 ~ Variable) # aggregate by count</code></pre>
+<pre><code>## Using &#39;Value&#39; as value column. Use &#39;value.var&#39; to override</code></pre>
+<pre><code>## Aggregate function missing, defaulting to &#39;length&#39;</code></pre>
+<pre class="r"><code>dcast(mDT, V4 ~ Variable, fun.aggregate = sum)</code></pre>
+<pre><code>## Using &#39;Value&#39; as value column. Use &#39;value.var&#39; to override</code></pre>
+<pre class="r"><code>dcast(mDT, V4 ~ Value &gt; 5)</code></pre>
+<pre><code>## Using &#39;Value&#39; as value column. Use &#39;value.var&#39; to override
+## Aggregate function missing, defaulting to &#39;length&#39;</code></pre>
+<pre class="r"><code># see ?dcast: multiple values / fun.aggregate</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>tidyr::spread(data  = count(mDF, V4, Variable),
+              key   = Variable,
+              value = n,
+              fill  = 0)
+# pivot_wider todo</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="split" class="section level4">
+<h4>Split</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>split(DT, by = &quot;V4&quot;) # S3 method</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>group_split(DF, V4)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="split-and-transpose-a-vectorcolumn" class="section level4">
+<h4>Split and transpose a vector/column</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>vec &lt;- c(&quot;A:a&quot;, &quot;B:b&quot;, &quot;C:c&quot;)
+tstrsplit(vec, split = &quot;:&quot;, keep = 2L) # works on vector
+setDT(tstrsplit(vec, split = &quot;:&quot;))[]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>vec &lt;- c(&quot;A:a&quot;, &quot;B:b&quot;, &quot;C:c&quot;)
+# vector not handled
+tidyr::separate(tibble(vec), vec, c(&quot;V1&quot;, &quot;V2&quot;))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="other" class="section level3">
+<h3>Other</h3>
+<div id="check-package-installation" class="section level4">
+<h4>Check package installation</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code># test.data.table()
+# There&#39;s more lines of test code in data.table than there is code!</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="list-data.tablestibbles" class="section level4">
+<h4>List data.tables/tibbles</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>tables()</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="getset-number-of-threads-when-parallelized" class="section level4">
+<h4>Get/Set number of threads when parallelized</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>getDTthreads() # setDTthreads()</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="leadlag" class="section level4">
+<h4>Lead/Lag</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>shift(1:10, n = 1,   fill = NA, type = &quot;lag&quot;)
+shift(1:10, n = 1:2, fill = NA, type = &quot;lag&quot;) # multiple
+shift(1:10, n = 1,   fill = NA, type = &quot;lead&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>lag(1:10, n = 1, default = NA)
+purrr::map(1:2, ~lag(1:10, n = .x))
+lead(1:10, n = 1, default = NA)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="generate-run-length-ids" class="section level4">
+<h4>Generate run-length ids</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>rleid(rep(c(&quot;a&quot;, &quot;b&quot;, &quot;a&quot;), each = 3)) # see also ?rleidv
+rleid(rep(c(&quot;a&quot;, &quot;b&quot;, &quot;a&quot;), each = 3), prefix = &quot;G&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="vectorised-ifelse-statements" class="section level4">
+<h4>Vectorised <code>ifelse</code> statements</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>x &lt;- 1:10
+case_when(
+  x %% 6 == 0 ~ &quot;fizz buzz&quot;,
+  x %% 2 == 0 ~ &quot;fizz&quot;,
+  x %% 3 == 0 ~ &quot;buzz&quot;,
+  TRUE ~ as.character(x)
+)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rolling-functions" class="section level4">
+<h4>Rolling functions</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code># todo</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<!----------------------------------------------------------------------------
+                           JOIN/BIND DATA SETS
+------------------------------------------------------------------------------->
+<br><br>
+<hr class = "hr2">
+</div>
+</div>
+</div>
+<div id="joinbind-data-sets" class="section level1">
+<h1>Join/Bind data sets</h1>
+<div id="join" class="section level3">
+<h3>Join</h3>
+<p>Joining data in data.table works like the fast subsetting approach described above. It can be performed using keys, using the <em>ad hoc</em> <code>on</code> argument, or using the <code>merge.data.table</code> method. For the sake of completeness, the three methods are presented below. As previously mentioned, the <code>on</code> and <code>by</code> (in <code>merge</code>) arguments are optional with keyed data.tables, but recommended to make the code more explicit.<br />
+In the examples below, the <code>x</code>, <code>y</code>, and <code>z</code> data.tables are also used with dplyr.</p>
+<pre class="r"><code>x &lt;- data.table(Id  = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;),
+                X1  = c(1L, 3L, 5L, 7L),
+                XY  = c(&quot;x2&quot;, &quot;x4&quot;, &quot;x6&quot;, &quot;x8&quot;),
+                key = &quot;Id&quot;)
+
+y &lt;- data.table(Id  = c(&quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;D&quot;),
+                Y1  = c(1L, 3L, 5L, 7L),
+                XY  = c(&quot;y1&quot;, &quot;y3&quot;, &quot;y5&quot;, &quot;y7&quot;),
+                key = &quot;Id&quot;)</code></pre>
+<div id="join-matching-rows-from-y-to-x" class="section level4">
+<h4>Join matching rows from y to x</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>y[x, on = &quot;Id&quot;]
+merge(x, y, all.x = TRUE, by = &quot;Id&quot;)
+y[x] # requires keys</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>left_join(x, y, by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="join-matching-rows-from-x-to-y" class="section level4">
+<h4>Join matching rows from x to y</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>x[y, on = &quot;Id&quot;]
+merge(x, y, all.y = TRUE, by = &quot;Id&quot;)
+x[y] # requires keys</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>right_join(x, y, by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="join-matching-rows-from-both-x-and-y" class="section level4">
+<h4>Join matching rows from both x and y</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>x[y, on = &quot;Id&quot;, nomatch = 0]
+merge(x, y)
+x[y, nomatch = 0] # requires keys</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>inner_join(x, y, by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="join-keeping-all-the-rows" class="section level4">
+<h4>Join keeping all the rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>merge(x, y, all = TRUE, by = &quot;Id&quot;)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>full_join(x, y, by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="return-rows-from-x-matching-y" class="section level4">
+<h4>Return rows from x matching y</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>unique(x[y$Id, on = &quot;Id&quot;, nomatch = 0])
+unique(x[y$Id, nomatch = 0]) # requires keys</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>semi_join(x, y, by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="return-rows-from-x-not-matching-y" class="section level4">
+<h4>Return rows from x not matching y</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>x[!y, on = &quot;Id&quot;]
+x[!y] # requires keys</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>anti_join(x, y, by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="more-joins" class="section level3">
+<h3>More joins</h3>
+<p>data.table excels at joining data, and offers additional functions and features.</p>
+<div id="select-columns-while-joining" class="section level4">
+<h4>Select columns while joining</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>x[y, .(Id, X1, i.XY)]   # i. prefix refers to cols in y
+x[y, .(Id, x.XY, i.XY)] # x. prefix refers to cols in x</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>right_join(select(x, Id, X1),
+           select(y, Id, XY),
+           by = &quot;Id&quot;)
+right_join(select(x, Id, XY),
+           select(y, Id, XY),
+           by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="aggregate-columns-while-joining" class="section level4">
+<h4>Aggregate columns while joining</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>y[x, .(X1Y1 = sum(Y1) * X1), by = .EACHI]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>y %&gt;%
+  group_by(Id) %&gt;%
+  summarise(SumY1 = sum(Y1)) %&gt;%
+  right_join(x) %&gt;%
+  mutate(X1Y1 = SumY1 * X1) %&gt;%
+  select(Id, X1Y1)</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## Joining, by = &quot;Id&quot;</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="update-columns-while-joining" class="section level4">
+<h4>Update columns while joining</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>y[x, SqX1 := i.X1^2]
+y[, SqX1 := x[.BY, X1^2, on = &quot;Id&quot;], by = Id] # more memory-efficient
+y[, SqX1 := NULL] # rm column for consistency</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>x %&gt;%
+  select(Id, X1) %&gt;%
+  mutate(SqX1 = X1^2) %&gt;%
+  right_join(y, by = &quot;Id&quot;) %&gt;%
+  select(names(y), SqX1)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="adds-a-list-column-with-rows-from-y-matching-x-nest-join" class="section level4">
+<h4>Adds a list column with rows from y matching x (nest-join)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>x[, y := .(.(y[.BY, on = &quot;Id&quot;])), by = Id]
+x[, y := NULL] # rm column for consistency</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>nest_join(x, y, by = &quot;Id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="update-columns-while-joining-using-vectors-of-colnames" class="section level4">
+<h4>Update columns while joining (using vectors of colnames)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>cols  &lt;- c(&quot;NewXY&quot;, &quot;NewX1&quot;)
+icols &lt;- paste0(&quot;i.&quot;, c(&quot;XY&quot;, &quot;X1&quot;))
+
+y[x, (cols) := mget(icols)]
+
+y[, (cols) := NULL] # rm columns for consistency</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code># ?</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="join-passing-columns-to-match-in-the-on-argument" class="section level4">
+<h4>Join passing columns to match in the <code>on</code> argument</h4>
+<pre class="r"><code>z &lt;- data.table(ID = &quot;C&quot;, Z1 = 5:9, Z2 = paste0(&quot;z&quot;, 5:9))
+x[, X2 := paste0(&quot;x&quot;, X1)] # used to track the results
+z; x</code></pre>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>x[z, on = &quot;X1 == Z1&quot;]
+x[z, on = .(X1 == Z1)] # same
+x[z, on = .(Id == ID, X1 == Z1)] # using two columns</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>right_join(x, z, by = c(&quot;X1&quot; = &quot;Z1&quot;))
+right_join(x, z, by = c(&quot;Id&quot; = &quot;ID&quot;, &quot;X1&quot; = &quot;Z1&quot;))</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="non-equi-joins" class="section level4">
+<h4>Non-equi joins</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>x[z, on = .(Id == ID, X1 &lt;= Z1)]
+x[z, on = .(Id == ID, X1 &gt; Z1)]
+x[z, on = .(X1 &lt; Z1), allow.cartesian = TRUE] # allows &#39;numerous&#39; matching values</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rolling-joinssubsets-performed-on-the-last-numeric-column" class="section level4">
+<h4>Rolling joins/subsets (performed on the last numeric column)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code># Nearest
+x[z, on = .(Id == ID, X1 == Z1), roll = &quot;nearest&quot;]
+## below, simplified examples with ad hoc subsets on a keyed data.table
+setkey(x, Id, X1)
+x[.(&quot;C&quot;, 5:9), roll = &quot;nearest&quot;]</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code># Last Observation Carried Forward
+x[.(&quot;C&quot;, 5:9), roll = Inf]
+x[.(&quot;C&quot;, 5:9), roll = 0.5]  # bounded
+x[.(&quot;C&quot;, 5:9), roll = Inf, rollends = c(FALSE, TRUE)]  # default
+x[.(&quot;C&quot;, 5:9), roll = Inf, rollends = c(FALSE, FALSE)] # ends not rolled</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code># Next Observation Carried Backward
+x[.(&quot;C&quot;, 5:9), roll = -Inf]
+x[.(&quot;C&quot;, 5:9), roll = -0.5] # bounded
+x[.(&quot;C&quot;, 5:9), roll = -Inf, rollends = c(TRUE, FALSE)]
+x[.(&quot;C&quot;, 5:9), roll = -Inf, rollends = c(TRUE, TRUE)]  # roll both ends</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cross-join-cj-expand.grid" class="section level4">
+<h4>Cross join (<code>CJ</code> ~ <code>expand.grid</code>)</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>CJ(c(2, 1, 1), 3:2)
+CJ(c(2, 1, 1), 3:2, sorted = FALSE, unique = TRUE)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code># base::expand.grid(c(2, 1, 1), 3:2)
+#</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="overlap-join" class="section level4">
+<h4>Overlap join</h4>
+<p>It is important to mention <code>foverlaps()</code> from data.table that allows to perform ‘overlap joins’. This is a very powerful function, but a bit out of scope for this document. See <a href="https://raw.githubusercontent.com/wiki/Rdatatable/data.table/talks/EARL2014_OverlapRangeJoin_Arun.pdf">these slides</a> for more details.</p>
+<br>
+<hr>
+</div>
+</div>
+<div id="bind" class="section level3">
+<h3>Bind</h3>
+<pre class="r"><code>x &lt;- data.table(1:3)
+y &lt;- data.table(4:6)
+z &lt;- data.table(7:9, 0L)</code></pre>
+<div id="bind-rows" class="section level4">
+<h4>Bind rows</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>rbind(x, y)
+rbind(x, z, fill = TRUE)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>bind_rows(x, y)
+bind_rows(x, z) # always fills</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="bind-rows-using-a-list" class="section level4">
+<h4>Bind rows using a list</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>rbindlist(list(x, y), idcol = TRUE)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>bind_rows(list(x, y), .id = &quot;id&quot;)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="bind-columns" class="section level4">
+<h4>Bind columns</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>base::cbind(x, y)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>bind_cols(x, y)</code></pre>
+<pre><code>## New names:
+## * V1 -&gt; V1...1
+## * V1 -&gt; V1...2</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+</div>
+</div>
+<div id="set-operations" class="section level3">
+<h3>Set operations</h3>
+<pre class="r"><code>x &lt;- data.table(c(1, 2, 2, 3, 3))
+y &lt;- data.table(c(2, 2, 3, 4, 4))</code></pre>
+<div id="intersection" class="section level4">
+<h4>Intersection</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fintersect(x, y)
+fintersect(x, y, all = TRUE)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>dplyr::intersect(x, y)
+# no all option</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="difference" class="section level4">
+<h4>Difference</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fsetdiff(x, y)
+fsetdiff(x, y, all = TRUE)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>dplyr::setdiff(x, y)
+# no all option</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="union" class="section level4">
+<h4>Union</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>funion(x, y)
+funion(x, y, all = TRUE)</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>dplyr::union(x, y)
+union_all(x, y)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="equality" class="section level4">
+<h4>Equality</h4>
+<table class="table table-condensed">
+<tbody>
+<tr>
+<td align="left">
+<pre class="r"><code>fsetequal(x, x[order(-V1),])
+all.equal(x, x) # S3 method</code></pre>
+</td>
+<td align="left">
+<pre class="r"><code>setequal(x, x[order(-V1),])
+all_equal(x, x)</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<!----------------------------------------------------------------------------
+                                 SUMMARY
+------------------------------------------------------------------------------->
+<br><br>
+<hr class = "hr2">
+</div>
+</div>
+</div>
+<div id="summary" class="section level1">
+<h1>Summary</h1>
+<p>This article presented the most important features of both data.table and dplyr, two packages that are now essential tools for data manipulation in R.<br />
+There are still a lot of features not covered in this document, in particular, data.table functions to deal with time-series or dplyr vectorized functions have not been discussed, but ‘done is better than perfect’…<br />
+Hopefully, this comparison is not too biased, but I must admit that my preference is for data.table. So, I hope this post will encourage some readers to give it a try!<br />
+<br><br></p>
+</div>
