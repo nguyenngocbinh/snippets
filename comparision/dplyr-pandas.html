@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Snippets - plsql-db2</title>
+<title>Snippets  – dplyr-pandas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../comparision/dplyr-pandas.html" rel="next">
-<link href="../comparision/Index.html" rel="prev">
+<link href="../python-snippet/Index.html" rel="next">
+<link href="../comparision/plsql-db2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../comparision/Index.html">Comparision</a></li><li class="breadcrumb-item"><a href="../comparision/plsql-db2.html">plsql-db2</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../comparision/Index.html">Comparision</a></li><li class="breadcrumb-item"><a href="../comparision/dplyr-pandas.html">Data frame verbs</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -123,13 +123,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../comparision/plsql-db2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../comparision/plsql-db2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">plsql-db2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../comparision/dplyr-pandas.html" class="sidebar-item-text sidebar-link">
+  <a href="../comparision/dplyr-pandas.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data frame verbs</span></a>
   </div>
 </li>
@@ -238,266 +238,251 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax" id="toc-heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax" class="nav-link active" data-scroll-target="#heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax">Here’s a table comparing DB2 and PL/SQL based on the provided features and their syntax:</a></li>
-  <li><a href="#utilities" id="toc-utilities" class="nav-link" data-scroll-target="#utilities">Utilities</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#data-frame-verbs" id="toc-data-frame-verbs" class="nav-link active" data-scroll-target="#data-frame-verbs">Data frame verbs</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/plsql-db2.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/dplyr-pandas.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">plsql-db2</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax" class="level2">
-<h2 class="anchored" data-anchor-id="heres-a-table-comparing-db2-and-plsql-based-on-the-provided-features-and-their-syntax">Here’s a table comparing DB2 and PL/SQL based on the provided features and their syntax:</h2>
-<p>These SQL commands are mainly categorized into five categories:</p>
+<p>Here’s a markdown table comparing <code>dplyr</code> (R) and <code>pandas</code> (Python) for various data manipulation tasks:</p>
+<section id="data-frame-verbs" class="level3">
+<h3 class="anchored" data-anchor-id="data-frame-verbs">Data frame verbs</h3>
 <ol type="1">
-<li>DDL – Data Definition Language</li>
-<li>DQL – Data Query Language</li>
-<li>DML – Data Manipulation Language</li>
-<li>DCL – Data Control Language</li>
-<li>TCL – Transaction Control Language</li>
-</ol>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20210920153429/new.png" class="img-fluid"></p>
-<ol type="1">
-<li><p>DDL – Data Definition Language</p>
+<li><p>Rows</p>
 <table class="table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
+<th>dplyr (R)</th>
+<th>pandas (Python)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Create Table</td>
-<td><code>CREATE TABLE new_table AS SELECT * FROM existing_table;</code></td>
-<td><code>similar</code></td>
+<td><strong>Arrange</strong></td>
+<td><code>arrange(df, col)</code></td>
+<td><code>df.sort_values(by='col', ascending=True)</code></td>
 </tr>
 <tr class="even">
-<td>Drop Table</td>
-<td><code>DROP TABLE table_name [PURGE];</code></td>
-<td><code>DROP TABLE IF EXISTS table_name;</code></td>
+<td><strong>Distinct</strong></td>
+<td><code>distinct(df, col)</code></td>
+<td><code>df.drop_duplicates(subset='col')</code></td>
 </tr>
 <tr class="odd">
-<td>Rename Columns</td>
-<td><code>ALTER TABLE table_name RENAME COLUMN old_column TO new_column;</code></td>
-<td><code>similar</code></td>
+<td><strong>Filter</strong></td>
+<td><code>filter(df, condition)</code></td>
+<td><code>df[df['condition']]</code></td>
 </tr>
 <tr class="even">
-<td>Modify Columns</td>
-<td><code>ALTER TABLE table_name MODIFY COLUMN column_name datatype;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Add Columns</td>
-<td><code>ALTER TABLE table_name ADD COLUMN new_column datatype;</code></td>
-<td><code>similar</code></td>
+<td><strong>Slice</strong></td>
+<td><code>slice(df, rows)</code></td>
+<td><code>df.iloc[rows]</code></td>
 </tr>
 </tbody>
 </table></li>
-<li><p>DQL – Data Query Language</p>
+<li><p>Columns</p>
 <table class="table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
+<th>dplyr (R)</th>
+<th>pandas (Python)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Left Join</td>
-<td><code>SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
+<td><strong>Glimpse</strong></td>
+<td><code>glimpse(df)</code></td>
+<td><code>df.info()</code></td>
 </tr>
 <tr class="even">
-<td>Inner Join</td>
-<td><code>SELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
+<td><strong>Mutate</strong></td>
+<td><code>mutate(df, new_col = func(old_col))</code></td>
+<td><code>df['new_col'] = df['old_col'].apply(func)</code></td>
 </tr>
 <tr class="odd">
-<td>Full Join</td>
-<td><code>SELECT * FROM table1 FULL JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
+<td><strong>Pull</strong></td>
+<td><code>pull(df, col)</code></td>
+<td><code>df['col']</code></td>
 </tr>
 <tr class="even">
-<td>Anti Join</td>
-<td><code>SELECT column1, column2 FROM table1 WHERE NOT EXISTS (SELECT * FROM table2 WHERE table1.column = table2.column)</code></td>
-<td><code>similar</code></td>
+<td><strong>Rename</strong></td>
+<td><code>rename(df, new_col_name = old_col_name)</code></td>
+<td><code>df.rename(columns={'old_col_name': 'new_col_name'}, inplace=True)</code></td>
 </tr>
 <tr class="odd">
-<td>Merge</td>
-<td><code>MERGE INTO table_name USING source_table ON (table_name.column = source_table.column) WHEN MATCHED THEN UPDATE SET column1 = value1 WHEN NOT MATCHED THEN INSERT (column1) VALUES (value1);</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Insert Into</td>
-<td><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Update</td>
-<td><code>UPDATE staff a SET salary =&nbsp;(SELECT AVG(salary) + 2000 FROM staff b&nbsp;WHERE a.dept = b.dept) WHERE id &lt; 60;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Truncate Table</td>
-<td><code>TRUNCATE TABLE table_name;</code></td>
-<td><code>TRUNCATE TABLE table_name IMMEDIATE;</code></td>
-</tr>
-<tr class="odd">
-<td>Temporary Table</td>
-<td><code>DECLARE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
-<td><code>CREATE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
-</tr>
-<tr class="even">
-<td>Group By</td>
-<td><code>SELECT column1, COUNT(*) FROM table_name GROUP BY column1;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Partition By</td>
-<td><code>SELECT column1, RANK() OVER (PARTITION BY column2 ORDER BY column3) FROM table_name;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Run Procedure</td>
-<td><code>EXECUTE procedure_name;</code></td>
-<td><code>CALL procedure_name();</code></td>
-</tr>
-<tr class="odd">
-<td>Loop</td>
-<td><code>FOR row IN (SELECT * FROM table_name) LOOP &lt;statements&gt; END LOOP;</code></td>
-<td><code>FOR row AS cursor_name CURSOR FOR SELECT * FROM table_name DO &lt;statements&gt; END FOR;</code></td>
-</tr>
-<tr class="even">
-<td>Parallel</td>
-<td><code>INSERT /*+APPEND PARALLEL(8)*/ INTO</code></td>
-<td><code>SELECT * FROM table_name PARALLEL 4;</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code>MERGE /*+ parallel(8) */ INTO</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code>SELECT /*+ PARALLEL(8) */ * FROM</code></td>
-<td></td>
+<td><strong>Select</strong></td>
+<td><code>select(df, col1, col2, ...)</code></td>
+<td><code>df[['col1', 'col2', ...]]</code></td>
 </tr>
 </tbody>
 </table></li>
-<li><p>DCL – Data Control Language</p>
+<li><p>Groups</p>
 <table class="table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
+<th>dplyr (R)</th>
+<th>pandas (Python)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Select</td>
-<td><code>SELECT column1, column2 FROM table_name;</code></td>
-<td><code>similar</code></td>
+<td><strong>Group By</strong></td>
+<td><code>group_by(df, col)</code></td>
+<td><code>df.groupby('col')</code></td>
+</tr>
+<tr class="even">
+<td><strong>Summarise</strong></td>
+<td><code>summarise(df, new_col = func(col))</code></td>
+<td><code>df.agg({'col': func})</code></td>
 </tr>
 </tbody>
 </table></li>
-</ol>
-</section>
-<section id="utilities" class="level2">
-<h2 class="anchored" data-anchor-id="utilities">Utilities</h2>
+<li><p>Data frames</p>
 <table class="table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
+<th>dplyr (R)</th>
+<th>pandas (Python)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>SYS_INFO</td>
-<td></td>
-<td><code>SELECT * FROM SYSIBMADM.ENV_SYS_INFO</code></td>
+<td><strong>bind_cols</strong></td>
+<td><code>bind_cols(df1, df2)</code></td>
+<td><code>pd.concat([df1, df2], axis=1)</code></td>
 </tr>
 <tr class="even">
-<td>NVL</td>
-<td><code>NVL(column, 0)</code></td>
-<td><code>COALESCE(column, 0)</code></td>
+<td><strong>bind_rows</strong></td>
+<td><code>bind_rows(df1, df2)</code></td>
+<td><code>pd.concat([df1, df2], axis=0)</code></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td><code>COALESCE(column, 0)</code></td>
-<td><code>COALESCE(column, 0)</code></td>
+<td><strong>Inner Join</strong></td>
+<td><code>inner_join(df1, df2, by = "key_column")</code></td>
+<td><code>pd.merge(df1, df2, on='key_column', how='inner')</code></td>
 </tr>
 <tr class="even">
-<td>Diff Month</td>
-<td><code>SELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;</code></td>
-<td><code>SELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;</code></td>
+<td><strong>Left Join</strong></td>
+<td><code>left_join(df1, df2, by = "key_column")</code></td>
+<td><code>pd.merge(df1, df2, on='key_column', how='left')</code></td>
 </tr>
 <tr class="odd">
-<td>Add Months</td>
-<td><code>SELECT ADD_MONTHS(date1, number_of_months) FROM dual;</code></td>
-<td><code>SELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;</code></td>
+<td><strong>Right Join</strong></td>
+<td><code>right_join(df1, df2, by = "key_column")</code></td>
+<td><code>pd.merge(df1, df2, on='key_column', how='right')</code></td>
 </tr>
 <tr class="even">
-<td>Diff Date</td>
-<td><code>SELECT date2 - date1 FROM dual;</code></td>
-<td></td>
+<td><strong>Full Join</strong></td>
+<td><code>full_join(df1, df2, by = "key_column")</code></td>
+<td><code>pd.merge(df1, df2, on='key_column', how='outer')</code></td>
 </tr>
 <tr class="odd">
-<td>Compare 2 Tables</td>
-<td><code>(SELECT * FROM B_TMP MINUS SELECT * FROM B_TMP1) UNION ALL(SELECT * FROM B_TMP1 MINUS SELECT * FROM B_TMP)</code></td>
-<td><code>SELECT * FROM table1 EXCEPT SELECT * FROM table2;</code></td>
+<td><strong>Semi Join</strong></td>
+<td><code>semi_join(df1, df2, by = "key_column")</code></td>
+<td>Not directly available; can use <code>merge</code> and <code>isin</code> together for similar effect.</td>
+</tr>
+<tr class="even">
+<td><strong>Anti Join</strong></td>
+<td><code>anti_join(df1, df2, by = "key_column")</code></td>
+<td>Not directly available; can use <code>merge</code> and <code>isin</code> together for similar effect.</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Vector functions</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>dplyr (R)</th>
+<th>pandas (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>if_else</strong></td>
+<td><code>mutate(df, new_col = if_else(condition, true_val, false_val))</code></td>
+<td><code>df['new_col'] = np.where(condition, true_val, false_val)</code></td>
+</tr>
+<tr class="even">
+<td><strong>na_if</strong></td>
+<td><code>mutate(df, col = na_if(col, value))</code></td>
+<td><code>df['col'].replace(value, np.nan)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>n_distinct</strong></td>
+<td><code>n_distinct(df, col)</code></td>
+<td><code>df['col'].nunique()</code></td>
+</tr>
+<tr class="even">
+<td><strong>sample_n</strong></td>
+<td><code>sample_n(df, n)</code></td>
+<td><code>df.sample(n=n)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>sample_frac</strong></td>
+<td><code>sample_frac(df, fraction)</code></td>
+<td><code>df.sample(frac=fraction)</code></td>
+</tr>
+<tr class="even">
+<td><strong>case_when</strong></td>
+<td><code>mutate(df, new_col = case_when(condition1 ~ value1, condition2 ~ value2, ...))</code></td>
+<td><code>df['new_col'] = np.select([condition1, condition2, ...], [value1, value2, ...], default=default_value)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>cummean</strong></td>
+<td><code>mutate(df, new_col = cummean(col))</code></td>
+<td><code>df['new_col'] = df['col'].expanding().mean()</code></td>
+</tr>
+<tr class="even">
+<td><strong>row_number</strong></td>
+<td><code>mutate(df, row_num = row_number())</code></td>
+<td><code>df['row_num'] = range(1, len(df)+1)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>min_rank</strong></td>
+<td><code>mutate(df, rank = min_rank(col))</code></td>
+<td><code>df['rank'] = df['col'].rank(method='min')</code></td>
+</tr>
+<tr class="even">
+<td><strong>dense_rank</strong></td>
+<td><code>mutate(df, rank = dense_rank(col))</code></td>
+<td><code>df['rank'] = df['col'].rank(method='dense')</code></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="http://db2-sql-cookbook.org/pdf/Db2_SQL_Cookbook.pdf">db2-sql-cookbook</a></li>
-</ul>
+<p>Note that while many functionalities are directly available in both <code>dplyr</code> and <code>pandas</code>, some might require slight variations or custom functions to achieve the same result.</p></li>
+</ol>
 
 
 </section>
@@ -853,13 +838,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../comparision/Index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Comparision</span>
+      <a href="../comparision/plsql-db2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">plsql-db2</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../comparision/dplyr-pandas.html" class="pagination-link">
-        <span class="nav-page-text">Data frame verbs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../python-snippet/Index.html" class="pagination-link">
+        <span class="nav-page-text">Python Snippet</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
