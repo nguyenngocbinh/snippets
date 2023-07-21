@@ -24,8 +24,10 @@ add_tag_count <- function(x, cname, count_col){
     mutate(!!count_col_name := map_int(!!cname, length))
 }
 ```
+
 ### Capturing multiple variables
-```{r}
+
+```r
 freq_tbl <- function(df, ..., percent = TRUE){
   group <- quos(...)
   
@@ -44,4 +46,5 @@ freq_tbl <- function(df, ..., percent = TRUE){
 ```
 
 ## References
+
 - [tidyeval](https://www.onceupondata.com/2017/08/12/my-first-steps-into-the-world-of-tidyeval/)
