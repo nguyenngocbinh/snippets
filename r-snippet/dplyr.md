@@ -1,4 +1,8 @@
-# dplyr with bang bang example
+---
+title: dplyr
+---
+
+## dplyr with bang bang example
 
 ### Varying the name of the output variable
 
@@ -7,7 +11,7 @@ We need to do the following:
 - Use quo_name() to convert the input expression to string
 - Use := helper provided by rlang
 
-```{r}
+```r
 # https://www.onceupondata.com/2017/08/12/my-first-steps-into-the-world-of-tidyeval/
 add_tag_count <- function(x, cname, count_col){
   
@@ -38,3 +42,6 @@ freq_tbl <- function(df, ..., percent = TRUE){
   return(out)
 }
 ```
+
+## References
+- [tidyeval](https://www.onceupondata.com/2017/08/12/my-first-steps-into-the-world-of-tidyeval/)

@@ -1,5 +1,9 @@
+---
+title: "R snippet"
+---
+
 # Initial
-```{r}
+```r
 install.packages("spAddins")
 install.packages("remedy")
 ```
@@ -16,7 +20,7 @@ install.packages("remedy")
 
 ### Repos
 
-```{r}
+```r
 options(repos = "http://cran.rstudio.org")
 # options(repos = "https://cloud.r-project.org")
 ```
@@ -51,7 +55,7 @@ install.packages(".../path/to/package.tar.gz", type="source", repos=NULL)
 ## format axis text
 
 
-```{r}
+```r
 theme(axis.text.x = element_text(size = 14), axis.title.x = element_text(size = 16),
       axis.text.y = element_text(size = 14), axis.title.y = element_text(size = 16),
       plot.title = element_text(size = 20, face = "bold", color = "darkgreen"))
@@ -60,7 +64,7 @@ theme(axis.ticks.length.y = unit(nc * 0.15,"cm"))
 ```
 ## geom_line with x is factor
 
-```{r}
+```r
 geom_line(aes(group = 1))
 ```
 
@@ -69,7 +73,7 @@ geom_line(aes(group = 1))
 
 ## vietnamese font
 
-```{r}
+```r
 Sys.setlocale(category = "LC_ALL", locale = "vietnamese")
 
 eval(parse("R/graph_pqr_201911.R", encoding = "UTF-8"))
@@ -82,7 +86,7 @@ plot(1:4,rep(1,4), pch=c("\U0110","\u01AF","\u01A0","\u0102"),cex=4)
 # File
 
 ### edit file
-```{r}
+```r
 line="blah text blah blah etc etc"
 write(line,file=paste0("vignettes/", ticker, ".Rmd"),append=TRUE)
 ```
@@ -100,11 +104,11 @@ na_vars <- dt %>%
   names() 
 ```
 
-```{r}
+```r
 group_by(xxx) %>% count()
 ```
 
-```{r}
+```r
 category <- enquo(category)	
 p <- df %>% 
 	group_by(!!category) %>% 
@@ -116,7 +120,7 @@ rlang::quo_text(category)
 
 ```
 ## top_n_by function
-```{r}
+```r
 f_top_n <- function(df, n, top_by){
   top_by <- enquo(top_by)
   
@@ -134,7 +138,7 @@ f_top_n <- function(df, n, top_by){
 
 # lubridate
 
-```{r}
+```r
 x <- as.Date("2009-09-02")
 wday(ymd(080101), label = TRUE, abbr = TRUE)
 month(x)
@@ -144,14 +148,14 @@ year(x)
 
 # zoo
 
-```{r}
+```r
 zoo::as.yearmon("Mar 2012", "%b %Y")
 ```
 
 
 # file and folder
 
-```{r}
+```r
 r18_2017 <- Sys.glob(paste0(my_folder, "2017/*.xlsx"))
 
 r18_2017 <- list.files(paste0(my_folder, "2017/"), full.names = T)
@@ -164,14 +168,14 @@ dt <- rio::import_list(r18_files, rbind = TRUE)
 
 ## Bỏ dấu
 
-```{r}
+```r
 stringi::stri_trans_general('Nguyễn Ngọc Bình', "latin-ascii" )
 ```
 
 
-# check slow code by **provis**
+# optimize code with **provis**
 
-```{r}
+```r
 ## Generate data
 times <- 4e5
 cols <- 150
@@ -196,7 +200,7 @@ profvis::profvis({
 
 ## compose
 
-```{r}
+```r
 tidy_lm <- compose(tidy, lm)
 tidy_lm(Sepal.Length ~ Species, data = iris)
 ```
@@ -204,13 +208,13 @@ tidy_lm(Sepal.Length ~ Species, data = iris)
 
 ## partial
 
-```{r}
+```r
 mean_na_rm <- partial(mean, na.rm = TRUE)
 ```
 
 ## reduce
 
-```{r}
+```r
 dfs <- list(
   age = tibble(name = "John", age = 30),
   sex = tibble(name = c("John", "Mary"), sex = c("M", "F")),
@@ -221,7 +225,7 @@ dfs %>% reduce(full_join)
 ```
 
 # Hàm xử lý outlier
-```{r}
+```r
 f_outlier <- function(x){
   threshold <- quantile(x, probs = c(0.005, 0.95), na.rm = TRUE, type = 3)
   
@@ -232,13 +236,13 @@ f_outlier <- function(x){
 }
 ```
 # So sánh khác biệt giữa 2 file
-```{r}
+```r
 library(diffr)
 diffr("D:/TMP/new 1.txt", "D:/TMP/new 2.txt", contextSize = 0, minJumpSize = 500)
 ```
 
 # Optical Character Recognition (OCR)
-```{r}
+```r
 if(!require("tesseract")) {install.packages("tesseract")}
 library(tesseract)
 library(dplyr)
@@ -272,13 +276,13 @@ editor_options:
 `
 
 bookdown::html_document2, bookdown::word_document2
-```{r}
+```r
 ![(\#fig:nnet2)Một mạng nơ-ron với bốn đầu vào và một lớp ẩn với ba nơ-ron ẩn.](images/nnet2.png)
 \@ref(fig:nnet2)
 ```
 or
 
-```{r}
+```r
 knitr::opts_chunk$set(echo = FALSE, fig.height = 5, fig.width = 7, out.width = "70%")
 knitr::include_graphics("figures/d_i_d_graph.png")
 ```
@@ -298,7 +302,7 @@ knitr::include_graphics("figures/d_i_d_graph.png")
 }
 ```
 ### Format table in word
-```{r}
+```r
 fnc_print_tbl_df <- function(tbl_name) {
   out <- tbl_name %>%
     ungroup() %>% 
@@ -314,7 +318,7 @@ fnc_print_tbl_df <- function(tbl_name) {
 ```
 
 ### import data
-```{r}
+```r
 rio::import(xml2::xml2_example("cd_catalog.xml"))
 ```
 
