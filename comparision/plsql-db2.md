@@ -2,7 +2,7 @@
 title: "plsql-db2"
 ---
 
-## Here's a table comparing DB2 and PL/SQL based on the provided features and their syntax:
+Here's a table comparing DB2 and PL/SQL based on the provided features and their syntax:
 
 These SQL commands are mainly categorized into five categories: 
 
@@ -14,6 +14,7 @@ These SQL commands are mainly categorized into five categories:
 
 ![](https://media.geeksforgeeks.org/wp-content/uploads/20210920153429/new.png)
 
+## Basic SQL commands:
 
 1. DDL – Data Definition Language
    
