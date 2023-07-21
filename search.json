@@ -1,199 +1,17 @@
 [
   {
-    "objectID": "comparision/plsql-db2.html",
-    "href": "comparision/plsql-db2.html",
-    "title": "plsql-db2",
+    "objectID": "comparision/ggplot2-matplotlib.html",
+    "href": "comparision/ggplot2-matplotlib.html",
+    "title": "ggplot2 vs. matplotlib",
     "section": "",
-    "text": "Here’s a table comparing DB2 and PL/SQL based on the provided features and their syntax:\nThese SQL commands are mainly categorized into five categories:"
+    "text": "Below is a markdown table comparing the features of ggplot2 (R) and matplotlib (Python) for creating visualizations:\n\nPlot basics\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\naes()\nUsed inside ggplot() to map variables to aesthetics\nNot used; column names are specified directly in plot()\n\n\n+() %&gt;%\nUsed to add layers and modify the plot\nNot applicable\n\n\nggsave()\nSave the plot to a file\nNot applicable; plots are saved using plt.savefig() in Matplotlib\n\n\nquickplot()\nSimple, intuitive function for quick plots\nNot available\n\n\n\nLayers\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\ngeom_abline()\nAdd an arbitrary line to the plot\naxhline() and axvline() in Matplotlib\n\n\ngeom_hline()\nAdd horizontal lines to the plot\naxhline() in Matplotlib\n\n\ngeom_vline()\nAdd vertical lines to the plot\naxvline() in Matplotlib\n\n\ngeom_bar()\nCreate bar charts\nkind='bar' in plot()\n\n\ngeom_col()\nCreate column charts\nkind='bar' with position='identity' in plot()\n\n\nstat_count()\nCreate bar charts with automatic counting\nkind='bar' with position='identity' in plot()\n\n\ngeom_boxplot()\nCreate boxplots\nkind='box' in plot()\n\n\nstat_boxplot()\nCreate boxplots with statistical summaries\nkind='box' in plot()\n\n\ngeom_map()\nPlot spatial data on maps\nNot available\n\n\ngeom_point()\nCreate scatter plots\nkind='scatter' in plot()\n\n\ngeom_label()\nAdd text labels to points\nNot available\n\n\ngeom_text()\nAdd text annotations to the plot\ntext() in Matplotlib\n\n\ngeom_violin()\nCreate violin plots\nNot available\n\n\nstat_ydensity()\nCompute density for violin plots\nNot available\n\n\n\nPosition adjustment\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\nposition_dodge()\nDodge overlapping elements\nNot available\n\n\n\nAnnotations\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\nannotate()\nAdd annotations to the plot\nNot available\n\n\n\nScales\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\nlabs()\nModify plot labels and titles\nNot available\n\n\nxlab()\nModify the x-axis label\nset_xlabel() in Matplotlib\n\n\nylab()\nModify the y-axis label\nset_ylabel() in Matplotlib\n\n\nggtitle()\nAdd a plot title\nset_title() in Matplotlib\n\n\nlims()\nSet plot limits\nset_xlim() and set_ylim() in Matplotlib\n\n\nxlim()\nSet x-axis limits\nset_xlim() in Matplotlib\n\n\nylim()\nSet y-axis limits\nset_ylim() in Matplotlib\n\n\nscale_x_continuous()\nModify x-axis scales\nset_xscale() in Matplotlib\n\n\nscale_y_continuous()\nModify y-axis scales\nset_yscale() in Matplotlib\n\n\nscale_x_date()\nModify x-axis scales for date data\nNot available\n\n\nscale_y_date()\nModify y-axis scales for date data\nNot available\n\n\nscale_x_discrete()\nModify x-axis scales for discrete data\nNot available\n\n\nscale_y_discrete()\nModify y-axis scales for discrete data\nNot available\n\n\n\nFacetting\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\nfacet_wrap()\nCreate small multiples in a wrap layout\nsubplots=True with multiple plots in Pandas\n\n\nfacet_grid()\nCreate small multiples in a grid layout\nsubplots=True with multiple plots in Pandas\n\n\ncoord_flip()\nFlip the x and y-axis\nNot available\n\n\n\nThemes\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\nelement_blank()\nRemove an element from the plot\nNot available\n\n\nelement_rect()\nModify rectangle elements in the plot\nNot available\n\n\nelement_line()\nModify line elements in the plot\nNot available\n\n\nelement_text()\nModify text elements in the plot\nNot available\n\n\n\nautoplot\n\n\n\n\n\n\n\n\nggplot2 (R)\nFeature\nmatplotlib (Python)\n\n\n\n\nautoplot()\nCreate basic plots automatically\nNot available\n\n\n\n\nPlease note that ggplot2 and matplotlib are both powerful visualization libraries, but they have different philosophies and strengths. The syntax for creating visualizations can differ significantly between the two libraries."
   },
   {
-    "objectID": "comparision/plsql-db2.html#basic-sql-commands",
-    "href": "comparision/plsql-db2.html#basic-sql-commands",
-    "title": "plsql-db2",
-    "section": "Basic SQL commands:",
-    "text": "Basic SQL commands:\n\nDDL – Data Definition Language\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nCreate Table\nCREATE TABLE new_table AS SELECT * FROM existing_table;\nsimilar\n\n\nDrop Table\nDROP TABLE table_name [PURGE];\nDROP TABLE IF EXISTS table_name;\n\n\nRename Columns\nALTER TABLE table_name RENAME COLUMN old_column TO new_column;\nsimilar\n\n\nModify Columns\nALTER TABLE table_name MODIFY COLUMN column_name datatype;\nsimilar\n\n\nAdd Columns\nALTER TABLE table_name ADD COLUMN new_column datatype;\nsimilar\n\n\n\nDQL – Data Query Language\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nLeft Join\nSELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;\nsimilar\n\n\nInner Join\nSELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;\nsimilar\n\n\nFull Join\nSELECT * FROM table1 FULL JOIN table2 ON table1.column = table2.column;\nsimilar\n\n\nAnti Join\nSELECT column1, column2 FROM table1 WHERE NOT EXISTS (SELECT * FROM table2 WHERE table1.column = table2.column)\nsimilar\n\n\nMerge\nMERGE INTO table_name USING source_table ON (table_name.column = source_table.column) WHEN MATCHED THEN UPDATE SET column1 = value1 WHEN NOT MATCHED THEN INSERT (column1) VALUES (value1);\nsimilar\n\n\nInsert Into\nINSERT INTO table_name (column1, column2) VALUES (value1, value2);\nsimilar\n\n\nUpdate\nUPDATE staff a SET salary = (SELECT AVG(salary) + 2000 FROM staff b WHERE a.dept = b.dept) WHERE id &lt; 60;\nsimilar\n\n\nTruncate Table\nTRUNCATE TABLE table_name;\nTRUNCATE TABLE table_name IMMEDIATE;\n\n\nTemporary Table\nDECLARE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);\nCREATE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);\n\n\nGroup By\nSELECT column1, COUNT(*) FROM table_name GROUP BY column1;\nsimilar\n\n\nPartition By\nSELECT column1, RANK() OVER (PARTITION BY column2 ORDER BY column3) FROM table_name;\nsimilar\n\n\nRun Procedure\nEXECUTE procedure_name;\nCALL procedure_name();\n\n\nLoop\nFOR row IN (SELECT * FROM table_name) LOOP &lt;statements&gt; END LOOP;\nFOR row AS cursor_name CURSOR FOR SELECT * FROM table_name DO &lt;statements&gt; END FOR;\n\n\nParallel\nINSERT /*+APPEND PARALLEL(8)*/ INTO\nSELECT * FROM table_name PARALLEL 4;\n\n\n\nMERGE /*+ parallel(8) */ INTO\n\n\n\n\nSELECT /*+ PARALLEL(8) */ * FROM\n\n\n\n\nDCL – Data Control Language\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nSelect\nSELECT column1, column2 FROM table_name;\nsimilar"
-  },
-  {
-    "objectID": "comparision/plsql-db2.html#utilities",
-    "href": "comparision/plsql-db2.html#utilities",
-    "title": "plsql-db2",
-    "section": "Utilities",
-    "text": "Utilities\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nSYS_INFO\n\nSELECT * FROM SYSIBMADM.ENV_SYS_INFO\n\n\nNVL\nNVL(column, 0)\nCOALESCE(column, 0)\n\n\n\nCOALESCE(column, 0)\nCOALESCE(column, 0)\n\n\nDiff Month\nSELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;\nSELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;\n\n\nAdd Months\nSELECT ADD_MONTHS(date1, number_of_months) FROM dual;\nSELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;\n\n\nDiff Date\nSELECT date2 - date1 FROM dual;\n\n\n\nCompare 2 Tables\n(SELECT * FROM B_TMP MINUS SELECT * FROM B_TMP1) UNION ALL(SELECT * FROM B_TMP1 MINUS SELECT * FROM B_TMP)\nSELECT * FROM table1 EXCEPT SELECT * FROM table2;"
-  },
-  {
-    "objectID": "comparision/plsql-db2.html#references",
-    "href": "comparision/plsql-db2.html#references",
-    "title": "plsql-db2",
-    "section": "References",
-    "text": "References\n\ndb2-sql-cookbook"
-  },
-  {
-    "objectID": "comparision/Index.html",
-    "href": "comparision/Index.html",
-    "title": "Comparision",
+    "objectID": "comparision/dplyr-pandas.html",
+    "href": "comparision/dplyr-pandas.html",
+    "title": "dplyr vs. pandas",
     "section": "",
-    "text": "R vs Python\nPl/sql vs db2\nDb2 vs mssql"
-  },
-  {
-    "objectID": "python-snippet/Statistics.html",
-    "href": "python-snippet/Statistics.html",
-    "title": "Statistic",
-    "section": "",
-    "text": "# https://www.kaggle.com/code/carlmcbrideellis/what-is-adversarial-validation/notebook\n\nfrom scipy import stats\nfeatures_list = X_test.columns.values.tolist()\nfor feature in features_list:\n    statistic, pvalue = stats.kstest(X_train[feature], X_test[feature])\n    print(\"p-value %.2f\" %pvalue, \"for the feature\",feature)"
-  },
-  {
-    "objectID": "python-snippet/Statistics.html#ks-test",
-    "href": "python-snippet/Statistics.html#ks-test",
-    "title": "Statistic",
-    "section": "",
-    "text": "# https://www.kaggle.com/code/carlmcbrideellis/what-is-adversarial-validation/notebook\n\nfrom scipy import stats\nfeatures_list = X_test.columns.values.tolist()\nfor feature in features_list:\n    statistic, pvalue = stats.kstest(X_train[feature], X_test[feature])\n    print(\"p-value %.2f\" %pvalue, \"for the feature\",feature)"
-  },
-  {
-    "objectID": "python-snippet/Statistics.html#lightgbm-focal-loss",
-    "href": "python-snippet/Statistics.html#lightgbm-focal-loss",
-    "title": "Statistic",
-    "section": "2.1 Lightgbm focal loss",
-    "text": "2.1 Lightgbm focal loss\n# https://maxhalford.github.io/blog/lightgbm-focal-loss/"
-  },
-  {
-    "objectID": "python-snippet/Statistics.html#metric-processing-time",
-    "href": "python-snippet/Statistics.html#metric-processing-time",
-    "title": "Statistic",
-    "section": "3.1 Metric Processing Time",
-    "text": "3.1 Metric Processing Time\nhttps://www.kaggle.com/code/rohanrao/amex-competition-metric-implementations"
-  },
-  {
-    "objectID": "python-snippet/Graphs.html",
-    "href": "python-snippet/Graphs.html",
-    "title": "Graphs",
-    "section": "",
-    "text": "Candlestick\nimport yfinance as yf \ndata = yf.download(tickers = 'ETH-USD', period = 'max', interval = '1d')\ndfpl = data[0:100]\nimport plotly.graph_objects as go\nfig = go.Figure(data=go.Candlestick(\n    x = dfpl.index,\n    open = dfpl.Open,\n    high = dfpl.High,\n    low = dfpl.Low,\n    close = dfpl.Close    \n))\n\nfig.show()"
-  },
-  {
-    "objectID": "python-snippet/Environment.html",
-    "href": "python-snippet/Environment.html",
-    "title": "Environment",
-    "section": "",
-    "text": "Environment setup\n\nUsing conda\n\nCreate conda environment\n\nQuick create env using conda create\nconda create -n env_rdm python=3.10 pip ipykernel notebook\nconda activate env_rdm\nCreate env use environment.yaml file\n\nFirst, create environment.yaml file with example content following\nSecond, run command conda env create -f environment.yaml\nOptional, remove environment if needed conda env remove -n env_ascore\n\nname: env_ascore\nchannels:\n  - conda-forge\n  - defaults\ndependencies:\n  - python=3.10\n  - pandas\n  - joblib\n  - statsmodels\n  - ipykernel\n  - zipp  \n  - pip\n  - pip: \n    - optbinning==0.17.3\n    - ortools==9.4.1874\n# set https_proxy=10.1.33.23:8080\n# set http_proxy=10.1.33.23:8080          \nCreate env use requirements.txt file\n\nconda list --export &gt; requirements.txt\nconda install --file requirements.txt\nConda common commands\n\n\nConda environment list\n\nconda info --env\n\nRemove conda environment\n\nconda deactivate\nconda env remove -n python38\n\nActivate conda environment\n\nconda activate python38\n\nClean unused library\n\nconda clean --all\npip cache remove *\nCreate environment for jupyter notebook\n\nUse conda to create new environment\nUse ipython\nconda activate python38\nipython kernel install --user --name=python38\nRemove jupyter notebook environment (require run as administrator)\njupyter kernelspec list\njupyter kernelspec uninstall python38 \n\nInstall packages in OFFLINE mode with pip\n\nInstall OFFLINE packages using requirements.txt\n\nStep 1: Input to requirements.txt file in current directory. Eg. content \"jupyter-contrib-nbextensions==0.5.1\"\n# export env if available\npip list --format=freeze &gt; requirements.txt\nStep 2: Create wheel folder (Eg. D:)\nStep 3: Run following command to download dependencies packages to folder wheel\n\npip download -r requirements.txt -d wheel\n\nStep 4: Run following command to install\n\npip install -r requirements.txt --find-links=D:\\wheel --no-index\nInstall OFFLINE Linux package\n\nCase 1: Activate same version python (i.e 3.7.0) and run following command\npip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas\nCase 2: Specify python version\npip download --platform manylinux1_x86_64 --only-binary=:all: --python-version=38 --no-binary=:none: pandas\n\n\nOther ultility commands\n\nCheck dependencies\n\npython -m pip check \npip freeze &gt; requirements.txt\n\nThemes jupyter notebook\n\njt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T\n\nInstall Extension for jupyter notebook\n\npip install jupyter_contrib_nbextensions\npip install jupyter_nbextensions_configurator\njupyter contrib nbextension install --user\njupyter nbextensions_configurator enable --user"
-  },
-  {
-    "objectID": "sqlserver-snippet/permissions.html",
-    "href": "sqlserver-snippet/permissions.html",
-    "title": "Permissions",
-    "section": "",
-    "text": "Grant create/ excecute\nuse BSCORE_CREDITCARD\ngo\ngrant create procedure to [NOR\\HUYENDT14]\ngrant alter on schema::[dbo] to [NOR\\HUYENDT14]\ngrant execute to [NOR\\HUYENDT14]\n\n\nFind all permissions/access for all users in a database\n/*\n\nSecurity Audit Report\n1) List all access provisioned to a sql user or windows user/group directly \n2) List all access provisioned to a sql user or windows user/group through a database or application role\n3) List all access provisioned to the public role\n\nColumns Returned:\nUserName        : SQL or Windows/Active Directory user account.  This could also be an Active Directory group.\nUserType        : Value will be either 'SQL User' or 'Windows User'.  This reflects the type of user defined for the \n                  SQL Server user account.\nDatabaseUserName: Name of the associated user as defined in the database user account.  The database user may not be the\n                  same as the server user.\nRole            : The role name.  This will be null if the associated permissions to the object are defined at directly\n                  on the user account, otherwise this will be the name of the role that the user is a member of.\nPermissionType  : Type of permissions the user/role has on an object. Examples could include CONNECT, EXECUTE, SELECT\n                  DELETE, INSERT, ALTER, CONTROL, TAKE OWNERSHIP, VIEW DEFINITION, etc.\n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.\nPermissionState : Reflects the state of the permission type, examples could include GRANT, DENY, etc.\n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.\nObjectType      : Type of object the user/role is assigned permissions on.  Examples could include USER_TABLE, \n                  SQL_SCALAR_FUNCTION, SQL_INLINE_TABLE_VALUED_FUNCTION, SQL_STORED_PROCEDURE, VIEW, etc.   \n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.          \nObjectName      : Name of the object that the user/role is assigned permissions on.  \n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.\nColumnName      : Name of the column of the object that the user/role is assigned permissions on. This value\n                  is only populated if the object is a table, view or a table value function.                 \n*/\n\n--List all access provisioned to a sql user or windows user/group directly \nSELECT  \n    [UserName] = CASE princ.[type] \n                    WHEN 'S' THEN princ.[name]\n                    WHEN 'U' THEN ulogin.[name] COLLATE Latin1_General_CI_AI\n                 END,\n    [UserType] = CASE princ.[type]\n                    WHEN 'S' THEN 'SQL User'\n                    WHEN 'U' THEN 'Windows User'\n                 END,  \n    [DatabaseUserName] = princ.[name],       \n    [Role] = null,      \n    [PermissionType] = perm.[permission_name],       \n    [PermissionState] = perm.[state_desc],       \n    [ObjectType] = obj.type_desc,--perm.[class_desc],       \n    [ObjectName] = OBJECT_NAME(perm.major_id),\n    [ColumnName] = col.[name]\nFROM    \n    --database user\n    sys.database_principals princ  \nLEFT JOIN\n    --Login accounts\n    sys.login_token ulogin on princ.[sid] = ulogin.[sid]\nLEFT JOIN        \n    --Permissions\n    sys.database_permissions perm ON perm.[grantee_principal_id] = princ.[principal_id]\nLEFT JOIN\n    --Table columns\n    sys.columns col ON col.[object_id] = perm.major_id \n                    AND col.[column_id] = perm.[minor_id]\nLEFT JOIN\n    sys.objects obj ON perm.[major_id] = obj.[object_id]\nWHERE \n    princ.[type] in ('S','U')\nUNION\n--List all access provisioned to a sql user or windows user/group through a database or application role\nSELECT  \n    [UserName] = CASE memberprinc.[type] \n                    WHEN 'S' THEN memberprinc.[name]\n                    WHEN 'U' THEN ulogin.[name] COLLATE Latin1_General_CI_AI\n                 END,\n    [UserType] = CASE memberprinc.[type]\n                    WHEN 'S' THEN 'SQL User'\n                    WHEN 'U' THEN 'Windows User'\n                 END, \n    [DatabaseUserName] = memberprinc.[name],   \n    [Role] = roleprinc.[name],      \n    [PermissionType] = perm.[permission_name],       \n    [PermissionState] = perm.[state_desc],       \n    [ObjectType] = obj.type_desc,--perm.[class_desc],   \n    [ObjectName] = OBJECT_NAME(perm.major_id),\n    [ColumnName] = col.[name]\nFROM    \n    --Role/member associations\n    sys.database_role_members members\nJOIN\n    --Roles\n    sys.database_principals roleprinc ON roleprinc.[principal_id] = members.[role_principal_id]\nJOIN\n    --Role members (database users)\n    sys.database_principals memberprinc ON memberprinc.[principal_id] = members.[member_principal_id]\nLEFT JOIN\n    --Login accounts\n    sys.login_token ulogin on memberprinc.[sid] = ulogin.[sid]\nLEFT JOIN        \n    --Permissions\n    sys.database_permissions perm ON perm.[grantee_principal_id] = roleprinc.[principal_id]\nLEFT JOIN\n    --Table columns\n    sys.columns col on col.[object_id] = perm.major_id \n                    AND col.[column_id] = perm.[minor_id]\nLEFT JOIN\n    sys.objects obj ON perm.[major_id] = obj.[object_id]\nUNION\n--List all access provisioned to the public role, which everyone gets by default\nSELECT  \n    [UserName] = '{All Users}',\n    [UserType] = '{All Users}', \n    [DatabaseUserName] = '{All Users}',       \n    [Role] = roleprinc.[name],      \n    [PermissionType] = perm.[permission_name],       \n    [PermissionState] = perm.[state_desc],       \n    [ObjectType] = obj.type_desc,--perm.[class_desc],  \n    [ObjectName] = OBJECT_NAME(perm.major_id),\n    [ColumnName] = col.[name]\nFROM    \n    --Roles\n    sys.database_principals roleprinc\nLEFT JOIN        \n    --Role permissions\n    sys.database_permissions perm ON perm.[grantee_principal_id] = roleprinc.[principal_id]\nLEFT JOIN\n    --Table columns\n    sys.columns col on col.[object_id] = perm.major_id \n                    AND col.[column_id] = perm.[minor_id]                   \nJOIN \n    --All objects   \n    sys.objects obj ON obj.[object_id] = perm.[major_id]\nWHERE\n    --Only roles\n    roleprinc.[type] = 'R' AND\n    --Only public role\n    roleprinc.[name] = 'public' AND\n    --Only objects of ours, not the MS objects\n    obj.is_ms_shipped = 0\nORDER BY\n    princ.[Name],\n    OBJECT_NAME(perm.major_id),\n    col.[name],\n    perm.[permission_name],\n    perm.[state_desc],\n    obj.type_desc--perm.[class_desc] \n\n\nReferences\n\nfind-all-permissions"
-  },
-  {
-    "objectID": "sqlserver-snippet/Index.html#schemas",
-    "href": "sqlserver-snippet/Index.html#schemas",
-    "title": "SQL-Server Snippet",
-    "section": "Schemas",
-    "text": "Schemas"
-  },
-  {
-    "objectID": "sqlserver-snippet/Index.html#optimize",
-    "href": "sqlserver-snippet/Index.html#optimize",
-    "title": "SQL-Server Snippet",
-    "section": "Optimize",
-    "text": "Optimize"
-  },
-  {
-    "objectID": "sqlserver-snippet/Index.html#references",
-    "href": "sqlserver-snippet/Index.html#references",
-    "title": "SQL-Server Snippet",
-    "section": "References",
-    "text": "References\n\n[SHORTCUT] (https://manhng.com/blog/sql-query/)\n[SYNONYM] (https://www.sqlservertutorial.net/sql-server-basics/sql-server-synonym/)\n[STORE PROCEDURE] (https://comdy.vn/sql-server/stored-procedure-trong-sql-server/)"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Making shareable documents with Quarto",
-    "section": "",
-    "text": "It’s possible to create beautiful documentation to share online with Quarto that auto-updates with GitHub. This is very new and incredibly cool. This tutorial is an example of a quarto website — it is a really powerful way to create and share your work. You can communicate about science using the same reproducible workflow you and/or your colleagues use for analyses, whether or not you write code.\nCreating websites with Quarto can be done without knowing R, Python or HTML, CSS, etc, and that’s where we’ll start. However, Quarto integrates with these tools so you can make your websites as complex and beautiful as you like as you see examples and reuse and remix from others in the open community. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout."
-  },
-  {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "Making shareable documents with Quarto",
-    "section": "",
-    "text": "It’s possible to create beautiful documentation to share online with Quarto that auto-updates with GitHub. This is very new and incredibly cool. This tutorial is an example of a quarto website — it is a really powerful way to create and share your work. You can communicate about science using the same reproducible workflow you and/or your colleagues use for analyses, whether or not you write code.\nCreating websites with Quarto can be done without knowing R, Python or HTML, CSS, etc, and that’s where we’ll start. However, Quarto integrates with these tools so you can make your websites as complex and beautiful as you like as you see examples and reuse and remix from others in the open community. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout."
-  },
-  {
-    "objectID": "index.html#what-is-quarto",
-    "href": "index.html#what-is-quarto",
-    "title": "Making shareable documents with Quarto",
-    "section": "What is Quarto?",
-    "text": "What is Quarto?\nQuarto helps you have your ideas and your code in one place, and present it in a beautiful way.\nQuarto unifies and extends the RMarkdown ecosystem - it unifies by combining the functionality of R Markdown, bookdown, distill, xaringian, etc into a single consistent system. And it extends in several ways: all features are possible beyond R too, including Python and Javascript. It also has more “guardrails”: accessibility and inclusion are centered in the design. Quarto is for people who love RMarkdown, and it’s for people who have never used RMarkdown.\nThe ability for Quarto to streamline collaboration has been so cool and important for our NASA Openscapes project. Quarto has been a common place for us to collaborate - across R and Python languages and coding expertise."
-  },
-  {
-    "objectID": "index.html#what-is-this-tutorial",
-    "href": "index.html#what-is-this-tutorial",
-    "title": "Making shareable documents with Quarto",
-    "section": "What is this tutorial?",
-    "text": "What is this tutorial?\nThis is a 1-hour tutorial that can be used to teach or as self-paced learning.\nWe introduce Quarto by exploring this tutorial website, and practicing the basic Quarto workflow using different tools (GitHub browser, RStudio, and Jupyter) for editing your website.\nWe’ll start off from the browser so you don’t need to install any additional software, however this approach is very limited and you will soon outgrow its capabilities. If you don’t already have a workflow to edit files and sync to GitHub from your computer, I recommend RStudio. You don’t need to know R to use RStudio, and it has powerful editor features that make for happy workflows.\nQuarto.org is the go-to place for full documentation and more tutorials!"
-  },
-  {
-    "objectID": "index.html#example-quarto-sites",
-    "href": "index.html#example-quarto-sites",
-    "title": "Making shareable documents with Quarto",
-    "section": "Example Quarto sites",
-    "text": "Example Quarto sites\nA few Quarto websites from Openscapes - so far we have been using Quarto for documentation using Quarto and Markdown files and Jupyter Notebooks.\n\nChampions Lessons Series\nOpenscapes Approach Guide\n\n2021 NASA Cloud Hackathon\nFaylab Lab Manual\nA Quarto tip a day, by Mine Çetinkaya-Rundel"
-  },
-  {
-    "objectID": "index.html#about",
-    "href": "index.html#about",
-    "title": "Making shareable documents with Quarto",
-    "section": "About",
-    "text": "About\nOpenscapes is about better science for future us. We help researchers reimagine data analysis, develop modern skills that are of immediate value to them, and cultivate collaborative and inclusive research teams as part of the broader global open movement.\nWe’re developing this tutorial to help folks with different levels of technical skills use Quarto for documentation and tutorial building. This tutorial was originally created for several different audiences: NASA-Openscapes researcher support engineers using Python, communications directors at organizations promoting open science who do not identify as coders, and fisheries scientists curious about transitioning from RMarkdown. We’re hoping it’s useful to folks with backgrounds as wide as these; if you find it useful or have suggestions for improvement, please let us know by clicking “Edit this page” or “Report an issue” at the upper right side of any page."
-  },
-  {
-    "objectID": "sqlserver-snippet/synonym.html",
-    "href": "sqlserver-snippet/synonym.html",
-    "title": "Synonym",
-    "section": "",
-    "text": "Creating a synonym for a table in another database\n\nFirst, create a new database named test and set the current database to test:\nCREATE DATABASE test;\nGO\n\nUSE test;\nGO\nNext, create a new schema named purchasing inside the test database:\nCREATE SCHEMA purchasing;\nGO\nThen, create a new table in the purchasing schema of the test database:\nCREATE TABLE test.purchasing.suppliers\n(\n    supplier_id   INT\n    PRIMARY KEY IDENTITY, \n    supplier_name NVARCHAR(100) NOT NULL\n);\nAfter that, from the BikeStores database, create a synonym for the purchasing.suppliers table in the test database:\nUSE BikeStores;\nGO\n\nCREATE SYNONYM suppliers \nFOR test.purchasing.suppliers;\nFinally, from the BikeStores database, refer to the test.purchasing.suppliers table using the suppliers synonym:\nSELECT * FROM suppliers;\nRemoving a synonym\nDROP SYNONYM IF EXISTS orders;\n\n\n\nReference\n\nsqlservertutorial"
-  },
-  {
-    "objectID": "python-snippet/REST_API.html",
-    "href": "python-snippet/REST_API.html",
-    "title": "REST API",
-    "section": "",
-    "text": "Chỉnh sửa lại url, headers, data\n\nimport requests\n\n# set the API endpoint and headers\nurl = 'https://api.example.com/post'\nheaders = {'Content-type': 'application/json', 'Authorization': 'Bearer your_access_token'}\n\n# set the data to be sent in the request\ndata = {'name': 'John Doe', 'email': 'johndoe@example.com'}\n\n# send the POST request using the Requests library\nresponse = requests.post(url, headers=headers, json=data)\n\n# verify the response\nprint(response.status_code)\nprint(response.text)"
-  },
-  {
-    "objectID": "python-snippet/REST_API.html#kiểm-tra-api-sử-dụng-post-method",
-    "href": "python-snippet/REST_API.html#kiểm-tra-api-sử-dụng-post-method",
-    "title": "REST API",
-    "section": "",
-    "text": "Chỉnh sửa lại url, headers, data\n\nimport requests\n\n# set the API endpoint and headers\nurl = 'https://api.example.com/post'\nheaders = {'Content-type': 'application/json', 'Authorization': 'Bearer your_access_token'}\n\n# set the data to be sent in the request\ndata = {'name': 'John Doe', 'email': 'johndoe@example.com'}\n\n# send the POST request using the Requests library\nresponse = requests.post(url, headers=headers, json=data)\n\n# verify the response\nprint(response.status_code)\nprint(response.text)"
-  },
-  {
-    "objectID": "python-snippet/Modelling.html",
-    "href": "python-snippet/Modelling.html",
-    "title": "Modelling",
-    "section": "",
-    "text": "Model explain\n\ndalex\nmodelStudio - R & Python examples"
-  },
-  {
-    "objectID": "python-snippet/Ultilities.html",
-    "href": "python-snippet/Ultilities.html",
-    "title": "Ultilities",
-    "section": "",
-    "text": "Mouse click\nfrom pynput.mouse import Controller, Button\nimport time\nmouse = Controller()\nwhile True:\n  mouse.click(Button.left, 1)\n  print('clicked')  \n  time.sleep(5)"
-  },
-  {
-    "objectID": "python-snippet/Code - optimize.html",
-    "href": "python-snippet/Code - optimize.html",
-    "title": "Code optimize",
-    "section": "",
-    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
-  },
-  {
-    "objectID": "python-snippet/Code - optimize.html#profiling",
-    "href": "python-snippet/Code - optimize.html#profiling",
-    "title": "Code optimize",
-    "section": "",
-    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
+    "text": "Here’s a markdown table comparing dplyr (R) and pandas (Python) for various data manipulation tasks:\n\nData frame verbs\n\nRows\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nArrange\narrange(df, col)\ndf.sort_values(by='col', ascending=True)\n\n\nDistinct\ndistinct(df, col)\ndf.drop_duplicates(subset='col')\n\n\nFilter\nfilter(df, condition)\ndf[df['condition']]\n\n\nSlice\nslice(df, rows)\ndf.iloc[rows]\n\n\n\nColumns\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nGlimpse\nglimpse(df)\ndf.info()\n\n\nMutate\nmutate(df, new_col = func(old_col))\ndf['new_col'] = df['old_col'].apply(func)\n\n\nPull\npull(df, col)\ndf['col']\n\n\nRename\nrename(df, new_col_name = old_col_name)\ndf.rename(columns={'old_col_name': 'new_col_name'}, inplace=True)\n\n\nSelect\nselect(df, col1, col2, ...)\ndf[['col1', 'col2', ...]]\n\n\n\nGroups\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nGroup By\ngroup_by(df, col)\ndf.groupby('col')\n\n\nSummarise\nsummarise(df, new_col = func(col))\ndf.agg({'col': func})\n\n\n\nData frames\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nbind_cols\nbind_cols(df1, df2)\npd.concat([df1, df2], axis=1)\n\n\nbind_rows\nbind_rows(df1, df2)\npd.concat([df1, df2], axis=0)\n\n\nInner Join\ninner_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='inner')\n\n\nLeft Join\nleft_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='left')\n\n\nRight Join\nright_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='right')\n\n\nFull Join\nfull_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='outer')\n\n\nSemi Join\nsemi_join(df1, df2, by = \"key_column\")\nNot directly available; can use merge and isin together for similar effect.\n\n\nAnti Join\nanti_join(df1, df2, by = \"key_column\")\nNot directly available; can use merge and isin together for similar effect.\n\n\n\nVector functions\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nif_else\nmutate(df, new_col = if_else(condition, true_val, false_val))\ndf['new_col'] = np.where(condition, true_val, false_val)\n\n\nna_if\nmutate(df, col = na_if(col, value))\ndf['col'].replace(value, np.nan)\n\n\nn_distinct\nn_distinct(df, col)\ndf['col'].nunique()\n\n\nsample_n\nsample_n(df, n)\ndf.sample(n=n)\n\n\nsample_frac\nsample_frac(df, fraction)\ndf.sample(frac=fraction)\n\n\ncase_when\nmutate(df, new_col = case_when(condition1 ~ value1, condition2 ~ value2, ...))\ndf['new_col'] = np.select([condition1, condition2, ...], [value1, value2, ...], default=default_value)\n\n\ncummean\nmutate(df, new_col = cummean(col))\ndf['new_col'] = df['col'].expanding().mean()\n\n\nrow_number\nmutate(df, row_num = row_number())\ndf['row_num'] = range(1, len(df)+1)\n\n\nmin_rank\nmutate(df, rank = min_rank(col))\ndf['rank'] = df['col'].rank(method='min')\n\n\ndense_rank\nmutate(df, rank = dense_rank(col))\ndf['rank'] = df['col'].rank(method='dense')\n\n\n\nNote that while many functionalities are directly available in both dplyr and pandas, some might require slight variations or custom functions to achieve the same result."
   },
   {
     "objectID": "machine-learning/transformer.html",
@@ -245,10 +63,199 @@
     "text": "Giả sử chúng ta có một câu: “Tôi thích chơi bóng đá.”\nTrong mô hình ngôn ngữ, mục tiêu là dự đoán từ tiếp theo trong ngữ cảnh đã cho. Tuy nhiên, trong quá trình huấn luyện, chúng ta thường không muốn cho mô hình truy cập vào các từ trong tương lai vì nó có thể dẫn đến rò rỉ dữ liệu và dự đoán không thực tế. Vì vậy, chế che được áp dụng.\nĐể áp dụng cơ chế che, thường được ký hiệu là [MASK], để thay thế một số từ trong chuỗi đầu vào trong quá trình huấn luyện. Trong trường hợp này, chúng ta có thể ngẫu nhiên che một số từ trong câu, dẫn đến:\nCâu Đầu Vào (có cơ chế che): “Tôi thích chơi [MASK] bóng đá.”\nBây giờ, trong quá trình huấn luyện, mục tiêu của mô hình là dự đoán từ bị che dựa trên ngữ cảnh xung quanh. Nó học cách hiểu cấu trúc câu, ý nghĩa và sự phụ thuộc giữa các từ để đưa ra dự đoán chính xác. Mô hình nhận chuỗi đầu vào đã được chỉnh sửa (thêm [MASK]) và cố gắng dự đoán bản gốc, không bị che, ở vị trí đã được che.\nTrong quá trình huấn luyện hoặc đánh giá, cơ chế che không được sử dụng và mô hình được cung cấp với toàn bộ chuỗi đầu vào. Nó có thể tạo ra dự đoán cho từ tiếp theo trong chuỗi dựa trên kiến thức đã học từ quá trình huấn luyện.\nCơ chế che giúp mô hình tổng quát tốt và xử lý các trường hợp mà nó gặp phải các từ chưa được nhìn thấy hoặc thiếu. Nó khuyến khích mô hình dựa vào ngữ cảnh có sẵn để đưa ra dự đoán chính xác và cải thiện khả năng hiểu cấu trúc câu."
   },
   {
-    "objectID": "comparision/dplyr-pandas.html",
-    "href": "comparision/dplyr-pandas.html",
-    "title": "dplyr vs pandas",
+    "objectID": "python-snippet/Code - optimize.html",
+    "href": "python-snippet/Code - optimize.html",
+    "title": "Code optimize",
     "section": "",
-    "text": "Here’s a markdown table comparing dplyr (R) and pandas (Python) for various data manipulation tasks:\n\nData frame verbs\n\nRows\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nArrange\narrange(df, col)\ndf.sort_values(by='col', ascending=True)\n\n\nDistinct\ndistinct(df, col)\ndf.drop_duplicates(subset='col')\n\n\nFilter\nfilter(df, condition)\ndf[df['condition']]\n\n\nSlice\nslice(df, rows)\ndf.iloc[rows]\n\n\n\nColumns\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nGlimpse\nglimpse(df)\ndf.info()\n\n\nMutate\nmutate(df, new_col = func(old_col))\ndf['new_col'] = df['old_col'].apply(func)\n\n\nPull\npull(df, col)\ndf['col']\n\n\nRename\nrename(df, new_col_name = old_col_name)\ndf.rename(columns={'old_col_name': 'new_col_name'}, inplace=True)\n\n\nSelect\nselect(df, col1, col2, ...)\ndf[['col1', 'col2', ...]]\n\n\n\nGroups\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nGroup By\ngroup_by(df, col)\ndf.groupby('col')\n\n\nSummarise\nsummarise(df, new_col = func(col))\ndf.agg({'col': func})\n\n\n\nData frames\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nbind_cols\nbind_cols(df1, df2)\npd.concat([df1, df2], axis=1)\n\n\nbind_rows\nbind_rows(df1, df2)\npd.concat([df1, df2], axis=0)\n\n\nInner Join\ninner_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='inner')\n\n\nLeft Join\nleft_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='left')\n\n\nRight Join\nright_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='right')\n\n\nFull Join\nfull_join(df1, df2, by = \"key_column\")\npd.merge(df1, df2, on='key_column', how='outer')\n\n\nSemi Join\nsemi_join(df1, df2, by = \"key_column\")\nNot directly available; can use merge and isin together for similar effect.\n\n\nAnti Join\nanti_join(df1, df2, by = \"key_column\")\nNot directly available; can use merge and isin together for similar effect.\n\n\n\nVector functions\n\n\n\n\n\n\n\n\nFeature\ndplyr (R)\npandas (Python)\n\n\n\n\nif_else\nmutate(df, new_col = if_else(condition, true_val, false_val))\ndf['new_col'] = np.where(condition, true_val, false_val)\n\n\nna_if\nmutate(df, col = na_if(col, value))\ndf['col'].replace(value, np.nan)\n\n\nn_distinct\nn_distinct(df, col)\ndf['col'].nunique()\n\n\nsample_n\nsample_n(df, n)\ndf.sample(n=n)\n\n\nsample_frac\nsample_frac(df, fraction)\ndf.sample(frac=fraction)\n\n\ncase_when\nmutate(df, new_col = case_when(condition1 ~ value1, condition2 ~ value2, ...))\ndf['new_col'] = np.select([condition1, condition2, ...], [value1, value2, ...], default=default_value)\n\n\ncummean\nmutate(df, new_col = cummean(col))\ndf['new_col'] = df['col'].expanding().mean()\n\n\nrow_number\nmutate(df, row_num = row_number())\ndf['row_num'] = range(1, len(df)+1)\n\n\nmin_rank\nmutate(df, rank = min_rank(col))\ndf['rank'] = df['col'].rank(method='min')\n\n\ndense_rank\nmutate(df, rank = dense_rank(col))\ndf['rank'] = df['col'].rank(method='dense')\n\n\n\nNote that while many functionalities are directly available in both dplyr and pandas, some might require slight variations or custom functions to achieve the same result."
+    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
+  },
+  {
+    "objectID": "python-snippet/Code - optimize.html#profiling",
+    "href": "python-snippet/Code - optimize.html#profiling",
+    "title": "Code optimize",
+    "section": "",
+    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
+  },
+  {
+    "objectID": "python-snippet/Ultilities.html",
+    "href": "python-snippet/Ultilities.html",
+    "title": "Ultilities",
+    "section": "",
+    "text": "Mouse click\nfrom pynput.mouse import Controller, Button\nimport time\nmouse = Controller()\nwhile True:\n  mouse.click(Button.left, 1)\n  print('clicked')  \n  time.sleep(5)"
+  },
+  {
+    "objectID": "python-snippet/Modelling.html",
+    "href": "python-snippet/Modelling.html",
+    "title": "Modelling",
+    "section": "",
+    "text": "Model explain\n\ndalex\nmodelStudio - R & Python examples"
+  },
+  {
+    "objectID": "python-snippet/REST_API.html",
+    "href": "python-snippet/REST_API.html",
+    "title": "REST API",
+    "section": "",
+    "text": "Chỉnh sửa lại url, headers, data\n\nimport requests\n\n# set the API endpoint and headers\nurl = 'https://api.example.com/post'\nheaders = {'Content-type': 'application/json', 'Authorization': 'Bearer your_access_token'}\n\n# set the data to be sent in the request\ndata = {'name': 'John Doe', 'email': 'johndoe@example.com'}\n\n# send the POST request using the Requests library\nresponse = requests.post(url, headers=headers, json=data)\n\n# verify the response\nprint(response.status_code)\nprint(response.text)"
+  },
+  {
+    "objectID": "python-snippet/REST_API.html#kiểm-tra-api-sử-dụng-post-method",
+    "href": "python-snippet/REST_API.html#kiểm-tra-api-sử-dụng-post-method",
+    "title": "REST API",
+    "section": "",
+    "text": "Chỉnh sửa lại url, headers, data\n\nimport requests\n\n# set the API endpoint and headers\nurl = 'https://api.example.com/post'\nheaders = {'Content-type': 'application/json', 'Authorization': 'Bearer your_access_token'}\n\n# set the data to be sent in the request\ndata = {'name': 'John Doe', 'email': 'johndoe@example.com'}\n\n# send the POST request using the Requests library\nresponse = requests.post(url, headers=headers, json=data)\n\n# verify the response\nprint(response.status_code)\nprint(response.text)"
+  },
+  {
+    "objectID": "sqlserver-snippet/synonym.html",
+    "href": "sqlserver-snippet/synonym.html",
+    "title": "Synonym",
+    "section": "",
+    "text": "Creating a synonym for a table in another database\n\nFirst, create a new database named test and set the current database to test:\nCREATE DATABASE test;\nGO\n\nUSE test;\nGO\nNext, create a new schema named purchasing inside the test database:\nCREATE SCHEMA purchasing;\nGO\nThen, create a new table in the purchasing schema of the test database:\nCREATE TABLE test.purchasing.suppliers\n(\n    supplier_id   INT\n    PRIMARY KEY IDENTITY, \n    supplier_name NVARCHAR(100) NOT NULL\n);\nAfter that, from the BikeStores database, create a synonym for the purchasing.suppliers table in the test database:\nUSE BikeStores;\nGO\n\nCREATE SYNONYM suppliers \nFOR test.purchasing.suppliers;\nFinally, from the BikeStores database, refer to the test.purchasing.suppliers table using the suppliers synonym:\nSELECT * FROM suppliers;\nRemoving a synonym\nDROP SYNONYM IF EXISTS orders;\n\n\n\nReference\n\nsqlservertutorial"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Making shareable documents with Quarto",
+    "section": "",
+    "text": "It’s possible to create beautiful documentation to share online with Quarto that auto-updates with GitHub. This is very new and incredibly cool. This tutorial is an example of a quarto website — it is a really powerful way to create and share your work. You can communicate about science using the same reproducible workflow you and/or your colleagues use for analyses, whether or not you write code.\nCreating websites with Quarto can be done without knowing R, Python or HTML, CSS, etc, and that’s where we’ll start. However, Quarto integrates with these tools so you can make your websites as complex and beautiful as you like as you see examples and reuse and remix from others in the open community. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Making shareable documents with Quarto",
+    "section": "",
+    "text": "It’s possible to create beautiful documentation to share online with Quarto that auto-updates with GitHub. This is very new and incredibly cool. This tutorial is an example of a quarto website — it is a really powerful way to create and share your work. You can communicate about science using the same reproducible workflow you and/or your colleagues use for analyses, whether or not you write code.\nCreating websites with Quarto can be done without knowing R, Python or HTML, CSS, etc, and that’s where we’ll start. However, Quarto integrates with these tools so you can make your websites as complex and beautiful as you like as you see examples and reuse and remix from others in the open community. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout."
+  },
+  {
+    "objectID": "index.html#what-is-quarto",
+    "href": "index.html#what-is-quarto",
+    "title": "Making shareable documents with Quarto",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\nQuarto helps you have your ideas and your code in one place, and present it in a beautiful way.\nQuarto unifies and extends the RMarkdown ecosystem - it unifies by combining the functionality of R Markdown, bookdown, distill, xaringian, etc into a single consistent system. And it extends in several ways: all features are possible beyond R too, including Python and Javascript. It also has more “guardrails”: accessibility and inclusion are centered in the design. Quarto is for people who love RMarkdown, and it’s for people who have never used RMarkdown.\nThe ability for Quarto to streamline collaboration has been so cool and important for our NASA Openscapes project. Quarto has been a common place for us to collaborate - across R and Python languages and coding expertise."
+  },
+  {
+    "objectID": "index.html#what-is-this-tutorial",
+    "href": "index.html#what-is-this-tutorial",
+    "title": "Making shareable documents with Quarto",
+    "section": "What is this tutorial?",
+    "text": "What is this tutorial?\nThis is a 1-hour tutorial that can be used to teach or as self-paced learning.\nWe introduce Quarto by exploring this tutorial website, and practicing the basic Quarto workflow using different tools (GitHub browser, RStudio, and Jupyter) for editing your website.\nWe’ll start off from the browser so you don’t need to install any additional software, however this approach is very limited and you will soon outgrow its capabilities. If you don’t already have a workflow to edit files and sync to GitHub from your computer, I recommend RStudio. You don’t need to know R to use RStudio, and it has powerful editor features that make for happy workflows.\nQuarto.org is the go-to place for full documentation and more tutorials!"
+  },
+  {
+    "objectID": "index.html#example-quarto-sites",
+    "href": "index.html#example-quarto-sites",
+    "title": "Making shareable documents with Quarto",
+    "section": "Example Quarto sites",
+    "text": "Example Quarto sites\nA few Quarto websites from Openscapes - so far we have been using Quarto for documentation using Quarto and Markdown files and Jupyter Notebooks.\n\nChampions Lessons Series\nOpenscapes Approach Guide\n\n2021 NASA Cloud Hackathon\nFaylab Lab Manual\nA Quarto tip a day, by Mine Çetinkaya-Rundel"
+  },
+  {
+    "objectID": "index.html#about",
+    "href": "index.html#about",
+    "title": "Making shareable documents with Quarto",
+    "section": "About",
+    "text": "About\nOpenscapes is about better science for future us. We help researchers reimagine data analysis, develop modern skills that are of immediate value to them, and cultivate collaborative and inclusive research teams as part of the broader global open movement.\nWe’re developing this tutorial to help folks with different levels of technical skills use Quarto for documentation and tutorial building. This tutorial was originally created for several different audiences: NASA-Openscapes researcher support engineers using Python, communications directors at organizations promoting open science who do not identify as coders, and fisheries scientists curious about transitioning from RMarkdown. We’re hoping it’s useful to folks with backgrounds as wide as these; if you find it useful or have suggestions for improvement, please let us know by clicking “Edit this page” or “Report an issue” at the upper right side of any page."
+  },
+  {
+    "objectID": "sqlserver-snippet/Index.html#schemas",
+    "href": "sqlserver-snippet/Index.html#schemas",
+    "title": "SQL-Server Snippet",
+    "section": "Schemas",
+    "text": "Schemas"
+  },
+  {
+    "objectID": "sqlserver-snippet/Index.html#optimize",
+    "href": "sqlserver-snippet/Index.html#optimize",
+    "title": "SQL-Server Snippet",
+    "section": "Optimize",
+    "text": "Optimize"
+  },
+  {
+    "objectID": "sqlserver-snippet/Index.html#references",
+    "href": "sqlserver-snippet/Index.html#references",
+    "title": "SQL-Server Snippet",
+    "section": "References",
+    "text": "References\n\n[SHORTCUT] (https://manhng.com/blog/sql-query/)\n[SYNONYM] (https://www.sqlservertutorial.net/sql-server-basics/sql-server-synonym/)\n[STORE PROCEDURE] (https://comdy.vn/sql-server/stored-procedure-trong-sql-server/)"
+  },
+  {
+    "objectID": "sqlserver-snippet/permissions.html",
+    "href": "sqlserver-snippet/permissions.html",
+    "title": "Permissions",
+    "section": "",
+    "text": "Grant create/ excecute\nuse BSCORE_CREDITCARD\ngo\ngrant create procedure to [NOR\\HUYENDT14]\ngrant alter on schema::[dbo] to [NOR\\HUYENDT14]\ngrant execute to [NOR\\HUYENDT14]\n\n\nFind all permissions/access for all users in a database\n/*\n\nSecurity Audit Report\n1) List all access provisioned to a sql user or windows user/group directly \n2) List all access provisioned to a sql user or windows user/group through a database or application role\n3) List all access provisioned to the public role\n\nColumns Returned:\nUserName        : SQL or Windows/Active Directory user account.  This could also be an Active Directory group.\nUserType        : Value will be either 'SQL User' or 'Windows User'.  This reflects the type of user defined for the \n                  SQL Server user account.\nDatabaseUserName: Name of the associated user as defined in the database user account.  The database user may not be the\n                  same as the server user.\nRole            : The role name.  This will be null if the associated permissions to the object are defined at directly\n                  on the user account, otherwise this will be the name of the role that the user is a member of.\nPermissionType  : Type of permissions the user/role has on an object. Examples could include CONNECT, EXECUTE, SELECT\n                  DELETE, INSERT, ALTER, CONTROL, TAKE OWNERSHIP, VIEW DEFINITION, etc.\n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.\nPermissionState : Reflects the state of the permission type, examples could include GRANT, DENY, etc.\n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.\nObjectType      : Type of object the user/role is assigned permissions on.  Examples could include USER_TABLE, \n                  SQL_SCALAR_FUNCTION, SQL_INLINE_TABLE_VALUED_FUNCTION, SQL_STORED_PROCEDURE, VIEW, etc.   \n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.          \nObjectName      : Name of the object that the user/role is assigned permissions on.  \n                  This value may not be populated for all roles.  Some built in roles have implicit permission\n                  definitions.\nColumnName      : Name of the column of the object that the user/role is assigned permissions on. This value\n                  is only populated if the object is a table, view or a table value function.                 \n*/\n\n--List all access provisioned to a sql user or windows user/group directly \nSELECT  \n    [UserName] = CASE princ.[type] \n                    WHEN 'S' THEN princ.[name]\n                    WHEN 'U' THEN ulogin.[name] COLLATE Latin1_General_CI_AI\n                 END,\n    [UserType] = CASE princ.[type]\n                    WHEN 'S' THEN 'SQL User'\n                    WHEN 'U' THEN 'Windows User'\n                 END,  \n    [DatabaseUserName] = princ.[name],       \n    [Role] = null,      \n    [PermissionType] = perm.[permission_name],       \n    [PermissionState] = perm.[state_desc],       \n    [ObjectType] = obj.type_desc,--perm.[class_desc],       \n    [ObjectName] = OBJECT_NAME(perm.major_id),\n    [ColumnName] = col.[name]\nFROM    \n    --database user\n    sys.database_principals princ  \nLEFT JOIN\n    --Login accounts\n    sys.login_token ulogin on princ.[sid] = ulogin.[sid]\nLEFT JOIN        \n    --Permissions\n    sys.database_permissions perm ON perm.[grantee_principal_id] = princ.[principal_id]\nLEFT JOIN\n    --Table columns\n    sys.columns col ON col.[object_id] = perm.major_id \n                    AND col.[column_id] = perm.[minor_id]\nLEFT JOIN\n    sys.objects obj ON perm.[major_id] = obj.[object_id]\nWHERE \n    princ.[type] in ('S','U')\nUNION\n--List all access provisioned to a sql user or windows user/group through a database or application role\nSELECT  \n    [UserName] = CASE memberprinc.[type] \n                    WHEN 'S' THEN memberprinc.[name]\n                    WHEN 'U' THEN ulogin.[name] COLLATE Latin1_General_CI_AI\n                 END,\n    [UserType] = CASE memberprinc.[type]\n                    WHEN 'S' THEN 'SQL User'\n                    WHEN 'U' THEN 'Windows User'\n                 END, \n    [DatabaseUserName] = memberprinc.[name],   \n    [Role] = roleprinc.[name],      \n    [PermissionType] = perm.[permission_name],       \n    [PermissionState] = perm.[state_desc],       \n    [ObjectType] = obj.type_desc,--perm.[class_desc],   \n    [ObjectName] = OBJECT_NAME(perm.major_id),\n    [ColumnName] = col.[name]\nFROM    \n    --Role/member associations\n    sys.database_role_members members\nJOIN\n    --Roles\n    sys.database_principals roleprinc ON roleprinc.[principal_id] = members.[role_principal_id]\nJOIN\n    --Role members (database users)\n    sys.database_principals memberprinc ON memberprinc.[principal_id] = members.[member_principal_id]\nLEFT JOIN\n    --Login accounts\n    sys.login_token ulogin on memberprinc.[sid] = ulogin.[sid]\nLEFT JOIN        \n    --Permissions\n    sys.database_permissions perm ON perm.[grantee_principal_id] = roleprinc.[principal_id]\nLEFT JOIN\n    --Table columns\n    sys.columns col on col.[object_id] = perm.major_id \n                    AND col.[column_id] = perm.[minor_id]\nLEFT JOIN\n    sys.objects obj ON perm.[major_id] = obj.[object_id]\nUNION\n--List all access provisioned to the public role, which everyone gets by default\nSELECT  \n    [UserName] = '{All Users}',\n    [UserType] = '{All Users}', \n    [DatabaseUserName] = '{All Users}',       \n    [Role] = roleprinc.[name],      \n    [PermissionType] = perm.[permission_name],       \n    [PermissionState] = perm.[state_desc],       \n    [ObjectType] = obj.type_desc,--perm.[class_desc],  \n    [ObjectName] = OBJECT_NAME(perm.major_id),\n    [ColumnName] = col.[name]\nFROM    \n    --Roles\n    sys.database_principals roleprinc\nLEFT JOIN        \n    --Role permissions\n    sys.database_permissions perm ON perm.[grantee_principal_id] = roleprinc.[principal_id]\nLEFT JOIN\n    --Table columns\n    sys.columns col on col.[object_id] = perm.major_id \n                    AND col.[column_id] = perm.[minor_id]                   \nJOIN \n    --All objects   \n    sys.objects obj ON obj.[object_id] = perm.[major_id]\nWHERE\n    --Only roles\n    roleprinc.[type] = 'R' AND\n    --Only public role\n    roleprinc.[name] = 'public' AND\n    --Only objects of ours, not the MS objects\n    obj.is_ms_shipped = 0\nORDER BY\n    princ.[Name],\n    OBJECT_NAME(perm.major_id),\n    col.[name],\n    perm.[permission_name],\n    perm.[state_desc],\n    obj.type_desc--perm.[class_desc] \n\n\nReferences\n\nfind-all-permissions"
+  },
+  {
+    "objectID": "python-snippet/Environment.html",
+    "href": "python-snippet/Environment.html",
+    "title": "Environment",
+    "section": "",
+    "text": "Environment setup\n\nUsing conda\n\nCreate conda environment\n\nQuick create env using conda create\nconda create -n env_rdm python=3.10 pip ipykernel notebook\nconda activate env_rdm\nCreate env use environment.yaml file\n\nFirst, create environment.yaml file with example content following\nSecond, run command conda env create -f environment.yaml\nOptional, remove environment if needed conda env remove -n env_ascore\n\nname: env_ascore\nchannels:\n  - conda-forge\n  - defaults\ndependencies:\n  - python=3.10\n  - pandas\n  - joblib\n  - statsmodels\n  - ipykernel\n  - zipp  \n  - pip\n  - pip: \n    - optbinning==0.17.3\n    - ortools==9.4.1874\n# set https_proxy=10.1.33.23:8080\n# set http_proxy=10.1.33.23:8080          \nCreate env use requirements.txt file\n\nconda list --export &gt; requirements.txt\nconda install --file requirements.txt\nConda common commands\n\n\nConda environment list\n\nconda info --env\n\nRemove conda environment\n\nconda deactivate\nconda env remove -n python38\n\nActivate conda environment\n\nconda activate python38\n\nClean unused library\n\nconda clean --all\npip cache remove *\nCreate environment for jupyter notebook\n\nUse conda to create new environment\nUse ipython\nconda activate python38\nipython kernel install --user --name=python38\nRemove jupyter notebook environment (require run as administrator)\njupyter kernelspec list\njupyter kernelspec uninstall python38 \n\nInstall packages in OFFLINE mode with pip\n\nInstall OFFLINE packages using requirements.txt\n\nStep 1: Input to requirements.txt file in current directory. Eg. content \"jupyter-contrib-nbextensions==0.5.1\"\n# export env if available\npip list --format=freeze &gt; requirements.txt\nStep 2: Create wheel folder (Eg. D:)\nStep 3: Run following command to download dependencies packages to folder wheel\n\npip download -r requirements.txt -d wheel\n\nStep 4: Run following command to install\n\npip install -r requirements.txt --find-links=D:\\wheel --no-index\nInstall OFFLINE Linux package\n\nCase 1: Activate same version python (i.e 3.7.0) and run following command\npip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas\nCase 2: Specify python version\npip download --platform manylinux1_x86_64 --only-binary=:all: --python-version=38 --no-binary=:none: pandas\n\n\nOther ultility commands\n\nCheck dependencies\n\npython -m pip check \npip freeze &gt; requirements.txt\n\nThemes jupyter notebook\n\njt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T\n\nInstall Extension for jupyter notebook\n\npip install jupyter_contrib_nbextensions\npip install jupyter_nbextensions_configurator\njupyter contrib nbextension install --user\njupyter nbextensions_configurator enable --user"
+  },
+  {
+    "objectID": "python-snippet/Graphs.html",
+    "href": "python-snippet/Graphs.html",
+    "title": "Graphs",
+    "section": "",
+    "text": "Candlestick\nimport yfinance as yf \ndata = yf.download(tickers = 'ETH-USD', period = 'max', interval = '1d')\ndfpl = data[0:100]\nimport plotly.graph_objects as go\nfig = go.Figure(data=go.Candlestick(\n    x = dfpl.index,\n    open = dfpl.Open,\n    high = dfpl.High,\n    low = dfpl.Low,\n    close = dfpl.Close    \n))\n\nfig.show()"
+  },
+  {
+    "objectID": "python-snippet/Statistics.html",
+    "href": "python-snippet/Statistics.html",
+    "title": "Statistic",
+    "section": "",
+    "text": "# https://www.kaggle.com/code/carlmcbrideellis/what-is-adversarial-validation/notebook\n\nfrom scipy import stats\nfeatures_list = X_test.columns.values.tolist()\nfor feature in features_list:\n    statistic, pvalue = stats.kstest(X_train[feature], X_test[feature])\n    print(\"p-value %.2f\" %pvalue, \"for the feature\",feature)"
+  },
+  {
+    "objectID": "python-snippet/Statistics.html#ks-test",
+    "href": "python-snippet/Statistics.html#ks-test",
+    "title": "Statistic",
+    "section": "",
+    "text": "# https://www.kaggle.com/code/carlmcbrideellis/what-is-adversarial-validation/notebook\n\nfrom scipy import stats\nfeatures_list = X_test.columns.values.tolist()\nfor feature in features_list:\n    statistic, pvalue = stats.kstest(X_train[feature], X_test[feature])\n    print(\"p-value %.2f\" %pvalue, \"for the feature\",feature)"
+  },
+  {
+    "objectID": "python-snippet/Statistics.html#lightgbm-focal-loss",
+    "href": "python-snippet/Statistics.html#lightgbm-focal-loss",
+    "title": "Statistic",
+    "section": "2.1 Lightgbm focal loss",
+    "text": "2.1 Lightgbm focal loss\n# https://maxhalford.github.io/blog/lightgbm-focal-loss/"
+  },
+  {
+    "objectID": "python-snippet/Statistics.html#metric-processing-time",
+    "href": "python-snippet/Statistics.html#metric-processing-time",
+    "title": "Statistic",
+    "section": "3.1 Metric Processing Time",
+    "text": "3.1 Metric Processing Time\nhttps://www.kaggle.com/code/rohanrao/amex-competition-metric-implementations"
+  },
+  {
+    "objectID": "comparision/Index.html",
+    "href": "comparision/Index.html",
+    "title": "Comparision",
+    "section": "",
+    "text": "R vs Python\nPl/sql vs db2\nDb2 vs mssql"
+  },
+  {
+    "objectID": "comparision/plsql-db2.html",
+    "href": "comparision/plsql-db2.html",
+    "title": "plsql-db2",
+    "section": "",
+    "text": "Here’s a table comparing DB2 and PL/SQL based on the provided features and their syntax:\nThese SQL commands are mainly categorized into five categories:"
+  },
+  {
+    "objectID": "comparision/plsql-db2.html#basic-sql-commands",
+    "href": "comparision/plsql-db2.html#basic-sql-commands",
+    "title": "plsql-db2",
+    "section": "Basic SQL commands:",
+    "text": "Basic SQL commands:\n\nDDL – Data Definition Language\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nCreate Table\nCREATE TABLE new_table AS SELECT * FROM existing_table;\nsimilar\n\n\nDrop Table\nDROP TABLE table_name [PURGE];\nDROP TABLE IF EXISTS table_name;\n\n\nRename Columns\nALTER TABLE table_name RENAME COLUMN old_column TO new_column;\nsimilar\n\n\nModify Columns\nALTER TABLE table_name MODIFY COLUMN column_name datatype;\nsimilar\n\n\nAdd Columns\nALTER TABLE table_name ADD COLUMN new_column datatype;\nsimilar\n\n\n\nDQL – Data Query Language\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nLeft Join\nSELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;\nsimilar\n\n\nInner Join\nSELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;\nsimilar\n\n\nFull Join\nSELECT * FROM table1 FULL JOIN table2 ON table1.column = table2.column;\nsimilar\n\n\nAnti Join\nSELECT column1, column2 FROM table1 WHERE NOT EXISTS (SELECT * FROM table2 WHERE table1.column = table2.column)\nsimilar\n\n\nMerge\nMERGE INTO table_name USING source_table ON (table_name.column = source_table.column) WHEN MATCHED THEN UPDATE SET column1 = value1 WHEN NOT MATCHED THEN INSERT (column1) VALUES (value1);\nsimilar\n\n\nInsert Into\nINSERT INTO table_name (column1, column2) VALUES (value1, value2);\nsimilar\n\n\nUpdate\nUPDATE staff a SET salary = (SELECT AVG(salary) + 2000 FROM staff b WHERE a.dept = b.dept) WHERE id &lt; 60;\nsimilar\n\n\nTruncate Table\nTRUNCATE TABLE table_name;\nTRUNCATE TABLE table_name IMMEDIATE;\n\n\nTemporary Table\nDECLARE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);\nCREATE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);\n\n\nGroup By\nSELECT column1, COUNT(*) FROM table_name GROUP BY column1;\nsimilar\n\n\nPartition By\nSELECT column1, RANK() OVER (PARTITION BY column2 ORDER BY column3) FROM table_name;\nsimilar\n\n\nRun Procedure\nEXECUTE procedure_name;\nCALL procedure_name();\n\n\nLoop\nFOR row IN (SELECT * FROM table_name) LOOP &lt;statements&gt; END LOOP;\nFOR row AS cursor_name CURSOR FOR SELECT * FROM table_name DO &lt;statements&gt; END FOR;\n\n\nParallel\nINSERT /*+APPEND PARALLEL(8)*/ INTO\nSELECT * FROM table_name PARALLEL 4;\n\n\n\nMERGE /*+ parallel(8) */ INTO\n\n\n\n\nSELECT /*+ PARALLEL(8) */ * FROM\n\n\n\n\nDCL – Data Control Language\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nSelect\nSELECT column1, column2 FROM table_name;\nsimilar"
+  },
+  {
+    "objectID": "comparision/plsql-db2.html#utilities",
+    "href": "comparision/plsql-db2.html#utilities",
+    "title": "plsql-db2",
+    "section": "Utilities",
+    "text": "Utilities\n\n\n\n\n\n\n\n\nFeature\nPL/SQL Syntax\nDB2 Syntax\n\n\n\n\nSYS_INFO\n\nSELECT * FROM SYSIBMADM.ENV_SYS_INFO\n\n\nNVL\nNVL(column, 0)\nCOALESCE(column, 0)\n\n\n\nCOALESCE(column, 0)\nCOALESCE(column, 0)\n\n\nDiff Month\nSELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;\nSELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;\n\n\nAdd Months\nSELECT ADD_MONTHS(date1, number_of_months) FROM dual;\nSELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;\n\n\nDiff Date\nSELECT date2 - date1 FROM dual;\n\n\n\nCompare 2 Tables\n(SELECT * FROM B_TMP MINUS SELECT * FROM B_TMP1) UNION ALL(SELECT * FROM B_TMP1 MINUS SELECT * FROM B_TMP)\nSELECT * FROM table1 EXCEPT SELECT * FROM table2;"
+  },
+  {
+    "objectID": "comparision/plsql-db2.html#references",
+    "href": "comparision/plsql-db2.html#references",
+    "title": "plsql-db2",
+    "section": "References",
+    "text": "References\n\ndb2-sql-cookbook"
   }
 ]

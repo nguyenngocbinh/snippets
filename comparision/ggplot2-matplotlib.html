@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Snippets - Python Snippet</title>
+<title>Snippets - ggplot2 vs.&nbsp;matplotlib</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../python-snippet/Environment.html" rel="next">
-<link href="../comparision/ggplot2-matplotlib.html" rel="prev">
+<link href="../python-snippet/Index.html" rel="next">
+<link href="../comparision/dplyr-pandas.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-snippet/Index.html">Python Snippet</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../comparision/Index.html">Comparision</a></li><li class="breadcrumb-item"><a href="../comparision/ggplot2-matplotlib.html"><code>ggplot2</code> vs.&nbsp;<code>matplotlib</code></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -116,11 +116,11 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="../comparision/Index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Comparision</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../comparision/plsql-db2.html" class="sidebar-item-text sidebar-link">
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../comparision/ggplot2-matplotlib.html" class="sidebar-item-text sidebar-link">
+  <a href="../comparision/ggplot2-matplotlib.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><code>ggplot2</code> vs.&nbsp;<code>matplotlib</code></span></a>
   </div>
 </li>
@@ -143,13 +143,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../python-snippet/Index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../python-snippet/Index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Snippet</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../python-snippet/Environment.html" class="sidebar-item-text sidebar-link">
@@ -247,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python Snippet</h1>
+<h1 class="title"><code>ggplot2</code> vs.&nbsp;<code>matplotlib</code></h1>
 </div>
 
 
@@ -262,7 +262,351 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><img src="https://www.python.org/static/img/psf-logo.png" class="img-fluid"></p>
+<p>Below is a markdown table comparing the features of <code>ggplot2</code> (R) and <code>matplotlib</code> (Python) for creating visualizations:</p>
+<ol type="1">
+<li><p>Plot basics</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 39%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>aes()</td>
+<td>Used inside <code>ggplot()</code> to map variables to aesthetics</td>
+<td>Not used; column names are specified directly in <code>plot()</code></td>
+</tr>
+<tr class="even">
+<td>+(<gg>) %&gt;%</gg></td>
+<td>Used to add layers and modify the plot</td>
+<td>Not applicable</td>
+</tr>
+<tr class="odd">
+<td>ggsave()</td>
+<td>Save the plot to a file</td>
+<td>Not applicable; plots are saved using <code>plt.savefig()</code> in Matplotlib</td>
+</tr>
+<tr class="even">
+<td>quickplot()</td>
+<td>Simple, intuitive function for quick plots</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Layers</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>geom_abline()</td>
+<td>Add an arbitrary line to the plot</td>
+<td><code>axhline()</code> and <code>axvline()</code> in Matplotlib</td>
+</tr>
+<tr class="even">
+<td>geom_hline()</td>
+<td>Add horizontal lines to the plot</td>
+<td><code>axhline()</code> in Matplotlib</td>
+</tr>
+<tr class="odd">
+<td>geom_vline()</td>
+<td>Add vertical lines to the plot</td>
+<td><code>axvline()</code> in Matplotlib</td>
+</tr>
+<tr class="even">
+<td>geom_bar()</td>
+<td>Create bar charts</td>
+<td><code>kind='bar'</code> in <code>plot()</code></td>
+</tr>
+<tr class="odd">
+<td>geom_col()</td>
+<td>Create column charts</td>
+<td><code>kind='bar'</code> with <code>position='identity'</code> in <code>plot()</code></td>
+</tr>
+<tr class="even">
+<td>stat_count()</td>
+<td>Create bar charts with automatic counting</td>
+<td><code>kind='bar'</code> with <code>position='identity'</code> in <code>plot()</code></td>
+</tr>
+<tr class="odd">
+<td>geom_boxplot()</td>
+<td>Create boxplots</td>
+<td><code>kind='box'</code> in <code>plot()</code></td>
+</tr>
+<tr class="even">
+<td>stat_boxplot()</td>
+<td>Create boxplots with statistical summaries</td>
+<td><code>kind='box'</code> in <code>plot()</code></td>
+</tr>
+<tr class="odd">
+<td>geom_map()</td>
+<td>Plot spatial data on maps</td>
+<td>Not available</td>
+</tr>
+<tr class="even">
+<td>geom_point()</td>
+<td>Create scatter plots</td>
+<td><code>kind='scatter'</code> in <code>plot()</code></td>
+</tr>
+<tr class="odd">
+<td>geom_label()</td>
+<td>Add text labels to points</td>
+<td>Not available</td>
+</tr>
+<tr class="even">
+<td>geom_text()</td>
+<td>Add text annotations to the plot</td>
+<td><code>text()</code> in Matplotlib</td>
+</tr>
+<tr class="odd">
+<td>geom_violin()</td>
+<td>Create violin plots</td>
+<td>Not available</td>
+</tr>
+<tr class="even">
+<td>stat_ydensity()</td>
+<td>Compute density for violin plots</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Position adjustment</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>position_dodge()</td>
+<td>Dodge overlapping elements</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Annotations</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>annotate()</td>
+<td>Add annotations to the plot</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Scales</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>labs()</td>
+<td>Modify plot labels and titles</td>
+<td>Not available</td>
+</tr>
+<tr class="even">
+<td>xlab()</td>
+<td>Modify the x-axis label</td>
+<td><code>set_xlabel()</code> in Matplotlib</td>
+</tr>
+<tr class="odd">
+<td>ylab()</td>
+<td>Modify the y-axis label</td>
+<td><code>set_ylabel()</code> in Matplotlib</td>
+</tr>
+<tr class="even">
+<td>ggtitle()</td>
+<td>Add a plot title</td>
+<td><code>set_title()</code> in Matplotlib</td>
+</tr>
+<tr class="odd">
+<td>lims()</td>
+<td>Set plot limits</td>
+<td><code>set_xlim()</code> and <code>set_ylim()</code> in Matplotlib</td>
+</tr>
+<tr class="even">
+<td>xlim()</td>
+<td>Set x-axis limits</td>
+<td><code>set_xlim()</code> in Matplotlib</td>
+</tr>
+<tr class="odd">
+<td>ylim()</td>
+<td>Set y-axis limits</td>
+<td><code>set_ylim()</code> in Matplotlib</td>
+</tr>
+<tr class="even">
+<td>scale_x_continuous()</td>
+<td>Modify x-axis scales</td>
+<td><code>set_xscale()</code> in Matplotlib</td>
+</tr>
+<tr class="odd">
+<td>scale_y_continuous()</td>
+<td>Modify y-axis scales</td>
+<td><code>set_yscale()</code> in Matplotlib</td>
+</tr>
+<tr class="even">
+<td>scale_x_date()</td>
+<td>Modify x-axis scales for date data</td>
+<td>Not available</td>
+</tr>
+<tr class="odd">
+<td>scale_y_date()</td>
+<td>Modify y-axis scales for date data</td>
+<td>Not available</td>
+</tr>
+<tr class="even">
+<td>scale_x_discrete()</td>
+<td>Modify x-axis scales for discrete data</td>
+<td>Not available</td>
+</tr>
+<tr class="odd">
+<td>scale_y_discrete()</td>
+<td>Modify y-axis scales for discrete data</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Facetting</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>facet_wrap()</td>
+<td>Create small multiples in a wrap layout</td>
+<td><code>subplots=True</code> with multiple plots in Pandas</td>
+</tr>
+<tr class="even">
+<td>facet_grid()</td>
+<td>Create small multiples in a grid layout</td>
+<td><code>subplots=True</code> with multiple plots in Pandas</td>
+</tr>
+<tr class="odd">
+<td>coord_flip()</td>
+<td>Flip the x and y-axis</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Themes</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>element_blank()</td>
+<td>Remove an element from the plot</td>
+<td>Not available</td>
+</tr>
+<tr class="even">
+<td>element_rect()</td>
+<td>Modify rectangle elements in the plot</td>
+<td>Not available</td>
+</tr>
+<tr class="odd">
+<td>element_line()</td>
+<td>Modify line elements in the plot</td>
+<td>Not available</td>
+</tr>
+<tr class="even">
+<td>element_text()</td>
+<td>Modify text elements in the plot</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>autoplot</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ggplot2 (R)</th>
+<th>Feature</th>
+<th>matplotlib (Python)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>autoplot()</td>
+<td>Create basic plots automatically</td>
+<td>Not available</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<p>Please note that <code>ggplot2</code> and <code>matplotlib</code> are both powerful visualization libraries, but they have different philosophies and strengths. The syntax for creating visualizations can differ significantly between the two libraries.</p>
 
 
 
@@ -617,13 +961,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../comparision/ggplot2-matplotlib.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><code>ggplot2</code> vs.&nbsp;<code>matplotlib</code></span>
+      <a href="../comparision/dplyr-pandas.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">dplyr vs.&nbsp;pandas</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../python-snippet/Environment.html" class="pagination-link">
-        <span class="nav-page-text">Environment</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../python-snippet/Index.html" class="pagination-link">
+        <span class="nav-page-text">Python Snippet</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -633,7 +977,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© CC-By NguyenNgocBinh, 2023</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/python-snippet/Index.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/ggplot2-matplotlib.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
     <div class="nav-footer-right">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>
   </div>
 </footer>
