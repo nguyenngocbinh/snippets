@@ -1,4 +1,8 @@
-# Install python in r step by step
+---
+title: reticulate
+---
+
+Install python in r step by step
 
 ### Create environment
 
