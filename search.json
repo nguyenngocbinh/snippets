@@ -1,5 +1,145 @@
 [
   {
+    "objectID": "r-snippet/create_package.html",
+    "href": "r-snippet/create_package.html",
+    "title": "Hướng dẫn tạo package trên R",
+    "section": "",
+    "text": "Cài đặt những packages cần thiết\ninstall.packages(c(\"devtools\", \"roxygen2\", \"testthat\", \"knitr\", \"usethis\"))\n\n\nTạo package mới\nusethis::create_package(\"D:/R/how.to.create.package\")\nSau khi dùng lệnh này thì 1 project được tạo ra gồm:\n\nfolder: R dùng để lưu tất cả các hàm\nfile: DESCRIPTION và NAMESPACE: 2 file này dùng để mô tả về package và dependencies\n\n\n\nMột làm ví dụ\n# R/performance.R\n# Sensitivity\n#' @title sensitivity\n#' @description Calculate the sensitivity for a given logit model.\n#' @details For a given binary response actuals and predicted probability scores, sensitivity is defined as number of observations with the event AND predicted to have the event divided by the number of observations with the event. It can be used as an indicator to gauge how sensitive is your model in detecting the occurence of events, especially when you are not so concerned about predicting the non-events as true.\n#' @author Selva Prabhakaran \\email{selva86@@gmail.com}\n#' @export sensitivity\n#' @param actuals The actual binary flags for the response variable. It can take a numeric vector containing values of either 1 or 0, where 1 represents the 'Good' or 'Events' while 0 represents 'Bad' or 'Non-Events'.\n#' @param predictedScores The prediction probability scores for each observation. If your classification model gives the 1/0 predcitions, convert it to a numeric vector of 1's and 0's.\n#' @param threshold If predicted value is above the threshold, it will be considered as an event (1), else it will be a non-event (0). Defaults to 0.5.\n#' @return The sensitivity of the given binary response actuals and predicted probability scores, which is, the number of observations with the event AND predicted to have the event divided by the nummber of observations with the event.\n#' @examples\n#' data('ActualsAndScores')\n#' sensitivity(actuals=ActualsAndScores$Actuals, predictedScores=ActualsAndScores$PredictedScores)\nsensitivity &lt;- function(actuals, predictedScores, threshold = 0.5) {\n  predicted_dir &lt;- ifelse(predictedScores &lt; threshold, 0, 1)\n  actual_dir &lt;- actuals\n  no_with_and_predicted_to_have_event &lt;- sum(actual_dir == 1 & predicted_dir == 1, na.rm = T)\n  no_with_event &lt;- sum(actual_dir == 1, na.rm = T)\n  return(no_with_and_predicted_to_have_event/no_with_event)\n}\n\n\nChỉnh sửa DESCRIPTION\n\nChỉnh sửa thông tin như tác giả, đồng tác giả, email, License, mô tả tổng quát về package …\nThêm thông tin DESCRIPTION\n\nusethis::use_package('ggplot2', type = 'import', min_version = TRUE)\nusethis::use_package('scorecard', type = 'suggests', min_version = TRUE)\n\nlapply(c('dplyr','ggplot2', 'pROC', 'ROCR', 'tidyr', 'purrr', 'magrittr', 'tibble', 'knitr'),\n       function(pkg) usethis::use_package(pkg, type = 'suggests', min_version = TRUE))\n\n\nChỉnh sửa NAMESPACE\n\nTạo RD file\nSau khi sử dụng lệnh này thì sẽ có folder man được tạo ra, folder này chứa các hướng dẫn sử dụng các hàm trong package\n\ndevtools::document()\nroxygen2::roxygenise() # cách khác\n\n\nThêm hướng dẫn sử dụng (vignettes)\ndevtools::clean_vignettes() # NOTE: backup data before run these commands\nusethis::use_vignette(\"mba_past\")\n\nbuild vignettes\n\ndevtools::build_vignettes()\n\nSau khi sử dụng lệnh này thì sẽ có thêm folder doc chứa Rcode và các file đã được knit\n\n\n\nThêm data vào package\n\nVới dữ liệu nhỏ &lt; 1Mb thì có thể thêm luôn vào package\n\nhmeq &lt;- read.csv('D:/tmp/hmeq-data/hmeq.csv')\nnames(hmeq) &lt;- tolower(names(hmeq))\nusethis::use_data_raw(\"hmeq\")\nusethis::use_data(hmeq)\n\n#' hmeq\n#' @docType data\n#' @name hmeq\n#' @usage data(hmeq)\n#' @author Nguyen Ngoc Binh \\email{nguyenngocbinhneu@@gmail.com}\n#' @references \\url{https://codeload.github.com/Carl-Lejerskar/HMEQ/zip/master}\n#' @keywords datasets\n#' @examples\n#' data(hmeq)\nNULL\n\n\nBuild package\ndevtools::check()\ndevtools::build()"
+  },
+  {
+    "objectID": "r-snippet/gganimate.html",
+    "href": "r-snippet/gganimate.html",
+    "title": "gganimate",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(gganimate)\nlibrary(gapminder)\ntheme_set(theme_classic())\n\ngap &lt;- gapminder %&gt;%\n  filter(continent == \"Asia\") %&gt;%\n  group_by(year) %&gt;%\n  # The * 1 makes it possible to have non-integer ranks while sliding\n  mutate(rank = min_rank(-gdpPercap) * 1) %&gt;%\n  ungroup()\n\np &lt;- ggplot(gap, aes(rank, group = country, \n                     fill = as.factor(country), color = as.factor(country))) +\n  geom_tile(aes(y = gdpPercap/2,\n                height = gdpPercap,\n                width = 0.9), alpha = 0.8, color = NA) +\n  \n  # text in x-axis (requires clip = \"off\" in coord_*)\n  # paste(country, \" \")  is a hack to make pretty spacing, since hjust &gt; 1 \n  #   leads to weird artifacts in text spacing.\n  geom_text(aes(y = 0, label = paste(country, \" \")), vjust = 0.2, hjust = 1) +\n  \n  coord_flip(clip = \"off\", expand = FALSE) +\n  scale_y_continuous(labels = scales::comma) +\n  scale_x_reverse() +\n  guides(color = FALSE, fill = FALSE) +\n  \n  labs(title='{closest_state}', x = \"\", y = \"GFP per capita\") +\n  theme(plot.title = element_text(hjust = 0, size = 22),\n        axis.ticks.y = element_blank(),  # These relate to the axes post-flip\n        axis.text.y  = element_blank(),  # These relate to the axes post-flip\n        plot.margin = margin(1,1,1,4, \"cm\")) +\n  \n  transition_states(year, transition_length = 4, state_length = 1) +\n  ease_aes('cubic-in-out')\n\nanimate(p, fps = 25, duration = 20, width = 800, height = 600)"
+  },
+  {
+    "objectID": "r-snippet/index.html",
+    "href": "r-snippet/index.html",
+    "title": "R snippet",
+    "section": "",
+    "text": "install.packages(\"spAddins\")\ninstall.packages(\"remedy\")"
+  },
+  {
+    "objectID": "r-snippet/index.html#awesome-ggplot2",
+    "href": "r-snippet/index.html#awesome-ggplot2",
+    "title": "R snippet",
+    "section": "Awesome ggplot2",
+    "text": "Awesome ggplot2\n\nThemes and aesthetics\n\ngghighlight{Eg: gghighlight(max(value) &gt; 19)}\nggsci {Eg: scale_color_palname(), scale_fill_palname()}\nggfittext {Eg. geom_fit_text(reflow = TRUE, grow = TRUE)}\nhrbrtheme {Eg: scale_y_comma(), theme_ipsum_rc()}\nbbplot {https://bbc.github.io/rcookbook/, Eg: bbc_style(), finalise_plot()}\nggthemr {https://github.com/cttobin/ggthemr}\n\n\n\nPresentation, composition and scales\n\ntagger"
+  },
+  {
+    "objectID": "r-snippet/index.html#format-axis",
+    "href": "r-snippet/index.html#format-axis",
+    "title": "R snippet",
+    "section": "format axis",
+    "text": "format axis\nscale_y_continuous(label=scales::comma)\n\nscale_x_date(date_breaks = \"2 month\", date_labels = \"%m-%Y\")\n\ntheme(legend.title = element_blank(),\n        legend.position = \"bottom\",\n        axis.text.x = element_text(angle = 30))"
+  },
+  {
+    "objectID": "r-snippet/index.html#format-axis-text",
+    "href": "r-snippet/index.html#format-axis-text",
+    "title": "R snippet",
+    "section": "format axis text",
+    "text": "format axis text\ntheme(axis.text.x = element_text(size = 14), axis.title.x = element_text(size = 16),\n      axis.text.y = element_text(size = 14), axis.title.y = element_text(size = 16),\n      plot.title = element_text(size = 20, face = \"bold\", color = \"darkgreen\"))\n      \ntheme(axis.ticks.length.y = unit(nc * 0.15,\"cm\"))"
+  },
+  {
+    "objectID": "r-snippet/index.html#geom_line-with-x-is-factor",
+    "href": "r-snippet/index.html#geom_line-with-x-is-factor",
+    "title": "R snippet",
+    "section": "geom_line with x is factor",
+    "text": "geom_line with x is factor\ngeom_line(aes(group = 1))"
+  },
+  {
+    "objectID": "r-snippet/index.html#combine-graphs",
+    "href": "r-snippet/index.html#combine-graphs",
+    "title": "R snippet",
+    "section": "combine graphs",
+    "text": "combine graphs\nhttps://cran.r-project.org/web/packages/patchwork/vignettes/patchwork.html"
+  },
+  {
+    "objectID": "r-snippet/index.html#vietnamese-font",
+    "href": "r-snippet/index.html#vietnamese-font",
+    "title": "R snippet",
+    "section": "vietnamese font",
+    "text": "vietnamese font\nSys.setlocale(category = \"LC_ALL\", locale = \"vietnamese\")\n\neval(parse(\"R/graph_pqr_201911.R\", encoding = \"UTF-8\"))\n\nplot(1:4,rep(1,4), pch=c(\"\\u0111\",\"\\u01B0\",\"\\u01A1\",\"\\u0103\"),cex=4)\n# Uppercase\nplot(1:4,rep(1,4), pch=c(\"\\U0110\",\"\\u01AF\",\"\\u01A0\",\"\\u0102\"),cex=4)"
+  },
+  {
+    "objectID": "r-snippet/index.html#top_n_by-function",
+    "href": "r-snippet/index.html#top_n_by-function",
+    "title": "R snippet",
+    "section": "top_n_by function",
+    "text": "top_n_by function\nf_top_n &lt;- function(df, n, top_by){\n  top_by &lt;- enquo(top_by)\n  \n  top_val &lt;- df %&gt;% \n    filter(is.finite(!!top_by)) %&gt;% \n    pull(!!top_by) %&gt;% \n    unique() %&gt;% \n    sort(decreasing = TRUE) %&gt;% \n    head(n) \n  \n  filter(df, !!top_by %in% top_val) %&gt;% return()\n}"
+  },
+  {
+    "objectID": "r-snippet/index.html#bỏ-dấu",
+    "href": "r-snippet/index.html#bỏ-dấu",
+    "title": "R snippet",
+    "section": "Bỏ dấu",
+    "text": "Bỏ dấu\nstringi::stri_trans_general('Nguyễn Ngọc Bình', \"latin-ascii\" )"
+  },
+  {
+    "objectID": "r-snippet/index.html#compose",
+    "href": "r-snippet/index.html#compose",
+    "title": "R snippet",
+    "section": "compose",
+    "text": "compose\ntidy_lm &lt;- compose(tidy, lm)\ntidy_lm(Sepal.Length ~ Species, data = iris)"
+  },
+  {
+    "objectID": "r-snippet/index.html#partial",
+    "href": "r-snippet/index.html#partial",
+    "title": "R snippet",
+    "section": "partial",
+    "text": "partial\nmean_na_rm &lt;- partial(mean, na.rm = TRUE)"
+  },
+  {
+    "objectID": "r-snippet/index.html#reduce",
+    "href": "r-snippet/index.html#reduce",
+    "title": "R snippet",
+    "section": "reduce",
+    "text": "reduce\ndfs &lt;- list(\n  age = tibble(name = \"John\", age = 30),\n  sex = tibble(name = c(\"John\", \"Mary\"), sex = c(\"M\", \"F\")),\n  trt = tibble(name = \"Mary\", treatment = \"A\")\n)\n\ndfs %&gt;% reduce(full_join)"
+  },
+  {
+    "objectID": "r-snippet/index.html#rpub",
+    "href": "r-snippet/index.html#rpub",
+    "title": "R snippet",
+    "section": "rpub",
+    "text": "rpub\n---\ntitle: \"Correlation analysis\"\nauthor: \"Nguyễn Ngọc Bình\"\ndate: \"`r format(Sys.Date(),'%Y-%m-%d')`\"\noutput:\n  html_document:\n    code_download: true\n    code_folding: show\n    number_sections: yes\n    theme: \"default\"\n    toc: TRUE\n    toc_float: TRUE\n    dev: 'svg'\neditor_options:\n  chunk_output_type: console\n---"
+  },
+  {
+    "objectID": "r-snippet/index.html#image",
+    "href": "r-snippet/index.html#image",
+    "title": "R snippet",
+    "section": "image",
+    "text": "image\n![](../figures/d_i_d_graph.png)\nbookdown::html_document2, bookdown::word_document2\n![(\\#fig:nnet2)Một mạng nơ-ron với bốn đầu vào và một lớp ẩn với ba nơ-ron ẩn.](images/nnet2.png)\n\\@ref(fig:nnet2)\nor\nknitr::opts_chunk$set(echo = FALSE, fig.height = 5, fig.width = 7, out.width = \"70%\")\nknitr::include_graphics(\"figures/d_i_d_graph.png\")\n\nFormat number in rmarkdown\nfnc_kbl &lt;- function(df) {\n    df %&gt;%\n    mutate_if(\n      is.numeric,\n      format,\n      digits = 2,\n      nsmall = 2,\n      big.mark = \".\",\n      decimal.mark = \",\"\n    ) %&gt;%\n    kbl() %&gt;%\n    kable_classic(full_width = F)\n}\n\n\nFormat table in word\nfnc_print_tbl_df &lt;- function(tbl_name) {\n  out &lt;- tbl_name %&gt;%\n    ungroup() %&gt;% \n    mutate_if(is.numeric, round, 2) %&gt;%\n    flextable() %&gt;%\n    autofit() %&gt;% \n    theme_zebra(odd_header = '#8064A2') %&gt;% \n    font(fontname = 'Tahoma', part = 'all') %&gt;% \n    fontsize(size = 10, part = 'all')%&gt;% \n    border(border = officer::fp_border(color = \"#8064A2\")) \n  return(out)\n}\n\n\nimport data\nrio::import(xml2::xml2_example(\"cd_catalog.xml\"))\n\n\nReticulate\nfile.edit(file.path(\"~\", \".Rprofile\"))\n# RETICULATE_PYTHON=\"C/Users/nguye/anaconda3\""
+  },
+  {
+    "objectID": "r-snippet/treemap.html",
+    "href": "r-snippet/treemap.html",
+    "title": "tree map",
+    "section": "",
+    "text": "library(ggplot2)\nlibrary(treemapify)\n\nif(!require(treemapify)) install.packages(\"treemapify\")\n\ndata(G20)\n\nggplot(G20, aes(area = gdp_mil_usd, fill = hdi)) +\n  geom_treemap()\n\nggplot(G20, aes(area = gdp_mil_usd, fill = hdi, label = country)) +\n  geom_treemap() +\n  geom_treemap_text(fontface = \"italic\", colour = \"white\", place = \"centre\",\n                    grow = TRUE)\n\n\nggplot(G20, aes(area = gdp_mil_usd, fill = hdi, label = country,\n                subgroup = region)) +\n  geom_treemap() +\n  geom_treemap_subgroup_border() +\n  geom_treemap_subgroup_text(place = \"centre\", grow = T, alpha = 0.5, colour =\n                               \"black\", fontface = \"italic\", min.size = 0) +\n  geom_treemap_text(colour = \"white\", place = \"topleft\", reflow = T)\n\nggplot(G20, aes(area = gdp_mil_usd, fill = region, label = country, subgroup = region)) +\n  geom_treemap() +\n  geom_treemap_text(grow = T, reflow = T, colour = \"black\") +\n  facet_wrap( ~ hemisphere) +\n  scale_fill_brewer(palette = \"Set1\") +\n  theme(legend.position = \"bottom\") +\n  labs(\n    title = \"The G-20 major economies by hemisphere\",\n    caption = \"The area of each tile represents the country's GDP as a\n    proportion of all countries in that hemisphere\",\n    fill = \"Region\"\n  )"
+  },
+  {
+    "objectID": "r-snippet/dplyr.html",
+    "href": "r-snippet/dplyr.html",
+    "title": "dplyr",
+    "section": "",
+    "text": "We need to do the following:\n\nUse quo_name() to convert the input expression to string\nUse := helper provided by rlang\n\n# https://www.onceupondata.com/2017/08/12/my-first-steps-into-the-world-of-tidyeval/\nadd_tag_count &lt;- function(x, cname, count_col){\n  \n  cname &lt;- enquo(cname)\n  \n  count_col &lt;- enquo(count_col)\n  count_col_name &lt;- quo_name(count_col)\n\n  x %&gt;% \n    mutate(!!count_col_name := map_int(!!cname, length))\n}\n\n\n\nfreq_tbl &lt;- function(df, ..., percent = TRUE){\n  group &lt;- quos(...)\n  \n  out &lt;- df %&gt;% \n    group_by(!!!group) %&gt;% \n    summarise(freq = n()) %&gt;% \n    arrange(desc(freq)) %&gt;% \n    ungroup()\n  \n  if(percent == TRUE){\n    out &lt;- out %&gt;% \n      mutate(percentage = 100*freq/sum(freq))\n  }\n  return(out)\n}"
+  },
+  {
+    "objectID": "r-snippet/dplyr.html#dplyr-with-bang-bang-example",
+    "href": "r-snippet/dplyr.html#dplyr-with-bang-bang-example",
+    "title": "dplyr",
+    "section": "",
+    "text": "We need to do the following:\n\nUse quo_name() to convert the input expression to string\nUse := helper provided by rlang\n\n# https://www.onceupondata.com/2017/08/12/my-first-steps-into-the-world-of-tidyeval/\nadd_tag_count &lt;- function(x, cname, count_col){\n  \n  cname &lt;- enquo(cname)\n  \n  count_col &lt;- enquo(count_col)\n  count_col_name &lt;- quo_name(count_col)\n\n  x %&gt;% \n    mutate(!!count_col_name := map_int(!!cname, length))\n}\n\n\n\nfreq_tbl &lt;- function(df, ..., percent = TRUE){\n  group &lt;- quos(...)\n  \n  out &lt;- df %&gt;% \n    group_by(!!!group) %&gt;% \n    summarise(freq = n()) %&gt;% \n    arrange(desc(freq)) %&gt;% \n    ungroup()\n  \n  if(percent == TRUE){\n    out &lt;- out %&gt;% \n      mutate(percentage = 100*freq/sum(freq))\n  }\n  return(out)\n}"
+  },
+  {
+    "objectID": "r-snippet/dplyr.html#references",
+    "href": "r-snippet/dplyr.html#references",
+    "title": "dplyr",
+    "section": "References",
+    "text": "References\n\ntidyeval"
+  },
+  {
     "objectID": "comparision/ggplot2-matplotlib.html",
     "href": "comparision/ggplot2-matplotlib.html",
     "title": "ggplot2 vs. matplotlib",
@@ -228,7 +368,7 @@
     "href": "comparision/Index.html",
     "title": "Comparision",
     "section": "",
-    "text": "R vs Python\nPl/sql vs db2\nDb2 vs mssql"
+    "text": "dplyr vs. pandas\nggplot2 vs. matplotlib\nPl/sql vs. db2\nDb2 vs. mssql"
   },
   {
     "objectID": "comparision/plsql-db2.html",
@@ -257,5 +397,54 @@
     "title": "plsql-db2",
     "section": "References",
     "text": "References\n\ndb2-sql-cookbook"
+  },
+  {
+    "objectID": "r-snippet/reticulate.html",
+    "href": "r-snippet/reticulate.html",
+    "title": "Install python in r step by step",
+    "section": "",
+    "text": "Install python in r step by step\n\nCreate environment\nlibrary(reticulate)\nconda_create(envname = 'D:/python/env/r-reticulate', python_version = '3.6.13')\n\n\nEdit .Rprofile\n# usethis::edit_r_profile()\n# Sys.setenv(RETICULATE_PYTHON = 'D:\\\\python\\\\env\\\\r-reticulate\\\\') # version 3.6\n\n\nInstall python package\n\nDefault environment\nmy_env &lt;- \"D:\\\\python\\\\envs\\\\r-reticulate\"\n\n\nInstall packages using conda\nreticulate::conda_install(envname = my_env, packages = \"lightgbm\")\n\n\nInstall packages using pip\nreticulate::py_install(packages = \"xgboost\", envname = my_env)\n\n\n\nExtra\n\ninstall miniconda if needed\nreticulate::install_miniconda(path = \"D:/python/\")\nreticulate::miniconda_update(path = \"D:/python/\") # update if needed\n\n\ncheck python version\nreticulate::py_version()\nreticulate::py_versions_windows()\n\n\ncheck config\nreticulate::py_config() \nreticulate::py_discover_config()\n\n\ncheck conda envs\nreticulate::conda_list()\n# conda_remove(\"pillow\")\nreticulate::virtualenv_list()\n\n\nconvert to rmd\nrmarkdown:::convert_ipynb(\"python/volatility-prediction.ipynb\")"
+  },
+  {
+    "objectID": "r-snippet/ggplot2.html",
+    "href": "r-snippet/ggplot2.html",
+    "title": "ggplot2",
+    "section": "",
+    "text": "Pie chart\nPie chart with other approach this by defining another variable (call pos) in df that calculates the position of text labels.\n# https://stackoverflow.com/questions/24803460/r-ggplot2-add-labels-on-facet-pie-chart\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndf &lt;- df %&gt;% group_by(year) %&gt;% mutate(pos = cumsum(quantity)- quantity/2)\n\nggplot(data=df, aes(x=factor(1), y=quantity, fill=factor(prod))) +\n  geom_bar(stat=\"identity\") +\n  geom_text(aes(x= factor(1), y=pos, label = quantity), size=10) +  # note y = pos\n  facet_grid(facets = .~year, labeller = label_value) +\n  coord_polar(theta = \"y\")\n\n\nDonut chart\ncount.data &lt;- data.frame(\n  class = c(\"1st\", \"2nd\", \"3rd\", \"Crew\"),\n  n = c(325, 285, 706, 885),\n  prop = c(14.8, 12.9, 32.1, 40.2)\n)\ncount.data\n\n# Add label position\ncount.data &lt;- count.data %&gt;%\n  arrange(desc(class)) %&gt;%\n  mutate(lab.ypos = cumsum(prop) - 0.5*prop)\ncount.data\n\nmycols &lt;- c(\"#0073C2FF\", \"#EFC000FF\", \"#868686FF\", \"#CD534CFF\")\n\nggplot(count.data, aes(x = \"\", y = prop, fill = class)) +\n  geom_bar(width = 1, stat = \"identity\", color = \"white\") +\n  coord_polar(\"y\", start = 0)+\n  geom_text(aes(y = lab.ypos, label = prop), color = \"white\")+\n  scale_fill_manual(values = mycols) +\n  theme_void()\n\n# Donut chart\nggplot(count.data, aes(x = 2, y = prop, fill = class)) +\n  geom_bar(stat = \"identity\", color = \"white\") +\n  coord_polar(theta = \"y\", start = 0)+\n  geom_text(aes(y = lab.ypos, label = prop), color = \"white\")+\n  scale_fill_manual(values = mycols) +\n  theme_void()+\n  xlim(0.5, 2.5)\n\ngganimate .gif\nhttps://github.com/thomasp85/gganimate\n\n\nhrbrtheme\n\nformat date\n\nscale_y_continuous(label=scales::comma)+\n  scale_x_date(date_breaks = \"2 month\",\n               date_labels = \"%m-%Y\")+\n  theme(legend.title = element_blank(),\n        legend.position = \"bottom\",\n        axis.text.x = element_text(angle = 30))\n\nhistogram\n\nggplot(aes(x = cnt))+\n  geom_histogram(bins = 18)+ # bins = 24\n  labs(title = \"Tong thoi gian\",\n       subtitle = \"don vi\",\n       x = \"So luong\",\n       y = \"So quan sat\")+\n  scale_y_comma()+\n  theme_ipsum_rc()+\n  facet_wrap(~ bi_card_group, nrow = 2)\n\ntheme\n\ntheme(axis.text.x = element_text(size = 14), axis.title.x = element_text(size = 16),\n      axis.text.y = element_text(size = 14), axis.title.y = element_text(size = 16),\n      plot.title = element_text(size = 20, face = \"bold\", color = \"darkgreen\"))\n\n\nvietnamese text\nplot(1:4,rep(1,4),pch=c(\"\\u0111\",\"\\u01B0\",\"\\u01A1\",\"\\u0103\"),cex=4)\n\n\nArea plot\nmu &lt;- wdata %&gt;%\n  group_by(sex) %&gt;%\n  summarise(grp.mean = mean(weight))\n\n# Area plot\na &lt;- ggplot(economics, aes(x=date)) +\n  geom_area(aes(y=psavert), fill = \"#999999\",\n            color = \"#999999\", alpha=0.5) +\n  geom_area(aes(y=uempmed), fill = \"#E69F00\",\n            color = \"#E69F00\", alpha=0.5) +\n  theme_minimal()\n\na + geom_density(aes(color = sex), alpha=0.4)+\n  geom_vline(data = mu, aes(xintercept = grp.mean, color=sex),\n             linetype=\"dashed\")\n\n\nDensity\na + geom_density(aes(color = sex), alpha=0.4)+\n  geom_vline(data = mu, aes(xintercept = grp.mean, color=sex),\n             linetype=\"dashed\")\n\n\nHistogram\n# Basic plot\na + geom_histogram()\n# Change the number of bins\na + geom_histogram(bins = 50)\n# Position adjustment: \"identity\" (overlaid)\na + geom_histogram(aes(color = sex), fill = \"white\", alpha = 0.6,\n                   position=\"identity\")\n\n\nHistogram with density plot\n# Color by groups\na + geom_histogram(aes(y=..density.., color = sex, fill = sex),\n                   alpha=0.5, position=\"identity\")+\n  geom_density(aes(color = sex), size = 1)\n\n\nBox plot with mean points\ne + geom_boxplot() +\n  stat_summary(fun.y = mean, geom = \"point\",\n               shape = 18, size = 4, color = \"blue\")\n\n\nChange the default order of items\ne + geom_boxplot() +\n  scale_x_discrete(limits=c(\"2\", \"0.5\", \"1\"))\n\n\nAdd mean points +/- SD\n# Use geom = \"pointrange\" or geom = \"crossbar\"\ne + geom_violin(trim = FALSE) +\n  stat_summary(fun.data=\"mean_sdl\", fun.args = list(mult=1),\n               geom=\"pointrange\", color = \"red\")\n# Combine with box plot to add median and quartiles\ne + geom_violin(trim = FALSE) +\n  geom_boxplot(width = 0.2)\n\n\ngeom_line\n# Change line types, point shapes and colors\np + geom_line(aes(linetype=supp, color = supp))+\n  geom_point(aes(shape=supp, color = supp))\n\n\ngeom_bar with labels\nrequire(plyr)\n# Sort by dose and supp\ndf_sorted &lt;- arrange(df2, dose, supp)\n\n# Calculate the cumulative sum of len for each dose\ndf_cumsum &lt;- ddply(df_sorted, \"dose\", transform,\n                   label_ypos=cumsum(len))\n\n# Create the bar plot\nggplot(data=df_cumsum, aes(x = dose, y = len, fill = supp)) +\n  geom_bar(stat = \"identity\")+\n  geom_text(aes(y = label_ypos, label = len), vjust=1.6,\n            color = \"white\", size = 3.5)\n\n\nPie charts\n# Basic pie charts\ndf &lt;- data.frame(\n  group = c(\"Male\", \"Female\", \"Child\"),\n  value = c(25, 25, 50))\n\np &lt;- ggplot(df, aes(x=\"\", y = value, fill=group)) +\n  geom_bar(width = 1, stat = \"identity\") +\n  coord_polar(\"y\", start=0)\n\nblank_theme &lt;- theme_minimal()+\n  theme(\n    axis.title.x = element_blank(),\n    axis.title.y = element_blank(),\n    axis.text.x=element_blank(),\n    panel.border = element_blank(),\n    panel.grid=element_blank(),\n    axis.ticks = element_blank(),\n    plot.title=element_text(size=14, face=\"bold\")\n  )\n\nrequire(scales)\np + scale_fill_brewer(\"Blues\") + blank_theme +\n  geom_text(aes(y = value/3 + c(0, cumsum(value)[-length(value)]),\n                label = percent(value/100)), size=5)"
+  },
+  {
+    "objectID": "r-snippet/database.html",
+    "href": "r-snippet/database.html",
+    "title": "database",
+    "section": "",
+    "text": "odbc::odbcListDrivers()\n\n\n\nlibrary(DBI)\ncon &lt;- DBI::dbConnect(odbc::odbc(), \"BILIVE\", UID=\"JUMP_B\", PWD=\"******\")\n\n\n\ndbListTables(con, schema = \"JUMP_B\")\ndbListTables(con, schema = \"SB_BI\")\n\n\n\ndbWriteTable(con, \"mtcars\", mtcars[1:5, ])"
+  },
+  {
+    "objectID": "r-snippet/database.html#dbplyr",
+    "href": "r-snippet/database.html#dbplyr",
+    "title": "database",
+    "section": "",
+    "text": "odbc::odbcListDrivers()\n\n\n\nlibrary(DBI)\ncon &lt;- DBI::dbConnect(odbc::odbc(), \"BILIVE\", UID=\"JUMP_B\", PWD=\"******\")\n\n\n\ndbListTables(con, schema = \"JUMP_B\")\ndbListTables(con, schema = \"SB_BI\")\n\n\n\ndbWriteTable(con, \"mtcars\", mtcars[1:5, ])"
+  },
+  {
+    "objectID": "r-snippet/database.html#rodbc",
+    "href": "r-snippet/database.html#rodbc",
+    "title": "database",
+    "section": "RODBC",
+    "text": "RODBC\n\nConnect to DB\nlibrary(RODBC)\nchannel &lt;- odbcConnect('BILIVE',\n                   uid = 'JUMP_B',\n                   pwd = '******')\n\n\nGet data\ncus &lt;- sqlQuery(con, \"select /*+ PARALLEL(11) */ * from nnb_cus\") \nThis function load all rows"
+  },
+  {
+    "objectID": "r-snippet/file_folders.html",
+    "href": "r-snippet/file_folders.html",
+    "title": "file and folder",
+    "section": "",
+    "text": "r18_2017 &lt;- Sys.glob(paste0(my_folder, \"2017/*.xlsx\"))\n\nr18_2017 &lt;- list.files(paste0(my_folder, \"2017/\"), full.names = T)\n\ndt &lt;- rio::import_list(r18_files, rbind = TRUE)"
+  },
+  {
+    "objectID": "r-snippet/DT.html",
+    "href": "r-snippet/DT.html",
+    "title": "DT",
+    "section": "",
+    "text": "create_dt &lt;- function(x){\n  DT::datatable(x,\n                extensions = 'Buttons',\n                options = list(dom = 'Blfrtip',\n                               buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),\n                               lengthMenu = list(c(10,25,50,-1),\n                                                 c(10,25,50,\"All\"))))\n}\n\n## create_dt(iris)"
   }
 ]
