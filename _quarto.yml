@@ -47,7 +47,7 @@ website:
           - python-snippet/Code - optimize.md
           - python-snippet/Ultilities.md
           - python-snippet/REST_API.md
-      - section: r-snippet/Index.md
+      - section: r-snippet/index.md
         contents: 
           - r-snippet/dplyr.md      
           - r-snippet/ggplot2.md
