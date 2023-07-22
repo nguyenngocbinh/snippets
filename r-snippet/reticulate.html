@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Snippets  – reticulate</title>
+<title>Snippets - reticulate</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r-snippet/dplyr.html">r-snippet/Index.md</a></li><li class="breadcrumb-item"><a href="../r-snippet/reticulate.html">Install python in r step by step</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r-snippet/index.html">R snippet</a></li><li class="breadcrumb-item"><a href="../r-snippet/reticulate.html">reticulate</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,11 +209,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../python-snippet/Code - optimize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code optimize</span></a>
-  </div>
-</li>
+ <span class="menu-text">python-snippet/Code - optimize.md</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../python-snippet/Ultilities.html" class="sidebar-item-text sidebar-link">
@@ -230,8 +227,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">r-snippet/Index.md</span></a>
+            <a href="../r-snippet/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R snippet</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -270,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../r-snippet/reticulate.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Install python in r step by step</span></a>
+ <span class="menu-text">reticulate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -343,23 +340,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#install-python-in-r-step-by-step" id="toc-install-python-in-r-step-by-step" class="nav-link active" data-scroll-target="#install-python-in-r-step-by-step">Install python in r step by step</a>
-  <ul class="collapse">
-  <li><a href="#create-environment" id="toc-create-environment" class="nav-link" data-scroll-target="#create-environment">Create environment</a></li>
+  <li><a href="#create-environment" id="toc-create-environment" class="nav-link active" data-scroll-target="#create-environment">Create environment</a></li>
   <li><a href="#edit-.rprofile" id="toc-edit-.rprofile" class="nav-link" data-scroll-target="#edit-.rprofile">Edit .Rprofile</a></li>
   <li><a href="#install-python-package" id="toc-install-python-package" class="nav-link" data-scroll-target="#install-python-package">Install python package</a></li>
   <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/r-snippet/reticulate.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">reticulate</h1>
+</div>
 
 
-<section id="install-python-in-r-step-by-step" class="level1">
-<h1>Install python in r step by step</h1>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Install python in r step by step</p>
 <section id="create-environment" class="level3">
 <h3 class="anchored" data-anchor-id="create-environment">Create environment</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
@@ -413,7 +421,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">:::</span><span class="fu">convert_ipynb</span>(<span class="st">"python/volatility-prediction.ipynb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
 </section>
 </section>
 

@@ -203,25 +203,11 @@
     "text": "Giả sử chúng ta có một câu: “Tôi thích chơi bóng đá.”\nTrong mô hình ngôn ngữ, mục tiêu là dự đoán từ tiếp theo trong ngữ cảnh đã cho. Tuy nhiên, trong quá trình huấn luyện, chúng ta thường không muốn cho mô hình truy cập vào các từ trong tương lai vì nó có thể dẫn đến rò rỉ dữ liệu và dự đoán không thực tế. Vì vậy, chế che được áp dụng.\nĐể áp dụng cơ chế che, thường được ký hiệu là [MASK], để thay thế một số từ trong chuỗi đầu vào trong quá trình huấn luyện. Trong trường hợp này, chúng ta có thể ngẫu nhiên che một số từ trong câu, dẫn đến:\nCâu Đầu Vào (có cơ chế che): “Tôi thích chơi [MASK] bóng đá.”\nBây giờ, trong quá trình huấn luyện, mục tiêu của mô hình là dự đoán từ bị che dựa trên ngữ cảnh xung quanh. Nó học cách hiểu cấu trúc câu, ý nghĩa và sự phụ thuộc giữa các từ để đưa ra dự đoán chính xác. Mô hình nhận chuỗi đầu vào đã được chỉnh sửa (thêm [MASK]) và cố gắng dự đoán bản gốc, không bị che, ở vị trí đã được che.\nTrong quá trình huấn luyện hoặc đánh giá, cơ chế che không được sử dụng và mô hình được cung cấp với toàn bộ chuỗi đầu vào. Nó có thể tạo ra dự đoán cho từ tiếp theo trong chuỗi dựa trên kiến thức đã học từ quá trình huấn luyện.\nCơ chế che giúp mô hình tổng quát tốt và xử lý các trường hợp mà nó gặp phải các từ chưa được nhìn thấy hoặc thiếu. Nó khuyến khích mô hình dựa vào ngữ cảnh có sẵn để đưa ra dự đoán chính xác và cải thiện khả năng hiểu cấu trúc câu."
   },
   {
-    "objectID": "python-snippet/Code - optimize.html",
-    "href": "python-snippet/Code - optimize.html",
-    "title": "Code optimize",
+    "objectID": "python-snippet/Graphs.html",
+    "href": "python-snippet/Graphs.html",
+    "title": "Graphs",
     "section": "",
-    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
-  },
-  {
-    "objectID": "python-snippet/Code - optimize.html#profiling",
-    "href": "python-snippet/Code - optimize.html#profiling",
-    "title": "Code optimize",
-    "section": "",
-    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
-  },
-  {
-    "objectID": "python-snippet/Ultilities.html",
-    "href": "python-snippet/Ultilities.html",
-    "title": "Ultilities",
-    "section": "",
-    "text": "Mouse click\nfrom pynput.mouse import Controller, Button\nimport time\nmouse = Controller()\nwhile True:\n  mouse.click(Button.left, 1)\n  print('clicked')  \n  time.sleep(5)"
+    "text": "Candlestick\nimport yfinance as yf \ndata = yf.download(tickers = 'ETH-USD', period = 'max', interval = '1d')\ndfpl = data[0:100]\nimport plotly.graph_objects as go\nfig = go.Figure(data=go.Candlestick(\n    x = dfpl.index,\n    open = dfpl.Open,\n    high = dfpl.High,\n    low = dfpl.Low,\n    close = dfpl.Close    \n))\n\nfig.show()"
   },
   {
     "objectID": "python-snippet/Modelling.html",
@@ -329,11 +315,25 @@
     "text": "Environment setup\n\nUsing conda\n\nCreate conda environment\n\nQuick create env using conda create\nconda create -n env_rdm python=3.10 pip ipykernel notebook\nconda activate env_rdm\nCreate env use environment.yaml file\n\nFirst, create environment.yaml file with example content following\nSecond, run command conda env create -f environment.yaml\nOptional, remove environment if needed conda env remove -n env_ascore\n\nname: env_ascore\nchannels:\n  - conda-forge\n  - defaults\ndependencies:\n  - python=3.10\n  - pandas\n  - joblib\n  - statsmodels\n  - ipykernel\n  - zipp  \n  - pip\n  - pip: \n    - optbinning==0.17.3\n    - ortools==9.4.1874\n# set https_proxy=10.1.33.23:8080\n# set http_proxy=10.1.33.23:8080          \nCreate env use requirements.txt file\n\nconda list --export &gt; requirements.txt\nconda install --file requirements.txt\nConda common commands\n\n\nConda environment list\n\nconda info --env\n\nRemove conda environment\n\nconda deactivate\nconda env remove -n python38\n\nActivate conda environment\n\nconda activate python38\n\nClean unused library\n\nconda clean --all\npip cache remove *\nCreate environment for jupyter notebook\n\nUse conda to create new environment\nUse ipython\nconda activate python38\nipython kernel install --user --name=python38\nRemove jupyter notebook environment (require run as administrator)\njupyter kernelspec list\njupyter kernelspec uninstall python38 \n\nInstall packages in OFFLINE mode with pip\n\nInstall OFFLINE packages using requirements.txt\n\nStep 1: Input to requirements.txt file in current directory. Eg. content \"jupyter-contrib-nbextensions==0.5.1\"\n# export env if available\npip list --format=freeze &gt; requirements.txt\nStep 2: Create wheel folder (Eg. D:)\nStep 3: Run following command to download dependencies packages to folder wheel\n\npip download -r requirements.txt -d wheel\n\nStep 4: Run following command to install\n\npip install -r requirements.txt --find-links=D:\\wheel --no-index\nInstall OFFLINE Linux package\n\nCase 1: Activate same version python (i.e 3.7.0) and run following command\npip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas\nCase 2: Specify python version\npip download --platform manylinux1_x86_64 --only-binary=:all: --python-version=38 --no-binary=:none: pandas\n\n\nOther ultility commands\n\nCheck dependencies\n\npython -m pip check \npip freeze &gt; requirements.txt\n\nThemes jupyter notebook\n\njt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T\n\nInstall Extension for jupyter notebook\n\npip install jupyter_contrib_nbextensions\npip install jupyter_nbextensions_configurator\njupyter contrib nbextension install --user\njupyter nbextensions_configurator enable --user"
   },
   {
-    "objectID": "python-snippet/Graphs.html",
-    "href": "python-snippet/Graphs.html",
-    "title": "Graphs",
+    "objectID": "python-snippet/Code-optimize.html",
+    "href": "python-snippet/Code-optimize.html",
+    "title": "Code optimize",
     "section": "",
-    "text": "Candlestick\nimport yfinance as yf \ndata = yf.download(tickers = 'ETH-USD', period = 'max', interval = '1d')\ndfpl = data[0:100]\nimport plotly.graph_objects as go\nfig = go.Figure(data=go.Candlestick(\n    x = dfpl.index,\n    open = dfpl.Open,\n    high = dfpl.High,\n    low = dfpl.Low,\n    close = dfpl.Close    \n))\n\nfig.show()"
+    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
+  },
+  {
+    "objectID": "python-snippet/Code-optimize.html#profiling",
+    "href": "python-snippet/Code-optimize.html#profiling",
+    "title": "Code optimize",
+    "section": "",
+    "text": "import cProfile\nimport optuna\nimport time\nfrom sklearn.metrics import roc_auc_score\nfrom sklearn.model_selection import StratifiedKFold\n\n# Define the LSTMModel class and Trainer class here\n\n# Define the objective function for Optuna optimization\ndef objective(trial):\n    # ... (rest of the code)\n\n# Profile the objective function\nprofiler = cProfile.Profile()\nprofiler.enable()\n\n# Perform hyperparameter optimization with Optuna\nstudy = optuna.create_study(direction='maximize')\nstudy.optimize(objective, n_trials=100)\n\nprofiler.disable()\nprofiler.print_stats(sort='cumulative')"
+  },
+  {
+    "objectID": "python-snippet/Ultilities.html",
+    "href": "python-snippet/Ultilities.html",
+    "title": "Ultilities",
+    "section": "",
+    "text": "Mouse click\nfrom pynput.mouse import Controller, Button\nimport time\nmouse = Controller()\nwhile True:\n  mouse.click(Button.left, 1)\n  print('clicked')  \n  time.sleep(5)"
   },
   {
     "objectID": "python-snippet/Statistics.html",
@@ -401,7 +401,7 @@
   {
     "objectID": "r-snippet/reticulate.html",
     "href": "r-snippet/reticulate.html",
-    "title": "Install python in r step by step",
+    "title": "reticulate",
     "section": "",
     "text": "Install python in r step by step\n\nCreate environment\nlibrary(reticulate)\nconda_create(envname = 'D:/python/env/r-reticulate', python_version = '3.6.13')\n\n\nEdit .Rprofile\n# usethis::edit_r_profile()\n# Sys.setenv(RETICULATE_PYTHON = 'D:\\\\python\\\\env\\\\r-reticulate\\\\') # version 3.6\n\n\nInstall python package\n\nDefault environment\nmy_env &lt;- \"D:\\\\python\\\\envs\\\\r-reticulate\"\n\n\nInstall packages using conda\nreticulate::conda_install(envname = my_env, packages = \"lightgbm\")\n\n\nInstall packages using pip\nreticulate::py_install(packages = \"xgboost\", envname = my_env)\n\n\n\nExtra\n\ninstall miniconda if needed\nreticulate::install_miniconda(path = \"D:/python/\")\nreticulate::miniconda_update(path = \"D:/python/\") # update if needed\n\n\ncheck python version\nreticulate::py_version()\nreticulate::py_versions_windows()\n\n\ncheck config\nreticulate::py_config() \nreticulate::py_discover_config()\n\n\ncheck conda envs\nreticulate::conda_list()\n# conda_remove(\"pillow\")\nreticulate::virtualenv_list()\n\n\nconvert to rmd\nrmarkdown:::convert_ipynb(\"python/volatility-prediction.ipynb\")"
   },
