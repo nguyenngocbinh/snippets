@@ -25,7 +25,8 @@ options(repos = "http://cran.rstudio.org")
 # options(repos = "https://cloud.r-project.org")
 ```
 ### Offline install package
-```{}
+
+```r
 install.packages(".../path/to/package.tar.gz", type="source", repos=NULL) 
 ```
 
@@ -42,18 +43,23 @@ install.packages(".../path/to/package.tar.gz", type="source", repos=NULL)
 
 
 ### Presentation, composition and scales
+
 - tagger
 
 ## format axis
 
-- scale_y_continuous(label=scales::comma)
-- scale_x_date(date_breaks = "2 month", date_labels = "%m-%Y")
-- theme(legend.title = element_blank(),
+```r
+scale_y_continuous(label=scales::comma)
+
+scale_x_date(date_breaks = "2 month", date_labels = "%m-%Y")
+
+theme(legend.title = element_blank(),
         legend.position = "bottom",
         axis.text.x = element_text(angle = 30))
+```
+
 
 ## format axis text
-
 
 ```r
 theme(axis.text.x = element_text(size = 14), axis.title.x = element_text(size = 16),
@@ -86,6 +92,7 @@ plot(1:4,rep(1,4), pch=c("\U0110","\u01AF","\u01A0","\u0102"),cex=4)
 # File
 
 ### edit file
+
 ```r
 line="blah text blah blah etc etc"
 write(line,file=paste0("vignettes/", ticker, ".Rmd"),append=TRUE)
@@ -225,6 +232,7 @@ dfs %>% reduce(full_join)
 ```
 
 # Hàm xử lý outlier
+
 ```r
 f_outlier <- function(x){
   threshold <- quantile(x, probs = c(0.005, 0.95), na.rm = TRUE, type = 3)
@@ -235,13 +243,16 @@ f_outlier <- function(x){
   return(y)
 }
 ```
+
 # So sánh khác biệt giữa 2 file
+
 ```r
 library(diffr)
 diffr("D:/TMP/new 1.txt", "D:/TMP/new 2.txt", contextSize = 0, minJumpSize = 500)
 ```
 
 # Optical Character Recognition (OCR)
+
 ```r
 if(!require("tesseract")) {install.packages("tesseract")}
 library(tesseract)
@@ -253,7 +264,8 @@ text %>% strsplit(split = "\n") %>% rio::export("x.xlsx")
 
 # Markdown
 ## rpub
-```{r, eval = F}
+
+```yaml
 ---
 title: "Correlation analysis"
 author: "Nguyễn Ngọc Bình"
@@ -271,11 +283,13 @@ editor_options:
   chunk_output_type: console
 ---
 ```
+
 ## image
-`![](../figures/d_i_d_graph.png)
-`
+
+`![](../figures/d_i_d_graph.png)`
 
 bookdown::html_document2, bookdown::word_document2
+
 ```r
 ![(\#fig:nnet2)Một mạng nơ-ron với bốn đầu vào và một lớp ẩn với ba nơ-ron ẩn.](images/nnet2.png)
 \@ref(fig:nnet2)
@@ -287,8 +301,10 @@ knitr::opts_chunk$set(echo = FALSE, fig.height = 5, fig.width = 7, out.width = "
 knitr::include_graphics("figures/d_i_d_graph.png")
 ```
 ### Format number in rmarkdown
-``` fnc_kbl <- function(df) {
-  df %>%
+
+```r
+fnc_kbl <- function(df) {
+    df %>%
     mutate_if(
       is.numeric,
       format,
@@ -324,7 +340,7 @@ rio::import(xml2::xml2_example("cd_catalog.xml"))
 
 ### Reticulate 
 
-```
+```r
 file.edit(file.path("~", ".Rprofile"))
 # RETICULATE_PYTHON="C/Users/nguye/anaconda3"
 ```
