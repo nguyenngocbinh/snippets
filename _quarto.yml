@@ -42,6 +42,7 @@ website:
         contents: 
           - python-snippet/Environment.md
           - python-snippet/Graphs.md
+          - python-snippet/slopegraph.ipynb
           - python-snippet/Modelling.md 
           - python-snippet/Statistics.md    
           - python-snippet/Code - optimize.md
