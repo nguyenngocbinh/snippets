@@ -2,110 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/create_package.html</loc>
-    <lastmod>2023-07-22T00:22:05.539Z</lastmod>
+    <lastmod>2023-07-28T09:13:13.019Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/gganimate.html</loc>
-    <lastmod>2023-07-22T00:22:04.119Z</lastmod>
+    <lastmod>2023-07-28T09:13:11.923Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/index.html</loc>
-    <lastmod>2023-07-22T00:22:02.747Z</lastmod>
+    <lastmod>2023-07-28T09:13:10.843Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/treemap.html</loc>
-    <lastmod>2023-07-22T00:22:01.235Z</lastmod>
+    <lastmod>2023-07-28T09:13:09.611Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/dplyr.html</loc>
-    <lastmod>2023-07-22T00:21:59.675Z</lastmod>
+    <lastmod>2023-07-28T09:13:08.431Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/comparision/ggplot2-matplotlib.html</loc>
-    <lastmod>2023-07-22T00:21:58.247Z</lastmod>
+    <lastmod>2023-07-28T09:13:07.323Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/comparision/dplyr-pandas.html</loc>
-    <lastmod>2023-07-22T00:21:56.671Z</lastmod>
+    <lastmod>2023-07-28T09:13:06.187Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/machine-learning/transformer.html</loc>
-    <lastmod>2023-07-22T00:21:55.523Z</lastmod>
+    <lastmod>2023-07-28T09:13:05.331Z</lastmod>
   </url>
   <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Graphs.html</loc>
-    <lastmod>2023-07-22T00:21:53.911Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Index.html</loc>
-    <lastmod>2023-07-22T00:21:53.007Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Modelling.html</loc>
-    <lastmod>2023-07-22T00:21:52.135Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/REST_API.html</loc>
-    <lastmod>2023-07-22T00:21:50.839Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/synonym.html</loc>
-    <lastmod>2023-07-22T00:21:49.843Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/index.html</loc>
-    <lastmod>2023-07-22T00:21:46.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/Index.html</loc>
-    <lastmod>2023-07-22T00:21:49.331Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/permissions.html</loc>
-    <lastmod>2023-07-22T00:21:50.395Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Environment.html</loc>
-    <lastmod>2023-07-22T00:21:51.711Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Code-optimize.html</loc>
-    <lastmod>2023-07-22T00:21:52.583Z</lastmod>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/slopegraph.html</loc>
+    <lastmod>2023-07-28T09:13:04.047Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Ultilities.html</loc>
-    <lastmod>2023-07-22T00:21:53.483Z</lastmod>
+    <lastmod>2023-07-28T09:13:03.163Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Code-optimize.html</loc>
+    <lastmod>2023-07-28T09:13:02.447Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Environment.html</loc>
+    <lastmod>2023-07-28T09:13:01.763Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/permissions.html</loc>
+    <lastmod>2023-07-28T09:13:00.731Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/Index.html</loc>
+    <lastmod>2023-07-28T09:12:59.951Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/index.html</loc>
+    <lastmod>2023-07-28T09:12:57.907Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/synonym.html</loc>
+    <lastmod>2023-07-28T09:13:00.319Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/REST_API.html</loc>
+    <lastmod>2023-07-28T09:13:01.079Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Modelling.html</loc>
+    <lastmod>2023-07-28T09:13:02.099Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Index.html</loc>
+    <lastmod>2023-07-28T09:13:02.791Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Graphs.html</loc>
+    <lastmod>2023-07-28T09:13:03.503Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Statistics.html</loc>
-    <lastmod>2023-07-22T00:21:54.343Z</lastmod>
+    <lastmod>2023-07-28T09:13:04.399Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/comparision/Index.html</loc>
-    <lastmod>2023-07-22T00:21:55.979Z</lastmod>
+    <lastmod>2023-07-28T09:13:05.675Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/comparision/plsql-db2.html</loc>
-    <lastmod>2023-07-22T00:21:57.355Z</lastmod>
+    <lastmod>2023-07-28T09:13:06.687Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/reticulate.html</loc>
-    <lastmod>2023-07-22T00:21:58.983Z</lastmod>
+    <lastmod>2023-07-28T09:13:07.859Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/ggplot2.html</loc>
-    <lastmod>2023-07-22T00:22:00.543Z</lastmod>
+    <lastmod>2023-07-28T09:13:09.083Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/database.html</loc>
-    <lastmod>2023-07-22T00:22:01.911Z</lastmod>
+    <lastmod>2023-07-28T09:13:10.171Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/file_folders.html</loc>
-    <lastmod>2023-07-22T00:22:03.415Z</lastmod>
+    <lastmod>2023-07-28T09:13:11.351Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/DT.html</loc>
-    <lastmod>2023-07-22T00:22:04.779Z</lastmod>
+    <lastmod>2023-07-28T09:13:12.447Z</lastmod>
   </url>
 </urlset>
