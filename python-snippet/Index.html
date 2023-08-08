@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -308,7 +342,51 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup-environment" id="toc-setup-environment" class="nav-link active" data-scroll-target="#setup-environment">1. Setup environment</a>
+  <ul class="collapse">
+  <li><a href="#using-conda" id="toc-using-conda" class="nav-link" data-scroll-target="#using-conda">1.1. Using <strong>conda</strong></a>
+  <ul class="collapse">
+  <li><a href="#create-conda-environment" id="toc-create-conda-environment" class="nav-link" data-scroll-target="#create-conda-environment">1.1.1. Create conda environment</a></li>
+  <li><a href="#conda-common-commands" id="toc-conda-common-commands" class="nav-link" data-scroll-target="#conda-common-commands">1.1.2. Conda common commands</a></li>
+  </ul></li>
+  <li><a href="#create-environment-for-jupyter-notebook" id="toc-create-environment-for-jupyter-notebook" class="nav-link" data-scroll-target="#create-environment-for-jupyter-notebook">1.2. Create environment for jupyter notebook</a>
+  <ul class="collapse">
+  <li><a href="#create" id="toc-create" class="nav-link" data-scroll-target="#create">1.2.1. create</a></li>
+  <li><a href="#remove-jupyter-notebook-environment-require-run-as-administrator" id="toc-remove-jupyter-notebook-environment-require-run-as-administrator" class="nav-link" data-scroll-target="#remove-jupyter-notebook-environment-require-run-as-administrator">1.2.2. Remove jupyter notebook environment (require run as administrator)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages">2. Install packages</a>
+  <ul class="collapse">
+  <li><a href="#install-offline-packages-using-requirements.txt" id="toc-install-offline-packages-using-requirements.txt" class="nav-link" data-scroll-target="#install-offline-packages-using-requirements.txt">2.1. Install OFFLINE packages using requirements.txt</a></li>
+  <li><a href="#install-offline-linux-package" id="toc-install-offline-linux-package" class="nav-link" data-scroll-target="#install-offline-linux-package">2.2. Install OFFLINE Linux package</a></li>
+  <li><a href="#export-requirements" id="toc-export-requirements" class="nav-link" data-scroll-target="#export-requirements">2.3. Export requirements</a></li>
+  </ul></li>
+  <li><a href="#install-extension-for-jupyter-notebook" id="toc-install-extension-for-jupyter-notebook" class="nav-link" data-scroll-target="#install-extension-for-jupyter-notebook">3. Install Extension for jupyter notebook</a></li>
+  <li><a href="#other-ultilities-command" id="toc-other-ultilities-command" class="nav-link" data-scroll-target="#other-ultilities-command">4. Other ultilities command</a></li>
+  <li><a href="#pandas" id="toc-pandas" class="nav-link" data-scroll-target="#pandas">5. Pandas</a></li>
+  <li><a href="#join" id="toc-join" class="nav-link" data-scroll-target="#join">6. Join</a></li>
+  <li><a href="#files-and-folder" id="toc-files-and-folder" class="nav-link" data-scroll-target="#files-and-folder">7. Files and folder</a></li>
+  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list">8. List</a></li>
+  <li><a href="#delete-multiple-elements-from-list-python" id="toc-delete-multiple-elements-from-list-python" class="nav-link" data-scroll-target="#delete-multiple-elements-from-list-python">Delete multiple elements from list python</a></li>
+  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex">9. Regex</a></li>
+  <li><a href="#database" id="toc-database" class="nav-link" data-scroll-target="#database">10. Database</a>
+  <ul class="collapse">
+  <li><a href="#connect-to-database" id="toc-connect-to-database" class="nav-link" data-scroll-target="#connect-to-database">Connect to database</a></li>
+  <li><a href="#readpush-table-to-database" id="toc-readpush-table-to-database" class="nav-link" data-scroll-target="#readpush-table-to-database">Read/push table to database</a></li>
+  <li><a href="#sqlite3" id="toc-sqlite3" class="nav-link" data-scroll-target="#sqlite3">sqlite3</a></li>
+  </ul></li>
+  <li><a href="#writing-shorthand-statements" id="toc-writing-shorthand-statements" class="nav-link" data-scroll-target="#writing-shorthand-statements">11. Writing shorthand statements</a></li>
+  <li><a href="#api" id="toc-api" class="nav-link" data-scroll-target="#api">12. API</a>
+  <ul class="collapse">
+  <li><a href="#json-file" id="toc-json-file" class="nav-link" data-scroll-target="#json-file">JSON file</a></li>
+  </ul></li>
+  <li><a href="#equivalent-r" id="toc-equivalent-r" class="nav-link" data-scroll-target="#equivalent-r">99. Equivalent R</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/python-snippet/Index.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -331,8 +409,394 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p><img src="https://www.python.org/static/img/psf-logo.png" class="img-fluid"></p>
+<section id="setup-environment" class="level1">
+<h1>1. Setup environment</h1>
+<section id="using-conda" class="level2">
+<h2 class="anchored" data-anchor-id="using-conda">1.1. Using <strong>conda</strong></h2>
+<section id="create-conda-environment" class="level3">
+<h3 class="anchored" data-anchor-id="create-conda-environment">1.1.1. Create conda environment</h3>
+<ul>
+<li>Create env by common command line</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>conda create <span class="op">-</span>n python38 python<span class="op">=</span><span class="fl">3.8.5</span> pip<span class="op">=</span><span class="fl">20.2.4</span> ipykernel notebook</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>conda activate python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Create env use <code>environment.yaml</code> file</li>
+</ul>
+<pre><code>name: env_ascore
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pandas==1.4.4  
+  - joblib==1.1.0
+  - statsmodels==0.13.2
+  - ipykernel
+  - zipp  
+  - pip
+  - pip: 
+    - optbinning==0.17.3
+    - ortools==9.4.1874
+# conda env create -f environment.yaml  
+# conda env remove -n env_ascore
+# set https_proxy=10.1.33.23:8080
+# set http_proxy=10.1.33.23:8080
+# conda install -n env_ascore ipykernel --update-deps --force-reinstall</code></pre>
+<ul>
+<li>Create env use <code>requirements.txt</code> file</li>
+</ul>
+<pre><code>conda list --export &gt; requirements.txt
+conda install --file requirements.txt</code></pre>
+</section>
+<section id="conda-common-commands" class="level3">
+<h3 class="anchored" data-anchor-id="conda-common-commands">1.1.2. Conda common commands</h3>
+<ul>
+<li>Conda environment list</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>conda info <span class="op">--</span>env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Remove conda environment</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>conda deactivate</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>conda env remove <span class="op">-</span>n python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Activate conda environment</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>conda activate python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Clean unused library</li>
+</ul>
+<pre><code>conda clean --all
+pip cache remove *</code></pre>
+</section>
+</section>
+<section id="create-environment-for-jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="create-environment-for-jupyter-notebook">1.2. Create environment for jupyter notebook</h2>
+<section id="create" class="level3">
+<h3 class="anchored" data-anchor-id="create">1.2.1. create</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>conda activate python38</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ipython kernel install <span class="op">--</span>user <span class="op">--</span>name<span class="op">=</span>python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="remove-jupyter-notebook-environment-require-run-as-administrator" class="level3">
+<h3 class="anchored" data-anchor-id="remove-jupyter-notebook-environment-require-run-as-administrator">1.2.2. Remove jupyter notebook environment (require run as administrator)</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jupyter kernelspec <span class="bu">list</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>jupyter kernelspec uninstall python38 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="install-packages" class="level1">
+<h1>2. Install packages</h1>
+<section id="install-offline-packages-using-requirements.txt" class="level2">
+<h2 class="anchored" data-anchor-id="install-offline-packages-using-requirements.txt">2.1. Install OFFLINE packages using requirements.txt</h2>
+<ul>
+<li><p>Step 1: Input to <code>requirements.txt</code> file in current directory. Eg. content <code>"jupyter-contrib-nbextensions==0.5.1"</code></p></li>
+<li><p>Step 2: Create folder <code>wheel</code> (Eg. D:)</p></li>
+<li><p>Step 3: Run following command to download dependencies packages to folder <code>wheel</code></p></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pip download <span class="op">-</span>r requirements.txt <span class="op">-</span>d wheel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Step 4: Run following command to install</li>
+</ul>
+<pre><code>pip install -r requirements.txt --find-links=D:\wheel --no-index</code></pre>
+</section>
+<section id="install-offline-linux-package" class="level2">
+<h2 class="anchored" data-anchor-id="install-offline-linux-package">2.2. Install OFFLINE Linux package</h2>
+<p>Activate same version python (i.e 3.7.0) and type command following</p>
+<pre><code>pip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas</code></pre>
+</section>
+<section id="export-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="export-requirements">2.3. Export requirements</h2>
+<pre><code>pip list --format=freeze &gt; requirements.txt</code></pre>
+</section>
+</section>
+<section id="install-extension-for-jupyter-notebook" class="level1">
+<h1>3. Install Extension for jupyter notebook</h1>
+<ul>
+<li>nbextension</li>
+</ul>
+<pre><code>pip install jupyter_contrib_nbextensions
+pip install jupyter_nbextensions_configurator
+jupyter contrib nbextension install --user
+jupyter nbextensions_configurator enable --user</code></pre>
+</section>
+<section id="other-ultilities-command" class="level1">
+<h1>4. Other ultilities command</h1>
+<section id="check-dependencies" class="level4">
+<h4 class="anchored" data-anchor-id="check-dependencies">check dependencies</h4>
+<pre><code>python -m pip check 
+pip freeze &gt; requirements.txt</code></pre>
+</section>
+<section id="install-pycaret" class="level4">
+<h4 class="anchored" data-anchor-id="install-pycaret">install pycaret</h4>
+<pre><code>pip install pycaret --use-feature=2020-resolver</code></pre>
+</section>
+<section id="themes" class="level4">
+<h4 class="anchored" data-anchor-id="themes">Themes</h4>
+<ul>
+<li>jupyter notebook</li>
+</ul>
+<pre><code>jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T</code></pre>
+</section>
+</section>
+<section id="pandas" class="level1">
+<h1>5. Pandas</h1>
+<ul>
+<li>case when</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'new_column'</span>] <span class="op">=</span> np.where(df[<span class="st">'col2'</span>]<span class="op">&lt;</span><span class="dv">9</span>, <span class="st">'value1'</span>,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                   np.where(df[<span class="st">'col2'</span>]<span class="op">&lt;</span><span class="dv">12</span>, <span class="st">'value2'</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                   np.where(df[<span class="st">'col2'</span>]<span class="op">&lt;</span><span class="dv">15</span>, <span class="st">'value3'</span>, <span class="st">'value4'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>clean names</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>X.columns <span class="op">=</span> X.columns.<span class="bu">str</span>.translate(<span class="st">""</span>.maketrans({<span class="st">"["</span>:<span class="st">"{"</span>, <span class="st">"]"</span>:<span class="st">"}"</span>,<span class="st">"&lt;"</span>:<span class="st">"^"</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>rename</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.lower()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>binning</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Cat Age'</span>] <span class="op">=</span> pd.cut(x<span class="op">=</span>df[<span class="st">'Age'</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">75</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>groupby stratify</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'target'</span>, group_keys<span class="op">=</span><span class="va">False</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.sample(frac<span class="op">=</span><span class="fl">0.8</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>groupby partition (transform)</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'new'</span>] <span class="op">=</span> df.groupby(<span class="st">'group_var'</span>)[<span class="st">'value_var'</span>].transform(<span class="st">'mean'</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'new'</span>] <span class="op">=</span> df.groupby(<span class="st">'group_var'</span>)[<span class="st">'value_var'</span>].transform(<span class="kw">lambda</span> x: some function)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>read data</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>appended_data <span class="op">=</span> []</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> infile <span class="kw">in</span> glob.glob(<span class="st">"*.xlsx"</span>):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pandas.read_excel(infile)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># store DataFrame in list</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    appended_data.append(data)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pd.concat to merge a list of DataFrame into a single big DataFrame.</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>appended_data <span class="op">=</span> pd.concat(appended_data)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>appended_data <span class="op">=</span> [df.set_index(<span class="st">'ID'</span>) <span class="cf">for</span> df <span class="kw">in</span> appended_data]</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>appended_data <span class="op">=</span> pd.concat(appended_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>filter</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="op">~</span>df[<span class="st">'name'</span>].isin(list1)]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'name'</span>].isna()]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'name'</span>].notna()]</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#filter for rows where team name is not in one of several columns</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>df[<span class="op">~</span>df[[<span class="st">'star_team'</span>, <span class="st">'backup_team'</span>]].isin(values_list).<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>convert</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.to_numeric</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.factorize</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df['STRING'].astype(str)</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.to_datetime(df['DATE'], format='%d%m%Y')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Excel date</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> functools <span class="im">as</span> ft</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fn_convert_date <span class="op">=</span> ft.partial(xlrd.xldate_as_datetime, datemode<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'DATE'</span>].<span class="bu">apply</span>(fn_convert_date).dt.year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>aggregate</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.groupby(<span class="st">'ID'</span>).agg(<span class="st">'first'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fn_describe(df):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    tbl <span class="op">=</span> df.describe(include<span class="op">=</span><span class="st">'all'</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    tbl.loc[<span class="st">'dtype'</span>] <span class="op">=</span> df.dtypes</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    tbl.loc[<span class="st">'total'</span>] <span class="op">=</span> <span class="bu">len</span>(df)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    tbl.loc[<span class="st">'%null'</span>] <span class="op">=</span> df.isnull().mean() <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    tbl.loc[<span class="st">'nbr.zero'</span>] <span class="op">=</span> (df <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    tbl.loc[<span class="st">'%zero'</span>] <span class="op">=</span> (df <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)<span class="op">/</span><span class="bu">len</span>(dat)    </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    tbl <span class="op">=</span> tbl.T</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    tbl[<span class="st">'nbr.null'</span>] <span class="op">=</span> tbl[<span class="st">'total'</span>] <span class="op">-</span> tbl[<span class="st">'count'</span>]</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    tbl[<span class="st">'nbr.top'</span>] <span class="op">=</span> tbl[<span class="st">'freq'</span>] </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    tbl[<span class="st">'%top'</span>] <span class="op">=</span> tbl[<span class="st">'freq'</span>]<span class="op">/</span>tbl[<span class="st">'total'</span>]<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    tbl <span class="op">=</span> tbl[[<span class="st">'dtype'</span>, <span class="st">'total'</span>, <span class="st">'nbr.null'</span>, <span class="st">'%null'</span>, <span class="st">'nbr.zero'</span>, <span class="st">'%zero'</span>, <span class="st">'mean'</span>, <span class="st">'std'</span>, <span class="st">'min'</span>, <span class="st">'max'</span>, <span class="st">'unique'</span>, <span class="st">'top'</span>, <span class="st">'nbr.top'</span>, <span class="st">'%top'</span>]]</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>date</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># difference of month</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'nb_months'</span>] <span class="op">=</span> ((df.dates1 <span class="op">-</span> df.dates2)<span class="op">/</span>np.timedelta64(<span class="dv">1</span>, <span class="st">'M'</span>))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'nb_months'</span>] <span class="op">=</span> df[<span class="st">'nb_months'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># difference of day</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Number_of_days'</span>] <span class="op">=</span> ((df.dates1 <span class="op">-</span> df.dates2)<span class="op">/</span>np.timedelta64(<span class="dv">1</span>, <span class="st">'D'</span>))</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Number_of_days'</span>] <span class="op">=</span> df[<span class="st">'Number_of_days'</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>mapping</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(df[col],df[<span class="st">'temp2'</span>]))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>temp_df[col] <span class="op">=</span> temp_df[col].<span class="bu">map</span>(mapping)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Apply to all values except missing</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>s.<span class="bu">apply</span>(<span class="kw">lambda</span> a: a<span class="op">+</span><span class="dv">2</span> <span class="cf">if</span> pd.notnull(a) <span class="cf">else</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>fillna</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dat[<span class="st">'MOBILE'</span>] <span class="op">=</span> dat[<span class="st">'MOBILE'</span>].fillna(dat[<span class="st">'MOBILE2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>to_excel</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pred_train.reset_index(inplace<span class="op">=</span><span class="va">True</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>pred_test.reset_index(inplace<span class="op">=</span><span class="va">True</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pd.ExcelWriter(product[<span class="st">'t_pred'</span>]) <span class="im">as</span> writer:</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    pred_train.to_excel(writer, sheet_name<span class="op">=</span><span class="st">'pred_train'</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    pred_test.to_excel(writer, sheet_name<span class="op">=</span><span class="st">'pred_test'</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="join" class="level1">
+<h1>6. Join</h1>
+<section id="reduce-merge" class="level4">
+<h4 class="anchored" data-anchor-id="reduce-merge">reduce merge</h4>
+<ul>
+<li><code>pandas.concat</code></li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df0, df1, df2, ..., dfN]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># require set_index, not using key</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df.set_index(<span class="st">'name'</span>) <span class="cf">for</span> df <span class="kw">in</span> dfs]</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># can't not run if index not unique </span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> pd.concat(dfs, join<span class="op">=</span><span class="st">'outer'</span>, axis <span class="op">=</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>functools.reduce</code></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># still run with index not unique </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> functools <span class="im">as</span> ft</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> ft.<span class="bu">reduce</span>(<span class="kw">lambda</span> left, right: pd.merge(left, right, on<span class="op">=</span><span class="st">'name'</span>, how <span class="op">=</span> <span class="st">'outer'</span>), dfs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>join</code></li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cant not run if index not unique </span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df.set_index(<span class="st">'name'</span>) <span class="cf">for</span> df <span class="kw">in</span> dfs]</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>dfs[<span class="dv">0</span>].join(dfs[<span class="dv">1</span>:], how <span class="op">=</span> <span class="st">'outer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="files-and-folder" class="level1">
+<h1>7. Files and folder</h1>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>list_files <span class="op">=</span> glob.glob(<span class="st">".data/*.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="list" class="level1">
+<h1>8. List</h1>
+</section>
+<section id="delete-multiple-elements-from-list-python" class="level1">
+<h1>Delete multiple elements from list python</h1>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>unwanted <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ele <span class="kw">in</span> <span class="bu">sorted</span>(unwanted, reverse <span class="op">=</span> <span class="va">True</span>):</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">del</span> list1[ele]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="regex" class="level1">
+<h1>9. Regex</h1>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate number</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>number_pattern <span class="op">=</span> <span class="st">"^</span><span class="ch">\\</span><span class="st">d+$"</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>re.match(number_pattern, <span class="st">'42'</span>) <span class="co"># Returns Match object</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>re.match(number_pattern, <span class="st">'notanumber'</span>) <span class="co"># Returns None</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract number from a string</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>number_extract_pattern <span class="op">=</span> <span class="st">"</span><span class="ch">\\</span><span class="st">d+"</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>re.findall(number_extract_pattern, <span class="st">'Your message was viewed 203 times.'</span>) <span class="co"># returns ['203']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="database" class="level1">
+<h1>10. Database</h1>
+<section id="connect-to-database" class="level2">
+<h2 class="anchored" data-anchor-id="connect-to-database">Connect to database</h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyodbc</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlalchemy <span class="im">as</span> sa</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, event</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.engine.url <span class="im">import</span> URL</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>server <span class="op">=</span> <span class="st">'VM-DC-JUMPSRV77</span><span class="ch">\\</span><span class="st">IFRS9'</span> </span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>database <span class="op">=</span> <span class="st">'DATA'</span> </span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>username <span class="op">=</span> <span class="st">'username'</span> </span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>password <span class="op">=</span> <span class="st">'@@@@@@'</span> </span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> urllib.parse.quote_plus(<span class="st">"DRIVER={SQL Server};"</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"SERVER="</span><span class="op">+</span>server<span class="op">+</span><span class="st">";"</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"DATABASE="</span><span class="op">+</span>database<span class="op">+</span><span class="st">";"</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"UID="</span><span class="op">+</span>username<span class="op">+</span><span class="st">";"</span></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"PWD="</span><span class="op">+</span>password<span class="op">+</span><span class="st">";"</span>)</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> sa.create_engine(<span class="st">"mssql+pyodbc:///?odbc_connect=</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(params))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="readpush-table-to-database" class="level2">
+<h2 class="anchored" data-anchor-id="readpush-table-to-database">Read/push table to database</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read data</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>df_test <span class="op">=</span> pd.read_sql(<span class="st">'SELECT top 5 * FROM b_tmp_cl020'</span>, engine)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># push data</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>df_test.to_sql(<span class="st">'binh_test'</span>, engine, if_exists <span class="op">=</span> <span class="st">'append'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sqlite3" class="level2">
+<h2 class="anchored" data-anchor-id="sqlite3">sqlite3</h2>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>con <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"data/mydata.sqlite"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>cur <span class="op">=</span> con.cursor()</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The result of a "cursor.execute" can be iterated over by row</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> cur.execute(<span class="st">'SELECT * FROM tbl;'</span>):</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to close the connection</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>con.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="writing-shorthand-statements" class="level1">
+<h1>11. Writing shorthand statements</h1>
+<ul>
+<li>lambda</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda statement</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> <span class="kw">lambda</span> a: a<span class="op">+</span><span class="dv">3</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>foo(<span class="dv">10</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Self called Lambda</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lambda</span> a: a<span class="op">+</span><span class="dv">3</span>)(<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>List Comprehension</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>[i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Dict Comprehension</li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="op">=</span> [<span class="st">'MANGO'</span>, <span class="st">'APPLE'</span>, <span class="st">'ORANGE'</span>]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span>{i.lower(): <span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> mylist}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>String Concatenation with delimiter</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">"_"</span>.join([<span class="st">"how"</span>, <span class="st">"are"</span>, <span class="st">"you"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="api" class="level1">
+<h1>12. API</h1>
+<section id="json-file" class="level3">
+<h3 class="anchored" data-anchor-id="json-file">JSON file</h3>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open JSON file    </span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:    </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span> (<span class="st">'data/sample.json'</span>, <span class="st">"r"</span>) <span class="im">as</span> f:   </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> json.load(f)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">IOError</span>:</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'cannot open file'</span>)  </span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># save</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data/sample.json'</span>, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    json.dump(data, f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="equivalent-r" class="level1">
+<h1>99. Equivalent R</h1>
+<ul>
+<li><code>functools</code> ~ <code>purrr</code></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -701,7 +1165,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© CC-By NguyenNgocBinh, 2023</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/python-snippet/Index.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>
   </div>
 </footer>
