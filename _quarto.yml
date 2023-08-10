@@ -48,6 +48,23 @@ website:
           - python-snippet/Code - optimize.md
           - python-snippet/Ultilities.md
           - python-snippet/REST_API.md
+      - section: Crash-Course-Python/Exercise 1 - Python.ipynb
+      - section: Crash-Course-Numpy/00-NumPy-Arrays.ipynb
+        contents:
+          - Crash-Course-Numpy/01-NumPy-Indexing-and-Selection.ipynb
+          - Crash-Course-Numpy/02-NumPy-Operations.ipynb
+          - Crash-Course-Numpy/03-NumPy-Exercises.ipynb
+      - section: Crash-Course-Pandas/00-Intro-to-Pandas.ipynb
+        contents: 
+          - Crash-Course-Pandas/01-Series.ipynb
+          - Crash-Course-Pandas/02-DataFrames.ipynb
+          - Crash-Course-Pandas/03-Missing-Data.ipynb
+          - Crash-Course-Pandas/04-Groupby.ipynb
+          - Crash-Course-Pandas/05-Operations.ipynb
+          - Crash-Course-Pandas/06-Data-Input-and-Output.ipynb
+          - Crash-Course-Pandas/07-Pandas-Exercises-1.ipynb
+          - Crash-Course-Pandas/09-Pandas-Exercises-2.ipynb      
+      - section: Crash-Course-Matplotlib/Exercise 3 - Matplotlib.ipynb    
       - section: r-snippet/index.md
         contents: 
           - r-snippet/dplyr.md      
