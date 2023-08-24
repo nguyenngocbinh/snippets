@@ -48,6 +48,7 @@ website:
           - python-snippet/Code - optimize.md
           - python-snippet/Ultilities.md
           - python-snippet/REST_API.md
+          - python-snippet/JupyterNotebookFormat.ipynb
       - section: Crash-Course-Python/Exercise 1 - Python.ipynb
       - section: Crash-Course-Numpy/00-NumPy-Arrays.ipynb
         contents:
