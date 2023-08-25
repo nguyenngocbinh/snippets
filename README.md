@@ -1,2 +1,37 @@
-# quarto-site-template
-Example quarto site without R or Python!
+# Snippets
+
+- [Comparisons](comparision/Index.md)
+  - [PL/SQL vs. DB2](comparision/plsql-db2.md)
+  - [dplyr vs. pandas](comparision/dplyr-pandas.md)
+  - [ggplot2 vs. matplotlib](comparision/ggplot2-matplotlib.md)
+
+- [Python Snippets](python-snippet/Index.md)
+  - [Environment Setup](python-snippet/Environment.md)
+  - [Graphs](python-snippet/Graphs.md)
+  - [Slopegraph](python-snippet/slopegraph.ipynb)
+  - [Modeling](python-snippet/Modelling.md)
+  - [Statistics](python-snippet/Statistics.md)
+  - [Code Optimization](python-snippet/Code-optimize.md)
+  - [Utilities](python-snippet/Ultilities.md)
+  - [REST API](python-snippet/REST_API.md)
+  - [Jupyter Notebook Format](python-snippet/JupyterNotebookFormat.ipynb)
+  - [Visualize Feature Importances](python-snippet/VisualizeFeatureImportances.ipynb)
+
+- [R Snippets](r-snippet/index.md)
+  - [dplyr](r-snippet/dplyr.md)
+  - [ggplot2](r-snippet/ggplot2.md)
+  - [gganimate](r-snippet/gganimate.md)
+  - [Treemap](r-snippet/treemap.md)
+  - [Database Operations](r-snippet/database.md)
+  - [Using reticulate](r-snippet/reticulate.md)
+  - [Working with Files and Folders](r-snippet/file_folders.md)
+  - [Data Tables](r-snippet/DT.md)
+  - [Creating Packages](r-snippet/create_package.md)
+
+- [SQL Server Snippets](sqlserver-snippet/Index.md)
+  - [General Info](sqlserver-snippet/README.md)
+  - [Permissions](sqlserver-snippet/permissions.md)
+  - [Synonyms](sqlserver-snippet/synonym.md)
+
+- [Machine Learning](machine-learning/transformer.md)
+  - [Transformer Model](machine-learning/transformer.md)
