@@ -644,6 +644,55 @@
     "text": "About\nOpenscapes is about better science for future us. We help researchers reimagine data analysis, develop modern skills that are of immediate value to them, and cultivate collaborative and inclusive research teams as part of the broader global open movement.\nWe’re developing this tutorial to help folks with different levels of technical skills use Quarto for documentation and tutorial building. This tutorial was originally created for several different audiences: NASA-Openscapes researcher support engineers using Python, communications directors at organizations promoting open science who do not identify as coders, and fisheries scientists curious about transitioning from RMarkdown. We’re hoping it’s useful to folks with backgrounds as wide as these; if you find it useful or have suggestions for improvement, please let us know by clicking “Edit this page” or “Report an issue” at the upper right side of any page."
   },
   {
+    "objectID": "VisualizeFeatureImportances.html",
+    "href": "VisualizeFeatureImportances.html",
+    "title": "Visualize feature importances",
+    "section": "",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\ndef plot_feature_importance(importances, names):\n    plt.style.use('fivethirtyeight')\n    \n    feat_names = np.array(names)\n    indices = np.argsort(importances)[::-1]\n    \n    fig = plt.figure(figsize=(12, 8))\n    plt.title(\"Feature importances\")\n    plt.bar(range(len(indices)), importances[indices], color='lightblue', align=\"center\")\n    plt.step(range(len(indices)), np.cumsum(importances[indices]), where='mid', label='Cumulative')\n    plt.xticks(range(len(indices)), feat_names[indices], rotation='vertical', fontsize=14)\n    plt.xlim([-1, len(indices)])\n    plt.show()"
+  },
+  {
+    "objectID": "VisualizeFeatureImportances.html#define-function-plot-feature-importance",
+    "href": "VisualizeFeatureImportances.html#define-function-plot-feature-importance",
+    "title": "Visualize feature importances",
+    "section": "",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\ndef plot_feature_importance(importances, names):\n    plt.style.use('fivethirtyeight')\n    \n    feat_names = np.array(names)\n    indices = np.argsort(importances)[::-1]\n    \n    fig = plt.figure(figsize=(12, 8))\n    plt.title(\"Feature importances\")\n    plt.bar(range(len(indices)), importances[indices], color='lightblue', align=\"center\")\n    plt.step(range(len(indices)), np.cumsum(importances[indices]), where='mid', label='Cumulative')\n    plt.xticks(range(len(indices)), feat_names[indices], rotation='vertical', fontsize=14)\n    plt.xlim([-1, len(indices)])\n    plt.show()"
+  },
+  {
+    "objectID": "VisualizeFeatureImportances.html#get-example-data-german-credit",
+    "href": "VisualizeFeatureImportances.html#get-example-data-german-credit",
+    "title": "Visualize feature importances",
+    "section": "Get example data (german credit)",
+    "text": "Get example data (german credit)\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\n\n# Load the German Credit Data\ndata_url = \"https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.data\"\ncolumn_names = ['existing_checking', 'duration', 'credit_history', 'purpose', 'credit_amount', 'savings',\n                'employment', 'installment_rate', 'personal_status', 'other_debtors', 'residence_since',\n                'property', 'age', 'other_installment_plans', 'housing', 'existing_credits', 'job', 'people_liable',\n                'telephone', 'foreign_worker', 'class']\ndata = pd.read_csv(data_url, delimiter=' ', names=column_names)\n\n# Preprocess the data\nX = data.drop('class', axis=1)\ny = data['class']\nX = pd.get_dummies(X, drop_first=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\ny_train[y_train == 2] = 0\ny_test[y_test == 2] = 0\n\n\ndata.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 1000 entries, 0 to 999\nData columns (total 21 columns):\n #   Column                   Non-Null Count  Dtype \n---  ------                   --------------  ----- \n 0   existing_checking        1000 non-null   object\n 1   duration                 1000 non-null   int64 \n 2   credit_history           1000 non-null   object\n 3   purpose                  1000 non-null   object\n 4   credit_amount            1000 non-null   int64 \n 5   savings                  1000 non-null   object\n 6   employment               1000 non-null   object\n 7   installment_rate         1000 non-null   int64 \n 8   personal_status          1000 non-null   object\n 9   other_debtors            1000 non-null   object\n 10  residence_since          1000 non-null   int64 \n 11  property                 1000 non-null   object\n 12  age                      1000 non-null   int64 \n 13  other_installment_plans  1000 non-null   object\n 14  housing                  1000 non-null   object\n 15  existing_credits         1000 non-null   int64 \n 16  job                      1000 non-null   object\n 17  people_liable            1000 non-null   int64 \n 18  telephone                1000 non-null   object\n 19  foreign_worker           1000 non-null   object\n 20  class                    1000 non-null   int64 \ndtypes: int64(8), object(13)\nmemory usage: 164.2+ KB\n\n\n\nfrom sklearn.preprocessing import StandardScaler\n# Standardize features\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)"
+  },
+  {
+    "objectID": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-lasso-regression",
+    "href": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-lasso-regression",
+    "title": "Visualize feature importances",
+    "section": "Visualize feature importances using a Lasso regression",
+    "text": "Visualize feature importances using a Lasso regression\n\nfrom sklearn.linear_model import LassoCV\n# Use LassoCV for feature selection\nmodel_lasso = LassoCV(alphas=[0.1, 1, 0.001, 0.0005]).fit(X_train_scaled, y_train)\n\n# Visualize feature importances using the function\nplot_feature_importance(np.abs(model_lasso.coef_), X_train.columns)"
+  },
+  {
+    "objectID": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-random-forest-classifier",
+    "href": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-random-forest-classifier",
+    "title": "Visualize feature importances",
+    "section": "Visualize feature importances using a Random Forest classifier",
+    "text": "Visualize feature importances using a Random Forest classifier\n\nfrom sklearn.ensemble import RandomForestClassifier\n\n# Use RandomForestClassifier for feature importance\nclf = RandomForestClassifier(n_estimators=10, random_state=123)\nclf.fit(X_train_scaled, y_train)\n\nnames = X_train.columns\nimportances = clf.feature_importances_\n\n# Call the plotting function\nplot_feature_importance(importances, names)"
+  },
+  {
+    "objectID": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-lightgbm-classifier",
+    "href": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-lightgbm-classifier",
+    "title": "Visualize feature importances",
+    "section": "Visualize feature importances using a LightGBM classifier",
+    "text": "Visualize feature importances using a LightGBM classifier\n\nimport lightgbm as lgb\n\n# Use LightGBM classifier\nclf = lgb.LGBMClassifier(n_estimators=100, random_state=123)\nclf.fit(X_train_scaled, y_train)\n\n# Get feature importances\nimportances = clf.feature_importances_\nnames = X_train.columns\n\n# Call the plotting function\nplot_feature_importance(importances, names)"
+  },
+  {
+    "objectID": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-xgboost-classifier",
+    "href": "VisualizeFeatureImportances.html#visualize-feature-importances-using-a-xgboost-classifier",
+    "title": "Visualize feature importances",
+    "section": "Visualize feature importances using a XGBoost classifier",
+    "text": "Visualize feature importances using a XGBoost classifier\n\nimport xgboost as xgb\n\n# Use XGBoost classifier\nclf = xgb.XGBClassifier(n_estimators=100, random_state=123)\nclf.fit(X_train_scaled, y_train)\n\n# Get feature importances\nimportances = clf.feature_importances_\nnames = X_train.columns\n\n# Call the plotting function\nplot_feature_importance(importances, names)"
+  },
+  {
     "objectID": "sqlserver-snippet/permissions.html",
     "href": "sqlserver-snippet/permissions.html",
     "title": "Permissions",
