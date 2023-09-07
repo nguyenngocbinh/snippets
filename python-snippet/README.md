@@ -457,6 +457,16 @@ with open('data/sample.json', 'w') as f:
     json.dump(data, f)
 ```
 
+# 13. Openai
+
+- certifi
+
+```python
+import certifi 
+print(certifi.where())
+```
+![](images/cert.png)
+
 # 99. Equivalent R
 
 - `functools` ~ `purrr`
