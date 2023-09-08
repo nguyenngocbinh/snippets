@@ -90,6 +90,8 @@
 
 ## Một số AI và library hay khác
 
+- [https://askyourpdf.com/](https://askyourpdf.com/): Upload file pdf lên và hỏi các nội dung liên quan đến file này, có thể trả lời cả những câu hỏi không có trong file pdf
+  
 - [pandas-ai](https://github.com/gventuri/pandas-ai)
   
 - [midjourney](https://www.midjourney.com): Tạo hình ảnh từ các mô tả
