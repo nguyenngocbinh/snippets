@@ -50,6 +50,7 @@ website:
           - python-snippet/REST_API.md
           - python-snippet/JupyterNotebookFormat.ipynb
           - python-snippet/VisualizeFeatureImportances.ipynb
+          - python-snippet/convertLightGBMFromR2Python.ipynb
       - section: Crash-Course-Python/Exercise 1 - Python.ipynb
       - section: Crash-Course-Numpy/00-NumPy-Arrays.ipynb
         contents:
@@ -77,7 +78,8 @@ website:
           - r-snippet/reticulate.md
           - r-snippet/file_folders.md   
           - r-snippet/DT.md    
-          - r-snippet/create_package.md   
+          - r-snippet/create_package.md
+          - r-snippet/mamba.ipynb
       - section: sqlserver-snippet/Index.qmd
         contents: 
           - sqlserver-snippet/README.md
