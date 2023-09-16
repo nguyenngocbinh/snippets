@@ -2,186 +2,190 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/permissions.html</loc>
-    <lastmod>2023-09-15T09:25:58.231Z</lastmod>
+    <lastmod>2023-09-16T06:06:15.255Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/synonym.html</loc>
-    <lastmod>2023-09-15T09:25:57.295Z</lastmod>
+    <lastmod>2023-09-16T06:06:14.219Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Numpy/02-NumPy-Operations.html</loc>
-    <lastmod>2023-09-15T09:25:56.139Z</lastmod>
+    <lastmod>2023-09-16T06:06:12.983Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Numpy/03-NumPy-Exercises.html</loc>
-    <lastmod>2023-09-15T09:25:55.043Z</lastmod>
+    <lastmod>2023-09-16T06:06:11.719Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Statistics.html</loc>
-    <lastmod>2023-09-15T09:25:53.487Z</lastmod>
+    <lastmod>2023-09-16T06:06:09.971Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/slopegraph.html</loc>
-    <lastmod>2023-09-15T09:25:52.571Z</lastmod>
+    <lastmod>2023-09-16T06:06:08.991Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Code-optimize.html</loc>
-    <lastmod>2023-09-15T09:25:51.467Z</lastmod>
+    <lastmod>2023-09-16T06:06:07.795Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Index.html</loc>
-    <lastmod>2023-09-15T09:25:50.527Z</lastmod>
+    <lastmod>2023-09-16T06:06:06.735Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Graphs.html</loc>
-    <lastmod>2023-09-15T09:25:49.427Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Environment.html</loc>
-    <lastmod>2023-09-15T09:25:48.479Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/06-Data-Input-and-Output.html</loc>
-    <lastmod>2023-09-15T09:25:46.627Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/02-DataFrames.html</loc>
-    <lastmod>2023-09-15T09:25:44.803Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/07-Pandas-Exercises-1.html</loc>
-    <lastmod>2023-09-15T09:25:42.431Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/03-Missing-Data.html</loc>
-    <lastmod>2023-09-15T09:25:40.987Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/05-Operations.html</loc>
-    <lastmod>2023-09-15T09:25:39.895Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/dplyr.html</loc>
-    <lastmod>2023-09-15T09:25:37.731Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/index.html</loc>
-    <lastmod>2023-09-15T09:25:36.331Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/treemap.html</loc>
-    <lastmod>2023-09-15T09:25:34.751Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/DT.html</loc>
-    <lastmod>2023-09-15T09:25:33.431Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/database.html</loc>
-    <lastmod>2023-09-15T09:25:32.095Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/file_folders.html</loc>
-    <lastmod>2023-09-15T09:25:30.787Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/comparision/Index.html</loc>
-    <lastmod>2023-09-15T09:25:29.515Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/comparision/dplyr-pandas.html</loc>
-    <lastmod>2023-09-15T09:25:28.323Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/index.html</loc>
-    <lastmod>2023-09-15T09:25:26.803Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/comparision/ggplot2-matplotlib.html</loc>
-    <lastmod>2023-09-15T09:25:29.103Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/comparision/plsql-db2.html</loc>
-    <lastmod>2023-09-15T09:25:30.139Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/mamba.html</loc>
-    <lastmod>2023-09-15T09:25:31.463Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/reticulate.html</loc>
-    <lastmod>2023-09-15T09:25:32.779Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/gganimate.html</loc>
-    <lastmod>2023-09-15T09:25:34.087Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/create_package.html</loc>
-    <lastmod>2023-09-15T09:25:35.499Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/ggplot2.html</loc>
-    <lastmod>2023-09-15T09:25:37.063Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Python/Exercise 1 - Python.html</loc>
-    <lastmod>2023-09-15T09:25:39.295Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/01-Series.html</loc>
-    <lastmod>2023-09-15T09:25:40.443Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/00-Intro-to-Pandas.html</loc>
-    <lastmod>2023-09-15T09:25:41.415Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/04-Groupby.html</loc>
-    <lastmod>2023-09-15T09:25:43.275Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/09-Pandas-Exercises-2.html</loc>
-    <lastmod>2023-09-15T09:25:45.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nguyenngocbinh.github.io/snippets/machine-learning/transformer.html</loc>
-    <lastmod>2023-09-15T09:25:47.687Z</lastmod>
+    <lastmod>2023-09-16T06:06:05.523Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/VisualizeFeatureImportances.html</loc>
-    <lastmod>2023-09-15T09:25:48.999Z</lastmod>
+    <lastmod>2023-09-16T06:06:04.167Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/machine-learning/transformer.html</loc>
+    <lastmod>2023-09-16T06:06:02.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/09-Pandas-Exercises-2.html</loc>
+    <lastmod>2023-09-16T06:06:00.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/04-Groupby.html</loc>
+    <lastmod>2023-09-16T06:05:57.467Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/00-Intro-to-Pandas.html</loc>
+    <lastmod>2023-09-16T06:05:55.455Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/01-Series.html</loc>
+    <lastmod>2023-09-16T06:05:54.367Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Python/Exercise 1 - Python.html</loc>
+    <lastmod>2023-09-16T06:05:53.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/ggplot2.html</loc>
+    <lastmod>2023-09-16T06:05:50.607Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/create_package.html</loc>
+    <lastmod>2023-09-16T06:05:48.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/gganimate.html</loc>
+    <lastmod>2023-09-16T06:05:47.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/reticulate.html</loc>
+    <lastmod>2023-09-16T06:05:45.983Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/mamba.html</loc>
+    <lastmod>2023-09-16T06:05:44.491Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/comparision/plsql-db2.html</loc>
+    <lastmod>2023-09-16T06:05:42.959Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/comparision/ggplot2-matplotlib.html</loc>
+    <lastmod>2023-09-16T06:05:41.831Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/index.html</loc>
+    <lastmod>2023-09-16T06:05:38.375Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/comparision/dplyr-pandas.html</loc>
+    <lastmod>2023-09-16T06:05:40.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/comparision/Index.html</loc>
+    <lastmod>2023-09-16T06:05:42.283Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/file_folders.html</loc>
+    <lastmod>2023-09-16T06:05:43.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/database.html</loc>
+    <lastmod>2023-09-16T06:05:45.259Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/DT.html</loc>
+    <lastmod>2023-09-16T06:05:46.655Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/treemap.html</loc>
+    <lastmod>2023-09-16T06:05:48.079Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/index.html</loc>
+    <lastmod>2023-09-16T06:05:49.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/r-snippet/dplyr.html</loc>
+    <lastmod>2023-09-16T06:05:51.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/05-Operations.html</loc>
+    <lastmod>2023-09-16T06:05:53.763Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/03-Missing-Data.html</loc>
+    <lastmod>2023-09-16T06:05:54.959Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/07-Pandas-Exercises-1.html</loc>
+    <lastmod>2023-09-16T06:05:56.571Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/02-DataFrames.html</loc>
+    <lastmod>2023-09-16T06:05:59.151Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Pandas/06-Data-Input-and-Output.html</loc>
+    <lastmod>2023-09-16T06:06:01.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Environment.html</loc>
+    <lastmod>2023-09-16T06:06:03.575Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/convertLightGBMFromR2Python.html</loc>
+    <lastmod>2023-09-16T06:06:05.019Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Modelling.html</loc>
-    <lastmod>2023-09-15T09:25:49.835Z</lastmod>
+    <lastmod>2023-09-16T06:06:05.995Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/JupyterNotebookFormat.html</loc>
-    <lastmod>2023-09-15T09:25:51.031Z</lastmod>
+    <lastmod>2023-09-16T06:06:07.315Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/Ultilities.html</loc>
-    <lastmod>2023-09-15T09:25:51.903Z</lastmod>
+    <lastmod>2023-09-16T06:06:08.271Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/python-snippet/REST_API.html</loc>
-    <lastmod>2023-09-15T09:25:53.055Z</lastmod>
+    <lastmod>2023-09-16T06:06:09.511Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Matplotlib/Exercise 3 - Matplotlib.html</loc>
-    <lastmod>2023-09-15T09:25:54.455Z</lastmod>
+    <lastmod>2023-09-16T06:06:11.103Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Numpy/01-NumPy-Indexing-and-Selection.html</loc>
-    <lastmod>2023-09-15T09:25:55.595Z</lastmod>
+    <lastmod>2023-09-16T06:06:12.359Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/Crash-Course-Numpy/00-NumPy-Arrays.html</loc>
-    <lastmod>2023-09-15T09:25:56.843Z</lastmod>
+    <lastmod>2023-09-16T06:06:13.731Z</lastmod>
   </url>
   <url>
     <loc>https://nguyenngocbinh.github.io/snippets/sqlserver-snippet/Index.html</loc>
-    <lastmod>2023-09-15T09:25:57.711Z</lastmod>
+    <lastmod>2023-09-16T06:06:14.667Z</lastmod>
   </url>
 </urlset>
