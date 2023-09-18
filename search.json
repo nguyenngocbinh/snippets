@@ -590,44 +590,44 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Making shareable documents with Quarto",
+    "title": "Snippets",
     "section": "",
-    "text": "It’s possible to create beautiful documentation to share online with Quarto that auto-updates with GitHub. This is very new and incredibly cool. This tutorial is an example of a quarto website — it is a really powerful way to create and share your work. You can communicate about science using the same reproducible workflow you and/or your colleagues use for analyses, whether or not you write code.\nCreating websites with Quarto can be done without knowing R, Python or HTML, CSS, etc, and that’s where we’ll start. However, Quarto integrates with these tools so you can make your websites as complex and beautiful as you like as you see examples and reuse and remix from others in the open community. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout."
+    "text": "Welcome to the Snippets section! Here, you’ll find a collection of useful comparisons, code snippets, and resources to help you in your coding journey. Whether you’re a Python enthusiast, an R aficionado, or working with SQL Server, we’ve got you covered. Explore our curated snippets below:\n\n\n\nPL/SQL vs. DB2: Delve into the differences between PL/SQL and DB2 to make informed database decisions.\ndplyr vs. pandas: Compare the data manipulation capabilities of dplyr in R with pandas in Python.\nggplot2 vs. matplotlib: Explore the world of data visualization by contrasting ggplot2 and matplotlib.\n\n\n\n\n\nEnvironment Setup: Learn how to set up your Python environment for efficient coding.\nGraphs: Dive into the world of graph creation and visualization with Python.\nSlopegraph: Explore the power of slopegraphs in data storytelling.\nModeling: Get hands-on with Python’s modeling capabilities for data analysis.\nStatistics: Brush up on statistical concepts and techniques in Python.\nCode Optimization: Discover tips and tricks for optimizing your Python code.\nUtilities: Explore various utility functions and tools to streamline your Python development.\nREST API: Learn how to work with REST APIs in Python.\nJupyter Notebook Format: Dive into the world of Jupyter Notebooks and their formatting.\nVisualize Feature Importances: Gain insights into feature importance visualization in Python.\n\n\n\n\n\ndplyr: Master the art of data manipulation in R using the dplyr package.\nggplot2: Create stunning data visualizations with ggplot2 in R.\ngganimate: Animate your ggplot2 visualizations for dynamic data exploration.\nTreemap: Visualize hierarchical data using treemaps in R.\nDatabase Operations: Explore R’s capabilities for working with databases.\nUsing reticulate: Integrate Python into your R workflow with the reticulate package.\nWorking with Files and Folders: Learn how to efficiently handle files and folders in R.\nData Tables: Dive into data manipulation with data tables in R.\nCreating Packages: Discover how to create and manage packages in R.\n\n\n\n\n\nGeneral Info: Get an overview of SQL Server and its features.\nPermissions: Understand SQL Server permissions and access control.\nSynonyms: Learn about using synonyms in SQL Server for simplifying object references.\n\n\n\n\n\nTransformer Model: Explore the powerful Transformer model used in natural language processing and machine translation.\n\nHappy coding and exploring! Feel free to click on any of the links above to start your coding journey with these insightful snippets and comparisons."
   },
   {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "Making shareable documents with Quarto",
+    "objectID": "index.html#comparisons",
+    "href": "index.html#comparisons",
+    "title": "Snippets",
     "section": "",
-    "text": "It’s possible to create beautiful documentation to share online with Quarto that auto-updates with GitHub. This is very new and incredibly cool. This tutorial is an example of a quarto website — it is a really powerful way to create and share your work. You can communicate about science using the same reproducible workflow you and/or your colleagues use for analyses, whether or not you write code.\nCreating websites with Quarto can be done without knowing R, Python or HTML, CSS, etc, and that’s where we’ll start. However, Quarto integrates with these tools so you can make your websites as complex and beautiful as you like as you see examples and reuse and remix from others in the open community. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout."
+    "text": "PL/SQL vs. DB2: Delve into the differences between PL/SQL and DB2 to make informed database decisions.\ndplyr vs. pandas: Compare the data manipulation capabilities of dplyr in R with pandas in Python.\nggplot2 vs. matplotlib: Explore the world of data visualization by contrasting ggplot2 and matplotlib."
   },
   {
-    "objectID": "index.html#what-is-quarto",
-    "href": "index.html#what-is-quarto",
-    "title": "Making shareable documents with Quarto",
-    "section": "What is Quarto?",
-    "text": "What is Quarto?\nQuarto helps you have your ideas and your code in one place, and present it in a beautiful way.\nQuarto unifies and extends the RMarkdown ecosystem - it unifies by combining the functionality of R Markdown, bookdown, distill, xaringian, etc into a single consistent system. And it extends in several ways: all features are possible beyond R too, including Python and Javascript. It also has more “guardrails”: accessibility and inclusion are centered in the design. Quarto is for people who love RMarkdown, and it’s for people who have never used RMarkdown.\nThe ability for Quarto to streamline collaboration has been so cool and important for our NASA Openscapes project. Quarto has been a common place for us to collaborate - across R and Python languages and coding expertise."
+    "objectID": "index.html#python-snippets",
+    "href": "index.html#python-snippets",
+    "title": "Snippets",
+    "section": "",
+    "text": "Environment Setup: Learn how to set up your Python environment for efficient coding.\nGraphs: Dive into the world of graph creation and visualization with Python.\nSlopegraph: Explore the power of slopegraphs in data storytelling.\nModeling: Get hands-on with Python’s modeling capabilities for data analysis.\nStatistics: Brush up on statistical concepts and techniques in Python.\nCode Optimization: Discover tips and tricks for optimizing your Python code.\nUtilities: Explore various utility functions and tools to streamline your Python development.\nREST API: Learn how to work with REST APIs in Python.\nJupyter Notebook Format: Dive into the world of Jupyter Notebooks and their formatting.\nVisualize Feature Importances: Gain insights into feature importance visualization in Python."
   },
   {
-    "objectID": "index.html#what-is-this-tutorial",
-    "href": "index.html#what-is-this-tutorial",
-    "title": "Making shareable documents with Quarto",
-    "section": "What is this tutorial?",
-    "text": "What is this tutorial?\nThis is a 1-hour tutorial that can be used to teach or as self-paced learning.\nWe introduce Quarto by exploring this tutorial website, and practicing the basic Quarto workflow using different tools (GitHub browser, RStudio, and Jupyter) for editing your website.\nWe’ll start off from the browser so you don’t need to install any additional software, however this approach is very limited and you will soon outgrow its capabilities. If you don’t already have a workflow to edit files and sync to GitHub from your computer, I recommend RStudio. You don’t need to know R to use RStudio, and it has powerful editor features that make for happy workflows.\nQuarto.org is the go-to place for full documentation and more tutorials!"
+    "objectID": "index.html#r-snippets",
+    "href": "index.html#r-snippets",
+    "title": "Snippets",
+    "section": "",
+    "text": "dplyr: Master the art of data manipulation in R using the dplyr package.\nggplot2: Create stunning data visualizations with ggplot2 in R.\ngganimate: Animate your ggplot2 visualizations for dynamic data exploration.\nTreemap: Visualize hierarchical data using treemaps in R.\nDatabase Operations: Explore R’s capabilities for working with databases.\nUsing reticulate: Integrate Python into your R workflow with the reticulate package.\nWorking with Files and Folders: Learn how to efficiently handle files and folders in R.\nData Tables: Dive into data manipulation with data tables in R.\nCreating Packages: Discover how to create and manage packages in R."
   },
   {
-    "objectID": "index.html#example-quarto-sites",
-    "href": "index.html#example-quarto-sites",
-    "title": "Making shareable documents with Quarto",
-    "section": "Example Quarto sites",
-    "text": "Example Quarto sites\nA few Quarto websites from Openscapes - so far we have been using Quarto for documentation using Quarto and Markdown files and Jupyter Notebooks.\n\nChampions Lessons Series\nOpenscapes Approach Guide\n\n2021 NASA Cloud Hackathon\nFaylab Lab Manual\nA Quarto tip a day, by Mine Çetinkaya-Rundel"
+    "objectID": "index.html#sql-server-snippets",
+    "href": "index.html#sql-server-snippets",
+    "title": "Snippets",
+    "section": "",
+    "text": "General Info: Get an overview of SQL Server and its features.\nPermissions: Understand SQL Server permissions and access control.\nSynonyms: Learn about using synonyms in SQL Server for simplifying object references."
   },
   {
-    "objectID": "index.html#about",
-    "href": "index.html#about",
-    "title": "Making shareable documents with Quarto",
-    "section": "About",
-    "text": "About\nOpenscapes is about better science for future us. We help researchers reimagine data analysis, develop modern skills that are of immediate value to them, and cultivate collaborative and inclusive research teams as part of the broader global open movement.\nWe’re developing this tutorial to help folks with different levels of technical skills use Quarto for documentation and tutorial building. This tutorial was originally created for several different audiences: NASA-Openscapes researcher support engineers using Python, communications directors at organizations promoting open science who do not identify as coders, and fisheries scientists curious about transitioning from RMarkdown. We’re hoping it’s useful to folks with backgrounds as wide as these; if you find it useful or have suggestions for improvement, please let us know by clicking “Edit this page” or “Report an issue” at the upper right side of any page."
+    "objectID": "index.html#machine-learning",
+    "href": "index.html#machine-learning",
+    "title": "Snippets",
+    "section": "",
+    "text": "Transformer Model: Explore the powerful Transformer model used in natural language processing and machine translation.\n\nHappy coding and exploring! Feel free to click on any of the links above to start your coding journey with these insightful snippets and comparisons."
   },
   {
     "objectID": "comparision/dplyr-pandas.html",

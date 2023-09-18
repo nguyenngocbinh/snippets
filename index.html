@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Snippets - Making shareable documents with Quarto</title>
+<title>Snippets - Snippets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -434,11 +434,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
-  <li><a href="#what-is-quarto" id="toc-what-is-quarto" class="nav-link" data-scroll-target="#what-is-quarto">What is Quarto?</a></li>
-  <li><a href="#what-is-this-tutorial" id="toc-what-is-this-tutorial" class="nav-link" data-scroll-target="#what-is-this-tutorial">What is this tutorial?</a></li>
-  <li><a href="#example-quarto-sites" id="toc-example-quarto-sites" class="nav-link" data-scroll-target="#example-quarto-sites">Example Quarto sites</a></li>
-  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
+  <li><a href="#snippets" id="toc-snippets" class="nav-link active" data-scroll-target="#snippets">Snippets</a>
+  <ul class="collapse">
+  <li><a href="#comparisons" id="toc-comparisons" class="nav-link" data-scroll-target="#comparisons">Comparisons</a></li>
+  <li><a href="#python-snippets" id="toc-python-snippets" class="nav-link" data-scroll-target="#python-snippets">Python Snippets</a></li>
+  <li><a href="#r-snippets" id="toc-r-snippets" class="nav-link" data-scroll-target="#r-snippets">R Snippets</a></li>
+  <li><a href="#sql-server-snippets" id="toc-sql-server-snippets" class="nav-link" data-scroll-target="#sql-server-snippets">SQL Server Snippets</a></li>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link" data-scroll-target="#machine-learning">Machine Learning</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nguyenngocbinh/snippets/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -447,8 +450,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Making shareable documents with Quarto</h1>
-<p class="subtitle lead">Create open-source tutorials, onboarding docs, and much more</p>
+<h1 class="title">Snippets</h1>
+<p class="subtitle lead">Coding Insights and Comparisons</p>
 </div>
 
 
@@ -463,42 +466,63 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
-<p>It’s possible to create beautiful documentation to share online with <a href="https://quarto.org">Quarto</a> that auto-updates with <a href="http://github.com">GitHub</a>. This is very new and incredibly cool. This tutorial is an example of a quarto website — it is a really powerful way to create and share your work. You can communicate about science using the same reproducible workflow you and/or your colleagues use for analyses, whether or not you write code.</p>
-<p>Creating websites with Quarto can be done without knowing R, Python or HTML, CSS, etc, and that’s where we’ll start. However, Quarto integrates with these tools so you can make your websites as complex and beautiful as you like as you see examples and reuse and remix from others in the open community. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout.</p>
-</section>
-<section id="what-is-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-quarto">What is Quarto?</h2>
-<p>Quarto helps you have your ideas and your code in one place, and present it in a beautiful way.</p>
-<p><strong>Quarto unifies and extends the RMarkdown ecosystem</strong> - it unifies by combining the functionality of R Markdown, bookdown, distill, xaringian, etc into a single consistent system. And it extends in several ways: all features are possible beyond R too, including Python and Javascript. It also has more “guardrails”: accessibility and inclusion are centered in the design. Quarto is for people who love RMarkdown, and it’s for people who have never used RMarkdown.</p>
-<p>The ability for Quarto to streamline collaboration has been so cool and important for our <a href="https://nasa-openscapes.github.io/">NASA Openscapes</a> project. Quarto has been a common place for us to collaborate - across R and Python languages and coding expertise.</p>
-</section>
-<section id="what-is-this-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-this-tutorial">What is this tutorial?</h2>
-<p>This is a 1-hour tutorial that can be used to teach or as self-paced learning.</p>
-<p>We introduce Quarto by exploring this tutorial website, and practicing the basic Quarto workflow using different tools (GitHub browser, RStudio, and Jupyter) for editing your website.</p>
-<p>We’ll start off from the browser so you don’t need to install any additional software, however this approach is very limited and you will soon outgrow its capabilities. If you don’t already have a workflow to edit files and sync to GitHub from your computer, I recommend RStudio. You don’t need to know R to use RStudio, and it has powerful editor features that make for happy workflows.</p>
-<p><a href="https://quarto.org">Quarto.org</a> is the go-to place for full documentation and more tutorials!</p>
-</section>
-<section id="example-quarto-sites" class="level2">
-<h2 class="anchored" data-anchor-id="example-quarto-sites">Example Quarto sites</h2>
-<p>A few Quarto websites from Openscapes - so far we have been using Quarto for documentation using Quarto and Markdown files and Jupyter Notebooks.</p>
+<section id="snippets" class="level1">
+<h1>Snippets</h1>
+<p>Welcome to the Snippets section! Here, you’ll find a collection of useful comparisons, code snippets, and resources to help you in your coding journey. Whether you’re a Python enthusiast, an R aficionado, or working with SQL Server, we’ve got you covered. Explore our curated snippets below:</p>
+<section id="comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="comparisons">Comparisons</h2>
 <ul>
-<li><a href="https://openscapes.github.io/series">Champions Lessons Series</a></li>
-<li><a href="https://openscapes.github.io/approach-guide/">Openscapes Approach Guide</a><br>
-</li>
-<li><a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/">2021 NASA Cloud Hackathon</a></li>
-<li><a href="https://thefaylab.github.io/lab-manual/">Faylab Lab Manual</a></li>
-<li><a href="https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/">A Quarto tip a day</a>, by Mine Çetinkaya-Rundel</li>
+<li><a href="./comparision/plsql-db2.html">PL/SQL vs.&nbsp;DB2</a>: Delve into the differences between PL/SQL and DB2 to make informed database decisions.</li>
+<li><a href="./comparision/dplyr-pandas.html">dplyr vs.&nbsp;pandas</a>: Compare the data manipulation capabilities of dplyr in R with pandas in Python.</li>
+<li><a href="./comparision/ggplot2-matplotlib.html">ggplot2 vs.&nbsp;matplotlib</a>: Explore the world of data visualization by contrasting ggplot2 and matplotlib.</li>
 </ul>
 </section>
-<section id="about" class="level2">
-<h2 class="anchored" data-anchor-id="about">About</h2>
-<p><a href="https://openscapes.org">Openscapes</a> is about better science for future us. We help researchers reimagine data analysis, develop modern skills that are of immediate value to them, and cultivate collaborative and inclusive research teams as part of the broader global open movement.</p>
-<p>We’re developing this tutorial to help folks with different levels of technical skills use <a href="https://quarto.org">Quarto</a> for documentation and tutorial building. This tutorial was originally created for several different audiences: <a href="https://nasa-openscapes.github.io">NASA-Openscapes</a> researcher support engineers using Python, communications directors at organizations promoting open science who do not identify as coders, and fisheries scientists curious about transitioning from RMarkdown. We’re hoping it’s useful to folks with backgrounds as wide as these; if you find it useful or have suggestions for improvement, please let us know by clicking “Edit this page” or “Report an issue” at the upper right side of any page.</p>
+<section id="python-snippets" class="level2">
+<h2 class="anchored" data-anchor-id="python-snippets">Python Snippets</h2>
+<ul>
+<li><a href="./python-snippet/Environment.html">Environment Setup</a>: Learn how to set up your Python environment for efficient coding.</li>
+<li><a href="./python-snippet/Graphs.html">Graphs</a>: Dive into the world of graph creation and visualization with Python.</li>
+<li><a href="./python-snippet/slopegraph.html">Slopegraph</a>: Explore the power of slopegraphs in data storytelling.</li>
+<li><a href="./python-snippet/Modelling.html">Modeling</a>: Get hands-on with Python’s modeling capabilities for data analysis.</li>
+<li><a href="./python-snippet/Statistics.html">Statistics</a>: Brush up on statistical concepts and techniques in Python.</li>
+<li><a href="./python-snippet/Code-optimize.html">Code Optimization</a>: Discover tips and tricks for optimizing your Python code.</li>
+<li><a href="./python-snippet/Ultilities.html">Utilities</a>: Explore various utility functions and tools to streamline your Python development.</li>
+<li><a href="./python-snippet/REST_API.html">REST API</a>: Learn how to work with REST APIs in Python.</li>
+<li><a href="./python-snippet/JupyterNotebookFormat.html">Jupyter Notebook Format</a>: Dive into the world of Jupyter Notebooks and their formatting.</li>
+<li><a href="./python-snippet/VisualizeFeatureImportances.html">Visualize Feature Importances</a>: Gain insights into feature importance visualization in Python.</li>
+</ul>
+</section>
+<section id="r-snippets" class="level2">
+<h2 class="anchored" data-anchor-id="r-snippets">R Snippets</h2>
+<ul>
+<li><a href="./r-snippet/dplyr.html">dplyr</a>: Master the art of data manipulation in R using the dplyr package.</li>
+<li><a href="./r-snippet/ggplot2.html">ggplot2</a>: Create stunning data visualizations with ggplot2 in R.</li>
+<li><a href="./r-snippet/gganimate.html">gganimate</a>: Animate your ggplot2 visualizations for dynamic data exploration.</li>
+<li><a href="./r-snippet/treemap.html">Treemap</a>: Visualize hierarchical data using treemaps in R.</li>
+<li><a href="./r-snippet/database.html">Database Operations</a>: Explore R’s capabilities for working with databases.</li>
+<li><a href="./r-snippet/reticulate.html">Using reticulate</a>: Integrate Python into your R workflow with the reticulate package.</li>
+<li><a href="./r-snippet/file_folders.html">Working with Files and Folders</a>: Learn how to efficiently handle files and folders in R.</li>
+<li><a href="./r-snippet/DT.html">Data Tables</a>: Dive into data manipulation with data tables in R.</li>
+<li><a href="./r-snippet/create_package.html">Creating Packages</a>: Discover how to create and manage packages in R.</li>
+</ul>
+</section>
+<section id="sql-server-snippets" class="level2">
+<h2 class="anchored" data-anchor-id="sql-server-snippets">SQL Server Snippets</h2>
+<ul>
+<li><a href="sqlserver-snippet/README.md">General Info</a>: Get an overview of SQL Server and its features.</li>
+<li><a href="./sqlserver-snippet/permissions.html">Permissions</a>: Understand SQL Server permissions and access control.</li>
+<li><a href="./sqlserver-snippet/synonym.html">Synonyms</a>: Learn about using synonyms in SQL Server for simplifying object references.</li>
+</ul>
+</section>
+<section id="machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning">Machine Learning</h2>
+<ul>
+<li><a href="./machine-learning/transformer.html">Transformer Model</a>: Explore the powerful Transformer model used in natural language processing and machine translation.</li>
+</ul>
+<p>Happy coding and exploring! Feel free to click on any of the links above to start your coding journey with these insightful snippets and comparisons.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
