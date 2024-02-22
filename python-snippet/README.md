@@ -300,6 +300,28 @@ with pd.ExcelWriter(product['t_pred']) as writer:
     pred_test.to_excel(writer, sheet_name='pred_test')    
 ```
 
+```python
+import pandas as pd
+
+# Assume df is your DataFrame containing the data
+
+# Convert 'process_date' column to datetime if it's not already in datetime format
+df['process_date'] = pd.to_datetime(df['process_date'])
+
+# Define the dates to divide the data
+dates = ['2019-06-30', '2019-12-31', '2020-06-30', '2020-12-31', 
+         '2021-06-30', '2021-12-31', '2022-06-30', '2022-12-31']
+
+# Create an Excel writer object
+with pd.ExcelWriter('output_file.xlsx') as writer:
+    for date in dates:
+        # Filter data for the current date
+        filtered_data = df[df['process_date'] == date]
+        
+        # Write the filtered data to a separate sheet
+        filtered_data.to_excel(writer, sheet_name=date, index=False)
+
+```
 # 6. Join
 
 #### reduce merge
