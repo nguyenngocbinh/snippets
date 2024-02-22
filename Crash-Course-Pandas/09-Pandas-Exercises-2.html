@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Snippets - 1. Introduction</title>
+<title>Snippets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,13 +97,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -109,12 +116,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Crash-Course-Pandas/00-Intro-to-Pandas.html">Introduction to Pandas</a></li><li class="breadcrumb-item"><a href="../Crash-Course-Pandas/09-Pandas-Exercises-2.html">1. Introduction</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Crash-Course-Pandas/00-Intro-to-Pandas.html">Introduction to Pandas</a></li><li class="breadcrumb-item"><a href="../Crash-Course-Pandas/09-Pandas-Exercises-2.html">1. Introduction</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -124,15 +131,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nnb_hex.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://nguyenngocbinh.github.io/snippets" rel="" title="Nguyễn Ngọc Bình" class="quarto-navigation-tool px-1" aria-label="Nguyễn Ngọc Bình"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nguyenngocbinh/snippets" rel="" title="Snippet R, python, SQL, Stata" class="quarto-navigation-tool px-1" aria-label="Snippet R, python, SQL, Stata"><i class="bi bi-github"></i></a>
-    <a href="https://twitter.com/nanabi88" rel="" title="nanabi88 Twitter" class="quarto-navigation-tool px-1" aria-label="nanabi88 Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://nguyenngocbinh.github.io/snippets" title="Nguyễn Ngọc Bình" class="quarto-navigation-tool px-1" aria-label="Nguyễn Ngọc Bình"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nguyenngocbinh/snippets" title="Snippet R, python, SQL, Stata" class="quarto-navigation-tool px-1" aria-label="Snippet R, python, SQL, Stata"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/nanabi88" title="nanabi88 Twitter" class="quarto-navigation-tool px-1" aria-label="nanabi88 Twitter"><i class="bi bi-twitter"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -471,14 +478,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dataset-information-data-dictionaryvariable-notes" id="toc-dataset-information-data-dictionaryvariable-notes" class="nav-link active" data-scroll-target="#dataset-information-data-dictionaryvariable-notes">Dataset Information/ Data Dictionary/Variable Notes</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">1. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#dataset-information-data-dictionaryvariable-notes" id="toc-dataset-information-data-dictionaryvariable-notes" class="nav-link" data-scroll-target="#dataset-information-data-dictionaryvariable-notes">Dataset Information/ Data Dictionary/Variable Notes</a></li>
+  </ul></li>
   <li><a href="#setting-up-report" id="toc-setting-up-report" class="nav-link" data-scroll-target="#setting-up-report">2. Setting up report</a></li>
   <li><a href="#read-csv-into-dataframe" id="toc-read-csv-into-dataframe" class="nav-link" data-scroll-target="#read-csv-into-dataframe">3. Read CSV into dataframe</a></li>
   <li><a href="#data-wrangling-cleaning" id="toc-data-wrangling-cleaning" class="nav-link" data-scroll-target="#data-wrangling-cleaning">4. Data Wrangling / Cleaning</a>
@@ -515,28 +525,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#other-variables" id="toc-other-variables" class="nav-link" data-scroll-target="#other-variables">6.2 Other variables</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nguyenngocbinh/snippets/blob/main/Crash-Course-Pandas/09-Pandas-Exercises-2.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/nguyenngocbinh/snippets/blob/main/Crash-Course-Pandas/09-Pandas-Exercises-2.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">1. Introduction</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
 <p>For this project we were asked to select a dataset and using the data answer a question of our choosing. I selected the Titanic Data Set which looks at the characteristics of a sample of the passengers on the Titanic, including whether they survived or not, gender, age, siblings / spouses, parents and children, fare (cost of ticket), embarkation port.</p>
 <p>After looking at the contents of the dataset, I thought it would be interesting to look at the following questions:</p>
 <ul>
@@ -620,10 +618,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><b>Sibsp</b>: The dataset defines family relations in this way… <br> Sibling = brother, sister, stepbrother, stepsister <br> Spouse = husband, wife (mistresses and fiancés were ignored)</p>
 <p><b>Parch</b>: The dataset defines family relations in this way… <br> Parent = mother, father <br> Child = daughter, son, stepdaughter, stepson <br> Some children travelled only with a nanny, therefore parch=0 for them.</p>
 </section>
+</section>
 <section id="setting-up-report" class="level1">
 <h1>2. Setting up report</h1>
 <p>In order to analyse and report on the data, I have choosen to use ipython notebook, along with the numpy, pandas, matplotlib.pyplot and seaborn python modules. In order to use these modules they needed to be imported into the notebook first as per below.</p>
-<div class="cell" data-execution_count="1">
+<div id="45c6da33" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#importing of required modules</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -635,7 +634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#allow plots and visualisations to be displayed in the report</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="2">
+<div id="1574afa9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> as_percent(val, precision<span class="op">=</span><span class="st">'0.2'</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Convert number to percentage string."""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(val, Number):</span>
@@ -653,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="read-csv-into-dataframe" class="level1">
 <h1>3. Read CSV into dataframe</h1>
-<div class="cell" data-execution_count="3">
+<div id="0c3bbef8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read csv into Pandas Dataframe and store in dataset variable</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>titanic_df <span class="op">=</span> pd.read_csv(<span class="st">'titanic_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -663,7 +662,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Before working with the data I needed to look at what needed to be cleaned up, i.e.&nbsp;find missing data, remove data that will not assist with the analysis.</p>
 <section id="investigating-dataset-and-finding-missing-incomplete-data" class="level2">
 <h2 class="anchored" data-anchor-id="investigating-dataset-and-finding-missing-incomplete-data">4.1 Investigating Dataset and finding missing / incomplete data</h2>
-<div class="cell" data-execution_count="4">
+<div id="492229c6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print out information about the data</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>titanic_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -693,7 +692,7 @@ memory usage: 83.7+ KB</code></pre>
 <section id="missing-ages" class="level2">
 <h2 class="anchored" data-anchor-id="missing-ages">4.2 Missing Ages</h2>
 <p>In order to populate the missing ages I will use the mean age based on the Sex and Pclass</p>
-<div class="cell" data-execution_count="5">
+<div id="a8772e52" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>missing_ages <span class="op">=</span> titanic_df[titanic_df[<span class="st">'Age'</span>].isnull()]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># determine mean age based on Sex and Pclass</span></span>
@@ -715,10 +714,11 @@ memory usage: 83.7+ KB</code></pre>
 <section id="missing-embarkation-ports" class="level2">
 <h2 class="anchored" data-anchor-id="missing-embarkation-ports">4.3 Missing embarkation ports</h2>
 <p>In order to populate the missing embarked ports I need to first determine if the people with the missing information may have been travelling with others.</p>
-<div class="cell" data-execution_count="6">
+<div id="d93efcba" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>missing_ports <span class="op">=</span> titanic_df[titanic_df[<span class="st">'Embarked'</span>].isnull()]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>missing_ports</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 <div>
 
 
@@ -777,10 +777,12 @@ memory usage: 83.7+ KB</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+</div>
+<div id="02223c37" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># search by ticket number and cabin</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>titanic_df[(titanic_df[<span class="st">'Embarked'</span>].notnull()) <span class="op">&amp;</span> ((titanic_df[<span class="st">'Ticket'</span>] <span class="op">==</span> <span class="st">'113572'</span>) <span class="op">|</span> (titanic_df[<span class="st">'Cabin'</span>] <span class="op">==</span> <span class="st">'B28'</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
+<div>
 <div>
 
 
@@ -809,15 +811,16 @@ memory usage: 83.7+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Since searching for similar records did not return any results and it appears that both were travelling in the same cabin and with the same ticket number and the bulk of passengers were travelling from Southhampton, I have choosen to use Southhampton as the missing value.</p>
-<div class="cell" data-execution_count="8">
+<div id="61f360c2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>titanic_df[<span class="st">'Embarked'</span>].fillna(<span class="st">'S'</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="remove-un-wanted-columns" class="level2">
 <h2 class="anchored" data-anchor-id="remove-un-wanted-columns">4.4 Remove un-wanted columns</h2>
 <p>Since the Cabin, Name and Ticket numbers are not required in this analysis I will remove them to improve the speed of processing the dataframe.</p>
-<div class="cell" data-execution_count="9">
+<div id="88f136cf" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dropping columns Cabin, Name and Ticket</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>titanic_df <span class="op">=</span> titanic_df.drop([<span class="st">'Cabin'</span>,<span class="st">'Name'</span>,<span class="st">'Ticket'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>titanic_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -845,7 +848,7 @@ memory usage: 62.8+ KB</code></pre>
 <h2 class="anchored" data-anchor-id="mapping-data-values-to-descriptions">4.5 Mapping data (values to descriptions)</h2>
 <p>In order to intrepret the data easier the following fields need to be modified:</p>
 <p>Survived - changed to boolean (1 = True, 0 = False) Pclass - changed to Socio-Economic status (1st - Upper Class, 2nd - Middle Class, 3rd - Lower Class) Embarked - changed to name of embarkation port (C = Cherbourg; Q = Queenstown; S = Southampton) I will also add a Family Size column so that I can compare the size of families with the number of survivors.</p>
-<div class="cell" data-execution_count="10">
+<div id="cb339048" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> map_data(df):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function which takes the original dataframe and returns a </span></span>
@@ -871,6 +874,7 @@ memory usage: 62.8+ KB</code></pre>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>titanic_df <span class="op">=</span> map_data(titanic_df)</span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>titanic_df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
+<div>
 <div>
 
 
@@ -936,15 +940,17 @@ memory usage: 62.8+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="grouping-binning-ages" class="level2">
 <h2 class="anchored" data-anchor-id="grouping-binning-ages">4.6 Grouping / Binning Ages</h2>
 <p>To make the ages easier to analyse I thought it would be a good idea to group / bin the ages. This way we can compare groups of ages instead of individual ages.</p>
-<div class="cell" data-execution_count="11">
+<div id="063d3842" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>age_labels <span class="op">=</span> [<span class="st">'0-9'</span>, <span class="st">'10-19'</span>, <span class="st">'20-29'</span>, <span class="st">'30-39'</span>, <span class="st">'40-49'</span>, <span class="st">'50-59'</span>, <span class="st">'60-69'</span>, <span class="st">'70-79'</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>titanic_df[<span class="st">'age_group'</span>] <span class="op">=</span> pd.cut(titanic_df.Age, <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">81</span>, <span class="dv">10</span>), right<span class="op">=</span><span class="va">False</span>, labels<span class="op">=</span>age_labels)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>titanic_df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
+<div>
 <div>
 
 
@@ -1014,13 +1020,14 @@ memory usage: 62.8+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 </section>
 <section id="analysis-of-data" class="level1">
 <h1>5. Analysis of data</h1>
 <section id="number-of-survivors" class="level2">
 <h2 class="anchored" data-anchor-id="number-of-survivors">5.1 Number of Survivors</h2>
-<div class="cell" data-execution_count="12">
+<div id="af08660d" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>survivors_data <span class="op">=</span> titanic_df[titanic_df.Survived<span class="op">==</span><span class="va">True</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>non_survivors_data <span class="op">=</span> titanic_df[titanic_df.Survived<span class="op">==</span><span class="va">False</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1030,7 +1037,7 @@ memory usage: 62.8+ KB</code></pre>
 <p>In order to answer this question we need to look at how many males and females were on board and which gender had the highest survival rate.</p>
 <section id="count-of-survivors-by-gender" class="level3">
 <h3 class="anchored" data-anchor-id="count-of-survivors-by-gender">Count of Survivors by Gender</h3>
-<div class="cell" data-execution_count="14">
+<div id="067d206d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.crosstab(titanic_df[<span class="st">'Survived'</span>],titanic_df[<span class="st">'Sex'</span>])</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1043,7 +1050,7 @@ True         233   109</code></pre>
 </section>
 <section id="proportion-of-survivors-by-gender" class="level3">
 <h3 class="anchored" data-anchor-id="proportion-of-survivors-by-gender">Proportion of survivors by Gender</h3>
-<div class="cell" data-execution_count="15">
+<div id="2df52b44" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(titanic_df.groupby(<span class="st">'Sex'</span>).Survived.mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sex
@@ -1052,7 +1059,7 @@ male      0.188908
 Name: Survived, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="32fe1c77" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate values for each survival status</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>survivors_gender <span class="op">=</span> survivors_data.groupby([<span class="st">'Sex'</span>]).size().values</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>non_survivors_gender <span class="op">=</span> non_survivors_data.groupby([<span class="st">'Sex'</span>]).size().values</span>
@@ -1089,7 +1096,11 @@ Name: Survived, dtype: float64</code></pre>
 <pre><code>Text(0.5, 1.0, '% of survivors by gender')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The plots and proportions above show that there were a significant more males on board the Titanic compared to the number of females. Whilst the second plot (% of survivors by gender) shows that Females had a higher proportion (74.2%) of survivors compared to the proportion of males (18.9%). This shows that females had a greater rate of survival.</p>
@@ -1099,10 +1110,10 @@ Name: Survived, dtype: float64</code></pre>
 <h2 class="anchored" data-anchor-id="which-social-class-had-a-better-chance-of-survival">5.3 Which social class had a better chance of survival?</h2>
 <section id="count-of-survivors-by-class" class="level3">
 <h3 class="anchored" data-anchor-id="count-of-survivors-by-class">Count of survivors by class</h3>
-<div class="cell">
+<div id="72a3e486" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="70a0fb47" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Pclass    Lower Class  Middle Class  Upper Class
@@ -1114,10 +1125,10 @@ True              119            87          136</code></pre>
 </section>
 <section id="proportion-of-survivors-by-class" class="level3">
 <h3 class="anchored" data-anchor-id="proportion-of-survivors-by-class">Proportion of survivors by class</h3>
-<div class="cell">
+<div id="36ac52e8" class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="df2dd8f1" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Pclass
@@ -1127,16 +1138,20 @@ Upper Class     0.629630
 Name: Survived, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="09464a3a" class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="a9379f2d" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>Text(0.5, 1.0, '% of survivors by class')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-22-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The graphs above so that whilst the lower class had more passengers, than all classes, and more survivors than the middle class, the lower class had the lowest survival rate. The Upper Class passengers had the highest survival rate</p>
@@ -1146,23 +1161,27 @@ Name: Survived, dtype: float64</code></pre>
 <h2 class="anchored" data-anchor-id="which-age-group-had-a-better-chance-of-survival">5.4 Which age group had a better chance of survival?</h2>
 <section id="distribution-of-age-groups" class="level3">
 <h3 class="anchored" data-anchor-id="distribution-of-age-groups">Distribution of Age Groups</h3>
-<div class="cell" data-execution_count="22">
+<div id="164f291a" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>titanic_df.groupby([<span class="st">'age_group'</span>]).size().plot(kind<span class="op">=</span><span class="st">'bar'</span>,stacked<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of Age Groups"</span>,fontsize<span class="op">=</span><span class="dv">14</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age Group'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>From the plot above we can see that the majority of passengers were aged between 20-29</p>
 </section>
 <section id="proportion-of-survivors-by-age-group" class="level3">
 <h3 class="anchored" data-anchor-id="proportion-of-survivors-by-age-group">Proportion of survivors by age group</h3>
-<div class="cell">
+<div id="bb15661a" class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="23">
+<div id="68611aad" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>age_group
@@ -1177,20 +1196,24 @@ Name: Survived, dtype: float64</code></pre>
 Name: Survived, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="9d84bc5f" class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="a837b4ab" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>Text(0.5, 1.0, '% of survivors by age group')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-27-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>When looking at proportions and percentages of survivors per age group, initially I was suprised by the results, until I thought that this analysis shoudl take into consideration the gender / sex of the passengers as well.</p>
-<div class="cell" data-execution_count="25">
+<div id="bf6d69b7" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(titanic_df.groupby([<span class="st">'Sex'</span>,<span class="st">'age_group'</span>]).Survived.mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sex     age_group
@@ -1213,7 +1236,7 @@ male    0-9          0.593750
 Name: Survived, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="e4755a57" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>male_data <span class="op">=</span> titanic_df[titanic_df.Sex <span class="op">==</span> <span class="st">"male"</span>].groupby(<span class="st">'age_group'</span>).Survived.mean().values</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>female_data <span class="op">=</span> titanic_df[titanic_df.Sex <span class="op">==</span> <span class="st">"female"</span>].groupby(<span class="st">'age_group'</span>).Survived.mean().values</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.subplot()</span>
@@ -1228,7 +1251,11 @@ Name: Survived, dtype: float64</code></pre>
 <span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
 <span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="09-Pandas-Exercises-2_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>After relooking at the proportion of survivors by age group and gender, the data supports notion of women and children to be given preferential treatment over men. The plot “Proportion of survivors by age group / gender”, shows that children (0-9 years old, male and female) and women (all ages) had a much higher proportion of survivors. This supports the notion of the seats in the lifeboats been given to Women and Children first.</p>
@@ -1245,7 +1272,7 @@ Name: Survived, dtype: float64</code></pre>
 <li>only been a sample of the data</li>
 </ul>
 <p>The missing data and size of the sample could skew the results for example the missing ages.</p>
-<div class="cell" data-execution_count="28">
+<div id="3d1b5731" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing_ages.groupby(<span class="st">'Sex'</span>).size())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sex
@@ -1311,6 +1338,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1379,13 +1433,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1464,10 +1520,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1477,8 +1532,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1491,6 +1555,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1534,6 +1717,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1559,6 +1743,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1620,12 +1830,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Crash-Course-Pandas/07-Pandas-Exercises-1.html" class="pagination-link">
+      <a href="../Crash-Course-Pandas/07-Pandas-Exercises-1.html" class="pagination-link" aria-label="Pandas Exercises">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pandas Exercises</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Crash-Course-Matplotlib/Exercise 3 - Matplotlib.html" class="pagination-link">
+      <a href="../Crash-Course-Matplotlib/Exercise 3 - Matplotlib.html" class="pagination-link" aria-label="Matplotlib - 2D and 3D plotting in Python">
         <span class="nav-page-text">Matplotlib - 2D and 3D plotting in Python</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1633,13 +1843,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© CC-By NguyenNgocBinh, 2023</div>   
+    <div class="nav-footer-left">
+<p>© CC-By NguyenNgocBinh, 2023</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
-    <div class="nav-footer-right">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/nguyenngocbinh/snippets/blob/main/Crash-Course-Pandas/09-Pandas-Exercises-2.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
+
 
 
 
