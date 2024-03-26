@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -485,15 +485,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#operations" id="toc-operations" class="nav-link active" data-scroll-target="#operations">Operations</a>
-  <ul class="collapse">
-  <li><a href="#info-on-unique-values" id="toc-info-on-unique-values" class="nav-link" data-scroll-target="#info-on-unique-values">Info on Unique Values</a></li>
+  <li><a href="#info-on-unique-values" id="toc-info-on-unique-values" class="nav-link active" data-scroll-target="#info-on-unique-values">Info on Unique Values</a></li>
   <li><a href="#selecting-data" id="toc-selecting-data" class="nav-link" data-scroll-target="#selecting-data">Selecting Data</a></li>
   <li><a href="#applying-functions" id="toc-applying-functions" class="nav-link" data-scroll-target="#applying-functions">Applying Functions</a></li>
   <li><a href="#permanently-removing-a-column" id="toc-permanently-removing-a-column" class="nav-link" data-scroll-target="#permanently-removing-a-column">Permanently Removing a Column</a></li>
   <li><a href="#get-column-and-index-names" id="toc-get-column-and-index-names" class="nav-link" data-scroll-target="#get-column-and-index-names">Get column and index names:</a></li>
   <li><a href="#sorting-and-ordering-a-dataframe" id="toc-sorting-and-ordering-a-dataframe" class="nav-link" data-scroll-target="#sorting-and-ordering-a-dataframe">Sorting and Ordering a DataFrame:</a></li>
-  </ul></li>
   <li><a href="#great-job" id="toc-great-job" class="nav-link" data-scroll-target="#great-job">Great Job!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/nguyenngocbinh/snippets/blob/main/Crash-Course-Pandas/05-Operations.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -520,10 +517,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="operations" class="level1">
-<h1>Operations</h1>
 <p>There are lots of operations with pandas that will be really useful to you, but don’t fall into any distinct category. Let’s show them here in this lecture:</p>
-<div id="cell-1" class="cell" data-execution_count="52">
+<div id="cell-2" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'col1'</span>:[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>],<span class="st">'col2'</span>:[<span class="dv">444</span>,<span class="dv">555</span>,<span class="dv">666</span>,<span class="dv">444</span>],<span class="st">'col3'</span>:[<span class="st">'abc'</span>,<span class="st">'def'</span>,<span class="st">'ghi'</span>,<span class="st">'xyz'</span>]})</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -574,19 +569,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="info-on-unique-values" class="level3">
 <h3 class="anchored" data-anchor-id="info-on-unique-values">Info on Unique Values</h3>
-<div id="cell-3" class="cell" data-execution_count="53">
+<div id="cell-4" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col2'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>array([444, 555, 666])</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="54">
+<div id="cell-5" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col2'</span>].nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>3</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="55">
+<div id="cell-6" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col2'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>444    2
@@ -598,11 +593,11 @@ Name: col2, dtype: int64</code></pre>
 </section>
 <section id="selecting-data" class="level3">
 <h3 class="anchored" data-anchor-id="selecting-data">Selecting Data</h3>
-<div id="cell-7" class="cell" data-execution_count="56">
+<div id="cell-8" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Select from DataFrame using criteria from multiple columns</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>newdf <span class="op">=</span> df[(df[<span class="st">'col1'</span>]<span class="op">&gt;</span><span class="dv">2</span>) <span class="op">&amp;</span> (df[<span class="st">'col2'</span>]<span class="op">==</span><span class="dv">444</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="57">
+<div id="cell-9" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>newdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <div>
@@ -634,11 +629,11 @@ Name: col2, dtype: int64</code></pre>
 </section>
 <section id="applying-functions" class="level3">
 <h3 class="anchored" data-anchor-id="applying-functions">Applying Functions</h3>
-<div id="cell-10" class="cell" data-execution_count="58">
+<div id="cell-11" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> times2(x):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="59">
+<div id="cell-12" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col1'</span>].<span class="bu">apply</span>(times2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>0    2
@@ -648,7 +643,7 @@ Name: col2, dtype: int64</code></pre>
 Name: col1, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="60">
+<div id="cell-13" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col3'</span>].<span class="bu">apply</span>(<span class="bu">len</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>0    3
@@ -658,7 +653,7 @@ Name: col1, dtype: int64</code></pre>
 Name: col3, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="61">
+<div id="cell-14" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col1'</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>10</code></pre>
@@ -667,10 +662,10 @@ Name: col3, dtype: int64</code></pre>
 </section>
 <section id="permanently-removing-a-column" class="level3">
 <h3 class="anchored" data-anchor-id="permanently-removing-a-column">Permanently Removing a Column</h3>
-<div id="cell-15" class="cell" data-execution_count="62">
+<div id="cell-16" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df[<span class="st">'col1'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="63">
+<div id="cell-17" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <div>
@@ -715,13 +710,13 @@ Name: col3, dtype: int64</code></pre>
 </section>
 <section id="get-column-and-index-names" class="level3">
 <h3 class="anchored" data-anchor-id="get-column-and-index-names">Get column and index names:</h3>
-<div id="cell-18" class="cell" data-execution_count="64">
+<div id="cell-19" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>Index(['col2', 'col3'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="65">
+<div id="cell-20" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>RangeIndex(start=0, stop=4, step=1)</code></pre>
@@ -730,7 +725,7 @@ Name: col3, dtype: int64</code></pre>
 </section>
 <section id="sorting-and-ordering-a-dataframe" class="level3">
 <h3 class="anchored" data-anchor-id="sorting-and-ordering-a-dataframe">Sorting and Ordering a DataFrame:</h3>
-<div id="cell-21" class="cell" data-execution_count="66">
+<div id="cell-22" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <div>
@@ -772,7 +767,7 @@ Name: col3, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="67">
+<div id="cell-23" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'col2'</span>) <span class="co">#inplace=False by default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <div>
@@ -814,7 +809,6 @@ Name: col3, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="great-job" class="level1">
 <h1>Great Job!</h1>
@@ -1046,6 +1040,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/nguyenngocbinh\.github\.io\/snippets");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1080,7 +1092,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
