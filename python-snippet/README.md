@@ -6,14 +6,14 @@
 
 - Create env by common command line
 
-```python
+```cmd
 conda create -n python38 python=3.8.5 pip=20.2.4 ipykernel notebook
 conda activate python38
 ```
 
 - Create env use `environment.yaml` file
 
-```
+```yaml
 name: env_ascore
 channels:
   - conda-forge
@@ -38,7 +38,7 @@ dependencies:
 
 - Create env use `requirements.txt` file
 
-```
+```cmd
 conda list --export > requirements.txt
 conda install --file requirements.txt
 ```
@@ -47,25 +47,25 @@ conda install --file requirements.txt
 
 -  Conda environment list
 
-```python
+```cmd
 conda info --env
 ```
 
 - Remove conda environment
 
-```python
+```cmd
 conda deactivate
 conda env remove -n python38
 ```
 
 - Activate conda environment
 
-```python
+```cmd
 conda activate python38
 ```
 - Clean unused library
 
-```
+```cmd
 conda clean --all
 pip cache remove *
 ```
@@ -74,7 +74,7 @@ pip cache remove *
 
 ### 1.2.1. create
 
-```python
+```cmd
 conda activate python38
 ipython kernel install --user --name=python38
 ```
@@ -82,7 +82,7 @@ ipython kernel install --user --name=python38
 
 ### 1.2.2. Remove jupyter notebook environment (require run as administrator)
 
-```python
+```cmd
 jupyter kernelspec list
 jupyter kernelspec uninstall python38 
 ```
@@ -97,14 +97,14 @@ jupyter kernelspec uninstall python38
 
 - Step 3: Run following command to download dependencies packages to folder `wheel`
 
-```python
+```cmd
 pip download -r requirements.txt -d wheel
 ```
 
 - Step 4: Run following command to install
 
 
-```
+```cmd
 pip install -r requirements.txt --find-links=D:\wheel --no-index
 ```
 
@@ -112,13 +112,13 @@ pip install -r requirements.txt --find-links=D:\wheel --no-index
 
 Activate same version python (i.e 3.7.0) and type command following
 
-```
+```cmd
 pip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas
 ```
 
 ## 2.3. Export requirements
 
-```
+```cmd
 pip list --format=freeze > requirements.txt
 ```
 
@@ -126,7 +126,7 @@ pip list --format=freeze > requirements.txt
 
 - nbextension
 
-```
+```cmd
 pip install jupyter_contrib_nbextensions
 pip install jupyter_nbextensions_configurator
 jupyter contrib nbextension install --user
@@ -137,14 +137,14 @@ jupyter nbextensions_configurator enable --user
 
 #### check dependencies
 
-```
+```cmd
 python -m pip check 
 pip freeze > requirements.txt
 ```
 
 #### install pycaret
 
-```
+```cmd
 pip install pycaret --use-feature=2020-resolver
 ```
 
@@ -152,7 +152,7 @@ pip install pycaret --use-feature=2020-resolver
 
 - jupyter notebook
 
-```
+```cmd
 jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T
 ```
 
@@ -162,9 +162,21 @@ jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T
 - case when
 
 ```python
-df['new_column'] = np.where(df['col2']<9, 'value1',
-                   np.where(df['col2']<12, 'value2',
-                   np.where(df['col2']<15, 'value3', 'value4')))
+import numpy as np
+
+conditions = [
+    (df['col2'] < 9),
+    (df['col2'] < 12),
+    (df['col2'] < 15)
+]
+
+choices = ['value1', 'value2', 'value3']
+
+# Default value if none of the conditions are met
+default_choice = 'value4'
+
+df['new_column'] = np.select(conditions, choices, default=default_choice)
+
 ```
 
 - clean names
