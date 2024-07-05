@@ -556,70 +556,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Create env by common command line</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>conda create <span class="op">-</span>n python38 python<span class="op">=</span><span class="fl">3.8.5</span> pip<span class="op">=</span><span class="fl">20.2.4</span> ipykernel notebook</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>conda activate python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> python38 python=3.8.5 pip=20.2.4 ipykernel notebook</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Create env use <code>environment.yaml</code> file</li>
 </ul>
-<pre><code>name: env_ascore
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - python=3.8
-  - pandas==1.4.4  
-  - joblib==1.1.0
-  - statsmodels==0.13.2
-  - ipykernel
-  - zipp  
-  - pip
-  - pip: 
-    - optbinning==0.17.3
-    - ortools==9.4.1874
-# conda env create -f environment.yaml  
-# conda env remove -n env_ascore
-# set https_proxy=10.1.33.23:8080
-# set http_proxy=10.1.33.23:8080
-# conda install -n env_ascore ipykernel --update-deps --force-reinstall</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> env_ascore</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> defaults</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.8</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pandas==1.4.4  </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> joblib==1.1.0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> statsmodels==0.13.2</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ipykernel</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> zipp  </span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pip</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">pip</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> optbinning==0.17.3</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> ortools==9.4.1874</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># conda env create -f environment.yaml  </span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># conda env remove -n env_ascore</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># set https_proxy=10.1.33.23:8080</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># set http_proxy=10.1.33.23:8080</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># conda install -n env_ascore ipykernel --update-deps --force-reinstall</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Create env use <code>requirements.txt</code> file</li>
 </ul>
-<pre><code>conda list --export &gt; requirements.txt
-conda install --file requirements.txt</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="at">--export</span> <span class="op">&gt;</span> requirements.txt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">--file</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="conda-common-commands" class="level3">
 <h3 class="anchored" data-anchor-id="conda-common-commands">1.1.2. Conda common commands</h3>
 <ul>
 <li>Conda environment list</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>conda info <span class="op">--</span>env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info <span class="at">--env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Remove conda environment</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>conda deactivate</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>conda env remove <span class="op">-</span>n python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Activate conda environment</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>conda activate python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Clean unused library</li>
 </ul>
-<pre><code>conda clean --all
-pip cache remove *</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> clean <span class="at">--all</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> cache remove <span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="create-environment-for-jupyter-notebook" class="level2">
 <h2 class="anchored" data-anchor-id="create-environment-for-jupyter-notebook">1.2. Create environment for jupyter notebook</h2>
 <section id="create" class="level3">
 <h3 class="anchored" data-anchor-id="create">1.2.1. create</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>conda activate python38</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ipython kernel install <span class="op">--</span>user <span class="op">--</span>name<span class="op">=</span>python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate python38</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ipython</span> kernel install <span class="at">--user</span> <span class="at">--name</span><span class="op">=</span>python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="remove-jupyter-notebook-environment-require-run-as-administrator" class="level3">
 <h3 class="anchored" data-anchor-id="remove-jupyter-notebook-environment-require-run-as-administrator">1.2.2. Remove jupyter notebook environment (require run as administrator)</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jupyter kernelspec <span class="bu">list</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>jupyter kernelspec uninstall python38 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec list</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec uninstall python38 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
@@ -632,20 +632,20 @@ pip cache remove *</code></pre>
 <li><p>Step 2: Create folder <code>wheel</code> (Eg. D:)</p></li>
 <li><p>Step 3: Run following command to download dependencies packages to folder <code>wheel</code></p></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pip download <span class="op">-</span>r requirements.txt <span class="op">-</span>d wheel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> download <span class="at">-r</span> requirements.txt <span class="at">-d</span> wheel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Step 4: Run following command to install</li>
 </ul>
-<pre><code>pip install -r requirements.txt --find-links=D:\wheel --no-index</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt <span class="at">--find-links</span><span class="op">=</span>D:<span class="dt">\w</span>heel <span class="at">--no-index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="install-offline-linux-package" class="level2">
 <h2 class="anchored" data-anchor-id="install-offline-linux-package">2.2. Install OFFLINE Linux package</h2>
 <p>Activate same version python (i.e 3.7.0) and type command following</p>
-<pre><code>pip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> download <span class="at">--platform</span> manylinux1_x86_64 <span class="at">--only-binary</span><span class="op">=</span>:all: <span class="at">--no-binary</span><span class="op">=</span>:none: pandas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="export-requirements" class="level2">
 <h2 class="anchored" data-anchor-id="export-requirements">2.3. Export requirements</h2>
-<pre><code>pip list --format=freeze &gt; requirements.txt</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list <span class="at">--format</span><span class="op">=</span>freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="install-extension-for-jupyter-notebook" class="level1">
@@ -653,28 +653,28 @@ pip cache remove *</code></pre>
 <ul>
 <li>nbextension</li>
 </ul>
-<pre><code>pip install jupyter_contrib_nbextensions
-pip install jupyter_nbextensions_configurator
-jupyter contrib nbextension install --user
-jupyter nbextensions_configurator enable --user</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyter_contrib_nbextensions</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyter_nbextensions_configurator</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> contrib nbextension install <span class="at">--user</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> nbextensions_configurator enable <span class="at">--user</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="other-ultilities-command" class="level1">
 <h1>4. Other ultilities command</h1>
 <section id="check-dependencies" class="level4">
 <h4 class="anchored" data-anchor-id="check-dependencies">check dependencies</h4>
-<pre><code>python -m pip check 
-pip freeze &gt; requirements.txt</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip check </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="install-pycaret" class="level4">
 <h4 class="anchored" data-anchor-id="install-pycaret">install pycaret</h4>
-<pre><code>pip install pycaret --use-feature=2020-resolver</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pycaret <span class="at">--use-feature</span><span class="op">=</span>2020-resolver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="themes" class="level4">
 <h4 class="anchored" data-anchor-id="themes">Themes</h4>
 <ul>
 <li>jupyter notebook</li>
 </ul>
-<pre><code>jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jt</span> <span class="at">-t</span> onedork <span class="at">-fs</span> 13 <span class="at">-altp</span> <span class="at">-tfs</span> 14 <span class="at">-nfs</span> 14 <span class="at">-cellw</span> 88% <span class="at">-T</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="pandas" class="level1">
