@@ -10,7 +10,7 @@ title: Environment
 
         1. Quick create env using `conda create`
        
-            ```
+            ```sh
             conda create -n env_rdm python=3.10 pip ipykernel notebook
             conda activate env_rdm
             ```
@@ -43,7 +43,7 @@ title: Environment
 
         1. Create env use `requirements.txt` file
 
-          ```
+          ```sh
           conda list --export > requirements.txt
           conda install --file requirements.txt
           ```
@@ -52,25 +52,25 @@ title: Environment
 
       -  Conda environment list
       
-      ```
+      ```sh
       conda info --env
       ```
       
       - Remove conda environment
       
-      ```
+      ```sh
       conda deactivate
       conda env remove -n python38
       ```
       
       - Activate conda environment
       
-      ```
+      ```sh
       conda activate python38
       ```
       - Clean unused library
       
-      ```
+      ```sh
       conda clean --all
       pip cache remove *
       ```
@@ -80,14 +80,14 @@ title: Environment
     1. Use conda to create new environment
     1. Use `ipython`
      
-        ```
+        ```sh
         conda activate python38
         ipython kernel install --user --name=python38
         ```
  
     1. Remove jupyter notebook environment (require run as administrator)
   
-        ```
+        ```sh
         jupyter kernelspec list
         jupyter kernelspec uninstall python38 
         ```
