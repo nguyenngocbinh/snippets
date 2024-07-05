@@ -516,8 +516,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create conda environment</p>
 <ol type="1">
 <li><p>Quick create env using <code>conda create</code></p>
-<pre><code>conda create -n env_rdm python=3.10 pip ipykernel notebook
-conda activate env_rdm</code></pre></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> env_rdm python=3.10 pip ipykernel notebook</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate env_rdm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Create env use <code>environment.yaml</code> file</p>
 <ul>
 <li>First, create <code>environment.yaml</code> file with example content following</li>
@@ -543,37 +543,37 @@ conda activate env_rdm</code></pre></li>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># set http_proxy=10.1.33.23:8080          </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Create env use <code>requirements.txt</code> file</p></li>
 </ol>
-<pre><code>conda list --export &gt; requirements.txt
-conda install --file requirements.txt</code></pre></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="at">--export</span> <span class="op">&gt;</span> requirements.txt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">--file</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Conda common commands</p></li>
 </ol>
 <ul>
 <li>Conda environment list</li>
 </ul>
-<pre><code>conda info --env</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info <span class="at">--env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Remove conda environment</li>
 </ul>
-<pre><code>conda deactivate
-conda env remove -n python38</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Activate conda environment</li>
 </ul>
-<pre><code>conda activate python38</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Clean unused library</li>
 </ul>
-<pre><code>conda clean --all
-pip cache remove *</code></pre></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> clean <span class="at">--all</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> cache remove <span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Create environment for jupyter notebook</p>
 <ol type="1">
 <li><p>Use conda to create new environment</p></li>
 <li><p>Use <code>ipython</code></p>
-<pre><code>conda activate python38
-ipython kernel install --user --name=python38</code></pre></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate python38</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ipython</span> kernel install <span class="at">--user</span> <span class="at">--name</span><span class="op">=</span>python38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Remove jupyter notebook environment (require run as administrator)</p>
-<pre><code>jupyter kernelspec list
-jupyter kernelspec uninstall python38 </code></pre></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec list</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec uninstall python38 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol></li>
 <li><p>Install packages in <strong>OFFLINE</strong> mode with <code>pip</code></p>
 <ol type="1">
