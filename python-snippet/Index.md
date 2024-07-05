@@ -12,14 +12,14 @@ title: "Python Snippet"
 
 - Create env by common command line
 
-```python
+```sh
 conda create -n python38 python=3.8.5 pip=20.2.4 ipykernel notebook
 conda activate python38
 ```
 
 - Create env use `environment.yaml` file
 
-```
+```yml
 name: env_ascore
 channels:
   - conda-forge
@@ -44,7 +44,7 @@ dependencies:
 
 - Create env use `requirements.txt` file
 
-```
+```sh
 conda list --export > requirements.txt
 conda install --file requirements.txt
 ```
@@ -53,25 +53,25 @@ conda install --file requirements.txt
 
 -  Conda environment list
 
-```python
+```sh
 conda info --env
 ```
 
 - Remove conda environment
 
-```python
+```sh
 conda deactivate
 conda env remove -n python38
 ```
 
 - Activate conda environment
 
-```python
+```sh
 conda activate python38
 ```
 - Clean unused library
 
-```
+```sh
 conda clean --all
 pip cache remove *
 ```
@@ -80,7 +80,7 @@ pip cache remove *
 
 ### 1.2.1. create
 
-```python
+```sh
 conda activate python38
 ipython kernel install --user --name=python38
 ```
@@ -88,7 +88,7 @@ ipython kernel install --user --name=python38
 
 ### 1.2.2. Remove jupyter notebook environment (require run as administrator)
 
-```python
+```sh
 jupyter kernelspec list
 jupyter kernelspec uninstall python38 
 ```
@@ -103,14 +103,14 @@ jupyter kernelspec uninstall python38
 
 - Step 3: Run following command to download dependencies packages to folder `wheel`
 
-```python
+```sh
 pip download -r requirements.txt -d wheel
 ```
 
 - Step 4: Run following command to install
 
 
-```
+```sh
 pip install -r requirements.txt --find-links=D:\wheel --no-index
 ```
 
@@ -118,13 +118,13 @@ pip install -r requirements.txt --find-links=D:\wheel --no-index
 
 Activate same version python (i.e 3.7.0) and type command following
 
-```
+```sh
 pip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas
 ```
 
 ## 2.3. Export requirements
 
-```
+```sh
 pip list --format=freeze > requirements.txt
 ```
 
@@ -132,7 +132,7 @@ pip list --format=freeze > requirements.txt
 
 - nbextension
 
-```
+```sh
 pip install jupyter_contrib_nbextensions
 pip install jupyter_nbextensions_configurator
 jupyter contrib nbextension install --user
@@ -143,14 +143,14 @@ jupyter nbextensions_configurator enable --user
 
 #### check dependencies
 
-```
+```sh
 python -m pip check 
 pip freeze > requirements.txt
 ```
 
 #### install pycaret
 
-```
+```sh
 pip install pycaret --use-feature=2020-resolver
 ```
 
@@ -158,7 +158,7 @@ pip install pycaret --use-feature=2020-resolver
 
 - jupyter notebook
 
-```
+```sh
 jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T
 ```
 
