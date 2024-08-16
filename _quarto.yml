@@ -52,6 +52,9 @@ website:
           - python-snippet/VisualizeFeatureImportances.ipynb
           - python-snippet/convertLightGBMFromR2Python.ipynb
           - python-snippet/beeswarm_strip_violin_plot.ipynb
+      - section: Utils/ProjectStructure.md
+        contents:
+          - Utils/ProjectStructure.md
       - section: Crash-Course-Python/Exercise 1 - Python.ipynb
       - section: Crash-Course-Numpy/00-NumPy-Arrays.ipynb
         contents:
