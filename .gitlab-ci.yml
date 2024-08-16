@@ -11,7 +11,7 @@ deploy_to_github:
     - git config --global user.name "Nguyen Ngoc Binh"
     - echo "Cloning repository..."
     - git clone --mirror https://oauth2:$GITLAB_PERSONAL_ACCESS_TOKEN@gitlab.com/nguyenngocbinh/snippets.git || (echo "Clone failed"; exit 1)
-    - cd ews.git
+    - cd snippets.git
     - echo "Adding GitHub remote..."
     - git remote add github https://$GITHUB_TOKEN@github.com/nguyenngocbinh/snippets.git
     - echo "Pushing to GitHub..."
