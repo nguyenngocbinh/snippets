@@ -7,6 +7,8 @@ deploy_to_github:
   before_script:
     - apk add --no-cache git
   script:
+    - echo "Setting Git configuration..."
+    - git config --global http.postBuffer 524288000   # Increase Git buffer size to 500MB
     - git config --global user.email "nguyenngocbinhneu@gmail.com"
     - git config --global user.name "Nguyen Ngoc Binh"
     - echo "Cloning repository..."
