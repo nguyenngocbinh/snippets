@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SQL-Server Snippet – Snippets</title>
+<title>projectstructure – Snippets </title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sqlserver-snippet/README.md" rel="next">
-<link href="../r-snippet/mamba.html" rel="prev">
+<link href="../Crash-Course-Python/Exercise 1 - Python.html" rel="next">
+<link href="../python-snippet/beeswarm_strip_violin_plot.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sqlserver-snippet/Index.html">SQL-Server Snippet</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Utils/ProjectStructure.html">Project structure</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -233,16 +233,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../Utils/ProjectStructure.html" class="sidebar-item-text sidebar-link">
+            <a href="../Utils/ProjectStructure.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Project structure</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Utils/ProjectStructure.html" class="sidebar-item-text sidebar-link">
+  <a href="../Utils/ProjectStructure.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Project structure</span></a>
   </div>
 </li>
@@ -417,13 +417,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../sqlserver-snippet/Index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../sqlserver-snippet/Index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SQL-Server Snippet</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sqlserver-snippet/permissions.html" class="sidebar-item-text sidebar-link">
@@ -465,53 +465,81 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#general" id="toc-general" class="nav-link active" data-scroll-target="#general">General</a></li>
-  <li><a href="#schemas" id="toc-schemas" class="nav-link" data-scroll-target="#schemas">Schemas</a></li>
-  <li><a href="#optimize" id="toc-optimize" class="nav-link" data-scroll-target="#optimize">Optimize</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link active" data-scroll-target="#project-structure">Project structure</a>
+  <ul class="collapse">
+  <li><a href="#explanation-of-deployment-related-directories" id="toc-explanation-of-deployment-related-directories" class="nav-link" data-scroll-target="#explanation-of-deployment-related-directories">Explanation of Deployment-Related Directories:</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/sqlserver-snippet/Index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/Utils/ProjectStructure.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">SQL-Server Snippet</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="general" class="level2">
-<h2 class="anchored" data-anchor-id="general">General</h2>
-</section>
-<section id="schemas" class="level2">
-<h2 class="anchored" data-anchor-id="schemas">Schemas</h2>
-</section>
-<section id="optimize" class="level2">
-<h2 class="anchored" data-anchor-id="optimize">Optimize</h2>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<section id="project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure">Project structure</h2>
+<pre><code>/Project_Name
+│
+├── /data
+│   ├── /raw                 # Raw data, untouched, as received
+│   ├── /processed           # Processed data, cleaned and transformed
+│   └── /external            # External data sources, if applicable
+│
+├── /notebooks               # Jupyter or other notebook files
+│   ├── /exploration         # Exploratory data analysis (EDA)
+│   └── /modeling            # Notebooks related to model building
+│
+├── /src                     # Source code for the project
+│   ├── /data_processing     # Scripts for data cleaning and preprocessing
+│   ├── /models              # Model definitions and training scripts
+│   ├── /evaluation          # Scripts for evaluating model performance
+│   ├── /utils               # Utility functions and classes
+│   └── /deploy              # Deployment scripts and configurations
+│       ├── /api             # Code for creating APIs (e.g., Flask, FastAPI)
+│       ├── /docker          # Dockerfiles and related configurations
+│       └── /scripts         # Deployment scripts (e.g., bash, CI/CD)
+│
+├── /models                  # Saved models (e.g., pickled or HDF5 files)
+│
+├── /results                 # Outputs from models (e.g., predictions, metrics)
+│   ├── /figures             # Plots, graphs, and visualizations
+│   └── /tables              # Tables and reports
+│
+├── /logs                    # Logs for training, experiments, etc.
+│
+├── /tests                   # Unit and integration tests for the codebase
+│
+├── /config                  # Configuration files (e.g., for hyperparameters, environment settings)
+│
+├── /docs                    # Documentation for the project
+│   ├── /references          # Research papers, articles, and references
+│   └── README.md            # Project overview and instructions
+│
+└── /deploy                  # Deployment infrastructure files
+    ├── /kubernetes          # Kubernetes configuration files
+    ├── /terraform           # Terraform scripts for infrastructure as code
+    └── /aws                 # AWS-specific deployment configurations (e.g., CloudFormation)</code></pre>
+<section id="explanation-of-deployment-related-directories" class="level3">
+<h3 class="anchored" data-anchor-id="explanation-of-deployment-related-directories">Explanation of Deployment-Related Directories:</h3>
 <ul>
-<li><p>[SHORTCUT] (https://manhng.com/blog/sql-query/)</p></li>
-<li><p>[SYNONYM] (https://www.sqlservertutorial.net/sql-server-basics/sql-server-synonym/)</p></li>
-<li><p>[STORE PROCEDURE] (https://comdy.vn/sql-server/stored-procedure-trong-sql-server/)</p></li>
+<li><strong>/src/deploy</strong>: Contains the code and scripts needed to deploy your model. This could include API creation (e.g., Flask or FastAPI), Docker configurations for containerization, and other necessary scripts.
+<ul>
+<li><strong>/api</strong>: Code to expose your model as a service, allowing for inference via REST APIs or other interfaces.</li>
+<li><strong>/docker</strong>: Dockerfiles and related configurations to containerize your application for consistent deployment across environments.</li>
+<li><strong>/scripts</strong>: Shell scripts, CI/CD pipeline scripts, and other tools to automate the deployment process.</li>
+</ul></li>
+<li><strong>/deploy</strong>: Contains infrastructure-related files for deploying your model in various environments, such as Kubernetes configurations, Terraform scripts for infrastructure as code, and AWS-specific deployment configurations.
+<ul>
+<li><strong>/kubernetes</strong>: Kubernetes configuration files, like deployment and service YAMLs, for deploying the model in a Kubernetes cluster.</li>
+<li><strong>/terraform</strong>: Terraform scripts to provision infrastructure in a cloud environment.</li>
+<li><strong>/aws</strong>: AWS-specific files like CloudFormation templates, Lambda functions, or other AWS services configuration files.</li>
+</ul></li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1081,13 +1109,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../r-snippet/mamba.html" class="pagination-link" aria-label="Create an R environment using Mamba (a faster alternative to Conda)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Create an R environment using Mamba (a faster alternative to Conda)</span>
+      <a href="../python-snippet/beeswarm_strip_violin_plot.html" class="pagination-link" aria-label="Swarm-violin plot">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Swarm-violin plot</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sqlserver-snippet/README.md" class="pagination-link" aria-label="">
-        <span class="nav-page-text"></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../Crash-Course-Python/Exercise 1 - Python.html" class="pagination-link" aria-label="Introduction to Python programming">
+        <span class="nav-page-text">Introduction to Python programming</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1099,7 +1127,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/sqlserver-snippet/Index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/Utils/ProjectStructure.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
