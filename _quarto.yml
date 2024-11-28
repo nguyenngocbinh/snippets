@@ -52,6 +52,7 @@ website:
           - python-snippet/VisualizeFeatureImportances.ipynb
           - python-snippet/convertLightGBMFromR2Python.ipynb
           - python-snippet/beeswarm_strip_violin_plot.ipynb
+          - python-snippet/plot_pileline.ipynb
       - section: Utils/ProjectStructure.md
         contents:
           - Utils/ProjectStructure.md
