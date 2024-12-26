@@ -53,6 +53,7 @@ website:
           - python-snippet/convertLightGBMFromR2Python.ipynb
           - python-snippet/beeswarm_strip_violin_plot.ipynb
           - python-snippet/plot_pileline.ipynb
+          - python-snippet/MinGW-w64_offline_installer.ipynb
       - section: Utils/ProjectStructure.md
         contents:
           - Utils/ProjectStructure.md
