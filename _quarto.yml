@@ -54,6 +54,9 @@ website:
           - python-snippet/beeswarm_strip_violin_plot.ipynb
           - python-snippet/plot_pileline.ipynb
           - python-snippet/MinGW-w64_offline_installer.ipynb
+      - section: git-snippet
+        contents: 
+          - git-snippet/sync_gitlab_to_github.ipynb
       - section: Utils/ProjectStructure.md
         contents:
           - Utils/ProjectStructure.md
