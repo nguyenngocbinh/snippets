@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plsql-db2 – Snippets</title>
+<title>plot_pipeline – Snippets </title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,8 +63,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../comparision/dplyr-pandas.html" rel="next">
-<link href="../comparision/Index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../comparision/Index.html">Comparision</a></li><li class="breadcrumb-item"><a href="../comparision/plsql-db2.html">plsql-db2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -123,14 +155,14 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="../comparision/Index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Comparision</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../comparision/plsql-db2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../comparision/plsql-db2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">plsql-db2</span></a>
   </div>
 </li>
@@ -486,277 +518,84 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#basic-sql-commands" id="toc-basic-sql-commands" class="nav-link active" data-scroll-target="#basic-sql-commands">Basic SQL commands:</a></li>
-  <li><a href="#utilities" id="toc-utilities" class="nav-link" data-scroll-target="#utilities">Utilities</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/plsql-db2.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../comparision/Index.html">Comparision</a></li><li class="breadcrumb-item"><a href="../comparision/plsql-db2.html">plsql-db2</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">plsql-db2</h1>
+
+
+
+<div id="cell-0" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dữ liệu mô phỏng cho mô hình pipeline (với các mô hình vệ tinh và mô hình chính cuối cùng)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[go.Sankey(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    node<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        pad<span class="op">=</span><span class="dv">15</span>,  <span class="co"># Khoảng cách giữa các node</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        thickness<span class="op">=</span><span class="dv">20</span>,  <span class="co"># Độ dày của các node</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"black"</span>, width<span class="op">=</span><span class="fl">0.5</span>),  <span class="co"># Đường viền node</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span>[<span class="st">"Transaction Model"</span>, <span class="st">"General Credit Model"</span>, <span class="st">"Financial Model"</span>, <span class="st">"No Model"</span>, </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Preprocessing"</span>, <span class="st">"Feature Selection"</span>, <span class="st">"Model Training"</span>, <span class="st">"Final Model"</span>]  <span class="co"># Thêm các node giữa</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    link<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        source<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],  <span class="co"># Chỉ định các node nguồn</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        target<span class="op">=</span>[<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],   <span class="co"># Chỉ định các node đích (mô hình cuối cùng)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        value<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>]  <span class="co"># Các giá trị kết nối</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)])</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Cập nhật thông tin bố cục cho biểu đồ</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Pipeline Structure with Intermediate Nodes"</span>,  <span class="co"># Tiêu đề của biểu đồ</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    font_size<span class="op">=</span><span class="dv">10</span>,  <span class="co"># Kích thước font</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    title_x<span class="op">=</span><span class="fl">0.5</span>,  <span class="co"># Đặt tiêu đề vào giữa</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    title_y<span class="op">=</span><span class="fl">0.95</span>   <span class="co"># Đặt tiêu đề ở gần đầu biểu đồ</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Hiển thị biểu đồ</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-1" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dữ liệu mô phỏng cho mô hình pipeline (với các mô hình vệ tinh và mô hình chính cuối cùng)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[go.Sankey(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    node<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        pad<span class="op">=</span><span class="dv">15</span>,  <span class="co"># Khoảng cách giữa các node</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        thickness<span class="op">=</span><span class="dv">20</span>,  <span class="co"># Độ dày của các node</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"black"</span>, width<span class="op">=</span><span class="fl">0.5</span>),  <span class="co"># Đường viền node</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span>[<span class="st">"Transaction Model"</span>, <span class="st">"General Credit Model"</span>, <span class="st">"Financial Model"</span>, <span class="st">"No Model"</span>, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Preprocessing"</span>, <span class="st">"Imputer"</span>, <span class="st">"Label Encoder"</span>, <span class="st">"Kruskal Wallis"</span>, <span class="st">"Correlation"</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Feature Selection"</span>, <span class="st">"Model Training"</span>, <span class="st">"Final Model"</span>]  <span class="co"># Thêm các node con vào Feature Selection</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    link<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        source<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>],  <span class="co"># Chỉ định các node nguồn</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        target<span class="op">=</span>[<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>],  <span class="co"># Chỉ định các node đích</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        value<span class="op">=</span>[<span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">11</span>]  <span class="co"># Các giá trị kết nối</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>)])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Cập nhật thông tin bố cục cho biểu đồ</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Pipeline Structure with Intermediate Nodes and Feature Selection Steps"</span>,  <span class="co"># Tiêu đề của biểu đồ</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    font_size<span class="op">=</span><span class="dv">10</span>,  <span class="co"># Kích thước font</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    title_x<span class="op">=</span><span class="fl">0.5</span>,  <span class="co"># Đặt tiêu đề vào giữa</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    title_y<span class="op">=</span><span class="fl">0.95</span>   <span class="co"># Đặt tiêu đề ở gần đầu biểu đồ</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Hiển thị biểu đồ</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Here’s a table comparing DB2 and PL/SQL based on the provided features and their syntax:</p>
-<p>These SQL commands are mainly categorized into five categories:</p>
-<ol type="1">
-<li>DDL – Data Definition Language</li>
-<li>DQL – Data Query Language</li>
-<li>DML – Data Manipulation Language</li>
-<li>DCL – Data Control Language</li>
-<li>TCL – Transaction Control Language</li>
-</ol>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20210920153429/new.png" class="img-fluid"></p>
-<section id="basic-sql-commands" class="level2">
-<h2 class="anchored" data-anchor-id="basic-sql-commands">Basic SQL commands:</h2>
-<ol type="1">
-<li><p>DDL – Data Definition Language</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Create Table</td>
-<td><code>CREATE TABLE new_table AS SELECT * FROM existing_table;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Drop Table</td>
-<td><code>DROP TABLE table_name [PURGE];</code></td>
-<td><code>DROP TABLE IF EXISTS table_name;</code></td>
-</tr>
-<tr class="odd">
-<td>Rename Columns</td>
-<td><code>ALTER TABLE table_name RENAME COLUMN old_column TO new_column;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Modify Columns</td>
-<td><code>ALTER TABLE table_name MODIFY COLUMN column_name datatype;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Add Columns</td>
-<td><code>ALTER TABLE table_name ADD COLUMN new_column datatype;</code></td>
-<td><code>similar</code></td>
-</tr>
-</tbody>
-</table></li>
-<li><p>DQL – Data Query Language</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Left Join</td>
-<td><code>SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Inner Join</td>
-<td><code>SELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Full Join</td>
-<td><code>SELECT * FROM table1 FULL JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Anti Join</td>
-<td><code>SELECT column1, column2 FROM table1 WHERE NOT EXISTS (SELECT * FROM table2 WHERE table1.column = table2.column)</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Merge</td>
-<td><code>MERGE INTO table_name USING source_table ON (table_name.column = source_table.column) WHEN MATCHED THEN UPDATE SET column1 = value1 WHEN NOT MATCHED THEN INSERT (column1) VALUES (value1);</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Insert Into</td>
-<td><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Update</td>
-<td><code>UPDATE staff a SET salary =&nbsp;(SELECT AVG(salary) + 2000 FROM staff b&nbsp;WHERE a.dept = b.dept) WHERE id &lt; 60;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Truncate Table</td>
-<td><code>TRUNCATE TABLE table_name;</code></td>
-<td><code>TRUNCATE TABLE table_name IMMEDIATE;</code></td>
-</tr>
-<tr class="odd">
-<td>Temporary Table</td>
-<td><code>DECLARE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
-<td><code>CREATE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
-</tr>
-<tr class="even">
-<td>Group By</td>
-<td><code>SELECT column1, COUNT(*) FROM table_name GROUP BY column1;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Partition By</td>
-<td><code>SELECT column1, RANK() OVER (PARTITION BY column2 ORDER BY column3) FROM table_name;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Run Procedure</td>
-<td><code>EXECUTE procedure_name;</code></td>
-<td><code>CALL procedure_name();</code></td>
-</tr>
-<tr class="odd">
-<td>Loop</td>
-<td><code>FOR row IN (SELECT * FROM table_name) LOOP &lt;statements&gt; END LOOP;</code></td>
-<td><code>FOR row AS cursor_name CURSOR FOR SELECT * FROM table_name DO &lt;statements&gt; END FOR;</code></td>
-</tr>
-<tr class="even">
-<td>Parallel</td>
-<td><code>INSERT /*+APPEND PARALLEL(8)*/ INTO</code></td>
-<td><code>SELECT * FROM table_name PARALLEL 4;</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code>MERGE /*+ parallel(8) */ INTO</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code>SELECT /*+ PARALLEL(8) */ * FROM</code></td>
-<td></td>
-</tr>
-</tbody>
-</table></li>
-<li><p>DCL – Data Control Language</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Select</td>
-<td><code>SELECT column1, column2 FROM table_name;</code></td>
-<td><code>similar</code></td>
-</tr>
-</tbody>
-</table></li>
-</ol>
-</section>
-<section id="utilities" class="level2">
-<h2 class="anchored" data-anchor-id="utilities">Utilities</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>SYS_INFO</td>
-<td></td>
-<td><code>SELECT * FROM SYSIBMADM.ENV_SYS_INFO</code></td>
-</tr>
-<tr class="even">
-<td>NVL</td>
-<td><code>NVL(column, 0)</code></td>
-<td><code>COALESCE(column, 0)</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code>COALESCE(column, 0)</code></td>
-<td><code>COALESCE(column, 0)</code></td>
-</tr>
-<tr class="even">
-<td>Diff Month</td>
-<td><code>SELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;</code></td>
-<td><code>SELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;</code></td>
-</tr>
-<tr class="odd">
-<td>Add Months</td>
-<td><code>SELECT ADD_MONTHS(date1, number_of_months) FROM dual;</code></td>
-<td><code>SELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;</code></td>
-</tr>
-<tr class="even">
-<td>Diff Date</td>
-<td><code>SELECT date2 - date1 FROM dual;</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Compare 2 Tables</td>
-<td><code>(SELECT * FROM B_TMP MINUS SELECT * FROM B_TMP1) UNION ALL(SELECT * FROM B_TMP1 MINUS SELECT * FROM B_TMP)</code></td>
-<td><code>SELECT * FROM table1 EXCEPT SELECT * FROM table2;</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="http://db2-sql-cookbook.org/pdf/Db2_SQL_Cookbook.pdf">db2-sql-cookbook</a></li>
-</ul>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1320,18 +1159,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../comparision/Index.html" class="pagination-link" aria-label="Comparision">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Comparision</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../comparision/dplyr-pandas.html" class="pagination-link" aria-label="dplyr vs. pandas">
-        <span class="nav-page-text">dplyr vs.&nbsp;pandas</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1340,7 +1167,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/plsql-db2.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/nguyenngocbinh/snippets/blob/main/python-snippet/plot_pipeline.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

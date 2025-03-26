@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>plsql-db2 – Snippets</title>
+<title>bubble_chart_optbinning – Snippets </title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,17 +20,49 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../comparision/dplyr-pandas.html" rel="next">
-<link href="../comparision/Index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,6 +101,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -82,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../comparision/Index.html">Comparision</a></li><li class="breadcrumb-item"><a href="../comparision/plsql-db2.html">plsql-db2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -123,14 +158,14 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="../comparision/Index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Comparision</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../comparision/plsql-db2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../comparision/plsql-db2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">plsql-db2</span></a>
   </div>
 </li>
@@ -486,277 +521,342 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#basic-sql-commands" id="toc-basic-sql-commands" class="nav-link active" data-scroll-target="#basic-sql-commands">Basic SQL commands:</a></li>
-  <li><a href="#utilities" id="toc-utilities" class="nav-link" data-scroll-target="#utilities">Utilities</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/plsql-db2.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../comparision/Index.html">Comparision</a></li><li class="breadcrumb-item"><a href="../comparision/plsql-db2.html">plsql-db2</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">plsql-db2</h1>
+
+
+
+<div id="cell-0" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Tải dữ liệu German Credit</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.data"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>column_names <span class="op">=</span> [<span class="st">"existing_account"</span>, <span class="st">"duration_month"</span>, <span class="st">"credit_history"</span>, <span class="st">"purpose"</span>, <span class="st">"credit_amount"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"savings_account"</span>, <span class="st">"employment_since"</span>, <span class="st">"installment_rate"</span>, <span class="st">"personal_status_sex"</span>, <span class="st">"other_debtors"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"present_residence"</span>, <span class="st">"property"</span>, <span class="st">"age"</span>, <span class="st">"other_installment_plans"</span>, <span class="st">"housing"</span>, <span class="st">"existing_credits"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"job"</span>, <span class="st">"people_liable"</span>, <span class="st">"telephone"</span>, <span class="st">"foreign_worker"</span>, <span class="st">"credit_risk"</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url, sep<span class="op">=</span><span class="st">" "</span>, header<span class="op">=</span><span class="va">None</span>, names<span class="op">=</span>column_names)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Chuyển đổi target thành nhị phân</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'credit_risk'</span>] <span class="op">=</span> df[<span class="st">'credit_risk'</span>].<span class="bu">map</span>({<span class="dv">1</span>: <span class="dv">0</span>, <span class="dv">2</span>: <span class="dv">1</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="cell-1" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.base <span class="im">import</span> TransformerMixin, BaseEstimator</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> optbinning <span class="im">import</span> BinningProcess</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InformationValues(BaseEstimator, TransformerMixin):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, monotonic_trend<span class="op">=</span><span class="st">'auto_asc_desc'</span>, max_n_bins<span class="op">=</span><span class="dv">5</span>, prebinning_method<span class="op">=</span><span class="st">'cart'</span>, min_event_rate_diff<span class="op">=</span><span class="fl">0.0002</span>):  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.monotonic_trend <span class="op">=</span> monotonic_trend   </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.max_n_bins <span class="op">=</span> max_n_bins</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.prebinning_method <span class="op">=</span> prebinning_method</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.min_event_rate_diff <span class="op">=</span> min_event_rate_diff</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.binning_process <span class="op">=</span> <span class="va">None</span>          </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.t_iv <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.t_woe <span class="op">=</span> <span class="va">None</span>            </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y):        </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.feats <span class="op">=</span> X.columns.tolist()</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cat_feats <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns.tolist()          </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># self.num_feats = list(set(self.feats) - set(self.cat_feats))</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_feats <span class="op">=</span> [item <span class="cf">for</span> item <span class="kw">in</span> <span class="va">self</span>.feats <span class="cf">if</span> item <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.cat_feats]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        logging.info(<span class="st">'Processing Information Value, Total features </span><span class="sc">{}</span><span class="st">. Categorical features </span><span class="sc">{}</span><span class="st">. Numeric features </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="bu">len</span>(<span class="va">self</span>.feats), <span class="bu">len</span>(<span class="va">self</span>.cat_feats), <span class="bu">len</span>(<span class="va">self</span>.num_feats)))</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set the binning fit parameters for each feature</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        _binning_fit_params <span class="op">=</span> {}</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> fs <span class="kw">in</span> <span class="va">self</span>.feats:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            _binning_fit_params[fs] <span class="op">=</span> {<span class="st">'monotonic_trend'</span>:<span class="va">self</span>.monotonic_trend,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'max_n_bins'</span>: <span class="va">self</span>.max_n_bins,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'prebinning_method'</span>:<span class="va">self</span>.prebinning_method,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'min_event_rate_diff'</span>:<span class="va">self</span>.min_event_rate_diff}</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize the BinningProcess with the specified variables and fit parameters    </span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        _binning_process  <span class="op">=</span> BinningProcess(variable_names <span class="op">=</span> <span class="va">self</span>.feats</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                                    ,categorical_variables <span class="op">=</span> <span class="va">self</span>.cat_feats                                   </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                                    , binning_fit_params<span class="op">=</span>_binning_fit_params)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Transform the training data using the BinningProcess</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        _binning_process.fit(X, y) </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.binning_process <span class="op">=</span> _binning_process</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create a list to store woe tables and iv tables</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        t_iv, t_woe <span class="op">=</span> [], []</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> fs <span class="kw">in</span> <span class="va">self</span>.binning_process.summary().name:     </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>            binning_table <span class="op">=</span> <span class="va">self</span>.binning_process.get_binned_variable(fs).binning_table                   </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            tbl <span class="op">=</span> binning_table.build().assign(variable <span class="op">=</span> fs)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get woe table</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>            t_woe.append(tbl)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get iv table</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>            tbl_iv <span class="op">=</span> tbl[tbl.index <span class="op">==</span> <span class="st">'Totals'</span>][[<span class="st">'variable'</span>, <span class="st">'IV'</span>]]                      </span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>            t_iv.append(tbl_iv)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Concatenate the list of woe tables and iv tables</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.t_woe <span class="op">=</span> pd.concat(t_woe, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.t_iv <span class="op">=</span> pd.concat(t_iv, axis<span class="op">=</span><span class="dv">0</span>)        </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span> </span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> transform(<span class="va">self</span>, X):</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        X_woe <span class="op">=</span> <span class="va">self</span>.binning_process.transform(X)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> X_woe</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_feature_names_in(<span class="va">self</span>):</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.feats</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_feature_names_out(<span class="va">self</span>):</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.feats</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_table_woe(<span class="va">self</span>):</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.t_woe</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_table_iv(<span class="va">self</span>):</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.t_iv</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># New method to retrieve binning table for a specific feature</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_binning_table(<span class="va">self</span>, feature_name):</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> feature_name <span class="kw">in</span> <span class="va">self</span>.feats:</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>            binning_table <span class="op">=</span> <span class="va">self</span>.binning_process.get_binned_variable(feature_name).binning_table</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> binning_table.build()</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Feature '</span><span class="sc">{</span>feature_name<span class="sc">}</span><span class="ss">' not found in the data."</span>)</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_bubble_feature(<span class="va">self</span>, feature_name):</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> feature_name <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.feats:</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Feature '</span><span class="sc">{</span>feature_name<span class="sc">}</span><span class="ss">' not found in the data."</span>)</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>        binning_table <span class="op">=</span> <span class="va">self</span>.get_binning_table(feature_name)</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract necessary data for plotting</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        plot_data <span class="op">=</span> binning_table[[<span class="st">'Bin'</span>, <span class="st">'Count'</span>, <span class="st">'Event rate'</span>]].copy()</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Handle non-numeric and special bins correctly</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> calculate_midpoint(bin_range):</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>                bounds <span class="op">=</span> bin_range.strip(<span class="st">'[]()'</span>).split(<span class="st">', '</span>)</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> bounds[<span class="dv">0</span>] <span class="op">==</span> <span class="st">'-inf'</span>:</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>                    lower <span class="op">=</span> <span class="bu">float</span>(<span class="st">'-inf'</span>)</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>                    lower <span class="op">=</span> <span class="bu">float</span>(bounds[<span class="dv">0</span>])</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> bounds[<span class="dv">1</span>] <span class="op">==</span> <span class="st">'inf'</span>:</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>                    upper <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>                    upper <span class="op">=</span> <span class="bu">float</span>(bounds[<span class="dv">1</span>])</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> (lower <span class="op">+</span> upper) <span class="op">/</span> <span class="dv">2</span> <span class="cf">if</span> lower <span class="op">!=</span> <span class="bu">float</span>(<span class="st">'-inf'</span>) <span class="kw">and</span> upper <span class="op">!=</span> <span class="bu">float</span>(<span class="st">'inf'</span>) <span class="cf">else</span> lower <span class="cf">if</span> upper <span class="op">==</span> <span class="bu">float</span>(<span class="st">'inf'</span>) <span class="cf">else</span> upper</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">None</span>  <span class="co"># Return None for 'Special' or 'Missing' categories</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>        plot_data[<span class="st">'MidPoint'</span>] <span class="op">=</span> plot_data[<span class="st">'Bin'</span>].<span class="bu">apply</span>(calculate_midpoint)</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>        plot_data <span class="op">=</span> plot_data.dropna(subset<span class="op">=</span>[<span class="st">'MidPoint'</span>])  <span class="co"># Remove rows where midpoint is None</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>        plot_data[<span class="st">'BubbleSize'</span>] <span class="op">=</span> plot_data[<span class="st">'Count'</span>] <span class="op">/</span> plot_data[<span class="st">'Count'</span>].<span class="bu">max</span>() <span class="op">*</span> <span class="dv">1000</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>        plt.scatter(plot_data[<span class="st">'MidPoint'</span>], plot_data[<span class="st">'Event rate'</span>], s<span class="op">=</span>plot_data[<span class="st">'BubbleSize'</span>], alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'pink'</span>)</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> index, row <span class="kw">in</span> plot_data.iterrows():</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>            plt.text(row[<span class="st">'MidPoint'</span>], row[<span class="st">'Event rate'</span>], <span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'Event rate'</span>] <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%"</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'Bin Mid-Point'</span>)</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'Event Rate'</span>)</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="ss">f'Bubble Plot of Event Rate by Bin for </span><span class="sc">{</span>feature_name<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>        plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>        plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-2" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> optbinning <span class="im">import</span> BinningProcess</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming you already have the 'df' data loaded</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the custom transformer</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>iv_transformer <span class="op">=</span> InformationValues(monotonic_trend<span class="op">=</span><span class="st">'auto_asc_desc'</span>, max_n_bins<span class="op">=</span><span class="dv">5</span>, prebinning_method<span class="op">=</span><span class="st">'cart'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'credit_risk'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'credit_risk'</span>]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the transformer on the training data</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>iv_transformer.fit(X_train, y_train)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform both training and test data using WoE</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>X_train_woe <span class="op">=</span> iv_transformer.transform(X_train)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>X_test_woe <span class="op">=</span> iv_transformer.transform(X_test)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the logistic regression model</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>logreg <span class="op">=</span> LogisticRegression(solver<span class="op">=</span><span class="st">'liblinear'</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>logreg.fit(X_train_woe, y_train)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict and evaluate the model</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>y_pred_prob <span class="op">=</span> logreg.predict_proba(X_test_woe)[:, <span class="dv">1</span>]</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(y_test, y_pred_prob)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ROC AUC Score: </span><span class="sc">{</span>roc_auc<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Get WoE and IV tables</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>woe_table <span class="op">=</span> iv_transformer.get_table_woe()</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>iv_table <span class="op">=</span> iv_transformer.get_table_iv()</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Information Value Table"</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iv_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ROC AUC Score: 0.8022
+Information Value Table
+                       variable        IV
+Totals         existing_account  0.587325
+Totals           duration_month  0.257173
+Totals           credit_history  0.368192
+Totals                  purpose  0.229094
+Totals            credit_amount  0.182718
+Totals          savings_account  0.162927
+Totals         employment_since  0.066179
+Totals         installment_rate  0.011137
+Totals      personal_status_sex  0.045733
+Totals            other_debtors  0.008107
+Totals        present_residence  0.007464
+Totals                 property  0.145759
+Totals                      age  0.157060
+Totals  other_installment_plans  0.034371
+Totals                  housing  0.110042
+Totals         existing_credits  0.016714
+Totals                      job  0.009923
+Totals            people_liable  0.000045
+Totals                telephone  0.006171
+Totals           foreign_worker  0.000000</code></pre>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>iv_transformer.get_binning_table(<span class="st">'credit_amount'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Here’s a table comparing DB2 and PL/SQL based on the provided features and their syntax:</p>
-<p>These SQL commands are mainly categorized into five categories:</p>
-<ol type="1">
-<li>DDL – Data Definition Language</li>
-<li>DQL – Data Query Language</li>
-<li>DML – Data Manipulation Language</li>
-<li>DCL – Data Control Language</li>
-<li>TCL – Transaction Control Language</li>
-</ol>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20210920153429/new.png" class="img-fluid"></p>
-<section id="basic-sql-commands" class="level2">
-<h2 class="anchored" data-anchor-id="basic-sql-commands">Basic SQL commands:</h2>
-<ol type="1">
-<li><p>DDL – Data Definition Language</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Bin</th>
+<th data-quarto-table-cell-role="th">Count</th>
+<th data-quarto-table-cell-role="th">Count (%)</th>
+<th data-quarto-table-cell-role="th">Non-event</th>
+<th data-quarto-table-cell-role="th">Event</th>
+<th data-quarto-table-cell-role="th">Event rate</th>
+<th data-quarto-table-cell-role="th">WoE</th>
+<th data-quarto-table-cell-role="th">IV</th>
+<th data-quarto-table-cell-role="th">JS</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Create Table</td>
-<td><code>CREATE TABLE new_table AS SELECT * FROM existing_table;</code></td>
-<td><code>similar</code></td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>(-inf, 735.50)</td>
+<td>36</td>
+<td>0.051429</td>
+<td>29</td>
+<td>7</td>
+<td>0.194444</td>
+<td>0.567276</td>
+<td>0.014505</td>
+<td>0.001789</td>
 </tr>
 <tr class="even">
-<td>Drop Table</td>
-<td><code>DROP TABLE table_name [PURGE];</code></td>
-<td><code>DROP TABLE IF EXISTS table_name;</code></td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>[735.50, 3913.50)</td>
+<td>473</td>
+<td>0.675714</td>
+<td>352</td>
+<td>121</td>
+<td>0.255814</td>
+<td>0.213731</td>
+<td>0.029486</td>
+<td>0.003679</td>
 </tr>
 <tr class="odd">
-<td>Rename Columns</td>
-<td><code>ALTER TABLE table_name RENAME COLUMN old_column TO new_column;</code></td>
-<td><code>similar</code></td>
+<td data-quarto-table-cell-role="th">2</td>
+<td>[3913.50, 7839.50)</td>
+<td>129</td>
+<td>0.184286</td>
+<td>83</td>
+<td>46</td>
+<td>0.356589</td>
+<td>-0.263911</td>
+<td>0.013473</td>
+<td>0.001679</td>
 </tr>
 <tr class="even">
-<td>Modify Columns</td>
-<td><code>ALTER TABLE table_name MODIFY COLUMN column_name datatype;</code></td>
-<td><code>similar</code></td>
+<td data-quarto-table-cell-role="th">3</td>
+<td>[7839.50, inf)</td>
+<td>62</td>
+<td>0.088571</td>
+<td>27</td>
+<td>35</td>
+<td>0.564516</td>
+<td>-1.113621</td>
+<td>0.125254</td>
+<td>0.014895</td>
 </tr>
 <tr class="odd">
-<td>Add Columns</td>
-<td><code>ALTER TABLE table_name ADD COLUMN new_column datatype;</code></td>
-<td><code>similar</code></td>
-</tr>
-</tbody>
-</table></li>
-<li><p>DQL – Data Query Language</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Left Join</td>
-<td><code>SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
+<td data-quarto-table-cell-role="th">4</td>
+<td>Special</td>
+<td>0</td>
+<td>0.000000</td>
+<td>0</td>
+<td>0</td>
+<td>0.000000</td>
+<td>0.0</td>
+<td>0.000000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
-<td>Inner Join</td>
-<td><code>SELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
+<td data-quarto-table-cell-role="th">5</td>
+<td>Missing</td>
+<td>0</td>
+<td>0.000000</td>
+<td>0</td>
+<td>0</td>
+<td>0.000000</td>
+<td>0.0</td>
+<td>0.000000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
-<td>Full Join</td>
-<td><code>SELECT * FROM table1 FULL JOIN table2 ON table1.column = table2.column;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Anti Join</td>
-<td><code>SELECT column1, column2 FROM table1 WHERE NOT EXISTS (SELECT * FROM table2 WHERE table1.column = table2.column)</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Merge</td>
-<td><code>MERGE INTO table_name USING source_table ON (table_name.column = source_table.column) WHEN MATCHED THEN UPDATE SET column1 = value1 WHEN NOT MATCHED THEN INSERT (column1) VALUES (value1);</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Insert Into</td>
-<td><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Update</td>
-<td><code>UPDATE staff a SET salary =&nbsp;(SELECT AVG(salary) + 2000 FROM staff b&nbsp;WHERE a.dept = b.dept) WHERE id &lt; 60;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Truncate Table</td>
-<td><code>TRUNCATE TABLE table_name;</code></td>
-<td><code>TRUNCATE TABLE table_name IMMEDIATE;</code></td>
-</tr>
-<tr class="odd">
-<td>Temporary Table</td>
-<td><code>DECLARE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
-<td><code>CREATE GLOBAL TEMPORARY TABLE table_name (column1 datatype, column2 datatype);</code></td>
-</tr>
-<tr class="even">
-<td>Group By</td>
-<td><code>SELECT column1, COUNT(*) FROM table_name GROUP BY column1;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="odd">
-<td>Partition By</td>
-<td><code>SELECT column1, RANK() OVER (PARTITION BY column2 ORDER BY column3) FROM table_name;</code></td>
-<td><code>similar</code></td>
-</tr>
-<tr class="even">
-<td>Run Procedure</td>
-<td><code>EXECUTE procedure_name;</code></td>
-<td><code>CALL procedure_name();</code></td>
-</tr>
-<tr class="odd">
-<td>Loop</td>
-<td><code>FOR row IN (SELECT * FROM table_name) LOOP &lt;statements&gt; END LOOP;</code></td>
-<td><code>FOR row AS cursor_name CURSOR FOR SELECT * FROM table_name DO &lt;statements&gt; END FOR;</code></td>
-</tr>
-<tr class="even">
-<td>Parallel</td>
-<td><code>INSERT /*+APPEND PARALLEL(8)*/ INTO</code></td>
-<td><code>SELECT * FROM table_name PARALLEL 4;</code></td>
-</tr>
-<tr class="odd">
+<td data-quarto-table-cell-role="th">Totals</td>
 <td></td>
-<td><code>MERGE /*+ parallel(8) */ INTO</code></td>
+<td>700</td>
+<td>1.000000</td>
+<td>491</td>
+<td>209</td>
+<td>0.298571</td>
 <td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code>SELECT /*+ PARALLEL(8) */ * FROM</code></td>
-<td></td>
-</tr>
-</tbody>
-</table></li>
-<li><p>DCL – Data Control Language</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Select</td>
-<td><code>SELECT column1, column2 FROM table_name;</code></td>
-<td><code>similar</code></td>
-</tr>
-</tbody>
-</table></li>
-</ol>
-</section>
-<section id="utilities" class="level2">
-<h2 class="anchored" data-anchor-id="utilities">Utilities</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 36%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>PL/SQL Syntax</th>
-<th>DB2 Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>SYS_INFO</td>
-<td></td>
-<td><code>SELECT * FROM SYSIBMADM.ENV_SYS_INFO</code></td>
-</tr>
-<tr class="even">
-<td>NVL</td>
-<td><code>NVL(column, 0)</code></td>
-<td><code>COALESCE(column, 0)</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code>COALESCE(column, 0)</code></td>
-<td><code>COALESCE(column, 0)</code></td>
-</tr>
-<tr class="even">
-<td>Diff Month</td>
-<td><code>SELECT (EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)) * 12 + EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date) AS month_diff FROM your_table;</code></td>
-<td><code>SELECT (YEAR(end_date) - YEAR(start_date)) * 12 + MONTH(end_date) - MONTH(start_date) AS month_diff FROM your_table;</code></td>
-</tr>
-<tr class="odd">
-<td>Add Months</td>
-<td><code>SELECT ADD_MONTHS(date1, number_of_months) FROM dual;</code></td>
-<td><code>SELECT ADD_YEARS(current_date, 3), ADD_MONTHS(current_date, 3 ), ADD_DAYS(current_date, 3), ADD_HOURS(current timestamp, 3), ADD_MINUTES(current timestamp, 3), ADD_SECONDS(current timestamp, 3) FROM sysibm.sysdummy1;</code></td>
-</tr>
-<tr class="even">
-<td>Diff Date</td>
-<td><code>SELECT date2 - date1 FROM dual;</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Compare 2 Tables</td>
-<td><code>(SELECT * FROM B_TMP MINUS SELECT * FROM B_TMP1) UNION ALL(SELECT * FROM B_TMP1 MINUS SELECT * FROM B_TMP)</code></td>
-<td><code>SELECT * FROM table1 EXCEPT SELECT * FROM table2;</code></td>
+<td>0.182718</td>
+<td>0.022042</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="http://db2-sql-cookbook.org/pdf/Db2_SQL_Cookbook.pdf">db2-sql-cookbook</a></li>
-</ul>
+
+</div>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>iv_transformer.plot_bubble_feature(<span class="st">'credit_amount'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bubble_chart_optbinning_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1320,18 +1420,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../comparision/Index.html" class="pagination-link" aria-label="Comparision">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Comparision</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../comparision/dplyr-pandas.html" class="pagination-link" aria-label="dplyr vs. pandas">
-        <span class="nav-page-text">dplyr vs.&nbsp;pandas</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1340,7 +1428,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/comparision/plsql-db2.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/nguyenngocbinh/snippets/blob/main/python-snippet/bubble_chart_optbinning.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
