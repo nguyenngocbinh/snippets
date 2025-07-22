@@ -13,7 +13,7 @@ website:
     left: "&copy; CC-By NguyenNgocBinh, 2023"
     
   sidebar:
-    logo: "assets/images/nnb_hex.png"
+    logo: "docs/assets/images/nnb_hex.png"
     pinned: true
     align: center
     tools: 

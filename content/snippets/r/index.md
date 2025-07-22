@@ -286,19 +286,32 @@ editor_options:
 
 ## image
 
+<!-- Missing figure - using code example instead
 `![](../figures/d_i_d_graph.png)`
+-->
+
+```r
+# Example: Creating a difference-in-differences plot
+library(ggplot2)
+# Your DiD visualization code here
+```
 
 bookdown::html_document2, bookdown::word_document2
 
 ```r
+<!-- Diagram reference - image not available
 ![(\#fig:nnet2)Một mạng nơ-ron với bốn đầu vào và một lớp ẩn với ba nơ-ron ẩn.](images/nnet2.png)
+-->
+
+**Neural Network Diagram**: A neural network with four inputs and one hidden layer with three hidden neurons.
 \@ref(fig:nnet2)
 ```
 or
 
 ```r
 knitr::opts_chunk$set(echo = FALSE, fig.height = 5, fig.width = 7, out.width = "70%")
-knitr::include_graphics("figures/d_i_d_graph.png")
+# Alternative approach - embed plot in document
+# knitr::include_graphics("figures/d_i_d_graph.png")
 ```
 ### Format number in rmarkdown
 

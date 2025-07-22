@@ -150,4 +150,3 @@ execute:
 
 filters:
   - docs/include-files.lua
-  - quarto
