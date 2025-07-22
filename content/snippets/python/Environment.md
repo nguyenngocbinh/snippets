@@ -1,271 +1,388 @@
 ---
-title: Environment
+title: Cài đặt môi trường Python
 ---
 
-# Environment setup
+# 🐍 Hướng dẫn cài đặt môi trường Python
 
-## 1. Using **conda**
+## 📋 Mục lục nhanh
 
-### 1. Add Anaconda Portable to `PATH`
+- [🏢 Môi trường công ty](#-môi-trường-công-ty-corporate-environment)
+- [💻 Máy tính cá nhân](#-máy-tính-cá-nhân-personal-setup)  
+- [📊 Data Science Workflow](#-data-science-workflow)
+- [🌐 Cross-platform Deployment](#-cross-platform-deployment)
+- [🆘 Troubleshooting](#-troubleshooting--common-issues)
 
-#### For **Command Prompt (cmd.exe)**
+---
 
+## 🏢 Môi trường công ty (Corporate Environment)
+
+> *Dành cho môi trường có proxy, hạn chế mạng, cài đặt offline*
+
+### 🌐 Thiết lập Behind Proxy
+
+#### Cấu hình Proxy cho Conda
+```cmd
+conda config --set proxy_servers.http http://proxy.company.com:8080
+conda config --set proxy_servers.https https://proxy.company.com:8080
+```
+
+#### Cấu hình Proxy cho Pip
+```cmd
+pip config set global.proxy http://proxy.company.com:8080
+```
+
+#### Thiết lập biến môi trường (PowerShell)
+```powershell
+$env:HTTP_PROXY = "http://proxy.company.com:8080"
+$env:HTTPS_PROXY = "https://proxy.company.com:8080"
+```
+
+### 💾 Cài đặt Offline Package
+
+#### Bước 1: Tạo danh sách packages cần thiết
+```cmd
+# Tạo requirements.txt cho dự án
+pip freeze > requirements.txt
+```
+
+#### Bước 2: Tải packages về máy có mạng
+```cmd
+# Tạo thư mục chứa packages
+mkdir D:\offline_packages
+
+# Tải tất cả packages và dependencies
+pip download -r requirements.txt -d D:\offline_packages
+```
+
+#### Bước 3: Cài đặt từ thư mục offline
+```cmd
+# Cài đặt từ thư mục local
+pip install -r requirements.txt --find-links=D:\offline_packages --no-index
+```
+
+### 🔒 Bảo mật và Compliance
+
+#### Tạo environment cô lập
+```cmd
+conda create -n secure_env python=3.10 pip
+conda activate secure_env
+```
+
+#### Kiểm tra packages có lỗ hổng bảo mật
+```cmd
+pip install safety
+safety check
+```
+
+---
+
+## 💻 Máy tính cá nhân (Personal Setup)
+
+> *Setup nhanh, tùy chỉnh theo sở thích cá nhân*
+
+### ⚡ Quick Setup (5 phút)
+
+#### 1. Thêm Conda vào PATH
+**Command Prompt:**
 ```cmd
 set PATH=D:\anaconda3\condabin;%PATH%
 ```
 
-#### For **PowerShell**
-
+**PowerShell:**
 ```powershell
 $env:PATH = "D:\anaconda3\condabin;" + $env:PATH
 ```
 
-### 2. Set Default `PATH` in Visual Studio Code
+#### 2. Tạo environment đa năng
+```cmd
+conda create -n myenv python=3.10 pandas numpy matplotlib jupyter ipykernel
+conda activate myenv
+```
 
-#### Step 1: Open VSCode Settings
-1. **Open VSCode**.
-2. Press `Ctrl + ,` to open the **Settings**.
-
-#### Step 2: Edit `settings.json`
-1. In the **Settings** search bar, type: **terminal.integrated.env.windows**.
-2. Click on **Edit in settings.json** (you can also directly open `settings.json` by pressing `Ctrl + Shift + P` and typing "Preferences: Open Settings (JSON)").
-
-#### Step 3: Add Anaconda Path to `settings.json`
-In the `settings.json` file, add the following lines to include Anaconda's `condabin` in your `PATH`:
-
+#### 3. Cài đặt VSCode integration
+Thêm vào `settings.json` của VSCode:
 ```json
 {
     "terminal.integrated.env.windows": {
         "PATH": "D:\\anaconda3\\condabin;${env:PATH}"
-    }
+    },
+    "python.defaultInterpreterPath": "D:\\anaconda3\\envs\\myenv\\python.exe"
 }
 ```
 
-### 3. Create conda environment
+### 🎨 Tùy chỉnh giao diện
 
-#### 1. Quick create env using `conda create`
-       
+#### Jupyter Notebook Themes
 ```cmd
-conda create -n env_rdm python=3.10 pip ipykernel notebook
-conda activate env_rdm
+# Cài đặt themes
+pip install jupyterthemes
+
+# Áp dụng theme đẹp
+jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T
 ```
 
-#### 2. Create env use `environment.yaml` file
+#### Jupyter Extensions
+```cmd
+pip install jupyter_contrib_nbextensions jupyter_nbextensions_configurator
+jupyter contrib nbextension install --user
+jupyter nbextensions_configurator enable --user
+```
 
-- First, create `environment.yaml ` file with example content following
-- Second, run command `conda env create -f environment.yaml`
-- Optional, remove environment if needed `conda env remove -n env_ascore`
-             
-```yml
-name: env_ascore
+### 🔧 Quản lý Environment cá nhân
+
+#### Tạo environment cho từng dự án
+```cmd
+# Web scraping
+conda create -n webscraping python=3.10 requests beautifulsoup4 selenium
+
+# Machine Learning  
+conda create -n ml python=3.10 scikit-learn tensorflow pandas
+
+# Data Analysis
+conda create -n analysis python=3.10 pandas numpy matplotlib seaborn jupyter
+```
+
+#### Lệnh thường dùng
+```cmd
+# Liệt kê environments
+conda env list
+
+# Kích hoạt environment
+conda activate myenv
+
+# Xóa environment
+conda env remove -n old_env
+
+# Dọn dẹp cache
+conda clean --all
+```
+
+---
+
+## 📊 Data Science Workflow
+
+> *Tối ưu cho phân tích dữ liệu và machine learning*
+
+### 📓 Jupyter Lab Setup
+
+#### Cài đặt JupyterLab với extensions
+```cmd
+conda create -n datascience python=3.10
+conda activate datascience
+
+# Core packages
+conda install pandas numpy matplotlib seaborn plotly
+
+# Jupyter ecosystem
+conda install jupyterlab jupyter-collaboration
+pip install jupyterlab-git jupyterlab-lsp
+```
+
+#### Tạo kernel cho Jupyter
+```cmd
+conda activate datascience
+ipython kernel install --user --name=datascience --display-name="Data Science"
+```
+
+### 🤖 Machine Learning Environment
+
+#### Standard ML Stack
+```cmd
+conda create -n ml python=3.10
+conda activate ml
+
+# Core ML libraries
+conda install scikit-learn pandas numpy matplotlib seaborn
+pip install optuna xgboost lightgbm
+
+# Deep Learning (chọn 1)
+# TensorFlow
+pip install tensorflow
+
+# PyTorch  
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+```
+
+#### Specialized environments
+```yaml
+# environment_nlp.yaml
+name: nlp
 channels:
   - conda-forge
   - defaults
 dependencies:
   - python=3.10
   - pandas
-  - joblib
-  - statsmodels
-  - ipykernel
-  - zipp  
+  - numpy
+  - jupyter
   - pip
-  - pip: 
-    - optbinning==0.17.3
-    - ortools==9.4.1874
-# set https_proxy=10.1.33.23:8080
-# set http_proxy=10.1.33.23:8080   
+  - pip:
+    - transformers
+    - datasets
+    - tokenizers
+    - spacy
 ```
-
-#### 3. Create env use `requirements.txt` file
 
 ```cmd
-conda list --export > requirements.txt
-conda install --file requirements.txt
+conda env create -f environment_nlp.yaml
 ```
 
+### 📈 Visualization & Reporting
 
-### 4. Conda Common Commands
-
-#### List All Conda Environments
-This command displays a list of all available Conda environments on your system:
-
-```sh
-conda info --env
-```
-Alternatively, you can use:
-
-```sh
-conda env list
-```
-
-#### Remove a Conda Environment
-To remove a specific Conda environment (e.g., `python38`):
-
-```sh
-conda deactivate  # Deactivate any active environment first
-conda env remove -n python38
-```
-
-#### Activate a Conda Environment
-To activate a specific Conda environment (e.g., `python38`):
-
-```sh
-conda activate python38
-```
-
-#### Clean Unused Libraries and Cache
-To clean up unused libraries and cache, use:
-
-```sh
-conda clean --all  # Cleans all Conda caches
-pip cache remove *  # Removes all pip caches
-```
-
-## 2. Create Environment for Jupyter Notebook
-
-### 1. Use Conda to Create a New Environment
-You can create a new environment in Conda for use with Jupyter Notebook. Replace `python38` with the desired environment name and `3.x` with the desired Python version.
-
-```sh
-conda create -n python38 python=3.x
-```
-
-### 2. Use `ipython` to Add the Environment to Jupyter
-
-After activating the environment, use the `ipython` command to install the environment's kernel for Jupyter Notebook:
-
-```sh
-conda activate python38
-ipython kernel install --user --name=python38
-```
-
-This will make the environment available in Jupyter Notebook as an option when selecting kernels.
-
-### 3. Remove Jupyter Notebook Environment (Run as Administrator)
-To remove the environment's kernel from Jupyter, list all the installed kernels and then uninstall the specific one. You may need administrator privileges for this step.
-
-1. **List the installed kernels:**
-
-```sh
-jupyter kernelspec list
-```
-
-2. **Uninstall the kernel:**
-
-```sh
-jupyter kernelspec uninstall python38
-```
-
-## 3. Install Packages in **OFFLINE** Mode with `pip`
-
-### 1. Install Offline Packages Using `requirements.txt`
-
-#### Step 1: Export Installed Packages to `requirements.txt`
-If you want to create a `requirements.txt` file containing the list of installed packages, you can use this command:
-
+#### Advanced plotting environment
 ```cmd
-pip list --format=freeze > requirements.txt
+conda create -n viz python=3.10
+conda activate viz
+
+conda install pandas matplotlib seaborn plotly bokeh
+pip install altair streamlit dash
 ```
 
-This will export the list of currently installed packages and their versions into a `requirements.txt` file.
-
-#### Step 2: Create a `wheel` Folder
-Create a folder where the downloaded `.whl` (wheel) files will be stored. For example, you can create a folder named `wheel`:
-
+#### Report generation
 ```cmd
-mkdir D:\wheel
+# Thêm vào environment
+pip install nbconvert pandoc-python-filter
+conda install -c conda-forge pandoc
 ```
-
-#### Step 3: Download Dependencies into the `wheel` Folder
-Run the following command to download the dependencies listed in `requirements.txt` into the `wheel` folder:
-
-```cmd
-pip download -r requirements.txt -d D:\wheel
-```
-
-This command will download all the required packages and their dependencies into the `wheel` directory for offline installation.
-
-#### Step 4: Install Packages from the `wheel` Folder
-Once you have downloaded all necessary packages, you can install them offline by running:
-
-```cmd
-pip install -r requirements.txt --find-links=D:\wheel --no-index
-```
-
-- `--find-links=D:\wheel`: Instructs `pip` to look for package files in the `wheel` folder.
-- `--no-index`: Disables checking online package indexes (e.g., PyPI) to ensure installation from offline files.
 
 ---
 
-### 2. Install Offline Linux Packages
+## 🌐 Cross-platform Deployment
 
-When downloading Python packages for Linux (or another platform) while being on a different platform (e.g., Windows), you can specify the platform and Python version.
+> *Triển khai trên nhiều hệ điều hành*
 
-#### Case 1: Activate the Same Python Version
-If you are working with the same Python version as required (e.g., Python 3.7), activate the appropriate environment and run the following command to download the necessary package for Linux:
+### 🪟 Windows Specific
 
-```cmd
-pip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas
+#### PowerShell Profile setup
+```powershell
+# Thêm vào $PROFILE
+function conda-init {
+    D:\anaconda3\condabin\conda.bat init powershell
+}
+
+function ca { conda activate $args }
+function cda { conda deactivate }
 ```
 
-- `--platform manylinux1_x86_64`: Specifies the platform for the Linux package.
-- `--only-binary=:all:`: Ensures only binary files (like wheels) are downloaded.
-- `--no-binary=:none:`: Prevents downloading source distributions, ensuring only precompiled binaries are fetched.
-
-#### Case 2: Specify a Python Version
-If you are using a different Python version, specify the required version using the `--python-version` flag:
-
-```cmd
-pip download --platform manylinux1_x86_64 --only-binary=:all: --python-version=38 --no-binary=:none: pandas
+#### Windows Terminal integration
+```json
+{
+    "name": "Conda Python",
+    "commandline": "powershell.exe -NoExit -Command \"& 'D:\\anaconda3\\condabin\\conda.bat' activate base\"",
+    "icon": "🐍"
+}
 ```
 
-- `--python-version=38`: Specifies the Python version (e.g., 3.8) for which you need to download packages.
+### 🐧 Linux Deployment
 
-## 4. Other Utility Commands
-
-### 1. Check for Dependency Issues
-To check for problems with package dependencies:
-
+#### Environment export cho Linux
 ```cmd
+# Trên Windows, tạo environment.yml cross-platform
+conda env export --no-builds > environment_linux.yml
+```
+
+#### Platform-specific package download
+```cmd
+# Tải packages cho Linux từ Windows
+pip download --platform linux_x86_64 --only-binary=:all: pandas numpy -d linux_packages/
+```
+
+### 🍎 macOS Considerations
+
+#### M1/M2 Mac compatibility
+```yaml
+# environment_mac.yaml
+name: mac_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pandas
+  - numpy
+  - matplotlib
+  - pip
+  - pip:
+    - tensorflow-macos  # For M1/M2
+    - tensorflow-metal  # GPU acceleration
+```
+
+### 🐳 Docker Integration
+
+#### Dockerfile với Conda
+```dockerfile
+FROM continuumio/miniconda3
+
+COPY environment.yml .
+RUN conda env create -f environment.yml
+
+SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv"]
+```
+
+---
+
+## 🆘 Troubleshooting & Common Issues
+
+### ❌ Lỗi thường gặp
+
+#### Conda không được nhận diện
+```cmd
+# Reset conda
+conda init
+# Hoặc
+conda init --reverse
+conda init
+```
+
+#### Environment activation không hoạt động
+```cmd
+# Kiểm tra conda config
+conda info
+
+# Reset environment variables
+conda info --envs
+conda activate base
+```
+
+#### Package conflicts
+```cmd
+# Kiểm tra conflicts
 python -m pip check
+
+# Resolve conflicts
+conda update --all
+pip install --upgrade package_name
 ```
 
-To save a list of all installed packages to `requirements.txt`:
+### 🔍 Debug Commands
 
 ```cmd
-pip freeze > requirements.txt
+# Kiểm tra conda installation
+conda --version
+conda info
+
+# Kiểm tra environments
+conda env list
+
+# Kiểm tra packages trong environment
+conda list
+pip list
+
+# Kiểm tra Python path
+python -c "import sys; print(sys.executable)"
 ```
 
-### 2. Change Jupyter Notebook Theme
-To change the theme of Jupyter Notebook (for example, applying the `onedork` theme with custom font sizes and cell width):
+### 💡 Best Practices
 
-```cmd
-jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T
-```
+1. **Luôn sử dụng environments riêng cho từng dự án**
+2. **Export environment.yml để chia sẻ**
+3. **Dọn dẹp cache định kỳ: `conda clean --all`**
+4. **Sử dụng conda cho packages chính, pip cho packages đặc biệt**
+5. **Backup danh sách packages quan trọng**
 
-- `-fs`: Font size.
-- `-tfs`: Title font size.
-- `-nfs`: Notebook name font size.
-- `-cellw`: Cell width.
-- `-T`: Show or hide the toolbar.
+### 📞 Hỗ trợ thêm
 
-To install Jupyter themes:
-
-```cmd
-pip install jupyterthemes
-```
-
-### 3. Install Jupyter Notebook Extensions
-To add useful features like a table of contents, code folding, and more, install the extensions:
-
-```cmd
-pip install jupyter_contrib_nbextensions
-pip install jupyter_nbextensions_configurator
-```
-
-Then, set them up and enable them:
-
-```cmd
-jupyter contrib nbextension install --user
-jupyter nbextensions_configurator enable --user
-```
+- **Conda documentation**: https://docs.conda.io/
+- **Anaconda community**: https://community.anaconda.cloud/
+- **Stack Overflow**: Tag `conda`, `anaconda`
