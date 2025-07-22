@@ -1,7 +1,144 @@
-project:
+project: 
   type: website
   output-dir: _site
   
-# Point to the main config in docs folder
-include:
-  - docs/_quarto.yml
+website: 
+  page-navigation: true
+  title: "Snippets " 
+  site-url: "https://nguyenngocbinh.github.io/snippets" 
+  repo-url: https://github.com/nguyenngocbinh/snippets
+  repo-actions: [edit, issue]
+  
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "&copy; CC-By NguyenNgocBinh, 2023"
+    
+  sidebar:
+    logo: "docs/assets/images/nnb_hex.png"
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: https://nguyenngocbinh.github.io/snippets
+        text: "Nguyễn Ngọc Bình"
+      - icon: github
+        href: https://github.com/nguyenngocbinh/snippets
+        text: "Snippet R, python, SQL, Stata"
+      - icon: twitter
+        href: https://twitter.com/nanabi88
+        text: "nanabi88 Twitter"         
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - href: docs/index.qmd
+        text: Welcome
+      
+      # Comparisons section
+      - section: "content/comparisons/Index.md"
+        text: "Comparisons"
+        contents: 
+          - content/comparisons/plsql-db2.md
+          - content/comparisons/dplyr-pandas.md
+          - content/comparisons/ggplot2-matplotlib.md
+      
+      # Snippets section
+      - section: "Code Snippets"
+        contents:
+          - section: "content/snippets/python/Index.md"
+            text: "Python Snippets"
+            contents: 
+              - content/snippets/python/Environment.md
+              - content/snippets/python/Graphs.md
+              - content/snippets/python/slopegraph.ipynb
+              - content/snippets/python/Modelling.md 
+              - content/snippets/python/Statistics.md    
+              - content/snippets/python/Code-optimize.md
+              - content/snippets/python/Ultilities.md
+              - content/snippets/python/REST_API.md
+              - content/snippets/python/JupyterNotebookFormat.ipynb
+              - content/snippets/python/VisualizeFeatureImportances.ipynb
+              - content/snippets/python/convertLightGBMFromR2Python.ipynb
+              - content/snippets/python/beeswarm_strip_violin_plot.ipynb
+              - content/snippets/python/plot_pipeline.ipynb
+              - content/snippets/python/MinGW-w64_offline_installer.ipynb
+          
+          - section: "content/snippets/r/index.md"
+            text: "R Snippets"
+            contents: 
+              - content/snippets/r/dplyr.md      
+              - content/snippets/r/ggplot2.md
+              - content/snippets/r/gganimate.md
+              - content/snippets/r/treemap.md    
+              - content/snippets/r/database.md
+              - content/snippets/r/reticulate.md
+              - content/snippets/r/file_folders.md   
+              - content/snippets/r/DT.md    
+              - content/snippets/r/create_package.md
+              - content/snippets/r/mamba.ipynb
+          
+          - section: "content/snippets/sql-server/Index.qmd"
+            text: "SQL Server Snippets"
+            contents: 
+              - content/snippets/sql-server/README.md
+              - content/snippets/sql-server/permissions.md
+              - content/snippets/sql-server/synonym.md
+          
+          - section: "content/snippets/git"
+            text: "Git Snippets"
+            contents: 
+              - content/snippets/git/sync_gitlab_to_github.ipynb
+      
+      # Tutorials section  
+      - section: "Tutorials"
+        contents:
+          - section: "content/tutorials/python/Exercise 1 - Python.ipynb"
+            text: "Python Basics"
+          
+          - section: "content/tutorials/numpy/00-NumPy-Arrays.ipynb"
+            text: "NumPy"
+            contents:
+              - content/tutorials/numpy/01-NumPy-Indexing-and-Selection.ipynb
+              - content/tutorials/numpy/02-NumPy-Operations.ipynb
+              - content/tutorials/numpy/03-NumPy-Exercises.ipynb
+          
+          - section: "content/tutorials/pandas/00-Intro-to-Pandas.ipynb"
+            text: "Pandas"
+            contents: 
+              - content/tutorials/pandas/01-Series.ipynb
+              - content/tutorials/pandas/02-DataFrames.ipynb
+              - content/tutorials/pandas/03-Missing-Data.ipynb
+              - content/tutorials/pandas/04-Groupby.ipynb
+              - content/tutorials/pandas/05-Operations.ipynb
+              - content/tutorials/pandas/06-Data-Input-and-Output.ipynb
+              - content/tutorials/pandas/07-Pandas-Exercises-1.ipynb
+              - content/tutorials/pandas/09-Pandas-Exercises-2.ipynb      
+          
+          - section: "content/tutorials/matplotlib/Exercise 3 - Matplotlib.ipynb"
+            text: "Matplotlib"
+      
+      # Machine Learning section
+      - section: "content/machine-learning/transformer.md"
+        text: "Machine Learning"
+        contents:
+          - content/machine-learning/transformer.md
+      
+      # Utils section
+      - section: "content/utils/ProjectStructure.md"
+        text: "Utilities"
+        contents:
+          - content/utils/ProjectStructure.md
+
+format:
+  html:
+    theme:
+      light: [cosmo, docs/theme.scss] 
+      dark: [cosmo, docs/theme-dark.scss]
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+
+filters:
+  - docs/include-files.lua
+  - quarto
