@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>transformer – Snippets </title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../content/utils/ProjectStructure.html" rel="next">
+<link href="../../content/tutorials/matplotlib/Exercise 3 - Matplotlib.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8c24d99c7bde07fb81a8fd4fe8c82052.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-1142b4c541b9caf04ad5f40ad3ad63ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-8c24d99c7bde07fb81a8fd4fe8c82052.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/machine-learning/transformer.html">Machine Learning</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../docs/assets/images/nnb_hex.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://nguyenngocbinh.github.io/snippets" title="Nguyễn Ngọc Bình" class="quarto-navigation-tool px-1" aria-label="Nguyễn Ngọc Bình"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nguyenngocbinh/snippets" title="Snippet R, python, SQL, Stata" class="quarto-navigation-tool px-1" aria-label="Snippet R, python, SQL, Stata"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/nanabi88" title="nanabi88 Twitter" class="quarto-navigation-tool px-1" aria-label="nanabi88 Twitter"><i class="bi bi-twitter"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/comparisons/Index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Comparisons</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/comparisons/plsql-db2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">So sánh PL/SQL (Oracle) và DB2 (IBM) - Hướng dẫn cú pháp SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/comparisons/dplyr-pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">So sánh dplyr (R) và pandas (Python) - Hướng dẫn thao tác dữ liệu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/comparisons/ggplot2-matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">So sánh ggplot2 (R) và matplotlib (Python) - Hướng dẫn trực quan hóa dữ liệu</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Snippets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/snippets/python/Index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Snippets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/Environment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cài đặt môi trường Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/Graphs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graphs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/slopegraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slopegraphs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/Modelling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modelling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/Statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/Code-optimize.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code optimize</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/Ultilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ultilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/REST_API.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">REST API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/JupyterNotebookFormat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jupyter Notebook Python cell format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/VisualizeFeatureImportances.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualize feature importances</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/convertLightGBMFromR2Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convert the MLR3 LightGBM model from R to Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/beeswarm_strip_violin_plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Swarm-violin plot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/plot_pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">plot_pipeline.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/python/MinGW-w64_offline_installer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MinGW-w64 offline installer</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/snippets/r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Snippets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/gganimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">gganimate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/treemap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tree map</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/database.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">database</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/reticulate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">reticulate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/file_folders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">file and folder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/DT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/create_package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hướng dẫn tạo package trên R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/r/mamba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Create an R environment using Mamba (a faster alternative to Conda)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/snippets/sql-server/Index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SQL Server Snippets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/sql-server/permissions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Permissions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/sql-server/synonym.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Synonym</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">content/snippets/git</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/snippets/git/sync_gitlab_to_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔄 Hướng dẫn đồng bộ repository từ GitLab sang GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Python Basics</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/tutorials/numpy/00-NumPy-Arrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/numpy/01-NumPy-Indexing-and-Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy Indexing and Selection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/numpy/02-NumPy-Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/numpy/03-NumPy-Exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/tutorials/pandas/00-Intro-to-Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/01-Series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/02-DataFrames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DataFrames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/03-Missing-Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missing Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/04-Groupby.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Groupby</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/05-Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/06-Data-Input-and-Output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Input and Output</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/07-Pandas-Exercises-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/tutorials/pandas/09-Pandas-Exercises-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Introduction</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Matplotlib</span></span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/machine-learning/transformer.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/machine-learning/transformer.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Transformer</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/utils/ProjectStructure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Utilities</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/utils/ProjectStructure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Structure Best Practices</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#transformer" id="toc-transformer" class="nav-link active" data-scroll-target="#transformer">Transformer</a>
+  <ul class="collapse">
+  <li><a href="#transformer-architecture" id="toc-transformer-architecture" class="nav-link" data-scroll-target="#transformer-architecture">Transformer Architecture</a></li>
+  <li><a href="#self-attention" id="toc-self-attention" class="nav-link" data-scroll-target="#self-attention">Self Attention</a>
+  <ul class="collapse">
+  <li><a href="#what-is-self-attention" id="toc-what-is-self-attention" class="nav-link" data-scroll-target="#what-is-self-attention">What is Self Attention?</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#multi-head-attention" id="toc-multi-head-attention" class="nav-link" data-scroll-target="#multi-head-attention">Multi-Head Attention</a>
+  <ul class="collapse">
+  <li><a href="#multi-head-attention-là-gì" id="toc-multi-head-attention-là-gì" class="nav-link" data-scroll-target="#multi-head-attention-là-gì">Multi-Head Attention là gì?</a></li>
+  <li><a href="#ví-dụ" id="toc-ví-dụ" class="nav-link" data-scroll-target="#ví-dụ">Ví dụ</a></li>
+  <li><a href="#code-illustration" id="toc-code-illustration" class="nav-link" data-scroll-target="#code-illustration">Code illustration</a></li>
+  </ul></li>
+  <li><a href="#positional-encoding" id="toc-positional-encoding" class="nav-link" data-scroll-target="#positional-encoding">Positional Encoding</a>
+  <ul class="collapse">
+  <li><a href="#what-is-positional-encoding" id="toc-what-is-positional-encoding" class="nav-link" data-scroll-target="#what-is-positional-encoding">What is Positional Encoding?</a></li>
+  <li><a href="#ví-dụ-1" id="toc-ví-dụ-1" class="nav-link" data-scroll-target="#ví-dụ-1">Ví dụ</a></li>
+  </ul></li>
+  <li><a href="#layer-normalization" id="toc-layer-normalization" class="nav-link" data-scroll-target="#layer-normalization">Layer Normalization</a></li>
+  <li><a href="#masking" id="toc-masking" class="nav-link" data-scroll-target="#masking">MASKING</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/content/machine-learning/transformer.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="transformer" class="level1">
+<h1>Transformer</h1>
+<section id="transformer-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="transformer-architecture">Transformer Architecture</h2>
+<p>Kiến trúc Transformer là một mô hình học sâu phổ biến được giới thiệu trong bài báo “Attention is All You Need” của Vaswani và đồng nghiệp (2017). Nó đã cách mạng hóa nhiều nhiệm vụ xử lý ngôn ngữ tự nhiên (NLP) và trở thành cơ sở cho các mô hình tiên tiến như BERT và GPT.</p>
+<p>Kiến trúc Transformer dựa trên khái niệm self-attention, cho phép mô hình tập trung vào các phần khác nhau của chuỗi đầu vào khi xử lý từng phần tử. Dưới đây là một cái nhìn tổng quan về kiến trúc Transformer:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://d2l.ai/_images/transformer.svg" class="img-fluid figure-img"></p>
+<figcaption>Kiến trúc Transformer</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li>Nhúng Đầu Vào (Input Embeddings):
+<ul>
+<li>Chuỗi đầu vào được nhúng thành các biểu diễn liên tục được gọi là nhúng đầu vào.</li>
+<li>Mỗi từ hoặc thành phần trong chuỗi đầu vào được biểu diễn bằng một vector mật độ.</li>
+</ul></li>
+<li>Mã Hóa Vị Trí (Positional Encoding):
+<ul>
+<li>Mã hóa vị trí được thêm vào nhúng đầu vào để cung cấp thông tin về thứ tự hoặc vị trí của các từ trong chuỗi.</li>
+<li>Điều này cho phép mô hình bắt chước thông tin tuần tự, vì kiến trúc Transformer không có kết nối lặp lại.</li>
+</ul></li>
+<li>Bộ Mã Hóa (Encoder):
+<ul>
+<li>Transformer bao gồm một cấu trúc mã hóa-giải mã (encoder-decoder), nhưng để đơn giản, chúng ta tập trung vào bộ mã hóa.</li>
+<li>Bộ mã hóa bao gồm nhiều lớp giống nhau, mỗi lớp bao gồm hai lớp con:
+<ol type="a">
+<li>Multi-head Self-Attention:
+<ul>
+<li>Self-attention cho phép mô hình đánh trọng số sự quan trọng của các từ khác nhau trong chuỗi đầu vào khi xử lý một từ cụ thể.</li>
+<li>Nó tính toán tổng <code>trọng số</code> của các nhúng từ tất cả các từ, trong đó <code>trọng số</code> được xác định bởi <code>sự tương đồng giữa</code> các từ.</li>
+</ul></li>
+<li>Feed-Forward Neural Network:
+<ul>
+<li>A simple feed-forward neural network được áp dụng cho từng vị trí trong chuỗi độc lập.</li>
+<li>Nó giúp bắt chước mối quan hệ phi tuyến giữa các từ trong chuỗi.</li>
+</ul></li>
+</ol></li>
+</ul></li>
+<li>Bộ Giải Mã (Decoder):
+<ul>
+<li>Bộ giải mã tương tự như bộ mã hóa nhưng có cơ chế attention bổ sung.</li>
+<li>Nó tạo ra chuỗi đầu ra bằng cách chú ý đến các biểu diễn đầu ra của bộ mã hóa và các từ đã được tạo ra trước đó.</li>
+</ul></li>
+<li>Cơ Chế Che (Masking):
+<ul>
+<li>Trong quá trình huấn luyện, cơ chế che được sử dụng để ngăn mô hình chú ý đến các vị trí trong tương lai.</li>
+<li>Điều này đảm bảo rằng mỗi vị trí chỉ có thể chú ý đến các vị trí trước đó trong chuỗi đầu vào.</li>
+</ul></li>
+<li>Tạo Ra Đầu Ra:
+<ul>
+<li>Lớp cuối cùng của bộ giải mã tạo ra xác suất đầu ra cho mỗi vị trí trong chuỗi đầu ra.</li>
+<li>Các xác suất này thường được tính bằng cách sử dụng hàm kích hoạt softmax.</li>
+</ul></li>
+</ol>
+<p>Kiến trúc Transformer có một số lợi thế, như khả năng song song hóa, khả năng bắt chước các phụ thuộc xa, và khả năng tổng quát tốt hơn nhờ self-attention. Nó đã đạt được kết quả tiên tiến trên nhiều nhiệm vụ NLP, bao gồm dịch máy, tóm tắt văn bản và hiểu ngôn ngữ.</p>
+</section>
+<section id="self-attention" class="level2">
+<h2 class="anchored" data-anchor-id="self-attention">Self Attention</h2>
+<section id="what-is-self-attention" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-self-attention">What is Self Attention?</h3>
+<p>Self-attention, còn được gọi là intra-attention hay scaled <a href="https://www.mathsisfun.com/algebra/vectors-dot-product.html">dot-product</a> attention (tích vô hướng giữa 2 vector), là một cơ chế tính toán trọng số chú ý cho các phần tử trong cùng một chuỗi đầu vào. Nó cho phép mô hình đánh giá mức độ quan trọng của mỗi phần tử trong chuỗi dựa trên mức liên quan của nó đối với các phần tử khác.</p>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>Trong self-attention, mỗi từ trong chuỗi đầu vào được biểu diễn bằng một vector, thông thường được gọi là nhúng hay vector nhúng (embedding vector). Giả sử nhúng từ cho chuỗi đầu vào như sau:</p>
+<p>Ví dụ câu như sau: “Con mèo ngồi trên chiếc thảm.”</p>
+<p>Để áp dụng self-attention, chúng ta trước tiên biểu diễn mỗi từ trong câu thành một <code>vector nhúng</code>. Hãy giả sử chúng ta có các vector nhúng từ sau đây:</p>
+<p>Nhúng từ:</p>
+<pre><code>- "Con": [0.2, 0.5, -0.3]
+- "mèo": [-0.1, 0.7, 0.2]
+- "ngồi": [0.4, -0.2, 0.6]
+- "trên": [-0.5, 0.3, -0.1]
+- "chiếc": [0.2, 0.5, -0.3]
+- "thảm": [0.3, 0.1, 0.8]
+- ".": [0.0, 0.0, 0.0]</code></pre>
+<p>Bây giờ, chúng ta tính toán <code>trọng số self-attention</code> cho mỗi từ trong câu. Trong self-attention, mỗi từ được so sánh với tất cả các từ khác để xác định độ quan trọng hoặc liên quan của nó. Quá trình so sánh được thực hiện bằng cách tính tích vô hướng giữa nhúng từ, sau đó áp dụng phép softmax để thu được trọng số chú ý.</p>
+<p>Ví dụ, đối với từ “Con,” tích vô hướng được tính toán với nhúng từ của tất cả các từ khác:</p>
+<p>Trọng số Chú ý cho “Con”:</p>
+<pre><code>- "Con" so sánh với "Con": 0.3
+- "Con" so sánh với "mèo": 0.1
+- "Con" so sánh với "ngồi": 0.2
+- "Con" so sánh với "trên": 0.05
+- "Con" so sánh với "chiếc": 0.35
+- "Con" so sánh với "thảm": 0.0
+- "Con" so sánh với ".": 0.0</code></pre>
+<p>Các trọng số chú ý phản ánh sự quan trọng của mỗi từ đối với “Con” dựa trên sự tương đồng ngữ nghĩa hoặc liên quan ngữ cảnh của chúng. Phép <em>softmax đảm bảo rằng các trọng số tổng cộng bằng 1</em>.</p>
+<p>Chúng ta lặp lại quá trình này cho mỗi từ trong câu để thu được trọng số self-attention cho toàn bộ câu. Những trọng số chú ý này sau đó có thể được sử dụng để tổng hợp thông tin từ các từ khác nhau và bắt chước các mối quan hệ quan trọng trong câu để tiếp tục xử lý trong mô hình.</p>
+</section>
+</section>
+<section id="multi-head-attention" class="level2">
+<h2 class="anchored" data-anchor-id="multi-head-attention">Multi-Head Attention</h2>
+<section id="multi-head-attention-là-gì" class="level3">
+<h3 class="anchored" data-anchor-id="multi-head-attention-là-gì">Multi-Head Attention là gì?</h3>
+<p>Multi-Head Attention là một phần mở rộng của self-attention cho phép mô hình tập trung vào các khía cạnh khác nhau của chuỗi đầu vào cùng một lúc. Đó là việc áp dụng self-attention nhiều lần song song, mỗi attention head tập trung vào một biểu diễn khác nhau của đầu vào. Bằng cách sử dụng nhiều attention head, mô hình có thể nắm bắt các thông tin khác nhau và học các mẫu đa dạng, nâng cao khả năng hiểu và xử lý các chuỗi phức tạp một cách hiệu quả.</p>
+</section>
+<section id="ví-dụ" class="level3">
+<h3 class="anchored" data-anchor-id="ví-dụ">Ví dụ</h3>
+<ol type="1">
+<li><p>Xem xét một câu tiếng Anh: “I love cats.” -&gt; Và chúng ta muốn dịch nó sang tiếng Pháp: “J’adore les chats.”</p></li>
+<li><p>Giả sử cả hai câu tiếng Anh và tiếng Pháp đã được nhúng thành các vector như sau:</p>
+<p>Nhúng từ tiếng Anh:</p>
+<ul>
+<li>“I”: [0.1, 0.2, 0.3]</li>
+<li>“love”: [0.4, 0.5, 0.6]</li>
+<li>“cats”: [0.7, 0.8, 0.9]</li>
+</ul>
+<p>Nhúng từ tiếng Pháp:</p>
+<ul>
+<li>“J’adore”: [0.9, 0.8, 0.7]</li>
+<li>“les”: [0.6, 0.5, 0.4]</li>
+<li>“chats”: [0.3, 0.2, 0.1]</li>
+</ul></li>
+<li><p>Tính toán trọng số</p>
+<ul>
+<li><p>Giả sử chúng ta đang sử dụng cơ chế multi-head attention với <code>2 attention head</code>. Mỗi head sẽ tập trung vào chuỗi đầu vào tiếng Anh (nguồn) và chuỗi đầu vào tiếng Pháp (đích) riêng biệt.</p></li>
+<li><p>Với mỗi attention head, chúng ta sẽ tính toán <code>trọng số attention</code> cho cả chuỗi đầu vào tiếng Anh và tiếng Pháp. Các trọng số attention xác định mức độ quan trọng của mỗi từ trong chuỗi nguồn liên quan đến các từ trong chuỗi đích.</p></li>
+<li><p>Ví dụ,</p></li>
+</ul>
+<p>Với attention head đầu tiên, chúng ta tính toán trọng số attention cho chuỗi đầu vào tiếng Anh:</p>
+<p><code>Attention_scores_source_head1 = softmax(dot_product(english_source_embeddings, [french_target_embedding1, french_target_embedding2, french_target_embedding3]))</code></p>
+<p>Tương tự, chúng ta tính toán trọng số attention cho chuỗi đích tiếng Pháp:</p>
+<p><code>Attention_scores_target_head1 = softmax(dot_product(french_target_embeddings, [english_source_embedding1, english_source_embedding2, english_source_embedding3]))</code></p>
+<p>Lặp lại các bước trên cho attention head tiếp theo, kết quả sẽ được các <code>attention score</code> cho cả chuỗi nguồn và chuỗi đích.</p></li>
+<li><p>Sau khi có các trọng số attention, chúng ta áp dụng chúng vào nhúng tương ứng để có tổng có trọng số cho mỗi chuỗi.</p>
+<p>Ví dụ, đối với chuỗi nguồn tiếng Anh và attention head đầu tiên:</p>
+<p><code>Weighted_sum_source_head1 = attention_score1 * english_source_embedding1 + attention_score2 * english_source_embedding2 + attention_score3 * english_source_embedding3</code></p>
+<p>Tương tự, đối với chuỗi đích tiếng Pháp và attention head đầu tiên:</p>
+<p><code>Weighted_sum_target_head1 = attention_score1 * french_target_embedding1 + attention_score2 * french_target_embedding2 + attention_score3 * french_target_embedding3</code></p></li>
+<li><p>Chúng ta lặp lại các bước trên cho attention head thứ hai.</p>
+<p>Cuối cùng, chúng ta nối các đầu ra từ mỗi attention head và thông qua một phép biến đổi tuyến tính để có đầu ra multi-head attention cuối cùng.</p>
+<p>Như vậy, cơ chế multi-head attention cho phép mô hình nắm bắt các thông tin và mối quan hệ khác nhau giữa chuỗi nguồn và chuỗi đích, tăng khả năng dịch giữa các ngôn ngữ một cách chính xác.</p></li>
+</ol>
+</section>
+<section id="code-illustration" class="level3">
+<h3 class="anchored" data-anchor-id="code-illustration">Code illustration</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiHeadAttention(nn.Module):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, embed_dim, num_heads):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(MultiHeadAttention, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.embed_dim <span class="op">=</span> embed_dim</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_heads <span class="op">=</span> num_heads</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head_dim <span class="op">=</span> embed_dim <span class="op">//</span> num_heads</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.query_projection <span class="op">=</span> nn.Linear(embed_dim, embed_dim)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.key_projection <span class="op">=</span> nn.Linear(embed_dim, embed_dim)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value_projection <span class="op">=</span> nn.Linear(embed_dim, embed_dim)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.output_projection <span class="op">=</span> nn.Linear(embed_dim, embed_dim)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, query, key, value):</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        batch_size <span class="op">=</span> query.size(<span class="dv">0</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Apply linear projections for query, key, and value</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        query <span class="op">=</span> <span class="va">self</span>.query_projection(query)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> <span class="va">self</span>.key_projection(key)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> <span class="va">self</span>.value_projection(value)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Reshape query, key, and value to split heads</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        query <span class="op">=</span> query.view(batch_size, <span class="op">-</span><span class="dv">1</span>, <span class="va">self</span>.num_heads, <span class="va">self</span>.head_dim).transpose(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> key.view(batch_size, <span class="op">-</span><span class="dv">1</span>, <span class="va">self</span>.num_heads, <span class="va">self</span>.head_dim).transpose(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> value.view(batch_size, <span class="op">-</span><span class="dv">1</span>, <span class="va">self</span>.num_heads, <span class="va">self</span>.head_dim).transpose(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute attention scores</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        scores <span class="op">=</span> torch.matmul(query, key.transpose(<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        scores <span class="op">=</span> scores <span class="op">/</span> torch.sqrt(torch.tensor(<span class="va">self</span>.head_dim, dtype<span class="op">=</span>torch.float32))</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        attention_weights <span class="op">=</span> torch.softmax(scores, dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Apply attention weights to value</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        attended_values <span class="op">=</span> torch.matmul(attention_weights, value)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Reshape and concatenate attended values</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        attended_values <span class="op">=</span> attended_values.transpose(<span class="dv">1</span>, <span class="dv">2</span>).contiguous().view(batch_size, <span class="op">-</span><span class="dv">1</span>, <span class="va">self</span>.embed_dim)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Apply linear projection for output</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> <span class="va">self</span>.output_projection(attended_values)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="positional-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="positional-encoding">Positional Encoding</h2>
+<section id="what-is-positional-encoding" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-positional-encoding">What is Positional Encoding?</h3>
+<ul>
+<li><p>Phép mã hóa vị trí (Positional Encoding) là một kỹ thuật được sử dụng trong các mô hình dựa trên chuỗi, đặc biệt là trong kiến trúc Transformer, để đưa thông tin về vị trí tương đối của các yếu tố trong chuỗi đầu vào. Nó giải quyết vấn đề rằng tự chú ý (self-attention) và các cơ chế chú ý khác trong các mô hình này không ngầm định mã hóa thông tin về vị trí.</p></li>
+<li><p>Trong các nhiệm vụ xử lý ngôn ngữ tự nhiên, thứ tự của các từ trong một câu mang ý nghĩa và ngữ cảnh quan trọng. Tuy nhiên, mô hình Transformer xử lý chuỗi đầu vào theo cách song song, không rõ ràng ghi nhận thứ tự tuần tự. Phép mã hóa vị trí giúp mô hình phân biệt giữa các yếu tố ở các vị trí khác nhau trong chuỗi.</p></li>
+<li><p>Mã hóa vị trí được thêm vào nhúng đầu vào của chuỗi trước khi đưa chúng vào mô hình Transformer. Thông thường, điều này được thực hiện bằng cách kết hợp các hàm sin-cos với các nhúng đầu vào. Mỗi chiều của mã hóa vị trí đại diện cho một vị trí cụ thể trong chuỗi.</p></li>
+<li><p>Sự lựa chọn các hàm sin-cos cho phép mô hình dễ dàng mở rộng cho các độ dài chuỗi dài hơn so với những gì mô hình đã được huấn luyện. Tần số của các hàm sin-cos tuân theo một cấp số học, cho phép mô hình học để chú ý đến các vị trí khác nhau với các tỷ lệ khác nhau.</p></li>
+<li><p>Bằng cách thêm mã hóa vị trí vào nhúng đầu vào, mô hình Transformer có thể hiệu quả nắm bắt thứ tự và vị trí tương đối của các yếu tố trong chuỗi. Điều này giúp mô hình hiểu các phụ thuộc và mối quan hệ giữa các vị trí khác nhau và cho phép thực hiện các nhiệm vụ yêu cầu xử lý thông tin tuần tự, chẳng hạn như dịch máy hoặc hiểu ngôn ngữ.</p></li>
+</ul>
+</section>
+<section id="ví-dụ-1" class="level3">
+<h3 class="anchored" data-anchor-id="ví-dụ-1">Ví dụ</h3>
+<p>Giả sử chúng ta có một chuỗi đầu vào gồm ba từ: [“Tôi”, “yêu”, “mèo”].</p>
+<p>Mỗi từ sẽ được biểu diễn bằng một vector nhúng từ, nắm bắt ý nghĩa ngữ nghĩa của nó. Hãy giả định các vector nhúng từ như sau:</p>
+<ul>
+<li>“Tôi”: [0.2, 0.3, -0.1]</li>
+<li>“yêu”: [-0.5, 0.7, 0.2]</li>
+<li>“mèo”: [0.7, 0.8, 0.9]</li>
+</ul>
+<p>Để tích hợp thông tin về vị trí, chúng ta sử dụng mã hóa vị trí. Trong ví dụ này, chúng ta sẽ sử dụng các hàm sin và cos để tạo các vector mã hóa vị trí.</p>
+<p>Giả sử chiều nhúng là 3, các vector mã hóa vị trí sẽ được tính như sau:</p>
+<p>Cho vị trí 0 (từ đầu tiên): - PE(0) = [sin(0/10000^0), cos(0/10000^0), sin(0/10000^0)]</p>
+<p>Cho vị trí 1 (từ thứ hai): - PE(1) = [sin(1/10000^1), cos(1/10000^1), sin(1/10000^1)]</p>
+<p>Cho vị trí 2 (từ thứ ba): - PE(2) = [sin(2/10000^0), cos(2/10000^0), sin(2/10000^0)]</p>
+<p>Vì sin(0) = 0, sin(1) = 0.8415, sin(2) = 0.9093, cos(0) = 1, cos(1) = 0.5403, cos(2) = -0.4161.</p>
+<p>Nên, các vector mã hóa vị trí là:</p>
+<p>PE(0) = [0, 1, 0] PE(1) = [0.8415, 0.5403, 0.8415] PE(2) = [0.9093, -0.4161, 0.9093]</p>
+<p>Để tích hợp mã hóa vị trí, chúng ta cộng vector mã hóa vị trí tương ứng vào mỗi vector nhúng từ:</p>
+<ul>
+<li>Từ “Tôi” với mã hóa vị trí: [0.2, 0.3, -0.1] + [0, 1, 0] = [0.2, 1.3, -0.1]</li>
+<li>Từ “yêu” với mã hóa vị trí: [-0.5, 0.7, 0.2] + [0.8415, 0.5403, 0.8415] =</li>
+</ul>
+<p>[0.3415, 1.2403, 1.0415] - Từ “mèo” với mã hóa vị trí: [0.7, 0.8, 0.9] + [0.9093, -0.4161, 0.9093] = [1.6093, 0.3839, 1.8093]</p>
+<p>Bằng cách cộng các vector mã hóa vị trí vào các vector nhúng từ, chúng ta giới thiệu thông tin về vị trí tương đối của các từ trong chuỗi đầu vào. Điều này cho phép mô hình Transformer nắm bắt thứ tự tuần tự và các phụ thuộc giữa các từ, điều quan trọng cho các nhiệm vụ như dịch máy hoặc phân tích cảm xúc.</p>
+</section>
+</section>
+<section id="layer-normalization" class="level2">
+<h2 class="anchored" data-anchor-id="layer-normalization">Layer Normalization</h2>
+<p>Layer Normalization là một kỹ thuật được sử dụng trong các mô hình học sâu để chuẩn hóa các kích hoạt (kết quả chuyển đổi đầu vào thành đầu ra bằng hàm kích hoạt - tạm gọi là các kích hoạt) của các đơn vị trong một lớp. Nó giải quyết vấn đề của sự thay đổi phân phối đầu vào của lớp trong quá trình huấn luyện, gây khó khăn cho quá trình học.</p>
+<p>Công thức cho Layer Normalization có thể được biểu diễn như sau:</p>
+<pre><code>output = scale * (input - mean) / sqrt(variance + epsilon) + bias
+</code></pre>
+<p>Ở đây, <code>đầu vào</code> đại diện cho các kích hoạt đầu vào của một lớp, <code>trung bình</code> và <code>phương sai</code> đại diện cho giá trị trung bình và phương sai được tính theo chiều đầu vào, <code>epsilon</code> là một hằng số nhỏ được thêm vào để đảm bảo tính ổn định số học, và <code>scale</code> và <code>bias</code> là các tham số có thể học giúp mô hình điều chỉnh và dịch chuyển các kích hoạt đã được chuẩn hóa.</p>
+<p>Layer Normalization được áp dụng độc lập cho mỗi lô dữ liệu (batch), điều này làm cho nó phù hợp cho các nhiệm vụ với kích thước lô nhỏ. Nó đã được chứng minh là hiệu quả trong ổn định quá trình huấn luyện, tăng tốc quá trình hội tụ và cải thiện hiệu suất tổng quát của các mô hình học sâu.</p>
+<p>Tổng quát, Layer Normalization giúp giảm sự phụ thuộc vào tỷ lệ của các kích hoạt đầu vào, thúc đẩy việc truyền gradient ổn định và cải thiện động học huấn luyện tổng thể (overall training dynamics - gồm learning rate, gradient, loss rate) của mạng neural. Nó đã được sử dụng rộng rãi trong các lĩnh vực khác nhau, bao gồm xử lý ngôn ngữ tự nhiên, thị giác máy tính và nhận dạng giọng nói.</p>
+</section>
+<section id="masking" class="level2">
+<h2 class="anchored" data-anchor-id="masking">MASKING</h2>
+<p>Giả sử chúng ta có một câu: “Tôi thích chơi bóng đá.”</p>
+<p>Trong mô hình ngôn ngữ, mục tiêu là dự đoán từ tiếp theo trong ngữ cảnh đã cho. Tuy nhiên, trong quá trình huấn luyện, chúng ta thường không muốn cho mô hình truy cập vào các từ trong tương lai vì nó có thể dẫn đến rò rỉ dữ liệu và dự đoán không thực tế. Vì vậy, chế che được áp dụng.</p>
+<p>Để áp dụng cơ chế che, thường được ký hiệu là [MASK], để thay thế một số từ trong chuỗi đầu vào trong quá trình huấn luyện. Trong trường hợp này, chúng ta có thể ngẫu nhiên che một số từ trong câu, dẫn đến:</p>
+<p>Câu Đầu Vào (có cơ chế che): <em>“Tôi thích chơi [MASK] bóng đá.”</em></p>
+<p>Bây giờ, trong quá trình huấn luyện, mục tiêu của mô hình là dự đoán từ bị che dựa trên ngữ cảnh xung quanh. Nó học cách hiểu cấu trúc câu, ý nghĩa và sự phụ thuộc giữa các từ để đưa ra dự đoán chính xác. Mô hình nhận chuỗi đầu vào đã được chỉnh sửa (thêm [MASK]) và cố gắng dự đoán bản gốc, không bị che, ở vị trí đã được che.</p>
+<p>Trong quá trình huấn luyện hoặc đánh giá, cơ chế che không được sử dụng và mô hình được cung cấp với toàn bộ chuỗi đầu vào. Nó có thể tạo ra dự đoán cho từ tiếp theo trong chuỗi dựa trên kiến thức đã học từ quá trình huấn luyện.</p>
+<p>Cơ chế che giúp mô hình tổng quát tốt và xử lý các trường hợp mà nó gặp phải các từ chưa được nhìn thấy hoặc thiếu. Nó khuyến khích mô hình dựa vào ngữ cảnh có sẵn để đưa ra dự đoán chính xác và cải thiện khả năng hiểu cấu trúc câu.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/nguyenngocbinh\.github\.io\/snippets");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../content/tutorials/matplotlib/Exercise 3 - Matplotlib.html" class="pagination-link" aria-label="Matplotlib">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Matplotlib</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../content/utils/ProjectStructure.html" class="pagination-link" aria-label="Utilities">
+        <span class="nav-page-text">Utilities</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© CC-By NguyenNgocBinh, 2023</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nguyenngocbinh/snippets/edit/main/content/machine-learning/transformer.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nguyenngocbinh/snippets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
