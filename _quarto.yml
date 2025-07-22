@@ -32,7 +32,7 @@ website:
     search: true
     collapse-level: 1
     contents:
-      - href: docs/index.qmd
+      - href: docs/index.md
         text: Welcome
       
       # Comparisons section
@@ -78,7 +78,7 @@ website:
               - content/snippets/r/create_package.md
               - content/snippets/r/mamba.ipynb
           
-          - section: "content/snippets/sql-server/Index.qmd"
+          - section: "content/snippets/sql-server/Index.md"
             text: "SQL Server Snippets"
             contents: 
               - content/snippets/sql-server/README.md
@@ -88,7 +88,7 @@ website:
           - section: "content/snippets/git"
             text: "Git Snippets"
             contents: 
-              - content/snippets/git/sync_gitlab_to_github.ipynb
+              - content/snippets/git/sync_gitlab_to_github.md
       
       # Tutorials section  
       - section: "Tutorials"
