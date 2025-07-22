@@ -1,6 +1,10 @@
 project: 
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "*.ipynb"
   
 website: 
   page-navigation: true
@@ -138,6 +142,11 @@ format:
     code-copy: true
     code-overflow: wrap
     toc: true
+    self-contained: false
+    
+execute:
+  freeze: auto
+  cache: true
 
 filters:
   - docs/include-files.lua
