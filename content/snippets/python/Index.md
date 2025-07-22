@@ -1,468 +1,302 @@
 ---
-title: "Python Snippet"
+title: "Python Snippets - Hướng dẫn thực hành"
 ---
 
-![](https://www.python.org/static/img/psf-logo.png)
+<div align="center">
 
-# 1. Setup environment
+![Python Logo](https://www.python.org/static/img/psf-logo.png)
 
-## 1.1. Using **conda**
+# 🐍 **Python Snippets Collection**
+*Tập hợp các đoạn code Python hữu ích cho công việc hàng ngày*
 
-### 1.1.1. Create conda environment
+</div>
 
-- Create env by common command line
+---
 
-```sh
-conda create -n python38 python=3.8.5 pip=20.2.4 ipykernel notebook
-conda activate python38
+## 🚀 **1. Thiết lập môi trường**
+
+### 📦 **1.1. Sử dụng Conda**
+
+#### **Tạo môi trường mới**
+```bash
+# Tạo môi trường cơ bản
+conda create -n myenv python=3.8 pip ipykernel notebook
+conda activate myenv
+
+# Sử dụng file environment.yml
+conda env create -f environment.yml
 ```
 
-- Create env use `environment.yaml` file
+<details>
+<summary><strong>📄 Template environment.yml</strong></summary>
 
 ```yml
-name: env_ascore
+name: myproject
 channels:
   - conda-forge
   - defaults
 dependencies:
   - python=3.8
-  - pandas==1.4.4  
-  - joblib==1.1.0
-  - statsmodels==0.13.2
+  - pandas>=1.4.0
+  - numpy>=1.21.0
+  - jupyter
   - ipykernel
-  - zipp  
   - pip
-  - pip: 
-    - optbinning==0.17.3
-    - ortools==9.4.1874
-# conda env create -f environment.yaml  
-# conda env remove -n env_ascore
-# set https_proxy=10.1.33.23:8080
-# set http_proxy=10.1.33.23:8080
-# conda install -n env_ascore ipykernel --update-deps --force-reinstall
+  - pip:
+    - requests>=2.28.0
+    - plotly>=5.0.0
 ```
+</details>
 
-- Create env use `requirements.txt` file
+#### **Quản lý môi trường**
+```bash
+# Liệt kê môi trường
+conda info --envs
 
-```sh
-conda list --export > requirements.txt
-conda install --file requirements.txt
-```
+# Xóa môi trường
+conda env remove -n myenv
 
-### 1.1.2. Conda common commands
-
--  Conda environment list
-
-```sh
-conda info --env
-```
-
-- Remove conda environment
-
-```sh
-conda deactivate
-conda env remove -n python38
-```
-
-- Activate conda environment
-
-```sh
-conda activate python38
-```
-- Clean unused library
-
-```sh
+# Dọn dẹp cache
 conda clean --all
-pip cache remove *
 ```
 
-## 1.2. Create environment for jupyter notebook
+### 🔧 **1.2. Jupyter Kernel**
 
-### 1.2.1. create
+```bash
+# Thêm kernel
+conda activate myenv
+python -m ipykernel install --user --name=myenv
 
-```sh
-conda activate python38
-ipython kernel install --user --name=python38
-```
- 
-
-### 1.2.2. Remove jupyter notebook environment (require run as administrator)
-
-```sh
-jupyter kernelspec list
-jupyter kernelspec uninstall python38 
+# Xóa kernel (chạy với quyền admin)
+jupyter kernelspec uninstall myenv
 ```
 
-# 2. Install packages
+---
 
-## 2.1. Install OFFLINE packages using requirements.txt 
+## 📦 **2. Cài đặt packages**
 
-- Step 1: Input to `requirements.txt` file in current directory.  Eg. content `"jupyter-contrib-nbextensions==0.5.1"`
+### 💾 **Cài đặt OFFLINE**
+```bash
+# Bước 1: Tải packages
+pip download -r requirements.txt -d wheels/
 
-- Step 2: Create folder `wheel` (Eg. D:\wheel)
-
-- Step 3: Run following command to download dependencies packages to folder `wheel`
-
-```sh
-pip download -r requirements.txt -d wheel
+# Bước 2: Cài đặt offline
+pip install -r requirements.txt --find-links=wheels/ --no-index
 ```
 
-- Step 4: Run following command to install
-
-
-```sh
-pip install -r requirements.txt --find-links=D:\wheel --no-index
+### 📋 **Export requirements**
+```bash
+pip freeze > requirements.txt
+# hoặc
+conda list --export > environment.yml
 ```
 
-## 2.2. Install OFFLINE Linux package
+---
 
-Activate same version python (i.e 3.7.0) and type command following
+## 🔍 **3. Pandas - Xử lý dữ liệu**
 
-```sh
-pip download --platform manylinux1_x86_64 --only-binary=:all: --no-binary=:none: pandas
+### **<span style="color: #007ACC;">📊 Thao tác cơ bản</span>**
+
+```python
+# Case when - Điều kiện
+df['new_col'] = np.where(df['col'] < 10, 'low',
+                np.where(df['col'] < 20, 'medium', 'high'))
+
+# Clean column names
+df.columns = df.columns.str.lower().str.replace(' ', '_')
+
+# Binning - Phân nhóm
+df['age_group'] = pd.cut(df['age'], bins=[0, 25, 50, 75, 100], 
+                        labels=['young', 'adult', 'senior', 'elderly'])
 ```
 
-## 2.3. Export requirements
+### **<span style="color: #28A745;">🔍 Lọc và tìm kiếm</span>**
 
-```sh
-pip list --format=freeze > requirements.txt
+```python
+# Lọc dữ liệu
+df[~df['name'].isin(exclude_list)]  # Loại trừ
+df[df['value'].between(10, 50)]     # Trong khoảng
+df[df['date'] > '2023-01-01']       # Theo ngày
+
+# Xử lý missing values
+df[df['col'].notna()]               # Không null
+df['col'].fillna(method='ffill')    # Forward fill
 ```
 
-# 3. Install Extension for jupyter notebook
+### **<span style="color: #FF6B35;">📈 Aggregation & Grouping</span>**
 
-- nbextension
+```python
+# Group by với transform
+df['avg_by_group'] = df.groupby('category')['value'].transform('mean')
 
-```sh
-pip install jupyter_contrib_nbextensions
-pip install jupyter_nbextensions_configurator
+# Multiple aggregations
+df.groupby('category').agg({
+    'sales': ['sum', 'mean'],
+    'profit': 'sum',
+    'date': 'max'
+}).round(2)
+
+# Stratified sampling
+df.groupby('target').apply(lambda x: x.sample(frac=0.8))
+```
+
+---
+
+## 🔗 **4. Joins & Merging**
+
+### **<span style="color: #6F42C1;">Merge nhiều DataFrames</span>**
+
+```python
+# Sử dụng functools.reduce
+import functools as ft
+dfs = [df1, df2, df3, df4]
+result = ft.reduce(lambda left, right: pd.merge(left, right, on='id', how='outer'), dfs)
+
+# Concat với index
+dfs = [df.set_index('id') for df in dfs]
+result = pd.concat(dfs, axis=1, join='outer')
+```
+
+---
+
+## 📁 **5. Files & I/O**
+
+### **<span style="color: #DC3545;">📄 Excel Operations</span>**
+
+```python
+# Đọc nhiều files
+import glob
+files = glob.glob("data/*.xlsx")
+dfs = [pd.read_excel(f) for f in files]
+combined = pd.concat(dfs, ignore_index=True)
+
+# Ghi nhiều sheets
+with pd.ExcelWriter('output.xlsx') as writer:
+    df_train.to_excel(writer, sheet_name='train', index=False)
+    df_test.to_excel(writer, sheet_name='test', index=False)
+```
+
+### **<span style="color: #17A2B8;">🗄️ Database</span>**
+
+```python
+import sqlalchemy as sa
+import urllib.parse
+
+# Kết nối SQL Server
+params = urllib.parse.quote_plus(
+    "DRIVER={SQL Server};SERVER=server;DATABASE=db;UID=user;PWD=pass"
+)
+engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={params}")
+
+# Thao tác
+df = pd.read_sql("SELECT * FROM table", engine)
+df.to_sql('new_table', engine, if_exists='replace', index=False)
+```
+
+---
+
+## ⚡ **6. Python Shortcuts**
+
+### **<span style="color: #20C997;">🎯 Lambda & Comprehensions</span>**
+
+```python
+# List comprehension
+evens = [x for x in range(20) if x % 2 == 0]
+
+# Dict comprehension
+word_lengths = {word: len(word) for word in ['hello', 'world', 'python']}
+
+# Lambda với error handling
+safe_divide = lambda x, y: x/y if y != 0 else 0
+```
+
+### **<span style="color: #FD7E14;">🔤 String Operations</span>**
+
+```python
+# Join với delimiter
+result = "_".join(["python", "is", "awesome"])
+
+# Regex patterns
+import re
+numbers = re.findall(r'\d+', 'Extract 123 and 456 from text')
+cleaned = re.sub(r'[^\w\s]', '', 'Clean! this@ string#')
+```
+
+---
+
+## 📊 **7. Data Analysis Utilities**
+
+### **<span style="color: #E83E8C;">📋 Data Profiling</span>**
+
+```python
+def profile_dataframe(df):
+    """Tạo báo cáo tổng quan về DataFrame"""
+    profile = df.describe(include='all').T
+    profile['dtype'] = df.dtypes
+    profile['null_count'] = df.isnull().sum()
+    profile['null_pct'] = (df.isnull().sum() / len(df) * 100).round(2)
+    profile['unique_count'] = df.nunique()
+    
+    return profile[['dtype', 'count', 'null_count', 'null_pct', 
+                   'unique_count', 'mean', 'std', 'min', 'max']]
+```
+
+### **<span style="color: #6C757D;">📅 Date Operations</span>**
+
+```python
+# Tính khoảng cách thời gian
+df['months_diff'] = ((df['end_date'] - df['start_date']) / 
+                    pd.Timedelta(days=30.44)).round().astype(int)
+
+df['days_diff'] = (df['end_date'] - df['start_date']).dt.days
+```
+
+---
+
+## 🔧 **8. JSON & API**
+
+```python
+import json
+
+# Đọc/ghi JSON an toàn
+def safe_json_load(filepath):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error loading {filepath}: {e}")
+        return {}
+
+def save_json(data, filepath):
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+```
+
+---
+
+## 🎨 **9. Jupyter Extensions**
+
+```bash
+# Cài đặt extensions hữu ích
+pip install jupyter_contrib_nbextensions jupyter_nbextensions_configurator
 jupyter contrib nbextension install --user
 jupyter nbextensions_configurator enable --user
+
+# Theme đẹp cho notebook
+pip install jupyterthemes
+jt -t onedork -fs 13 -cellw 88% -T
 ```
 
-# 4. Other ultilities command
+---
 
-#### check dependencies
+<div align="center">
 
-```sh
-python -m pip check 
-pip freeze > requirements.txt
-```
+### 💡 **Tips & Best Practices**
 
-#### install pycaret
+- ✅ Luôn sử dụng virtual environment
+- ✅ Đặt tên biến và function rõ ràng
+- ✅ Comment code phức tạp
+- ✅ Sử dụng type hints khi có thể
+- ✅ Test code trước khi deploy
 
-```sh
-pip install pycaret --use-feature=2020-resolver
-```
-
-#### Themes
-
-- jupyter notebook
-
-```sh
-jt -t onedork -fs 13 -altp -tfs 14 -nfs 14 -cellw 88% -T
-```
-
-
-# 5. Pandas
-
-- case when
-
-```python
-df['new_column'] = np.where(df['col2']<9, 'value1',
-                   np.where(df['col2']<12, 'value2',
-                   np.where(df['col2']<15, 'value3', 'value4')))
-```
-
-- clean names
-
-```python
-X.columns = X.columns.str.translate("".maketrans({"[":"{", "]":"}","<":"^"}))
-```
-
-- rename
-
-```python
-df.columns = df.columns.str.lower()
-```
-
-- binning
-
-```python
-df['Cat Age'] = pd.cut(x=df['Age'], bins=[0, 25, 30, 35, 40, 45, 50, 75])
-```
-
-- groupby stratify
-
-```python
-df.groupby('target', group_keys=False).apply(lambda x: x.sample(frac=0.8))  
-```
-- groupby partition (transform)
-```python
-df['new'] = df.groupby('group_var')['value_var'].transform('mean')
-df['new'] = df.groupby('group_var')['value_var'].transform(lambda x: some function)
-```
-- read data
-
-```python
-appended_data = []
-for infile in glob.glob("*.xlsx"):
-    data = pandas.read_excel(infile)
-    # store DataFrame in list
-    appended_data.append(data)
-
-# Use pd.concat to merge a list of DataFrame into a single big DataFrame.
-appended_data = pd.concat(appended_data)
-appended_data = [df.set_index('ID') for df in appended_data]
-appended_data = pd.concat(appended_data)
-```
-
-- filter
-
-```python
-df[~df['name'].isin(list1)]
-df[df['name'].isna()]
-df[df['name'].notna()]
-
-#filter for rows where team name is not in one of several columns
-df[~df[['star_team', 'backup_team']].isin(values_list).any(axis=1)] 
-
-```
-
-- convert
-
-```python
-# pd.to_numeric
-# pd.factorize
-# df['STRING'].astype(str)
-# pd.to_datetime(df['DATE'], format='%d%m%Y')
-```
-
-- Excel date
-
-```python
-import functools as ft
-fn_convert_date = ft.partial(xlrd.xldate_as_datetime, datemode=0)
-df['DATE'].apply(fn_convert_date).dt.year
-```
-- aggregate
-
-```python
-df = df.groupby('ID').agg('first')
-```
-
-```python
-def fn_describe(df):
-    tbl = df.describe(include='all')
-    tbl.loc['dtype'] = df.dtypes
-    tbl.loc['total'] = len(df)
-    tbl.loc['%null'] = df.isnull().mean() * 100
-    tbl.loc['nbr.zero'] = (df == 0).sum(axis=1)
-    tbl.loc['%zero'] = (df == 0).sum(axis=1)/len(dat)    
-    tbl = tbl.T
-    tbl['nbr.null'] = tbl['total'] - tbl['count']
-    tbl['nbr.top'] = tbl['freq'] 
-    tbl['%top'] = tbl['freq']/tbl['total']*100
-    tbl = tbl[['dtype', 'total', 'nbr.null', '%null', 'nbr.zero', '%zero', 'mean', 'std', 'min', 'max', 'unique', 'top', 'nbr.top', '%top']]
-    return tbl
-```
-
-- date
-
-```python
-# difference of month
-df['nb_months'] = ((df.dates1 - df.dates2)/np.timedelta64(1, 'M'))
-df['nb_months'] = df['nb_months'].astype(int)
-# difference of day
-df['Number_of_days'] = ((df.dates1 - df.dates2)/np.timedelta64(1, 'D'))
-df['Number_of_days'] = df['Number_of_days'].astype(int)
-```
-
-- mapping 
-
-```python
-mapping = dict(zip(df[col],df['temp2']))
-temp_df[col] = temp_df[col].map(mapping)
-```
-
-- Apply to all values except missing
-
-```python
-s.apply(lambda a: a+2 if pd.notnull(a) else a)
-```
-
-- fillna
-
-```python
-dat['MOBILE'] = dat['MOBILE'].fillna(dat['MOBILE2'])
-```
-
-- to_excel
-
-```python
-pred_train.reset_index(inplace=True, drop=True)
-pred_test.reset_index(inplace=True, drop=True)
-with pd.ExcelWriter(product['t_pred']) as writer:
-    pred_train.to_excel(writer, sheet_name='pred_train')
-    pred_test.to_excel(writer, sheet_name='pred_test')    
-```
-
-# 6. Join
-
-#### reduce merge
-
-- `pandas.concat`
-
-```python
-dfs = [df0, df1, df2, ..., dfN]
-# require set_index, not using key
-dfs = [df.set_index('name') for df in dfs]
-# can't not run if index not unique 
-dfs = pd.concat(dfs, join='outer', axis = 1) 
-```
-
-
-- `functools.reduce`
-
-```python
-# still run with index not unique 
-import functools as ft
-dfs = ft.reduce(lambda left, right: pd.merge(left, right, on='name', how = 'outer'), dfs)
-```
-- `join`
-
-```python
-# cant not run if index not unique 
-dfs = [df.set_index('name') for df in dfs]
-dfs[0].join(dfs[1:], how = 'outer')
-```
-# 7. Files and folder
-
-```python
-list_files = glob.glob(".data/*.xlsx")
-```
-
-# 8. List
-
-# Delete multiple elements from list python
-```python
-unwanted = [1, 3]
-for ele in sorted(unwanted, reverse = True):
-    del list1[ele]
-```
-
-# 9. Regex
-
-```python
-import re
-
-# Validate number
-number_pattern = "^\\d+$"
-re.match(number_pattern, '42') # Returns Match object
-re.match(number_pattern, 'notanumber') # Returns None
-
-# Extract number from a string
-number_extract_pattern = "\\d+"
-re.findall(number_extract_pattern, 'Your message was viewed 203 times.') # returns ['203']
-```
-
-# 10. Database
-
-## Connect to database
-```python
-import pandas as pd
-import pyodbc
-import sqlalchemy as sa
-import urllib
-from sqlalchemy import create_engine, event
-from sqlalchemy.engine.url import URL
-
-server = 'VM-DC-JUMPSRV77\\IFRS9' 
-database = 'DATA' 
-username = 'username' 
-password = '@@@@@@' 
-    
-params = urllib.parse.quote_plus("DRIVER={SQL Server};"
-                                     "SERVER="+server+";"
-                                     "DATABASE="+database+";"
-                                     "UID="+username+";"
-                                     "PWD="+password+";")
-    
-engine = sa.create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
-```
-
-## Read/push table to database
-
-```python
-# read data
-df_test = pd.read_sql('SELECT top 5 * FROM b_tmp_cl020', engine)
-# push data
-df_test.to_sql('binh_test', engine, if_exists = 'append')
-```
-
-## sqlite3
-
-```python
-con = sqlite3.connect("data/mydata.sqlite")
-
-cur = con.cursor()
-
-# The result of a "cursor.execute" can be iterated over by row
-for row in cur.execute('SELECT * FROM tbl;'):
-    print(row)
-
-# Be sure to close the connection
-con.close()
-```
-
-# 11. Writing shorthand statements
-
-- lambda
-
-```python
-# lambda statement
-foo = lambda a: a+3
-foo(10)
-
-# Self called Lambda
-(lambda a: a+3)(8)
-```
-
-- List Comprehension
-
-```python
-[i for i in range(10) if i%2==0]
-```
-
-- Dict Comprehension
-
-```python
-mylist = ['MANGO', 'APPLE', 'ORANGE']
-d ={i.lower(): 2 for i in mylist}
-```
-
-- String Concatenation  with delimiter
-
-```python
-"_".join(["how", "are", "you"])
-```
-
-# 12. API
-
-### JSON file
-
-```python
-# Open JSON file    
-try:    
-    with open ('data/sample.json', "r") as f:   
-        data = json.load(f)
-except IOError:
-    print('cannot open file')  
-    
-# save
-with open('data/sample.json', 'w') as f:
-    json.dump(data, f)
-```
-
-# 99. Equivalent R
-
-- `functools` ~ `purrr`
+</div>

@@ -1,88 +1,92 @@
 ---
-title: "`ggplot2` vs. `matplotlib`"
+title: So sánh ggplot2 (R) và matplotlib (Python) - Hướng dẫn trực quan hóa dữ liệu
 ---
 
-Below is a markdown table comparing the features of `ggplot2` (R) and `matplotlib` (Python) for creating visualizations:
+Bảng so sánh chi tiết các tính năng của **<span style="color: #007ACC;">ggplot2 (R)</span>** và **<span style="color: #FF6B35;">matplotlib (Python)</span>** để tạo các biểu đồ trực quan:
 
-1. Plot basics
+## 📊 **Các chức năng trực quan hóa dữ liệu**
 
-    | ggplot2 (R)                   |      Feature                                   | matplotlib (Python)                                |
-    |---------------------------|---------------------------------------------------|----------------------------------------------------|
-    | aes()                 | Used inside `ggplot()` to map variables to aesthetics | Not used; column names are specified directly in `plot()` |
-    | +(<gg>) %>%           | Used to add layers and modify the plot            | Not applicable                                     |
-    | ggsave()              | Save the plot to a file                           | Not applicable; plots are saved using `plt.savefig()` in Matplotlib |
-    | quickplot()           | Simple, intuitive function for quick plots        | Not available                                      |
+### 1. 🎯 **Cơ bản về biểu đồ (Plot Basics)**
 
-2. Layers
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #28A745;">aes()</span>** | *Ánh xạ biến vào thuộc tính thẩm mỹ trong `ggplot()`* | <span style="color: #6C757D;">*Không sử dụng; tên cột được chỉ định trực tiếp trong `plot()`*</span> |
+| **<span style="color: #28A745;">+(&lt;gg&gt;) %&gt;%</span>** | *Thêm lớp và chỉnh sửa biểu đồ* | <span style="color: #6C757D;">*Không áp dụng*</span> |
+| **<span style="color: #28A745;">ggsave()</span>** | *Lưu biểu đồ vào file* | <span style="color: #6C757D;">*Không áp dụng; sử dụng `plt.savefig()` trong Matplotlib*</span> |
+| **<span style="color: #28A745;">quickplot()</span>** | *Hàm đơn giản, trực quan cho biểu đồ nhanh* | <span style="color: #6C757D;">*Không có sẵn*</span> |
 
-    | ggplot2 (R)           |      Feature                                      | matplotlib (Python)                               |
-    |-----------------------|---------------------------------------------------|---------------------------------------------------|
-    | geom_abline()         | Add an arbitrary line to the plot                 | `axhline()` and `axvline()` in Matplotlib         |
-    | geom_hline()          | Add horizontal lines to the plot                  | `axhline()` in Matplotlib                         |
-    | geom_vline()          | Add vertical lines to the plot                    | `axvline()` in Matplotlib                         |
-    | geom_bar()            | Create bar charts                                 | `kind='bar'` in `plot()`                          |
-    | geom_col()            | Create column charts                              | `kind='bar'` with `position='identity'` in `plot()`|
-    | stat_count()          | Create bar charts with automatic counting         | `kind='bar'` with `position='identity'` in `plot()`|
-    | geom_boxplot()        | Create boxplots                                   | `kind='box'` in `plot()`                          |
-    | stat_boxplot()        | Create boxplots with statistical summaries        | `kind='box'` in `plot()`                          |
-    | geom_map()            | Plot spatial data on maps                         | Not available                                      |
-    | geom_point()          | Create scatter plots                              | `kind='scatter'` in `plot()`                      |
-    | geom_label()          | Add text labels to points                         | Not available                                      |
-    | geom_text()           | Add text annotations to the plot                  | `text()` in Matplotlib                            |
-    | geom_violin()         | Create violin plots                               | Not available                                      |
-    | stat_ydensity()       | Compute density for violin plots                  | Not available                                      |
+### 2. 🎨 **Các lớp biểu đồ (Layers)**
 
-3. Position adjustment    
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #DC3545;">geom_abline()</span>** | *Thêm đường thẳng tùy ý vào biểu đồ* | `axhline()` và `axvline()` trong Matplotlib |
+| **<span style="color: #DC3545;">geom_hline()</span>** | *Thêm đường ngang vào biểu đồ* | `axhline()` trong Matplotlib |
+| **<span style="color: #DC3545;">geom_vline()</span>** | *Thêm đường dọc vào biểu đồ* | `axvline()` trong Matplotlib |
+| **<span style="color: #DC3545;">geom_bar()</span>** | *Tạo biểu đồ cột* | `kind='bar'` trong `plot()` |
+| **<span style="color: #DC3545;">geom_col()</span>** | *Tạo biểu đồ cột dữ liệu* | `kind='bar'` với `position='identity'` trong `plot()` |
+| **<span style="color: #DC3545;">stat_count()</span>** | *Tạo biểu đồ cột với đếm tự động* | `kind='bar'` với `position='identity'` trong `plot()` |
+| **<span style="color: #DC3545;">geom_boxplot()</span>** | *Tạo biểu đồ hộp* | `kind='box'` trong `plot()` |
+| **<span style="color: #DC3545;">stat_boxplot()</span>** | *Tạo biểu đồ hộp với tổng hợp thống kê* | `kind='box'` trong `plot()` |
+| **<span style="color: #DC3545;">geom_map()</span>** | *Vẽ dữ liệu không gian trên bản đồ* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #DC3545;">geom_point()</span>** | *Tạo biểu đồ phân tán* | `kind='scatter'` trong `plot()` |
+| **<span style="color: #DC3545;">geom_label()</span>** | *Thêm nhãn văn bản cho điểm* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #DC3545;">geom_text()</span>** | *Thêm chú thích văn bản vào biểu đồ* | `text()` trong Matplotlib |
+| **<span style="color: #DC3545;">geom_violin()</span>** | *Tạo biểu đồ violin* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #DC3545;">stat_ydensity()</span>** | *Tính mật độ cho biểu đồ violin* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+
+### 3. 📐 **Điều chỉnh vị trí (Position Adjustment)**
     
-    | ggplot2 (R)           |      Feature                                      | matplotlib (Python)                               |
-    |-----------------------|---------------------------------------------------|---------------------------------------------------|
-    | position_dodge()      | Dodge overlapping elements                        | Not available                                      |
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #17A2B8;">position_dodge()</span>** | *Tránh chồng lấn các phần tử* | <span style="color: #6C757D;">*Không có sẵn*</span> |
     
-4. Annotations
+### 4. 📝 **Chú thích (Annotations)**
 
-    | ggplot2 (R)           |      Feature                                      | matplotlib (Python)                               |
-    |-----------------------|---------------------------------------------------|---------------------------------------------------|
-    | annotate()            | Add annotations to the plot                       | Not available                                     |
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #FFC107;">annotate()</span>** | *Thêm chú thích vào biểu đồ* | <span style="color: #6C757D;">*Không có sẵn*</span> |
 
-5. Scales
+### 5. 📏 **Thang đo (Scales)**
 
-    | ggplot2 (R)           |      Feature                                      | matplotlib (Python)                               |
-    |-----------------------|---------------------------------------------------|---------------------------------------------------|
-    | labs()                | Modify plot labels and titles                     | Not available                                     |
-    | xlab()                | Modify the x-axis label                           | `set_xlabel()` in Matplotlib                      |
-    | ylab()                | Modify the y-axis label                           | `set_ylabel()` in Matplotlib                      |
-    | ggtitle()             | Add a plot title                                  | `set_title()` in Matplotlib                       |
-    | lims()                | Set plot limits                                   | `set_xlim()` and `set_ylim()` in Matplotlib       |
-    | xlim()                | Set x-axis limits                                 | `set_xlim()` in Matplotlib                        |
-    | ylim()                | Set y-axis limits                                 | `set_ylim()` in Matplotlib                        |
-    | scale_x_continuous()  | Modify x-axis scales                              | `set_xscale()` in Matplotlib                      |
-    | scale_y_continuous()  | Modify y-axis scales                              | `set_yscale()` in Matplotlib                      |
-    | scale_x_date()        | Modify x-axis scales for date data                | Not available                                      |
-    | scale_y_date()        | Modify y-axis scales for date data                | Not available                                      |
-    | scale_x_discrete()    | Modify x-axis scales for discrete data            | Not available                                      |
-    | scale_y_discrete()    | Modify y-axis scales for discrete data            | Not available                                      |
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #6F42C1;">labs()</span>** | *Chỉnh sửa nhãn và tiêu đề biểu đồ* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #6F42C1;">xlab()</span>** | *Chỉnh sửa nhãn trục x* | `set_xlabel()` trong Matplotlib |
+| **<span style="color: #6F42C1;">ylab()</span>** | *Chỉnh sửa nhãn trục y* | `set_ylabel()` trong Matplotlib |
+| **<span style="color: #6F42C1;">ggtitle()</span>** | *Thêm tiêu đề biểu đồ* | `set_title()` trong Matplotlib |
+| **<span style="color: #6F42C1;">lims()</span>** | *Thiết lập giới hạn biểu đồ* | `set_xlim()` và `set_ylim()` trong Matplotlib |
+| **<span style="color: #6F42C1;">xlim()</span>** | *Thiết lập giới hạn trục x* | `set_xlim()` trong Matplotlib |
+| **<span style="color: #6F42C1;">ylim()</span>** | *Thiết lập giới hạn trục y* | `set_ylim()` trong Matplotlib |
+| **<span style="color: #6F42C1;">scale_x_continuous()</span>** | *Chỉnh sửa thang đo trục x* | `set_xscale()` trong Matplotlib |
+| **<span style="color: #6F42C1;">scale_y_continuous()</span>** | *Chỉnh sửa thang đo trục y* | `set_yscale()` trong Matplotlib |
+| **<span style="color: #6F42C1;">scale_x_date()</span>** | *Chỉnh sửa thang đo trục x cho dữ liệu ngày* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #6F42C1;">scale_y_date()</span>** | *Chỉnh sửa thang đo trục y cho dữ liệu ngày* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #6F42C1;">scale_x_discrete()</span>** | *Chỉnh sửa thang đo trục x cho dữ liệu rời rạc* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #6F42C1;">scale_y_discrete()</span>** | *Chỉnh sửa thang đo trục y cho dữ liệu rời rạc* | <span style="color: #6C757D;">*Không có sẵn*</span> |
 
-6. Facetting
+### 6. 🔲 **Phân chia biểu đồ (Facetting)**
 
-    | ggplot2 (R)           |      Feature                                      | matplotlib (Python)                               |
-    |-----------------------|---------------------------------------------------|---------------------------------------------------|  
-    | facet_wrap()          | Create small multiples in a wrap layout           | `subplots=True` with multiple plots in Pandas     |
-    | facet_grid()          | Create small multiples in a grid layout           | `subplots=True` with multiple plots in Pandas     |
-    | coord_flip()          | Flip the x and y-axis                            | Not available                                      |
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #20C997;">facet_wrap()</span>** | *Tạo biểu đồ nhỏ trong bố cục wrap* | `subplots=True` với nhiều biểu đồ trong Pandas |
+| **<span style="color: #20C997;">facet_grid()</span>** | *Tạo biểu đồ nhỏ trong bố cục lưới* | `subplots=True` với nhiều biểu đồ trong Pandas |
+| **<span style="color: #20C997;">coord_flip()</span>** | *Lật trục x và y* | <span style="color: #6C757D;">*Không có sẵn*</span> |
 
-7. Themes
+### 7. 🎭 **Chủ đề (Themes)**
 
-    | ggplot2 (R)           |      Feature                                      | matplotlib (Python)                               |
-    |-----------------------|---------------------------------------------------|---------------------------------------------------|  
-    | element_blank()       | Remove an element from the plot                   | Not available                                      |
-    | element_rect()        | Modify rectangle elements in the plot             | Not available                                      |
-    | element_line()        | Modify line elements in the plot                  | Not available                                      |
-    | element_text()        | Modify text elements in the plot                  | Not available                                      |
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #E83E8C;">element_blank()</span>** | *Loại bỏ một phần tử khỏi biểu đồ* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #E83E8C;">element_rect()</span>** | *Chỉnh sửa các phần tử hình chữ nhật trong biểu đồ* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #E83E8C;">element_line()</span>** | *Chỉnh sửa các phần tử đường trong biểu đồ* | <span style="color: #6C757D;">*Không có sẵn*</span> |
+| **<span style="color: #E83E8C;">element_text()</span>** | *Chỉnh sửa các phần tử văn bản trong biểu đồ* | <span style="color: #6C757D;">*Không có sẵn*</span> |
 
-8. autoplot
+### 8. 🤖 **Biểu đồ tự động (Autoplot)**
 
-    | ggplot2 (R)           |      Feature                                      | matplotlib (Python)                               |
-    |-----------------------|---------------------------------------------------|---------------------------------------------------|  
-    | autoplot()            | Create basic plots automatically                 | Not available                                      |
+| **<span style="color: #007ACC;">ggplot2 (R)</span>** | **Chức năng** | **<span style="color: #FF6B35;">matplotlib (Python)</span>** |
+|-------------------------------------------------------|---------------|----------------------------------------------------------------|
+| **<span style="color: #fd7e14;">autoplot()</span>** | *Tạo biểu đồ cơ bản tự động* | <span style="color: #6C757D;">*Không có sẵn*</span> |
 
-Please note that `ggplot2` and `matplotlib` are both powerful visualization libraries, but they have different philosophies and strengths. The syntax for creating visualizations can differ significantly between the two libraries.
+---
+
+> **💡 Lưu ý quan trọng:** `ggplot2` và `matplotlib` đều là những thư viện trực quan hóa mạnh mẽ, nhưng chúng có triết lý và điểm mạnh khác nhau. Cú pháp để tạo biểu đồ có thể khác biệt đáng kể giữa hai thư viện này.
