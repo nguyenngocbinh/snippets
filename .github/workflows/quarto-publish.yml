@@ -35,5 +35,5 @@ jobs:
         with:
           target: gh-pages
         env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }} # this secret is always available for github actions
+          GITHUB_TOKEN: ${{ secrets.gh1 }} # this secret is always available for github actions
       
