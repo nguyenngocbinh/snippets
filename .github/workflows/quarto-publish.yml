@@ -4,27 +4,27 @@ on:
 
 name: Render and Publish
 
+permissions:
+  contents: write
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2 
-        
+        uses: actions/checkout@v4
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          # Disable TinyTeX since we only need HTML output
-          tinytex: false 
-          # uncomment below and fill to pin a version
-          # version: 0.9.600
-      
-      # add software dependencies here
+          tinytex: false
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          
+
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
@@ -35,5 +35,4 @@ jobs:
         with:
           target: gh-pages
         env:
-          GITHUB_TOKEN: ${{ secrets.gh1 }} # this secret is always available for github actions
-      
+          GITHUB_TOKEN: ${{ secrets.gh1 }}
