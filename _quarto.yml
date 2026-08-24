@@ -87,7 +87,7 @@ website:
               - content/snippets/git/git_common_comands.md
               - content/snippets/git/sync_gitlab_to_github.md
           
-          - section: "content/snippets/AI-Agents/index.md"
+          - section: "content/AI-Agents/index.md"
             text: "AI-Agents"
             contents:
               - content/AI-Agents/hermes_change_folder.md
