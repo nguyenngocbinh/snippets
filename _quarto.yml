@@ -98,6 +98,7 @@ website:
             text: "AI-Agents"
             contents:
               - content\AI-Agents\hermes_change_folder.md
+              - content\AI-Agents\omniroute_hermes.md
       
       # Tutorials section  
       - section: "Tutorials"
