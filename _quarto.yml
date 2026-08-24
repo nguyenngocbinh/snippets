@@ -37,15 +37,7 @@ website:
     collapse-level: 1
     contents:
       - href: docs/index.md
-        text: Welcome
-      
-      # Comparisons section
-      - section: "content/comparisons/Index.md"
-        text: "Comparisons"
-        contents: 
-          - content/comparisons/plsql-db2.md
-          - content/comparisons/dplyr-pandas.md
-          - content/comparisons/ggplot2-matplotlib.md
+        text: Welcome      
       
       # Snippets section
       - section: "Code Snippets"
@@ -89,16 +81,17 @@ website:
               - content/snippets/sql-server/permissions.md
               - content/snippets/sql-server/synonym.md
           
-          - section: "content/snippets/git"
+          - section: "content/snippets/git/index.md"
             text: "Git Snippets"
             contents: 
+              - content/snippets/git/git_common_comands.md
               - content/snippets/git/sync_gitlab_to_github.md
           
-          - section: "content/snippets/AI-Agents"
+          - section: "content/snippets/AI-Agents/index.md"
             text: "AI-Agents"
             contents:
-              - content\AI-Agents\hermes_change_folder.md
-              - content\AI-Agents\omniroute_hermes.md
+              - content/AI-Agents/hermes_change_folder.md
+              - content/AI-Agents/omniroute_hermes.md
       
       # Tutorials section  
       - section: "Tutorials"
@@ -129,7 +122,7 @@ website:
             text: "Matplotlib"
       
       # Machine Learning section
-      - section: "content/machine-learning/transformer.md"
+      - section: "content/machine-learning//index.md"
         text: "Machine Learning"
         contents:
           - content/machine-learning/transformer.md
@@ -139,6 +132,14 @@ website:
         text: "Utilities"
         contents:
           - content/utils/ProjectStructure.md
+
+      # Comparisons section
+      - section: "content/comparisons/Index.md"
+        text: "Comparisons"
+        contents: 
+          - content/comparisons/plsql-db2.md
+          - content/comparisons/dplyr-pandas.md
+          - content/comparisons/ggplot2-matplotlib.md
 
 format:
   html:
