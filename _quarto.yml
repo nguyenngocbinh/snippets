@@ -93,6 +93,11 @@ website:
             text: "Git Snippets"
             contents: 
               - content/snippets/git/sync_gitlab_to_github.md
+          
+          - section: "content/snippets/AI-Agents"
+            text: "AI-Agents"
+            contents:
+              - content\AI-Agents\hermes_change_folder.md
       
       # Tutorials section  
       - section: "Tutorials"
