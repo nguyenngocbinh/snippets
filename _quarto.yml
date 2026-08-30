@@ -90,6 +90,7 @@ website:
           - section: "content/AI-Agents/index.md"
             text: "AI-Agents"
             contents:
+              - content/AI-Agents/ai-coding-cli-installation.md
               - content/AI-Agents/hermes_change_folder.md
               - content/AI-Agents/omniroute_hermes.md
       
