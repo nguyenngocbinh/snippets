@@ -145,8 +145,8 @@ website:
 format:
   html:
     theme:
-      light: [cosmo, docs/theme.scss] 
-      dark: [cosmo, docs/theme-dark.scss]
+      light: [cosmo, docs/theme.scss]
+      dark: [cosmo, docs/theme-orange.scss]
     code-copy: true
     code-overflow: wrap
     toc: true
